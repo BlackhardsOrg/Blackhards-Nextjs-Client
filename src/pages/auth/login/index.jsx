@@ -1,20 +1,21 @@
 import FLyLoad from "@/components/loading/FLyLoad";
-import { login } from "@/redux/features/auth/authThunks";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Bounce, toast } from "react-toastify";
+import { login } from "@/redux/features/auth/api/authApi";
+import { useRouter } from "next/router";
+import AuthLayouts from "@/components/layouts/AuthLayouts";
 
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const navigate = useRouter.push;
   const user = useSelector((state) => state.auth.user);
-  const location = useLocation();
+  const router = useRouter();
 
-  const searchParams = new URLSearchParams(location.search);
-  const message = searchParams.get("message");
+  const { query } = router;
+  const message = query.message || "";
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -37,10 +38,10 @@ export default function LoginPage() {
       const { from } = location.state || { from: "/" };
       navigate("/dashboard");
     }
-  }, [user, location, navigate]);
+  }, [user, query, navigate]);
 
   return (
-    <>
+    <AuthLayouts>
       <section className="our-login">
         <div className="container">
           <div className="row">
@@ -54,22 +55,22 @@ export default function LoginPage() {
                   Access all your game titles and auctions in one place
                 </p>
 
-                {message && message!= "" && <p className="paragraph text-info">
-                  {message}!
-                </p>}
+                {message && message != "" && (
+                  <p className="paragraph text-info">{message}!</p>
+                )}
               </div>
             </div>
           </div>
 
-          <div className="row wow fadeInRight" data-wow-delay="300ms">
+          <div className="row wow fadeInRight " data-wow-delay="300ms">
             <div className="col-xl-6 mx-auto">
               <form onSubmit={handleSubmit}>
-                <div className="log-reg-form search-modal form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
+                <div className="log-reg-form search-modal default-box-shadow5 form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
                   <div className="mb30">
                     <h4>We&apos;re glad to see you again!</h4>
                     <p className="text">
                       Don&apos;t have an account?{" "}
-                      <Link to="/register-early" className="text-thm">
+                      <Link href="/auth/register-early" className="text-thm">
                         Get Early Access
                       </Link>
                     </p>
@@ -106,7 +107,9 @@ export default function LoginPage() {
                       <input type="checkbox" defaultChecked="checked" />
                       <span className="checkmark" />
                     </label>
-                    <Link to="/forgot-password" className="fz14 ff-heading">Lost your password?</Link>
+                    <Link href="/forgot-password" className="fz14 ff-heading">
+                      Lost your password?
+                    </Link>
                   </div>
                   <div className="d-grid mb20">
                     <button className="ud-btn btn-thm" type="submit">
@@ -147,6 +150,6 @@ export default function LoginPage() {
           </div>
         </div>
       </section>
-    </>
+    </AuthLayouts>
   );
 }

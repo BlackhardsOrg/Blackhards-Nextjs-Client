@@ -1,0 +1,79 @@
+
+import { dasboardNavigation } from "@/data/dashboard";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { logoutUser } from "@/redux/features/auth/api/authApi";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+import { useDispatch } from "react-redux";
+
+export default function DashboardSidebar() {
+  const { pathname } = useRouter();
+  const dispatch = useAppDispatch();
+
+  const user = useAppSelector(state => state.auth.user)
+
+  const handleClick = async () => {
+    console.log("called");
+    await dispatch(logoutUser(user.token));
+  };
+
+
+  return (
+    <>
+      <div className="dashboard__sidebar d-none d-lg-block">
+        <div className="dashboard_sidebar_list">
+          <p className="fz15 fw400 ff-heading pl30">Organize</p>
+          {dasboardNavigation.slice(0, 10).map((item, i) => (
+            <div key={i} className="sidebar_list_item mb-1">
+              <Link
+                href={item.path}
+                className={`items-center ${pathname === item.path ? "-is-active" : ""
+                  }`}
+              >
+                <i className={`${item.icon} mr15`} />
+                {item.name}
+              </Link>
+            </div>
+          ))}
+
+          <p className="fz15 fw400 ff-heading pl30 mt30">Account</p>
+
+          {dasboardNavigation.slice(10, 12).map((item, i) => (
+            <div key={i} className="sidebar_list_item mb-1">
+              <Link
+                 href={item.path}
+                className={`items-center ${pathname === item.path ? "-is-active" : ""
+                  }`}
+              >
+                <i className={`${item.icon} mr15`} />
+                {item.name}
+              </Link>
+            </div>
+          ))}
+
+          {dasboardNavigation.slice(12, 13).map((item, i) => (
+            <div
+              onClick={async () => {
+                console.log("called")
+                await dispatch(logoutUser(user.token));
+              }}
+              key={i}
+              className="sidebar_list_item mb-1"
+            >
+              <Link
+                href={item.path}
+                className={`items-center ${pathname === item.path ? "-is-active" : ""
+                  }`}
+              >
+                <i className={`${item.icon} mr15`} />
+                {item.name}
+              </Link>
+            </div>
+
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}

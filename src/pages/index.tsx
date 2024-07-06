@@ -2,14 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import Header19 from "@/component/early/Header19";
-import Hero18 from "@/component/early/Hero18";
-import BrowserCategory3 from "@/component/early/BrowserCategory3";
-import NeedSomething18 from "@/component/early/NeedSomething18";
-import CounterInfo1 from "@/component/early/CounterInfo1";
-import Testimonials13 from "@/component/early/Testimonials18";
-import ForClient from "@/component/early/ForClient";
-import HomeLayouts from "@/component/layouts/HomeLayouts";
+import Header19 from "@/components/early/Header19";
+import Hero18 from "@/components/early/Hero18";
+import BrowserCategory3 from "@/components/early/BrowserCategory3";
+import NeedSomething18 from "@/components/early/NeedSomething18";
+import CounterInfo1 from "@/components/early/CounterInfo1";
+import Testimonials13 from "@/components/early/Testimonials18";
+import ForClient from "@/components/early/ForClient";
+import HomeLayouts from "@/components/layouts/HomeLayouts";
 
 const inter = Inter({ subsets: ["latin"] });
 

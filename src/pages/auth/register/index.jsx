@@ -1,10 +1,11 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import MetaComponent from "@/components/common/MetaComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { register } from "@/redux/features/auth/authThunks";
 import FLyLoad from "@/components/loading/FLyLoad";
-import PasswordSetup from "@/components/auth/PasswordSetup";
+import AuthLayouts from "@/components/layouts/AuthLayouts";
+import PasswordSetup from "@/components/auth/PasswordSetup"
+import Link from "next/link";
+import { useRouter } from "next/router";
 const metadata = {
   title: "Blackhards - AI Game Code | Register",
 };
@@ -13,11 +14,11 @@ export default function RegisterPage() {
     email: "",
     password: "",
     studioName: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const navigate = useRouter.push;
 
   const [isPasswordMismatched, setIsPasswordMismatched] = useState(false);
   const [isSubmitAllowable, setIsSubmitAllowable] = useState(false);
@@ -32,7 +33,9 @@ export default function RegisterPage() {
     const result = await dispatch(register(credentials));
     console.log(result, "RESuLT");
     if (result.payload.success) {
-      navigate("/login?message=Verification email sent, please check your inbox");
+      navigate(
+        "/login?message=Verification email sent, please check your inbox"
+      );
     }
   };
 
@@ -41,7 +44,8 @@ export default function RegisterPage() {
     if (
       !isPasswordMismatched &&
       credentials.email != "" &&
-      credentials.password != ""
+      credentials.password != "" &&
+      credentials.confirmPassword != ""
     ) {
       console.log("called");
       setIsSubmitAllowable(true);
@@ -57,7 +61,7 @@ export default function RegisterPage() {
 
   <MetaComponent meta={metadata} />;
   return (
-    <>
+    <AuthLayouts>
       <section className="our-register">
         <div className="container">
           <div className="row">
@@ -67,10 +71,7 @@ export default function RegisterPage() {
             >
               <div className="main-title text-center">
                 <h2 className="title">Register</h2>
-                <p className="paragraph">
-                  Give your visitor a smooth online experience with a solid UX
-                  design
-                </p>
+                <p className="paragraph">Join us at Blackhards</p>
               </div>
             </div>
           </div>
@@ -82,7 +83,7 @@ export default function RegisterPage() {
                     <h4>Let&apos;s create your account!</h4>
                     <p className="text mt20">
                       Already have an account?{" "}
-                      <Link to="/login" className="text-thm">
+                      <Link href="/login" className="text-thm">
                         Log In!
                       </Link>
                     </p>
@@ -115,8 +116,8 @@ export default function RegisterPage() {
                   <PasswordSetup
                     handleChange={handleChange}
                     credentials={credentials}
-                    passwordMismatch={isPasswordMismatched}
-                    setPasswordMismatch={setIsPasswordMismatched}
+                    isPasswordMismatched={isPasswordMismatched}
+                    setIsPasswordMismatched={setIsPasswordMismatched}
                   />
 
                   <div className="d-grid mb20">
@@ -165,6 +166,6 @@ export default function RegisterPage() {
           </div>
         </div>
       </section>
-    </>
+    </AuthLayouts>
   );
 }
