@@ -8,17 +8,18 @@ import { Sticky, StickyContainer } from "react-sticky";
 import useScreen from "@/hook/useScreen";
 import ServiceContactWidget1 from "../element/ServiceContactWidget1";
 
-import { useParams } from "react-router-dom";
 import { product1 } from "@/data/product";
 import GameDetailSlider from "../element/GameDetailSlider";
 import GameDetailPrice from "../element/GameDetailPrice";
 import GameContactWidget from "../element/GameContactWidget";
+import { useRouter } from "next/router";
 
 export default function GameDetail() {
   const isMatchedScreen = useScreen(1216);
-  const { id } = useParams();
+  const { query } = useRouter()
+  const { id } = query;
 
-  const data = product1.find((item) => item.id == id);
+  const data = product1.find((item: any) => item.id == id);
 
   return (
     <>
@@ -55,7 +56,7 @@ export default function GameDetail() {
                             4.82 94 reviews
                           </p>
                           <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">
-                            <i className="fas fa-play vam me-2"></i> 
+                            <i className="fas fa-play vam me-2"></i>
                             700 plays
                           </p>
                           <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const partners = [
   "/images/partners/1.png",
@@ -10,7 +10,7 @@ const partners = [
 ];
 
 export default function OurPartner1() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>

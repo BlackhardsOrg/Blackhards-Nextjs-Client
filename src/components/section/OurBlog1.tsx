@@ -1,11 +1,11 @@
 import { blog1 } from "@/data/blog";
 import BlogCard1 from "../card/BlogCard1";
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-import { Link } from "react-router-dom";
 
 export default function OurBlog1() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>
@@ -27,7 +27,7 @@ export default function OurBlog1() {
             {pathname === "/home-5" && (
               <div className="col-lg-3 align-self-center">
                 <div className="text-start text-lg-end mb-4 mb-lg-2">
-                  <Link className="ud-btn2" to="/blog-1">
+                  <Link className="ud-btn2" href="/blog-1">
                     All Categories
                     <i className="fal fa-arrow-right-long" />
                   </Link>

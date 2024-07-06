@@ -1,11 +1,11 @@
 import listingStore from "@/store/listingStore";
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export default function Search1() {
-  const getSearch = listingStore((state) => state.getSearch);
-  const setSearch = listingStore((state) => state.setSearch);
+  const getSearch = listingStore((state: any) => state.getSearch);
+  const setSearch = listingStore((state: any) => state.setSearch);
 
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
   return (
     <>
       <div

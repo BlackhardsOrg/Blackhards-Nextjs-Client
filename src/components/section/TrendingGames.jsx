@@ -7,10 +7,10 @@ import { Navigation, Pagination } from "swiper";
 
 import TrendingGameCard from "../card/TrendingGameCard";
 import { product1 } from "@/data/product";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function TrendingAuctions1() {
+export default function TrendingGames() {
   const [showSwiper, setShowSwiper] = useState(false);
   useEffect(() => {
     setShowSwiper(true);
@@ -22,16 +22,16 @@ export default function TrendingAuctions1() {
           <div className="row align-items-center">
             <div className="col-lg-9 wow fadeInUp">
               <div className="main-title">
-                <h2 className="title">Trending Auctions</h2>
+                <h2 className="title">Trending Game Projects</h2>
                 <p className="paragraph">
-                  Explore the Trendy Game Biz Auctions
+                  Explore Top Projects
                 </p>
               </div>
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-4 mb-lg-3">
-                <Link className="ud-btn2" to="/service-1">
-                  All Game Titles
+                <Link className="ud-btn2" href="/service-1">
+                  All Titles
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>

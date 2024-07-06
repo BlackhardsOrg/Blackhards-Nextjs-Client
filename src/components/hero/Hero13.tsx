@@ -1,6 +1,5 @@
 import HeroSearch1 from "../element/HeroSearch1";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const role = [
   "Graphics & Design",
@@ -15,15 +14,16 @@ const popular = ["Designer", "Developer", "Web", "IOS", "PHP", "Senior"];
 import { funfactsData } from "@/data/fanfact";
 import React from "react";
 import CountUp from "react-countup";
+import { useRouter } from "next/router";
 
 export default function Hero13() {
   const [getSelectedRole, setSelectedRole] = useState(null);
 
   // role handler
-  const roleHandler = (select) => {
+  const roleHandler = (select: any) => {
     setSelectedRole(select);
   };
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
   // search handler
   const searchHandler = () => {

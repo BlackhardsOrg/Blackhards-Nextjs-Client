@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function GameContactWidget() {
   return (
@@ -45,7 +45,7 @@ export default function GameContactWidget() {
           </div>
         </div>
         <div className="d-grid mt30">
-          <Link to="/freelancer-single" className="ud-btn btn-thm-border">
+          <Link href="/freelancer-single" className="ud-btn btn-thm-border">
             Contact Me
             <i className="fal fa-arrow-right-long" />
           </Link>

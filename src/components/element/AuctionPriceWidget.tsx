@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function AuctionPriceWidget() {
   return (
@@ -54,7 +54,7 @@ export default function AuctionPriceWidget() {
 
           <Link
             // data-bs-toggle="modal"
-            to="/shop-checkout"
+            href="/shop-checkout"
             className="ud-btn btn-thm"
           >
             Redeem Bid

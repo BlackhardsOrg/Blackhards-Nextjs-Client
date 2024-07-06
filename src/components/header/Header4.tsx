@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 
 import MobileNavigation3 from "./MobileNavigation3";
+import Link from "next/link";
 
 export default function Header4() {
   return (
@@ -16,7 +16,7 @@ export default function Header4() {
               <div className="col-auto">
                 <div className="d-flex align-items-center justify-content-between">
                   <div className="logos mr20">
-                    <Link className="header-logo logo2" to="/">
+                    <Link className="header-logo logo2" href="/">
                       <img src="/images/Blackhards-white-logo-2.svg" alt="Header Logo" />
                     </Link>
                   </div>
@@ -32,14 +32,14 @@ export default function Header4() {
                   >
                     <span className="flaticon-loupe" />
                   </a>
-                  <Link className="login-info mx15-lg mx30" to="/become-seller">
+                  <Link className="login-info mx15-lg mx30" href="/become-seller">
                     <span className="d-none d-xl-inline-block">Become a </span>
                     Seller
                   </Link>
-                  <Link className="login-info mr15-lg mr30" to="/login">
+                  <Link className="login-info mr15-lg mr30" href="/login">
                     Sign in
                   </Link>
-                  <Link className="ud-btn btn-home3 add-joining" to="/register-early">
+                  <Link className="ud-btn btn-home3 add-joining" href="/register-early">
                     Join
                   </Link>
                 </div>

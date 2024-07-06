@@ -1,24 +1,27 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 import { useState } from "react";
 import shopStore from "@/store/shopStore";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-export default function TrendingGameCard({ data }) {
+interface ITrendingGameCard{
+  data: any
+}
+export default function TrendingGameCard({ data }: ITrendingGameCard) {
   const [isFavActive, setFavActive] = useState(false);
 
-  const { pathname } = useLocation();
-  const addToCart = shopStore((state) => state.addToCart);
-  const products = shopStore((state) => state.products);
+  const { pathname } = useRouter();
+  const addToCart = shopStore((state:any) => state.addToCart);
+  const products = shopStore((state: any) => state.products);
 
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
-  const addToCartHandler = (product) => {
+  const addToCartHandler = (product: any) => {
     addToCart(product);
     navigate("/shop-cart");
   };
 
-  const isAdded = products.some((product) => product.id === data.id);
+  const isAdded = products.some((product: any) => product.id === data.id);
   return (
     <>
       <div
@@ -67,7 +70,7 @@ export default function TrendingGameCard({ data }) {
         <div className={`list-content ${pathname === "/home-8" ? "px-0" : ""}`}>
           <p className="list-text body-color fz14 mb-1">{data.category}</p>
           <h5 className="list-title">
-            <Link to={`/game/preview/${data.id}`}>
+            <Link href={`/game/preview/${data.id}`}>
               {data.title.slice(0, 40) + "..."}
             </Link>
           </h5>

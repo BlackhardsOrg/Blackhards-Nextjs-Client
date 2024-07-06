@@ -1,7 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import MarketLayouts from "../layouts/MarketLayouts";
 
-export default function AuctionCard({ data }) {
-  const navigate = useNavigate();
+export default function AuctionCard({ data }: any) {
+  const navigate = useRouter().push;
   return (
     <>
       <div
@@ -40,7 +42,7 @@ export default function AuctionCard({ data }) {
               : "Many desktop publishing packages and web page editors now use Lorem Ipsum  as their default model text."}{" "}
           </p>
           <div className="skill-tags d-flex align-items-center justify-content-start mb20-md">
-            {data.tags.map((item, i) => (
+            {data.tags.map((item: any, i: any) => (
               <span key={i} className={`tag ${i === 1 ? "mx10" : ""}`}>
                 {item}
               </span>
@@ -57,7 +59,7 @@ export default function AuctionCard({ data }) {
             </div>
             <div className="d-grid mt15">
               <Link
-                to={`/auction/preview/${data.id}`}
+                href={`/auction/preview/${data.id}`}
                 className="ud-btn btn-thm-border bdrs12 hover-default-box-shadow1"
               >
                 View

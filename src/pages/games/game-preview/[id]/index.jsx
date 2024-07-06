@@ -4,14 +4,15 @@ import PopularGames from "@/components/section/PopulerGames";
 
 import TabSection1 from "@/components/section/TabSection1";
 import React from "react";
+import MarketLayouts from "@/components/layouts/MarketLayouts"
 
 export default function GamePreview() {
   return (
-    <>
+    <MarketLayouts>
       <TabSection1 />
       <Breadcumb3 path={["Home", "Games", "Ghosts From Idemili"]} />
       <GameDetail />
       <PopularGames />
-    </>
+    </MarketLayouts>
   );
 }

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-export default function Mega({ staticMenuClass }) {
+export default function Mega({ staticMenuClass }: any) {
   return (
     <>
       <div id="mega-menu">
@@ -27,31 +27,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -59,37 +59,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -97,37 +97,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>
@@ -143,31 +143,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -175,37 +175,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -213,37 +213,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>
@@ -259,31 +259,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -291,37 +291,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -329,37 +329,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>
@@ -375,31 +375,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -407,37 +407,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -445,37 +445,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>
@@ -491,31 +491,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -523,37 +523,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -561,37 +561,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>
@@ -607,31 +607,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -639,37 +639,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -677,37 +677,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>
@@ -723,31 +723,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -755,37 +755,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -793,37 +793,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>
@@ -839,31 +839,31 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Web &amp; App Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Website Design</Link>
+                    <Link href="/">Website Design</Link>
                   </li>
                   <li>
-                    <Link to="/">App DesignUX Design</Link>
+                    <Link href="/">App DesignUX Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Landing Page Design</Link>
+                    <Link href="/">Landing Page Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Icon Design</Link>
+                    <Link href="/">Icon Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Marketing Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Social Media Design</Link>
+                    <Link href="/">Social Media Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Email Design</Link>
+                    <Link href="/">Email Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Web Banners</Link>
+                    <Link href="/">Web Banners</Link>
                   </li>
                   <li>
-                    <Link to="/">Signage Design</Link>
+                    <Link href="/">Signage Design</Link>
                   </li>
                 </ul>
               </div>
@@ -871,37 +871,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Art &amp; Illustration</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Illustration</Link>
+                    <Link href="/">Illustration</Link>
                   </li>
                   <li>
-                    <Link to="/">NFT Art</Link>
+                    <Link href="/">NFT Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Pattern Design</Link>
+                    <Link href="/">Pattern Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Portraits &amp; Caricatures</Link>
+                    <Link href="/">Portraits &amp; Caricatures</Link>
                   </li>
                   <li>
-                    <Link to="/">Cartoons &amp; Comics</Link>
+                    <Link href="/">Cartoons &amp; Comics</Link>
                   </li>
                   <li>
-                    <Link to="/">Tattoo Design</Link>
+                    <Link href="/">Tattoo Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Storyboards</Link>
+                    <Link href="/">Storyboards</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Gaming</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">Game Art</Link>
+                    <Link href="/">Game Art</Link>
                   </li>
                   <li>
-                    <Link to="/">Graphics for Streamers</Link>
+                    <Link href="/">Graphics for Streamers</Link>
                   </li>
                   <li>
-                    <Link to="/">Twitch Store</Link>
+                    <Link href="/">Twitch Store</Link>
                   </li>
                 </ul>
               </div>
@@ -909,37 +909,37 @@ export default function Mega({ staticMenuClass }) {
                 <div className="h6 cat-title">Visual Design</div>
                 <ul className="ps-0 mb40">
                   <li>
-                    <Link to="/">Image Editing</Link>
+                    <Link href="/">Image Editing</Link>
                   </li>
                   <li>
-                    <Link to="/">Presentation Design</Link>
+                    <Link href="/">Presentation Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Infographic Design</Link>
+                    <Link href="/">Infographic Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Vector Tracing</Link>
+                    <Link href="/">Vector Tracing</Link>
                   </li>
                   <li>
-                    <Link to="/">Resume Design</Link>
+                    <Link href="/">Resume Design</Link>
                   </li>
                 </ul>
                 <div className="h6 cat-title">Print Design</div>
                 <ul className="ps-0 mb-0">
                   <li>
-                    <Link to="/">T-Shirts &amp; Merchandise</Link>
+                    <Link href="/">T-Shirts &amp; Merchandise</Link>
                   </li>
                   <li>
-                    <Link to="/">Flyer Design</Link>
+                    <Link href="/">Flyer Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Brochure Design</Link>
+                    <Link href="/">Brochure Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Poster Design</Link>
+                    <Link href="/">Poster Design</Link>
                   </li>
                   <li>
-                    <Link to="/">Catalog Design</Link>
+                    <Link href="/">Catalog Design</Link>
                   </li>
                 </ul>
               </div>

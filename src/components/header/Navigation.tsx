@@ -1,11 +1,11 @@
 import navigation from "@/data/navigation";
 import { isActiveNavigation } from "@/utils/isActiveNavigation";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 export default function Navigation() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>
@@ -36,7 +36,7 @@ export default function Navigation() {
               </a>
             ) : (
               <Link
-                to={item.path}
+                href={item.path}
                 className={`list-item
                                 ${item.path === pathname ? "ui-active" : ""}`}
               >
@@ -62,7 +62,7 @@ export default function Navigation() {
                         {item2.children && <span className="arrow "></span>}
                       </a>
                     ) : (
-                      <Link to={item2.path}>
+                      <Link href={item2.path}>
                         <span className="title">{item2.name}</span>
                       </Link>
                     )}
@@ -79,7 +79,7 @@ export default function Navigation() {
                                 : ""
                             }
                           >
-                            <Link to={item3.path}>{item3.name}</Link>
+                            <Link href={item3.path}>{item3.name}</Link>
                           </li>
                         ))}
                       </ul>

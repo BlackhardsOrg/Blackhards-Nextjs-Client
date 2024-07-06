@@ -1,5 +1,5 @@
-import { useLocation } from "react-router-dom";
 
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const genres = [
@@ -20,7 +20,7 @@ const genres = [
 export default function TabSection1() {
   const [getCurrentTab, setCurrentTab] = useState("All Categories");
 
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>

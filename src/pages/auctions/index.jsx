@@ -6,13 +6,14 @@ import TabSection1 from "@/components/section/TabSection1";
 import MetaComponent from "@/components/common/MetaComponent";
 import AuctionListing from "@/components/section/AuctionListing";
 import Breadcumb4 from "@/components/breadcumb/Breadcumb4";
+import MarketLayouts from "@/components/layouts/MarketLayouts"
 const metadata = {
   title: "Freeio - Freelance Marketplace ReactJs Template | Project 1",
 };
 
 export default function ProjectPage4() {
   return (
-    <>
+    <MarketLayouts>
       <MetaComponent meta={metadata} />
       <TabSection1 />
       <Breadcumb3 path={["Home", "auctions"]} />
@@ -20,6 +21,6 @@ export default function ProjectPage4() {
         <Breadcumb4 title="Auctions" subtitle="Bid for the Best" img="/images/vector-img/Blackhards-auctions-532by300.png"/>
         <AuctionListing />
       </div>
-    </>
+    </MarketLayouts>
   );
 }

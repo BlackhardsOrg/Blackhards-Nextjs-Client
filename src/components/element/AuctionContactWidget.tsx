@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function AuctionContactWidget() {
   return (
@@ -45,7 +45,7 @@ export default function AuctionContactWidget() {
           </div>
         </div>
         <div className="d-grid mt30">
-          <Link to="/contact" className="ud-btn btn-thm-border">
+          <Link href="/contact" className="ud-btn btn-thm-border">
             Contact Buyer
             <i className="fal fa-arrow-right-long" />
           </Link>

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-export default function ProjectCard3({ data }) {
+export default function ProjectCard3({ data }: any) {
   return (
     <>
       <div className="freelancer-style1 bdr1 bdrs12 hover-box-shadow row ms-0 align-items-lg-center">
@@ -36,7 +36,7 @@ export default function ProjectCard3({ data }) {
               : "Many desktop publishing packages and web page editors now use Lorem Ipsum  as their default model text."}{" "}
           </p>
           <div className="skill-tags d-flex align-items-center justify-content-start mb20-md">
-            {data.tags.map((item, i) => (
+            {data.tags.map((item: any, i: any) => (
               <span key={i} className={`tag ${i === 1 ? "mx10" : ""}`}>
                 {item}
               </span>
@@ -53,7 +53,7 @@ export default function ProjectCard3({ data }) {
             </div>
             <div className="d-grid mt15">
               <Link
-                to={`/project-single/${data.id}`}
+                href={`/project-single/${data.id}`}
                 className="ud-btn btn-thm-border bdrs12 hover-default-box-shadow1"
               >
                 Send Proposal

@@ -7,8 +7,8 @@ import { Navigation } from "swiper";
 
 import TrendingGameCard from "../card/TrendingGameCard";
 import { product1 } from "@/data/product";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function TrendingService13() {
   const [showSwiper, setShowSwiper] = useState(false);
@@ -31,7 +31,7 @@ export default function TrendingService13() {
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-4 mb-lg-2">
-                <Link className="ud-btn2" to="/service-1">
+                <Link className="ud-btn2" href="/service-1">
                   All Categories
                   <i className="fal fa-arrow-right-long" />
                 </Link>

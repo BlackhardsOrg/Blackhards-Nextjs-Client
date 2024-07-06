@@ -1,8 +1,8 @@
 import React from "react";
 import Navigation from "./Navigation";
 import useStickyMenu from "@/hook/useStickyMenu";
+import Link from "next/link";
 
-import { Link } from "react-router-dom";
 
 export default function Header14() {
   const sticky = useStickyMenu(50);
@@ -19,10 +19,10 @@ export default function Header14() {
             <div className="col-auto px-0 px-xl-3">
               <div className="d-flex align-items-center justify-content-between">
                 <div className="logos">
-                  <Link className="header-logo logo1" to="/">
+                  <Link className="header-logo logo1" href="/">
                     <img src="/images/Blackhards-white-logo-2.svg" alt="Header Logo" />
                   </Link>
-                  <Link className="header-logo logo2" to="/">
+                  <Link className="header-logo logo2" href="/">
                     <img src="/images/Blackhards-white-logo-2.svg" alt="Header Logo" />
                   </Link>
                 </div>
@@ -32,19 +32,19 @@ export default function Header14() {
             </div>
             <div className="col-auto pe-0 pe-xl-3">
               <div className="d-flex align-items-center">
-                <Link className="login-info mx15-xl mx30" to="/become-seller">
+                <Link className="login-info mx15-xl mx30" href="/become-seller">
                   <span className="d-none d-xl-inline-block">Become a</span>{" "}
                   Seller
                 </Link>
                 <Link
                   className="login-info mr15-xl mr10 ud-btn btn-dark add-joining bdrs12 dark-color bg-transparent"
-                  to="/login"
+                  href="/login"
                 >
                   Sign in
                 </Link>
                 <Link
                   className="ud-btn btn-dark add-joining bdrs12 text-white"
-                  to="/register"
+                  href="/register"
                 >
                   Join
                 </Link>

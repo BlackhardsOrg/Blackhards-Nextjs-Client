@@ -1,33 +1,33 @@
-import { Link, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
 
-import { useLocation } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import shopStore from "@/store/shopStore";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function PopularGameSlideCard({
   data,
   style = "",
   isContentExpanded,
-}) {
+}: any) {
   const [isFavActive, setFavActive] = useState(false);
-  const { pathname } = useLocation();
-  const addToCart = shopStore((state) => state.addToCart);
-  const products = shopStore((state) => state.products);
+  const { pathname } = useRouter();
+  const addToCart = shopStore((state: any) => state.addToCart);
+  const products = shopStore((state: any) => state.products);
 
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
-  const addToCartHandler = (product) => {
+  const addToCartHandler = (product: any) => {
     addToCart(product);
     navigate("/shop-cart");
   };
 
-  const isAdded = products.some((product) => product.id === data.id);
+  const isAdded = products.some((product: any) => product.id === data.id);
 
   return (
     <>
@@ -62,7 +62,7 @@ export default function PopularGameSlideCard({
                   clickable: true,
                 }}
               >
-                {data?.gallery?.map((item, index) => (
+                {data?.gallery?.map((item: any, index: any) => (
                   <SwiperSlide key={index}>
                     <img
                       className="w-100 object-fit-cover"
@@ -104,7 +104,7 @@ export default function PopularGameSlideCard({
         <div className={`list-content ${isContentExpanded ? "px-0" : ""}`}>
           <p className="list-text body-color fz14 mb-1">{data.category}</p>
           <h5 className="list-title">
-            <Link to={`/game/preview/${data.id}`}>{data.title}</Link>
+            <Link href={`/game/preview/${data.id}`}>{data.title}</Link>
           </h5>
           <div className="review-meta d-flex align-items-center">
             <i className="fas fa-star fz10 review-color me-2" />

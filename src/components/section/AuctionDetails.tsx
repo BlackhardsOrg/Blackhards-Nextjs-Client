@@ -6,8 +6,8 @@ import AuctionPriceWidget from "../element/AuctionPriceWidget";
 import AuctionContactWidget from "../element/AuctionContactWidget";
 import useScreen from "@/hook/useScreen";
 
-import { useParams } from "react-router-dom";
 import AuctionDetailSlider from "../element/AuctionDetailSlider";
+import { useRouter } from "next/router";
 
 const skills = [
   "SaaS",
@@ -22,9 +22,10 @@ const skills = [
 
 export default function AuctionDetails() {
   const isMatchedScreen = useScreen(1216);
-  const { id } = useParams();
+  const {query} = useRouter()
+  const { id } = query;
 
-  const data = project1.find((item) => item.id == id);
+  const data = project1.find((item: any) => item.id == id);
 
   return (
     <>
@@ -226,7 +227,7 @@ export default function AuctionDetails() {
                                 <input
                                   type="text"
                                   className="form-control"
-                                  placeholder={4}
+                                  placeholder={"4"}
                                 />
                               </div>
                             </div>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function ServiceDetailReviewInfo1() {
   return (
@@ -108,9 +108,9 @@ export default function ServiceDetailReviewInfo1() {
               <p className="text mt20 mb20">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
+                injected humour, or randomised words which don&apos;t look even
                 slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn't anything embarrassing
+                Ipsum, you need to be sure there isn&apos;t anything embarrassing
                 hidden in the middle of text.
               </p>
               <div className="review_cansel_btns d-flex">
@@ -141,9 +141,9 @@ export default function ServiceDetailReviewInfo1() {
               <p className="text mt20 mb20">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
+                injected humour, or randomised words which don&apos;t look even
                 slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn't anything embarrassing
+                Ipsum, you need to be sure there isn&apos;t anything embarrassing
                 hidden in the middle of text.
               </p>
               <div className="review_cansel_btns d-flex pb30">
@@ -159,7 +159,7 @@ export default function ServiceDetailReviewInfo1() {
             </div>
             <div className="col-md-12">
               <div className="position-relative bdrb1 pb50">
-                <Link to="/service-single" className="ud-btn btn-light-thm">
+                <Link href="/service-single" className="ud-btn btn-light-thm">
                   See More
                   <i className="fal fa-arrow-right-long" />
                 </Link>

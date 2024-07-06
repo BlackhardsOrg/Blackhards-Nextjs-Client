@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import React from "react";
 
 export default function CTa13() {
@@ -18,7 +18,7 @@ export default function CTa13() {
                 million CVs
               </p>
               <Link
-                to="/contact"
+                href="/contact"
                 className="ud-btn btn-dark default-box-shadow1"
               >
                 Get Started <i className="fal fa-arrow-right-long"></i>

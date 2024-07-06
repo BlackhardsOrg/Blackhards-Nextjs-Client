@@ -1,27 +1,31 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
+interface IPopularServiceCard1 {
+  data: any,
+  style: string,
+  isContentExpanded: boolean,
+}
 export default function PopularServiceCard1({
   data,
   style = "",
   isContentExpanded = false,
-}) {
+}: IPopularServiceCard1) {
   const [isFavActive, setFavActive] = useState(false);
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>
       <div
-        className={`listing-style1 ${
-          pathname === "/home-2" ||
+        className={`listing-style1 ${pathname === "/home-2" ||
           pathname === "/home-9" ||
           pathname === "/home-16" ||
           pathname === "/home-14"
-            ? "bdrs16"
-            : ""
-        } ${pathname === "/home-7" ? "style5" : ""} ${style}`}
+          ? "bdrs16"
+          : ""
+          } ${pathname === "/home-7" ? "style5" : ""} ${style}`}
         style={
           pathname === "/home-20" ? { border: "none", boxShadow: "none" } : {}
         }
@@ -38,7 +42,7 @@ export default function PopularServiceCard1({
         <div className={`list-content ${isContentExpanded ? "px-0" : ""}`}>
           <p className="list-text body-color fz14 mb-1">{data.category}</p>
           <h5 className="list-title">
-            <Link to={`/service-single/${data.id}`}>
+            <Link href={`/service-single/${data.id}`}>
               {data.title.slice(0, 40) + "..."}
             </Link>
           </h5>
@@ -51,7 +55,7 @@ export default function PopularServiceCard1({
           </div>
           <hr className="my-2" />
           <div className="list-meta d-flex justify-content-between align-items-center mt15">
-            <Link className="d-flex" to="/">
+            <Link className="d-flex" href="/">
               <span className="position-relative mr10">
                 <img
                   className="rounded-circle wa"

@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Mega from "./Mega";
 import MobileNavigation2 from "./MobileNavigation2";
 import Navigation from "./Navigation";
+import { useRouter } from "next/router";
 
-import { useLocation } from "react-router-dom";
 
 export default function Header3() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
   return (
     <>
       <header className="header-nav nav-innerpage-style main-menu  ">
@@ -15,7 +15,7 @@ export default function Header3() {
             <div className="row align-items-center justify-content-between">
               <div className="col-auto pe-0">
                 <div className="d-flex align-items-center">
-                  <Link className="header-logo bdrr1 pr30 pr5-xl" to="/">
+                  <Link className="header-logo bdrr1 pr30 pr5-xl" href="/">
                     <img
                       className="w-100 h-100 object-fit-contain"
                       src="/images/header-logo-dark.svg"
@@ -41,7 +41,7 @@ export default function Header3() {
                     className={`login-info mx15-lg mx30 ${
                       pathname === "/become-seller" ? "ui-active" : ""
                     }`}
-                    to="/become-seller"
+                    href="/become-seller"
                   >
                     <span className="d-none d-xl-inline-block">Become a</span>{" "}
                     Seller
@@ -50,11 +50,11 @@ export default function Header3() {
                     className={`login-info mr15-lg mr30 ${
                       pathname === "/login" ? "ui-active" : ""
                     }`}
-                    to="/login"
+                    href="/login"
                   >
                     Sign in
                   </Link>
-                  <Link className="ud-btn btn-thm add-joining" to="/register">
+                  <Link className="ud-btn btn-thm add-joining" href="/register">
                     Join
                   </Link>
                 </div>
