@@ -1,3 +1,5 @@
+import { links } from "./links";
+
 const menus = [
   {
     id: 1,
@@ -32,7 +34,7 @@ const menus = [
 
           { id: 3, name: "Auction Preview", path: "/auction/preview" },
         ],
-      }
+      },
     ],
   },
   {
@@ -43,28 +45,28 @@ const menus = [
         id: 1,
         name: "Dashboard",
         children: [
-          { id: 1, name: "Dashboard", path: "/dashboard" },
-          { id: 2, name: "Proposal", path: "/proposal" },
-          { id: 3, name: "Saved", path: "/saved" },
-          { id: 4, name: "Message", path: "/message" },
-          { id: 5, name: "Reviews", path: "/reviews" },
-          { id: 6, name: "Invoice", path: "/invoice" },
-          { id: 7, name: "Payouts", path: "/payouts" },
-          { id: 8, name: "Statement", path: "/statements" },
-          { id: 9, name: "Manage Service", path: "/manage-services" },
-          { id: 10, name: "Add Services", path: "/add-services" },
-          { id: 11, name: "Manage Jobs", path: "/manage-jobs" },
+          { id: 1, name: "Dashboard", path: links.dashboard },
+          { id: 2, name: "Customization Requests", path: links.customizationRequests },
+          { id: 3, name: "Saved", path: links.saved },
+          { id: 4, name: "Message", path: links.message },
+          { id: 5, name: "Reviews", path: links.reviews },
+          { id: 6, name: "Invoice", path: links.invoice },
+          { id: 7, name: "Payouts", path: links.payouts },
+          { id: 8, name: "Statement", path:links.statements },
+          { id: 9, name: "Manage Auctions", path:links.manageAuctions },
+          { id: 10, name: "Publish Game", path: links.publishGame },
+          { id: 11, name: "Manage Games", path: links.manageGames },
           {
             id: 12,
-            name: "Manage Project",
-            path: "/manage-projects",
+            name: "Manage Games",
+            path: links.manageGames,
           },
           {
             id: 13,
-            name: "Create Project",
-            path: "/create-projects",
+            name: "Publish Games",
+            path: links.publishGame,
           },
-          { id: 14, name: "My Profile", path: "/my-profile" },
+          { id: 14, name: "My Profile", path: links.myProfile },
         ],
       },
       {
@@ -149,7 +151,7 @@ const menus = [
       {
         id: 9,
         name: "Login",
-        path: "/login",
+        path: "/auth/login",
       },
       {
         id: 10,
@@ -159,7 +161,7 @@ const menus = [
       {
         id: 11,
         name: "Register",
-        path: "/register",
+        path: "/auth/register",
       },
       {
         id: 12,

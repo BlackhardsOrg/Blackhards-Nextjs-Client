@@ -1,3 +1,5 @@
+import { links } from "./links";
+
 export const about = [
   { id: 1, name: "Careers", path: "/" },
   { id: 2, name: "Press & News", path: "/" },
@@ -52,7 +54,7 @@ export const momney = ["US$ USD", "Euro", "Pound"];
 export const lan = ["English", "Frenc", "Italian", "Spanish", "Turkey"];
 
 export const footer = [
-  "/dashboard",
+  links.dashboard,
   "/proposal",
   "/saved",
   "/message",

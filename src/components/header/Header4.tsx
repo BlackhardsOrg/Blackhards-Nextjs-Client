@@ -2,6 +2,7 @@ import Navigation from "./Navigation";
 
 import MobileNavigation3 from "./MobileNavigation3";
 import Link from "next/link";
+import { links } from "@/data/links";
 
 export default function Header4() {
   return (
@@ -36,10 +37,10 @@ export default function Header4() {
                     <span className="d-none d-xl-inline-block">Become a </span>
                     Seller
                   </Link>
-                  <Link className="login-info mr15-lg mr30" href="/login">
+                  <Link className="login-info mr15-lg mr30" href={links.login}>
                     Sign in
                   </Link>
-                  <Link className="ud-btn btn-home3 add-joining" href="/register-early">
+                  <Link className="ud-btn btn-home3 add-joining" href={links.registerEarly}>
                     Join
                   </Link>
                 </div>

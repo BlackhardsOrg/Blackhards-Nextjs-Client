@@ -3,6 +3,7 @@ import Mega from "./Mega";
 import MobileNavigation2 from "./MobileNavigation2";
 import Navigation from "./Navigation";
 import { useRouter } from "next/router";
+import { links } from "@/data/links";
 
 
 export default function Header3() {
@@ -38,23 +39,21 @@ export default function Header3() {
                     <span className="flaticon-loupe" />
                   </a>
                   <Link
-                    className={`login-info mx15-lg mx30 ${
-                      pathname === "/become-seller" ? "ui-active" : ""
-                    }`}
+                    className={`login-info mx15-lg mx30 ${pathname === "/become-seller" ? "ui-active" : ""
+                      }`}
                     href="/become-seller"
                   >
                     <span className="d-none d-xl-inline-block">Become a</span>{" "}
                     Seller
                   </Link>
                   <Link
-                    className={`login-info mr15-lg mr30 ${
-                      pathname === "/login" ? "ui-active" : ""
-                    }`}
-                    href="/login"
+                    className={`login-info mr15-lg mr30 ${pathname === "/auth/login" ? "ui-active" : ""
+                      }`}
+                    href={links.login}
                   >
                     Sign in
                   </Link>
-                  <Link className="ud-btn btn-thm add-joining" href="/register">
+                  <Link className="ud-btn btn-thm add-joining" href={links.register}>
                     Join
                   </Link>
                 </div>

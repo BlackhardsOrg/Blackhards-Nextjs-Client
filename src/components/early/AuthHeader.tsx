@@ -20,7 +20,7 @@ export default function AuthHeader() {
                   <div className="logos">
                     <Link className="header-logo logo1" href="/">
                       <img
-                        src="/images/Blackhards-white-logo-login.svg"
+                        src="/images/Blackhards-white-logo.svg"
                         alt="Header Logo"
                       />
                     </Link>
@@ -44,13 +44,13 @@ export default function AuthHeader() {
                   
                   <Link
                     className="login-info ud-btn btn-2 mr10 home18-sign-btn px30 py-1 bdrs120"
-                    to="/login"
+                    href={links.login}
                   >
                     Sign in
                   </Link>
                   <Link
                     className="ud-btn btn-white add-joining home18-join-btn bdrs120"
-                    to="/register"
+                    to={links.register}
                   >
                     Join Early
                   </Link>

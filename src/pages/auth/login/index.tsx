@@ -1,44 +1,54 @@
-import FLyLoad from "@/components/loading/FLyLoad";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "@/redux/features/auth/api/authApi";
+import { ChangeEventHandler, FormEventHandler, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useAppSelector, useAppDispatch } from "@/redux/app/hooks"
+import { loginUser, verifyEmailUser } from "@/redux/features/auth/api/authApi"
 import AuthLayouts from "@/components/layouts/AuthLayouts";
+import FLyLoad from "@/components/loading/FLyLoad";
+import { links } from "@/data/links";
+
 
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const dispatch = useDispatch();
-  const { status, error } = useSelector((state) => state.auth);
-  const navigate = useRouter.push;
-  const user = useSelector((state) => state.auth.user);
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector((state) => state.auth);
+  const navigate = useRouter().push;
+  const user = useAppSelector((state) => state.auth.user);
   const router = useRouter();
 
   const { query } = router;
   const message = query.message || "";
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(":ddhs");
 
-    const result = await dispatch(login(credentials));
+    const result = await dispatch(loginUser(credentials)) as any;
     console.log(result, "RESuLT");
-    if (result.payload.success) {
-      navigate("/dashboard");
-    }
+    // if (result.success) {
+    //   navigate(links.dashboard);
+    // }
   };
 
   useEffect(() => {
     if (user) {
       // Redirect to the previous location if user is already authenticated
-      const { from } = location.state || { from: "/" };
-      navigate("/dashboard");
+      // navigate(links.dashboard);
     }
-  }, [user, query, navigate]);
+  }, [user, navigate]);
+
+  useEffect(() => {
+
+    if (query.verifyToken && query.email) {
+      let queryEmail = query.email as string
+      let queryVerifyToken = query.verifyToken as string
+      dispatch(verifyEmailUser({ email: queryEmail, verifyToken: queryVerifyToken }))
+    }
+  }, [query]);
+
 
   return (
     <AuthLayouts>
@@ -56,7 +66,20 @@ export default function LoginPage() {
                 </p>
 
                 {message && message != "" && (
-                  <p className="paragraph text-info">{message}!</p>
+                  <div className="message-alart-style1">
+                    <div
+                      className="alert alart_style_one alert-dismissible fade show mb20"
+                      role="alert"
+                    >
+                      {message}
+                      <i
+                        className="far fa-xmark btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                      />
+                    </div>
+                  </div>
+
                 )}
               </div>
             </div>
@@ -70,7 +93,10 @@ export default function LoginPage() {
                     <h4>We&apos;re glad to see you again!</h4>
                     <p className="text">
                       Don&apos;t have an account?{" "}
-                      <Link href="/auth/register-early" className="text-thm">
+                      <Link
+                        href={links.registerEarly}
+                        className="text-thm"
+                      >
                         Get Early Access
                       </Link>
                     </p>
@@ -104,16 +130,16 @@ export default function LoginPage() {
                   <div className="checkbox-style1 d-block d-sm-flex align-items-center justify-content-between mb20">
                     <label className="custom_checkbox fz14 ff-heading">
                       Remember me
-                      <input type="checkbox" defaultChecked="checked" />
+                      <input type="checkbox" defaultChecked={true} />
                       <span className="checkmark" />
                     </label>
-                    <Link href="/forgot-password" className="fz14 ff-heading">
+                    <Link href={links.forgotPassword} className="fz14 ff-heading">
                       Lost your password?
                     </Link>
                   </div>
                   <div className="d-grid mb20">
                     <button className="ud-btn btn-thm" type="submit">
-                      {status === "loading" ? (
+                      {loading.login ? (
                         <FLyLoad />
                       ) : (
                         <>

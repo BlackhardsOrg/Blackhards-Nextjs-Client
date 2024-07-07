@@ -167,15 +167,8 @@ export default function Footer() {
                     pathname === "/home-11" ? "text-white" : "text-white-light"
                   } ff-heading`}
                 >
-                  © Freeio. {new Date().getFullYear()}{" "}
-                  <a
-                    rel="noreferrer"
-                    href="https://themeforest.net/user/ib-themes/portfolio"
-                    target="_blank"
-                    style={{ color: "inherit" }}
-                  >
-                    ib-themes
-                  </a>
+                  © Blackhards. {new Date().getFullYear()}{" "}
+                  
                   . All rights reserved.
                 </p>
               </div>

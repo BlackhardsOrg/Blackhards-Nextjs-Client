@@ -1,3 +1,4 @@
+import { links } from "@/data/links";
 import Link from "next/link";
 
 export default function MobileNavigation2() {
@@ -12,7 +13,7 @@ export default function MobileNavigation2() {
                   <img src="/images/Blackhards-white-logo-2.svg" alt="Header Logo" />
                 </Link>
                 <div className="right-side text-end">
-                  <Link href="/login">Join Early</Link>
+                  <Link href={links.login}>Join Early</Link>
                   <a
                     className="menubar ml30"
                     data-bs-toggle="offcanvas"

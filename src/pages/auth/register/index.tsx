@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import FLyLoad from "@/components/loading/FLyLoad";
 import AuthLayouts from "@/components/layouts/AuthLayouts";
-import PasswordSetup from "@/components/auth/PasswordSetup"
+import PasswordSetup from "@/components/auth/PasswordSetup";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { registerUser } from "@/redux/features/auth/api/authApi";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { links } from "@/data/links";
 const metadata = {
   title: "Blackhards - AI Game Code | Register",
 };
@@ -16,25 +19,25 @@ export default function RegisterPage() {
     studioName: "",
     confirmPassword: "",
   });
-  const dispatch = useDispatch();
-  const { status, error } = useSelector((state) => state.auth);
-  const navigate = useRouter.push;
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector((state) => state.auth);
+  const navigate = useRouter().push;
 
   const [isPasswordMismatched, setIsPasswordMismatched] = useState(false);
   const [isSubmitAllowable, setIsSubmitAllowable] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const result = await dispatch(register(credentials));
+    const result = await dispatch(registerUser(credentials)) as any;
     console.log(result, "RESuLT");
-    if (result.payload.success) {
+    if (result && result.success) {
       navigate(
-        "/login?message=Verification email sent, please check your inbox"
+        "/auth/login?message=Verification email sent, please check your inbox"
       );
     }
   };
@@ -83,7 +86,7 @@ export default function RegisterPage() {
                     <h4>Let&apos;s create your account!</h4>
                     <p className="text mt20">
                       Already have an account?{" "}
-                      <Link href="/login" className="text-thm">
+                      <Link href={links.login} className="text-thm">
                         Log In!
                       </Link>
                     </p>
@@ -93,6 +96,8 @@ export default function RegisterPage() {
                       Studio Name
                     </label>
                     <input
+                      value={credentials.studioName}
+                      onChange={handleChange}
                       type="text"
                       name="studioName"
                       className="form-control"
@@ -127,7 +132,7 @@ export default function RegisterPage() {
                       type="submit"
                       style={{ opacity: !isSubmitAllowable ? ".4" : "1" }}
                     >
-                      {status === "loading" ? (
+                      {loading.register ? (
                         <FLyLoad />
                       ) : (
                         <>

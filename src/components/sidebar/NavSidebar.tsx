@@ -40,14 +40,18 @@ export default function NavSidebar() {
               <Sidebar>
                 <Menu>
                   <MenuItem
-                    component={<Link to={"/login"} />}
-                    className={"/login" === pathname ? "ui-mobile-active" : ""}
+                    component={<Link to={"/auth/login"} />}
+                    className={
+                      "/auth/login" === pathname ? "ui-mobile-active" : ""
+                    }
                   >
                     <span data-bs-dismiss="offcanvas">Login</span>
                   </MenuItem>
                   <MenuItem
-                    component={<Link to={"/login"} />}
-                    className={"/early-join" === pathname ? "ui-mobile-active" : ""}
+                    component={<Link to={"/auth/login"} />}
+                    className={
+                      "/early-join" === pathname ? "ui-mobile-active" : ""
+                    }
                   >
                     <span data-bs-dismiss="offcanvas">Join Early</span>
                   </MenuItem>

@@ -1,7 +1,8 @@
 import MetaComponent from "@/components/common/MetaComponent";
 import { useState } from "react";
 import Link from "next/link";
-import AuthLayouts from "@/components/layouts/AuthLayouts"
+import AuthLayouts from "@/components/layouts/AuthLayouts";
+import { links } from "@/data/links";
 const metadata = {
   title: "Freeio - Freelance Marketplace ReactJs Template | Register",
 };
@@ -10,7 +11,7 @@ export default function RegisterPage() {
     option: "Select",
     value: null,
   });
-  const countryHandler = (option, value) => {
+  const countryHandler = (option: any, value: any) => {
     setCountry({ option, value });
   };
   <MetaComponent meta={metadata} />;
@@ -38,15 +39,13 @@ export default function RegisterPage() {
                   <h4>Let&apos;s get you on the list!</h4>
                   <p className="text mt20">
                     Already have access?{" "}
-                    <Link href="/auth/login" className="text-thm">
+                    <Link href={links.login} className="text-thm">
                       Log In!
                     </Link>
                   </p>
                 </div>
                 <div className="mb25">
-                  <label className="form-label fw500 dark-color">
-                    Alias
-                  </label>
+                  <label className="form-label fw500 dark-color">Alias</label>
                   <input
                     type="text"
                     className="form-control"
@@ -76,10 +75,10 @@ export default function RegisterPage() {
                     className="ud-btn btn-thm default-box-shadow2"
                     type="button"
                   >
-                    Get Access<i className="fal fa-arrow-right-long" />
+                    Get Access
+                    <i className="fal fa-arrow-right-long" />
                   </button>
                 </div>
-                
               </div>
             </div>
           </div>

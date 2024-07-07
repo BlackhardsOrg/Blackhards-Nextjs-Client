@@ -1,3 +1,4 @@
+import { links } from "@/data/links";
 import { Link } from "react-router-dom";
 
 export default function MobileNavigation1() {
@@ -12,7 +13,7 @@ export default function MobileNavigation1() {
                   <img src="/images/header-logo.svg" alt="Header Logo" />
                 </Link>
                 <div className="right-side text-end">
-                  <Link className="text-white" to="/login">
+                  <Link className="text-white" href={links.login}>
                     join
                   </Link>
                   <a

@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export default function OurFaq1() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>

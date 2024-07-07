@@ -30,7 +30,7 @@ export default function DashboardHeader() {
                     </a>
                   </div>
                   <a
-                    className="login-info d-block d-xl-none ml40 vam"
+                    className="logi-info d-block d-xl-none ml40 vam"
                     data-bs-toggle="modal"
                     href="#exampleModalToggle"
                   >

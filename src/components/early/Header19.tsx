@@ -2,6 +2,7 @@ import useStickyMenu from "@/hook/useStickyMenu";
 
 import MobileNavigation2 from "./MobileNavigation2";
 import Link from "next/link";
+import { links } from "@/data/links";
 
 export default function Header19() {
   const sticky = useStickyMenu(50);
@@ -41,16 +42,16 @@ export default function Header19() {
               </div>
               <div className="col-auto pe-0 ">
                 <div className="d-flex align-items-center">
-                  
+
                   <Link
                     className="login-info ud-btn btn-2 mr10 home18-sign-btn px30 py-1 bdrs120"
-                    href="/auth/login"
+                    href={links.login}
                   >
                     Sign in
                   </Link>
                   <Link
                     className="ud-btn btn-white add-joining home18-join-btn bdrs120"
-                    href="/auth/register-early"
+                    href={links.registerEarly}
                   >
                     Join Early
                   </Link>

@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
 import Mega from "./Mega";
 
 import Navigation from "./Navigation";
 import useStickyMenu from "@/hook/useStickyMenu";
 import MobileNavigation1 from "./MobileNavigation1";
+import Link from "next/link";
+import { links } from "@/data/links";
 
 export default function Header1() {
   const sticky = useStickyMenu(50);
@@ -11,9 +12,8 @@ export default function Header1() {
   return (
     <>
       <header
-        className={`header-nav nav-homepage-style stricky main-menu animated   ${
-          sticky ? "slideInDown stricky-fixed" : "slideIn"
-        }`}
+        className={`header-nav nav-homepage-style stricky main-menu animated   ${sticky ? "slideInDown stricky-fixed" : "slideIn"
+          }`}
       >
         <nav className="posr">
           <div className="container-fluid posr menu_bdrt1 px30">
@@ -21,10 +21,10 @@ export default function Header1() {
               <div className="col-auto px-0">
                 <div className="d-flex align-items-center justify-content-between">
                   <div className="logos br-white-light pr30 pr5-xl">
-                    <Link className="header-logo logo1" to="/">
+                    <Link className="header-logo logo1" href="/">
                       <img src="/images/header-logo.svg" alt="Header Logo" />
                     </Link>
-                    <Link className="header-logo logo2" to="/">
+                    <Link className="header-logo logo2" href="/">
                       <img src="/images/header-logo2.svg" alt="Header Logo" />
                     </Link>
                   </div>
@@ -45,15 +45,15 @@ export default function Header1() {
                   </a>
                   <Link
                     className={`login-info mx15-lg mx30`}
-                    to="/become-seller"
+                    href="/become-seller"
                   >
                     <span className="d-none d-xl-inline-block">Become a</span>{" "}
                     Seller
                   </Link>
-                  <Link className={`login-info mr15-lg mr30`} to="/login">
+                  <Link className={`login-info mr15-lg mr30`} href={links.login}>
                     Sign in
                   </Link>
-                  <Link className="ud-btn btn-white add-joining" to="/register">
+                  <Link className="ud-btn btn-white add-joining" href={links.register}>
                     Join
                   </Link>
                 </div>

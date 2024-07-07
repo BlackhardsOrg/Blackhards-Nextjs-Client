@@ -15,10 +15,20 @@ export interface IRegisterData {
 }
 
 export interface IResetPasswordData {
-  email: string;
+  email: string | string[] | undefined;
+  password: string;
+  resetToken: string | string[] | undefined;
 }
 
 export interface IVerifyEmailParams {
   email: string;
-  verificationToken: string;
+  verifyToken: string;
+}
+
+export interface AxiosError extends Error {
+  response?: {
+    data: {
+      message: string;
+    };
+  };
 }

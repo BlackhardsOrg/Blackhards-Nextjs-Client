@@ -1,3 +1,4 @@
+import { links } from "@/data/links";
 import Link from "next/link";
 import React from "react";
 
@@ -40,7 +41,7 @@ export default function ForClient() {
                 generated effortlessly from text prompts.
               </p>
             </div>
-            <Link href="/register-early" className="ud-btn btn-white2 bdrs60">
+            <Link href={links.registerEarly} className="ud-btn btn-white2 bdrs60">
               Get Early Access <i className="fal fa-arrow-right-long"></i>
             </Link>
           </div>
@@ -63,7 +64,7 @@ export default function ForClient() {
                 beyond.
               </p>
             </div>
-            <Link href="/register-early" className="ud-btn btn-white2 bdrs60">
+            <Link href={links.registerEarly} className="ud-btn btn-white2 bdrs60">
               Join Early <i className="fal fa-arrow-right-long"></i>
             </Link>
           </div>

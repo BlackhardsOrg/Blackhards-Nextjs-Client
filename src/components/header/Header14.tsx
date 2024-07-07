@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 import useStickyMenu from "@/hook/useStickyMenu";
 import Link from "next/link";
+import { links } from "@/data/links";
 
 
 export default function Header14() {
@@ -9,9 +10,8 @@ export default function Header14() {
 
   return (
     <header
-      className={`header-nav nav-homepage-style at-home3  stricky  stricky main-menu border-0 animated  ${
-        sticky ? "slideInDown stricky-fixed" : "slideIn"
-      }`}
+      className={`header-nav nav-homepage-style at-home3  stricky  stricky main-menu border-0 animated  ${sticky ? "slideInDown stricky-fixed" : "slideIn"
+        }`}
     >
       <nav className="posr">
         <div className="container posr">
@@ -38,13 +38,13 @@ export default function Header14() {
                 </Link>
                 <Link
                   className="login-info mr15-xl mr10 ud-btn btn-dark add-joining bdrs12 dark-color bg-transparent"
-                  href="/login"
+                  href={links.login}
                 >
                   Sign in
                 </Link>
                 <Link
                   className="ud-btn btn-dark add-joining bdrs12 text-white"
-                  href="/register"
+                  href={links.register}
                 >
                   Join
                 </Link>
