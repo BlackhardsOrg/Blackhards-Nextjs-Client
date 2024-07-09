@@ -6,6 +6,7 @@ import {
 } from 'react-redux';
 import rootReducer from './rootReducer';
 import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
 // ----------------------------------------------------------------------
 
 // Define the root state type using the ReturnType utility of TypeScript
@@ -19,8 +20,10 @@ const persistConfig = {
   storage,
 };
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
@@ -38,3 +41,4 @@ const useDispatch = () => useAppDispatch<AppDispatch>();
 
 // Export the Redux store, dispatch, useSelector, and useDispatch for use in components
 export { store, dispatch, useSelector, useDispatch };
+export const persistor = persistStore(store);

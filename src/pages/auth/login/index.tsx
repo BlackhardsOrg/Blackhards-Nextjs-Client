@@ -36,7 +36,7 @@ export default function LoginPage() {
   useEffect(() => {
     if (user) {
       // Redirect to the previous location if user is already authenticated
-      // navigate(links.dashboard);
+      navigate(links.dashboard);
     }
   }, [user, navigate]);
 

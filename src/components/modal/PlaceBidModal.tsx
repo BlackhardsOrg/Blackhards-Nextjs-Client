@@ -1,7 +1,23 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function PlaceBidModal() {
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
+
+  // useEffect(() => {
+  //   // Ensure Bootstrap's JS is loaded
+  //   if (typeof window !== 'undefined' && window.bootstrap) {
+  //     const myModal = new window.bootstrap.Modal(document.getElementById('placeBidModalToggle'), {
+  //       keyboard: true
+  //     });
+
+  //     // To open the modal programmatically
+  //     myModal.show();
+
+  //     // To close the modal programmatically
+  //     // myModal.hide();
+  //   }
+  // }, []);
   return (
     <>
       <div className="search-modal">
@@ -26,7 +42,7 @@ export default function PlaceBidModal() {
               </div>
               <div className="modal-body d-flex flex-column gap-3 bg-white rounded ">
                 <h3>Bid</h3>
-                
+
 
                 <div className="popup-search-field search_area">
                   <input
@@ -37,15 +53,15 @@ export default function PlaceBidModal() {
                   <label>
                     <span className="fa fa-gavel" />
                   </label>
-                  
+
                 </div>
                 <button
-                    onClick={() => navigate("/service-1")}
-                    className="ud-btn btn-thm"
-                    type="submit"
-                  >
-                    Place Bid
-                  </button>
+                  onClick={() => navigate("/service-1")}
+                  className="ud-btn btn-thm"
+                  type="submit"
+                >
+                  Place Bid
+                </button>
               </div>
             </div>
           </div>

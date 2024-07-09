@@ -4,9 +4,9 @@ const toggleStore = create((set) => ({
   isListingActive: false,
   isDasboardSidebarActive: false,
   listingToggleHandler: () =>
-    set((state) => ({ isListingActive: !state.isListingActive })),
+    set((state: any) => ({ isListingActive: !state.isListingActive })),
   dashboardSlidebarToggleHandler: () =>
-    set((state) => ({
+    set((state: any) => ({
       isDasboardSidebarActive: !state.isDasboardSidebarActive,
     })),
 }));

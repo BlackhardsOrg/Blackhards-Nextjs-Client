@@ -37,11 +37,13 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
     "@types/fslightbox-react": "^1.7.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-sticky": "^6.0.6",
+    "@types/react-wow": "^1.0.6",
     "@types/redux-persist": "^4.3.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",

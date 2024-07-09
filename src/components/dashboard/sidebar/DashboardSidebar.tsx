@@ -1,6 +1,8 @@
 
 import { dasboardNavigation } from "@/data/dashboard";
+import { links } from "@/data/links";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { persistor } from "@/redux/app/store";
 import { logoutUser } from "@/redux/features/auth/api/authApi";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -10,12 +12,16 @@ import { useDispatch } from "react-redux";
 export default function DashboardSidebar() {
   const { pathname } = useRouter();
   const dispatch = useAppDispatch();
+  const navigate = useRouter().push
 
   const user = useAppSelector(state => state.auth.user)
 
-  const handleClick = async () => {
+  const handleLogout = async (e: any) => {
     console.log("called");
     await dispatch(logoutUser(user.token));
+    persistor.purge().then(() => {
+      navigate(links.login);
+    });
   };
 
 
@@ -42,7 +48,7 @@ export default function DashboardSidebar() {
           {dasboardNavigation.slice(10, 12).map((item, i) => (
             <div key={i} className="sidebar_list_item mb-1">
               <Link
-                 href={item.path}
+                href={item.path}
                 className={`items-center ${pathname === item.path ? "-is-active" : ""
                   }`}
               >
@@ -54,15 +60,14 @@ export default function DashboardSidebar() {
 
           {dasboardNavigation.slice(12, 13).map((item, i) => (
             <div
-              onClick={async () => {
-                console.log("called")
-                await dispatch(logoutUser(user.token));
-              }}
+              // onClick={handleLogout}
               key={i}
               className="sidebar_list_item mb-1"
             >
               <Link
-                href={item.path}
+
+                data-bs-toggle="modal"
+                href="#logoutModalToggle"
                 className={`items-center ${pathname === item.path ? "-is-active" : ""
                   }`}
               >

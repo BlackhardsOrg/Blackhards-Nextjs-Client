@@ -7,14 +7,14 @@ export default function AuctionPriceWidget() {
         <h3 className="widget-title">$5000</h3>
         <p className="text fz14">Current Bid</p>
         <div className="d-grid gap-4">
-          <a
+          <Link
             data-bs-toggle="modal"
             href="#placeBidModalToggle"
             className="ud-btn btn-thm"
           >
             Place Bid
             <i className="fal fa-arrow-right-long" />
-          </a>
+          </Link>
 
           <a
             data-bs-toggle="modal"

@@ -223,9 +223,10 @@ export function logoutUser(token: string) {
 
       // Dispatch the getResourcesSuccess action to update the Redux state
       dispatch(logout());
+      toast(response.data.message);
       return response.data;
     } catch (error: any) {
-      console.error("Error fetching card resources:", error);
+      console.error("Logout problem", error);
       toast(error.response.data.message, {
         type: "error",
       });

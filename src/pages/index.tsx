@@ -10,6 +10,7 @@ import CounterInfo1 from "@/components/early/CounterInfo1";
 import Testimonials13 from "@/components/early/Testimonials18";
 import ForClient from "@/components/early/ForClient";
 import HomeLayouts from "@/components/layouts/HomeLayouts";
+import PlaceBidModal from "@/components/modal/PlaceBidModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function Home() {
       </Head>
       <HomeLayouts>
         <div className="body_content">
+
           <Hero18 />
           <BrowserCategory3 />
           {/* <TrendingService3 /> */}
