@@ -8,6 +8,7 @@ import Radio1 from "@/components/ui-elements/radios/Radio1";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 import TagSelect from "../../option/TagSelect";
 import SelectInputMultiple from "../../option/SelectInputMultiple";
+import PackagePlans from "./PackagePlans";
 
 export default function PricingAndPlans
     ({ gameTitle,
@@ -19,7 +20,7 @@ export default function PricingAndPlans
         setCurrentTab }: IPricingAndPlans) {
 
     const [loading, setLoading] = useState(false)
-    const [isAIPricingChosen, setIsAIPricingChosen] = useState(true)
+    const [isAIPricingChosen, setIsAIPricingChosen] = useState("yes")
 
     // #region Form Handlers
     const handleInputFormChange = (e: any) => {
@@ -99,16 +100,24 @@ export default function PricingAndPlans
                                         <button id="ai" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
                                     </label>
                                     <div className="d-flex gap-3 align-items-center">
-
                                         <GameUploadRadio
                                             i={1}
-                                            checked={isAIPricingChosen}
+                                            name="AiPricing"
+                                            checked={isAIPricingChosen === "yes"}
                                             text="Yes"
-                                            value={String(setIsAIPricingChosen)}
+                                            value={"yes"}
                                             onChange={(e: any) => {
-                                                setIsAIPricingChosen(Boolean(e.target.value))
+                                                setIsAIPricingChosen(e.target.value)
                                             }} />
-                                        <GameUploadRadio i={1} checked={!isAIPricingChosen} text="No" value="" onChange={handleInputFormChange} />
+                                        <GameUploadRadio
+                                            i={1}
+                                            name="AiPricing"
+                                            checked={isAIPricingChosen === "no"}
+                                            text="No"
+                                            value="no"
+                                            onChange={(e: any) => {
+                                                setIsAIPricingChosen(e.target.value)
+                                            }} />
                                     </div>
 
                                 </div>
@@ -116,22 +125,24 @@ export default function PricingAndPlans
 
 
 
-                            <div className="col-sm-12 d-flex">
-                                <div className="mb20 ">
-                                    <label className="heading-color ff-heading fw500 mb10">
-                                        Game Price
-                                    </label>
-                                    <input
-                                        onChange={handleFormattedChange}
-                                        value={gameTitle.price}
-                                        name="price"
-                                        type="number"
-                                        className="form-control"
-                                        placeholder="Game Price ($)"
-                                    />
-                                </div>
-                                <span>{formatPriceToDollars(Number(gameTitle.price))}</span>
-                            </div>
+                            {isAIPricingChosen !== "yes"
+                                &&
+                                <div className="col-sm-12 d-flex">
+                                    <div className="mb20 ">
+                                        <label className="heading-color ff-heading fw500 mb10">
+                                            Game Price
+                                        </label>
+                                        <input
+                                            onChange={handleFormattedChange}
+                                            value={gameTitle.price}
+                                            name="price"
+                                            type="number"
+                                            className="form-control"
+                                            placeholder="Game Price ($)"
+                                        />
+                                    </div>
+                                    <span>{formatPriceToDollars(Number(gameTitle.price))}</span>
+                                </div>}
 
                             <div className="col-sm-12">
 
@@ -172,6 +183,12 @@ export default function PricingAndPlans
 
                                     </div>
                                 </div>
+                            </div>
+
+                            {/* Package Plans */}
+                            <div className="col-md-6">
+
+                                <PackagePlans />
                             </div>
 
                             <div className="col-md-12">

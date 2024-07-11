@@ -31,7 +31,7 @@ export default function GameTabs({ gameTitle,
                                     //     setCurrentTab(i)
                                     //     setCurrentPageState(i)
                                     // }}
-                                    className={`nav-link fw500 ${getPageProgress[i].isDone ? "text-info" : " dark-color"}  ${currentTab === i ? "active" : ""
+                                    className={`nav-link fw500 ${getPageProgress[i].isDone ? "text-success" : " dark-color"}  ${currentTab === i ? "active" : ""
                                         }`}
                                 >
                                     {item}

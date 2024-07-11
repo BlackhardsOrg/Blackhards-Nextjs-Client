@@ -6,20 +6,21 @@ export interface IGameUploadRadio {
   value: string
   onChange: ChangeEvent<HTMLInputElement> | any
   checked: boolean
+  name?: string
 }
 
-export default function GameUploadRadio({ checked, i = 0, text = "", value = "", onChange }: IGameUploadRadio) {
+export default function GameUploadRadio({ checked, i = 0, text = "", value = "", onChange, name="flexRadioDefault" }: IGameUploadRadio) {
   return (
     <>
-      <div className="form-check d-flex align-items-center gap-1 mb15">
+      <div className="form-check d-flex align-items-center gap-1 mb15 ">
         <input
           checked={checked}
           onChange={onChange}
           value={value}
 
-          className="form-check-input"
+          className="form-check-input cursor-pointer"
           type="radio"
-          name="flexRadioDefault"
+          name={name}
           id={`flexRadioDefault1${i}`}
         />
         <label className="form-check-label" htmlFor={`flexRadioDefault1${i}`}>
