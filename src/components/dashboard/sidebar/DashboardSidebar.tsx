@@ -30,7 +30,7 @@ export default function DashboardSidebar() {
       <div className="dashboard__sidebar d-none d-lg-block">
         <div className="dashboard_sidebar_list">
           <p className="fz15 fw400 ff-heading pl30">Organize</p>
-          {dasboardNavigation.slice(0, 10).map((item, i) => (
+          {dasboardNavigation.slice(0, 11).map((item, i) => (
             <div key={i} className="sidebar_list_item mb-1">
               <Link
                 href={item.path}
@@ -45,7 +45,7 @@ export default function DashboardSidebar() {
 
           <p className="fz15 fw400 ff-heading pl30 mt30">Account</p>
 
-          {dasboardNavigation.slice(10, 12).map((item, i) => (
+          {dasboardNavigation.slice(11, 13).map((item, i) => (
             <div key={i} className="sidebar_list_item mb-1">
               <Link
                 href={item.path}
@@ -58,7 +58,7 @@ export default function DashboardSidebar() {
             </div>
           ))}
 
-          {dasboardNavigation.slice(12, 13).map((item, i) => (
+          {dasboardNavigation.slice(13, 14).map((item, i) => (
             <div
               // onClick={handleLogout}
               key={i}

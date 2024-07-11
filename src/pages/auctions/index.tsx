@@ -8,7 +8,7 @@ import AuctionListing from "@/components/section/AuctionListing";
 import Breadcumb4 from "@/components/breadcumb/Breadcumb4";
 import MarketLayouts from "@/components/layouts/MarketLayouts"
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Project 1",
+  title: "Blackhards - AI Powered Game Project Marketplace | Project 1",
 };
 
 export default function ProjectPage4() {
@@ -18,7 +18,7 @@ export default function ProjectPage4() {
       <TabSection1 />
       <Breadcumb3 path={["Home", "auctions"]} />
       <div className=" bgc-thm3">
-        <Breadcumb4 title="Auctions" subtitle="Bid for the Best" img="/images/vector-img/Blackhards-auctions-532by300.png"/>
+        <Breadcumb4 title="Auctions" subtitle="Bid for the Best" img="/images/vector-img/Blackhards-auctions-532by300.png" />
         <AuctionListing />
       </div>
     </MarketLayouts>

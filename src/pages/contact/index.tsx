@@ -6,7 +6,7 @@ import OurFaq1 from "@/components/section/OurFaq1";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Contact",
+  title: "Blackhards - AI Powered Game Project Marketplace | Contact",
 };
 
 export default function ContactPage() {

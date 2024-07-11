@@ -6,7 +6,7 @@ import TabSection1 from "@/components/section/TabSection1";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Freelancer 1",
+  title: "Blackhards - AI Powered Game Project Marketplace | Freelancer 1",
 };
 
 export default function FreelancerPage1() {

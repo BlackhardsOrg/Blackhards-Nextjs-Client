@@ -234,3 +234,22 @@ export function logoutUser(token: string) {
     }
   };
 }
+
+
+// developerEmail: "",
+// gameFileLink: "",
+// title: "",
+// description: "",
+// gamePlayScreenShots: [""],
+// gamePlayVideo: "",
+// genre: [""],
+// tags: [""],
+// targetPlatform: [""],
+// price: 0,
+// saleType: "",
+// releaseDate: "",
+// legal: "",
+// ageRating: "",
+// developerId: "",
+// gameRating: 0,
+// gamePlays: 0,

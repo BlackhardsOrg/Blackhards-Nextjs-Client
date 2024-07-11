@@ -25,23 +25,7 @@ export const category = [
   { id: 13, name: "Educational", path: "/" },
   { id: 14, name: "Virtual Reality (VR)", path: "/" },
   { id: 15, name: "Miscellaneous", path: "/" },
-
-
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const support = [
   { id: 1, name: "Help & Support", path: "/" },
@@ -55,17 +39,17 @@ export const lan = ["English", "Frenc", "Italian", "Spanish", "Turkey"];
 
 export const footer = [
   links.dashboard,
-  "/proposal",
-  "/saved",
-  "/message",
-  "/reviews",
-  "/invoice",
-  "/payouts",
-  "/statements",
-  "/manage-services",
-  "/manage-jobs",
-  "/manage-projects",
-  "/my-profile",
-  "/add-services",
-  "/create-projects",
+  links.customizationRequests,
+  links.saved,
+  links.message,
+  links.reviews,
+  links.invoice,
+  links.payouts,
+  links.statements,
+  links.manageAuctions,
+  links.manageGames,
+  links.manageGames,
+  links.myProfile,
+  links.publishGame,
+  links.publishGame,
 ];

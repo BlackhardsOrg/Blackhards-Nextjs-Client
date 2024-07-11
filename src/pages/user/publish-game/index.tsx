@@ -1,20 +1,23 @@
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
-import ManageServiceInfo from "@/components/dashboard/section/ManageServiceInfo";
+import CreateProjectInfo from "@/components/dashboard/section/CreateProjectInfo";
 
 import MobileNavigation2 from "@/components/header/MobileNavigation2";
 
 import MetaComponent from "@/components/common/MetaComponent";
+import { useState } from "react";
+import { IGameTitle } from "@/types";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Manage Services",
+  title: "Blackhards - AI Powered Game Project Marketplace | Create Project",
 };
 
-export default function DasbPageManageService() {
+export default function DasbPageCreateProject() {
+
   return (
     <>
       <MetaComponent meta={metadata} />
       <MobileNavigation2 />
       <DashboardLayout>
-        <ManageServiceInfo />
+        <CreateProjectInfo />
       </DashboardLayout>
     </>
   );

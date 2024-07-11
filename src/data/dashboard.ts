@@ -1,3 +1,5 @@
+import { links } from "./links";
+
 export const dasboardNavigation = [
   {
     id: 1,
@@ -9,7 +11,7 @@ export const dasboardNavigation = [
     id: 2,
     name: "Manage Games",
     icon: "flaticon-content",
-    path: "/user/manage-projects",
+    path: "/user/manage-games",
     // name: "Customization Requests",
     // icon: "flaticon-document",
     // path: "/proposal",
@@ -21,40 +23,50 @@ export const dasboardNavigation = [
     // path: "/saved",
     name: "Manage Auctions",
     icon: "flaticon-presentation",
-    path: "/user/manage-services",
+    path: "/user/manage-auctions",
   },
+
   {
     id: 4,
+    // name: "Saved",
+    // icon: "flaticon-like",
+    // path: "/saved",
+    name: "Library",
+    icon: "flaticon-document",
+    path: "/user/library",
+  },
+  {
+    id: 5,
     name: "Message",
     icon: "flaticon-chat",
     path: "/user/message",
   },
   {
-    id: 5,
+    id: 6,
     name: "Reviews",
     icon: "flaticon-review-1",
     path: "/user/reviews",
   },
   {
-    id: 6,
+    id: 7,
     name: "Invoice",
     icon: "flaticon-receipt",
     path: "/user/invoice",
   },
   {
-    id: 7,
+    id: 8,
     name: "Payouts",
     icon: "flaticon-dollar",
     path: "/user/payouts",
   },
   {
-    id: 8,
+    id: 9,
     name: "Statements",
     icon: "flaticon-web",
     path: "/user/statements",
   },
   {
-    id: 9,
+    id: 10,
     // name: "Manage Auctions",
     // icon: "flaticon-presentation",
     // path: "/manage-services",
@@ -73,19 +85,19 @@ export const dasboardNavigation = [
     path: "/user/proposal",
   },
   {
-    id: 13,
+    id: 12,
     name: "Publish Game Title",
     icon: "flaticon-content",
-    path: "/user/create-projects",
+    path: links.publishGame,
   },
   {
-    id: 14,
+    id: 13,
     name: "My Profile",
     icon: "flaticon-photo",
     path: "/user/my-profile",
   },
   {
-    id: 15,
+    id: 14,
     name: "Logout",
     icon: "flaticon-logout",
     path: "/auth/login",

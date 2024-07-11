@@ -2,7 +2,7 @@ import Invoice from "@/components/section/Invoice";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Invoices",
+  title: "Blackhards - AI Powered Game Project Marketplace | Invoices",
 };
 
 export default function InvoicePage() {

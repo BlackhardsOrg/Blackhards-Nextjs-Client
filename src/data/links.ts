@@ -18,7 +18,7 @@ export const links = {
   statements: "/user/statements",
   saved: "/user/saved",
   customizationRequests: "/user/customize/request", ///user/proposal
-  publishGame: "/user/publish-games", ///user/create-projects
+  publishGame: "/user/publish-game", ///user/create-projects
   myProfile: "/user/my-profile",
   logout: "/auth/logout",
   games: "/games",

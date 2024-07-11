@@ -5,7 +5,7 @@ import ShopCheckoutArea1 from "@/components/section/ShopCheckoutArea1";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Shop Checkout",
+  title: "Blackhards - AI Powered Game Project Marketplace | Shop Checkout",
 };
 
 export default function ShopPageCheckout() {

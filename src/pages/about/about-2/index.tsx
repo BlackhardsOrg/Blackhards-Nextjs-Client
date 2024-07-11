@@ -11,7 +11,7 @@ import Testimonial2 from "@/components/section/Testimonial2";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | About 2",
+  title: "Blackhards - AI Powered Game Project Marketplace | About 2",
 };
 
 export default function AboutPage2() {

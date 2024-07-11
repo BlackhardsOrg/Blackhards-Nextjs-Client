@@ -3,7 +3,7 @@ import FaqSuggestion from "@/components/section/FaqSuggestion";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | FAQ",
+  title: "Blackhards - AI Powered Game Project Marketplace | FAQ",
 };
 
 export default function FaqPage() {

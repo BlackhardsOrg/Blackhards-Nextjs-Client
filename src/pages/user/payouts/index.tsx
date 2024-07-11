@@ -4,7 +4,7 @@ import PayoutInfo from "@/components/dashboard/section/PayoutInfo";
 import MobileNavigation2 from "@/components/header/MobileNavigation2";
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Payout",
+  title: "Blackhards - AI Powered Game Project Marketplace | Payout",
 };
 
 export default function DasbPagePayouts() {

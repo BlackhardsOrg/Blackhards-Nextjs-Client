@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
-import SelectInput from "../option/SelectInput";
 import Link from "next/link";
-import SelectInputMultiple from "../option/SelectInputMultiple";
-import TagSelect from "../option/TagSelect";
 import { IBasicInformation, IGameTitle } from "@/types";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
 import FLyLoad from "@/components/loading/FLyLoad";
 import { Tooltip } from "react-tooltip";
 import Radio1 from "@/components/ui-elements/radios/Radio1";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
+import TagSelect from "../../option/TagSelect";
+import SelectInputMultiple from "../../option/SelectInputMultiple";
 
-export default function BasicInformation({ gameTitle,
-  setGameTitle }: IBasicInformation) {
+export default function SummaryAndPublish({
+  id,
+  gameTitle,
+  setGameTitle, getPageProgress,
+  setGetPageProgress,
+  getCurrentPageState,
+  setCurrentPageState,
+  setCurrentTab }: IBasicInformation) {
 
   const [loading, setLoading] = useState(false)
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
+  // #region useStates
   const [getGenre, setGenre] = useState<{
     options: string[] | never[],
     values: string[] | never[]
@@ -45,6 +51,9 @@ export default function BasicInformation({ gameTitle,
     value: null,
   });
 
+  // #endregion useStates
+
+
   function toggleElementInArray<T>(array: T[], element: T): T[] {
     const index = array.indexOf(element);
 
@@ -57,6 +66,7 @@ export default function BasicInformation({ gameTitle,
     }
   }
 
+  // #region Select Handlers
   // handlers
   const genreHandler = (option: string, value: string, e: any) => {
     setGenre({
@@ -87,7 +97,10 @@ export default function BasicInformation({ gameTitle,
 
   };
 
+  // #endregion Select Handlers
 
+
+  // #region Form Handlers
   const handleInputFormChange = (e: any) => {
     setGameTitle((old) => {
       return { ...old, [e.target.name]: e.target.value }
@@ -111,13 +124,37 @@ export default function BasicInformation({ gameTitle,
     })
   };
 
+  // #endregion Form Handlers
+
+
+  // #region Submit Handlers
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
     console.log(gameTitle)
-    setTimeout(() => setLoading(false), 3000)
+    setGetPageProgress((old) => {
+      const pageList = [...old]
+      pageList[id].isDone = true
+      return pageList
+    })
+    let nextPageNumber = id + 1 < getPageProgress.length ? id + 1 : id
+
+    setCurrentPageState(nextPageNumber)
+    setCurrentTab(nextPageNumber)
+    setLoading(false)
+
   }
 
+  const handlePrevious = () => {
+    let prevPageNumber = id - 1 >= 0 ? id - 1 : id
+    console.log(getCurrentPageState, "WhatsaAAAAA", prevPageNumber)
+
+    setCurrentPageState(prevPageNumber)
+    setCurrentTab(prevPageNumber)
+  }
+  // #endregion Handlers
+
+  // #region UseEffects
   useEffect(() => {
     setGameTitle({ ...gameTitle, targetPlatform: getPlatform.values })
 
@@ -137,6 +174,7 @@ export default function BasicInformation({ gameTitle,
     setGameTitle({ ...gameTitle, tags: selectedTags })
 
   }, [selectedTags])
+  // #endregion MyRegion
 
   return (
     <>
@@ -365,18 +403,18 @@ export default function BasicInformation({ gameTitle,
               </div>
               <div className="col-md-12">
                 <div className="text-start d-flex gap-1">
-                  <button type="submit" style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-dark" >
+                  <button type={"button"} onClick={handlePrevious} style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-dark" >
                     {loading ? <FLyLoad /> :
                       <>
-                        <span>Save</span>
-                        <i className="fal fa-arrow-right-long" />
+                        <span>Prev</span>
+                        <i className="fal fa-arrow-left-long" />
                       </>}
                   </button>
 
                   <button type="submit" style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-thm" >
                     {loading ? <FLyLoad /> :
                       <>
-                        <span>Save & Continue</span>
+                        <span>{id == getPageProgress.length - 1 ? "Publish":"Save & Continue"}</span>
                         <i className="fal fa-arrow-right-long" />
                       </>}
                   </button>

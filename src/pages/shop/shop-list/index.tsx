@@ -5,7 +5,7 @@ import ShopArea1 from "@/components/section/ShopArea1";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Job List",
+  title: "Blackhards - AI Powered Game Project Marketplace | Job List",
 };
 
 export default function ShopPageList() {

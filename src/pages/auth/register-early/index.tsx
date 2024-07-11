@@ -4,7 +4,7 @@ import Link from "next/link";
 import AuthLayouts from "@/components/layouts/AuthLayouts";
 import { links } from "@/data/links";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Register",
+  title: "Blackhards - AI Powered Game Project Marketplace | Register",
 };
 export default function RegisterPage() {
   const [getCountry, setCountry] = useState({

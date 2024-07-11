@@ -2,7 +2,7 @@ import TermsCondition1 from "@/components/section/TermsCondition1";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Terms & Conditions",
+  title: "Blackhards - AI Powered Game Project Marketplace | Terms & Conditions",
 };
 
 export default function TermsPage() {

@@ -4,7 +4,7 @@ import { Tooltip } from "react-tooltip";
 interface IManageServiceCard1 {
   data: any
 }
-export default function ManageServiceCard1({ data }: IManageServiceCard1) {
+export default function ManageAuctionCard({ data }: IManageServiceCard1) {
   return (
     <>
       <tr>

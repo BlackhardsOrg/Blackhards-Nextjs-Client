@@ -5,15 +5,15 @@ import ManageProjectCard from "../card/ManageProjectCard";
 import ProposalModal1 from "../modal/ProposalModal1";
 import DeleteModal from "../modal/DeleteModal";
 import Link from "next/link";
+import { links } from "@/data/links";
 
 const tab = [
-  "Purchased Games",
   "Published Games",
   "Drafts",
   "Pending",
 ];
 
-export default function ManageProjectInfo() {
+export default function ManageGameInfo() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
@@ -32,7 +32,7 @@ export default function ManageProjectInfo() {
           <div className="col-lg-3">
             <div className="text-lg-end">
               <Link
-                href="/create-projects"
+                href={links.publishGame}
                 className="ud-btn btn-dark default-box-shadow2"
               >
                 Create Project
@@ -50,9 +50,8 @@ export default function ManageProjectInfo() {
                     {tab.map((item, i) => (
                       <button
                         key={i}
-                        className={`nav-link fw500 ps-0 ${
-                          selectedTab == i ? "active" : ""
-                        }`}
+                        className={`nav-link fw500 ps-0 ${selectedTab == i ? "active" : ""
+                          }`}
                         onClick={() => setSelectedTab(i)}
                       >
                         {item}

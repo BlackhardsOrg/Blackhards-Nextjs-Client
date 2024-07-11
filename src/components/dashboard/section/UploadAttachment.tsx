@@ -1,8 +1,15 @@
+import FLyLoad from "@/components/loading/FLyLoad";
+import { IUploadAttachments } from "@/types";
 import Link from "next/link";
 import { ChangeEventHandler, useState } from "react";
 
-export default function UploadAttachment() {
+export default function UploadAttachment({ id, gameTitle, setGameTitle, getPageProgress,
+  setGetPageProgress,
+  getCurrentPageState,
+  setCurrentPageState,
+  setCurrentTab }: IUploadAttachments) {
   const [uploadedFiles, setUploadedFiles] = useState([]) as any;
+  const [loading, setLoading] = useState(false)
 
   // upload handler
   const handleFileUpload = (event: ChangeEventHandler<HTMLInputElement> | any) => {
@@ -43,18 +50,45 @@ export default function UploadAttachment() {
     </div>
   ));
 
+  // #region Submit Handlers
+  const handleGameSubmit = (e: any) => {
+    e.preventDefault()
+    setLoading(true)
+    console.log(gameTitle)
+    setGetPageProgress((old) => {
+      const pageList = [...old]
+      pageList[id].isDone = true
+      return pageList
+    })
+    let nextPageNumber = id + 1 < getPageProgress.length ? id + 1 : id
+
+    setCurrentPageState(nextPageNumber)
+    setCurrentTab(nextPageNumber)
+    setLoading(false)
+
+  }
+
+  const handlePrevious = () => {
+    console.log(id, "WhatsaAAAAA")
+    let prevPageNumber = id - 1 >= 0 ? id - 1 : id
+    setCurrentPageState(prevPageNumber)
+    setCurrentTab(prevPageNumber)
+  }
+  // #endregion Handlers
+
+
   return (
-    <>
+    <form onSubmit={handleGameSubmit}>
       <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative">
         <div className="bdrb1 pb15 mb25">
-          <h5 className="list-title">Upload Attachments</h5>
+          <h5 className="list-title">Upload Game Play Photos</h5>
         </div>
         <div className="row">
           {content}
           <div className="col-6 col-xl-3">
             <label>
               <a className="upload-img">
-                Upload Files
+                photos
                 <input
                   type="file"
                   accept="application/pdf"
@@ -69,11 +103,98 @@ export default function UploadAttachment() {
         <p className="text">Maximum file size: 10 MB</p>
         <div className="text-start">
           <Link className="ud-btn btn-thm" href="/contact">
-            Save &amp; Publish
-            <i className="fal fa-arrow-right-long" />
+            Upload
+            <i className="fas fa-upload" />
           </Link>
         </div>
       </div>
-    </>
+
+      <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative">
+        <div className="bdrb1 pb15 mb25">
+          <h5 className="list-title">Upload Game Videos</h5>
+        </div>
+        <div className="row">
+          {content}
+          <div className="col-6 col-xl-3">
+            <label>
+              <a className="upload-img">
+                Videos
+                <input
+                  type="file"
+                  accept="application/pdf"
+                  className="d-none"
+                  onChange={handleFileUpload}
+                  multiple
+                />
+              </a>
+            </label>
+          </div>
+        </div>
+        <p className="text">Maximum file size: 10 MB</p>
+        <div className="text-start">
+          <Link className="ud-btn btn-thm" href="/contact">
+            Upload
+            <i className="fas fa-upload" />
+          </Link>
+        </div>
+      </div>
+
+      <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative">
+        <div className="bdrb1 pb15 mb25">
+          <h5 className="list-title">Upload Game Project</h5>
+        </div>
+        <div className="row">
+          {content}
+          <div className="col-6 col-xl-3">
+            <label>
+              <a className="upload-img">
+                zip
+                <input
+                  type="file"
+                  accept="application/pdf"
+                  className="d-none"
+                  onChange={handleFileUpload}
+                  multiple
+                />
+              </a>
+            </label>
+          </div>
+        </div>
+        <p className="text">Maximum file size: 40 GB</p>
+        <div className="text-start">
+          <Link className="ud-btn btn-thm" href="/contact">
+            Upload
+            <i className="fas fa-upload" />
+          </Link>
+        </div>
+      </div>
+
+      <div className="col-md-12">
+        <div className="text-start d-flex gap-1">
+          <button
+            type={"button"}
+            onClick={handlePrevious}
+            style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-dark" >
+            {loading ? <FLyLoad /> :
+              <>
+                <span>Prev</span>
+                <i className="fal fa-arrow-left-long" />
+              </>}
+          </button>
+
+          <button
+            type="submit"
+            style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-thm" >
+            {loading ? <FLyLoad /> :
+              <>
+                <span>Save & Continue</span>
+                <i className="fal fa-arrow-right-long" />
+              </>}
+          </button>
+        </div>
+      </div>
+
+
+    </form>
   );
 }

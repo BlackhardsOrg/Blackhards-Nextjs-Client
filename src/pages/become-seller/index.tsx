@@ -9,7 +9,7 @@ import MarketLayouts from "@/components/layouts/MarketLayouts";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Become seller",
+  title: "Blackhards - AI Powered Game Project Marketplace | Become seller",
 };
 
 export default function BecameSellerPage() {

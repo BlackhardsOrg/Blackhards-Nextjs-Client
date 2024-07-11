@@ -5,7 +5,7 @@ import MobileNavigation2 from "@/components/header/MobileNavigation2";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Freeio - Freelance Marketplace ReactJs Template | Statement",
+  title: "Blackhards - AI Powered Game Project Marketplace | Statement",
 };
 
 export default function DasbPageStatements() {

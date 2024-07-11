@@ -1,21 +1,26 @@
 import { useEffect, useState } from "react";
-import SelectInput from "../option/SelectInput";
 import Link from "next/link";
-import SelectInputMultiple from "../option/SelectInputMultiple";
-import TagSelect from "../option/TagSelect";
 import { IBasicInformation, IGameTitle } from "@/types";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
 import FLyLoad from "@/components/loading/FLyLoad";
 import { Tooltip } from "react-tooltip";
 import Radio1 from "@/components/ui-elements/radios/Radio1";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
+import TagSelect from "../../option/TagSelect";
+import SelectInputMultiple from "../../option/SelectInputMultiple";
 
-export default function BasicInformation({ gameTitle,
-  setGameTitle }: IBasicInformation) {
+export default function BasicInfo({ id, gameTitle,
+  setGameTitle,
+  getPageProgress,
+  setGetPageProgress,
+  getCurrentPageState,
+  setCurrentPageState,
+  setCurrentTab }: IBasicInformation) {
 
   const [loading, setLoading] = useState(false)
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
+  // #region useStates
   const [getGenre, setGenre] = useState<{
     options: string[] | never[],
     values: string[] | never[]
@@ -45,6 +50,9 @@ export default function BasicInformation({ gameTitle,
     value: null,
   });
 
+  // #endregion useStates
+
+
   function toggleElementInArray<T>(array: T[], element: T): T[] {
     const index = array.indexOf(element);
 
@@ -57,6 +65,7 @@ export default function BasicInformation({ gameTitle,
     }
   }
 
+  // #region Select Handlers
   // handlers
   const genreHandler = (option: string, value: string, e: any) => {
     setGenre({
@@ -87,7 +96,10 @@ export default function BasicInformation({ gameTitle,
 
   };
 
+  // #endregion Select Handlers
 
+
+  // #region Form Handlers
   const handleInputFormChange = (e: any) => {
     setGameTitle((old) => {
       return { ...old, [e.target.name]: e.target.value }
@@ -111,13 +123,36 @@ export default function BasicInformation({ gameTitle,
     })
   };
 
+  // #endregion Form Handlers
+
+
+  // #region Submit Handlers
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
     console.log(gameTitle)
-    setTimeout(() => setLoading(false), 3000)
+    setGetPageProgress((old) => {
+      const pageList = [...old]
+      pageList[id].isDone = true
+      return pageList
+    })
+    let nextPageNumber = id + 1 < getPageProgress.length ? id + 1 : id
+
+    setCurrentPageState(nextPageNumber)
+    setCurrentTab(nextPageNumber)
+    setLoading(false)
+
   }
 
+  const handlePrevious = () => {
+    console.log(id, "WhatsaAAAAA")
+    let prevPageNumber = id - 1 >= 0 ? id - 1 : id
+    setCurrentPageState(prevPageNumber)
+    setCurrentTab(prevPageNumber)
+  }
+  // #endregion Handlers
+
+  // #region UseEffects
   useEffect(() => {
     setGameTitle({ ...gameTitle, targetPlatform: getPlatform.values })
 
@@ -137,12 +172,13 @@ export default function BasicInformation({ gameTitle,
     setGameTitle({ ...gameTitle, tags: selectedTags })
 
   }, [selectedTags])
+  // #endregion MyRegion
 
   return (
     <>
       <div className="ps-widget bgc-white bdrs4 p30 mb30 overflow-hidden position-relative">
         <div className="bdrb1 pb15 mb25">
-          <h5 className="list-title">Game Title Information</h5>
+          <h5 className="list-title">Basic Info</h5>
         </div>
         <div className="col-xl-8">
           <form onSubmit={handleGameSubmit} className="form-style1">
@@ -255,22 +291,7 @@ export default function BasicInformation({ gameTitle,
                 </div>
               </div>
 
-              <div className="col-sm-12 d-flex">
-                <div className="mb20 ">
-                  <label className="heading-color ff-heading fw500 mb10">
-                    Game Price
-                  </label>
-                  <input
-                    onChange={handleFormattedChange}
-                    value={gameTitle.price}
-                    name="price"
-                    type="number"
-                    className="form-control"
-                    placeholder="Game Price ($)"
-                  />
-                </div>
-                <span>{formatPriceToDollars(Number(gameTitle.price))}</span>
-              </div>
+              
 
 
               <div className="col-sm-6">
@@ -323,57 +344,25 @@ export default function BasicInformation({ gameTitle,
                 </div>
               </div>
 
-              <div className="col-sm-12">
-
-                <div className="mb20">
-                  <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
-                    <span>
-                      Would you like to customize purchased game projects on request?
-                    </span>
-                    <Tooltip anchorSelect="#bottom" className="ui-tooltip" place="bottom">
-                      Your clients may need customization for aspects of the game projects they purchase from you.
-                    </Tooltip>
-                    <button id="bottom" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
-                  </label>
-                  <div className="d-flex gap-3 align-items-center">
-
-                    <GameUploadRadio i={1} checked={true} text="Yes" value="" onChange={handleInputFormChange} />
-                    <GameUploadRadio i={1} checked={false} text="Yes" value="" onChange={handleInputFormChange} />
-                  </div>
-
-                </div>
-              </div>
-              <div className="col-sm-6 ">
-
-                <div className="mb20">
-                  <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
-                    How much would you like to charge for the service?
-                  </label>
-                  <div className="d-flex align-items-center gap-1">
-                    <input
-                      onChange={handleInputFormChange}
-                      value={gameTitle.releaseDate}
-                      name="releaseDate"
-                      type="number"
-                      className="form-control"
-                      placeholder="Amout($)"
-                    />
-                    <span>{gameTitle.price}</span>
-
-                  </div>
-                </div>
-              </div>
+              
+              
               <div className="col-md-12">
                 <div className="text-start d-flex gap-1">
-                  <button type="submit" style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-dark" >
+                  <button
+                    disabled={loading || (id == 0 && true)}
+                    type={"button"}
+                    onClick={handlePrevious}
+                    style={{ opacity: id == 0 && true || loading ? .5 : 1 }} className="ud-btn btn-dark" >
                     {loading ? <FLyLoad /> :
                       <>
-                        <span>Save</span>
-                        <i className="fal fa-arrow-right-long" />
+                        <span>Prev</span>
+                        <i className="fal fa-arrow-left-long" />
                       </>}
                   </button>
 
-                  <button type="submit" style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-thm" >
+                  <button
+                    type="submit"
+                    style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-thm" >
                     {loading ? <FLyLoad /> :
                       <>
                         <span>Save & Continue</span>
