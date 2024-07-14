@@ -9,6 +9,7 @@ import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 import TagSelect from "../../option/TagSelect";
 import SelectInputMultiple from "../../option/SelectInputMultiple";
 import PublishSummaryText from "./PublishSummaryText";
+import PackagePlansSummaryTable from "./PackagePlansSummaryTable";
 
 export default function SummaryAndPublish({
   id,
@@ -92,6 +93,9 @@ export default function SummaryAndPublish({
 
               
 
+              <div className="col-sm-12">
+                <PackagePlansSummaryTable gameTitle={gameTitle} />
+              </div>
 
               <div className="col-md-12">
                 <div className="text-start d-flex gap-1">
