@@ -10571,7 +10571,7 @@ li.mm-listitem:focus {
   position: absolute;
   height: 10px;
   top: 0;
-  transition: width .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 
