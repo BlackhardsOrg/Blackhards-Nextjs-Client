@@ -20,7 +20,7 @@ export default function PricingAndPlans
         setCurrentTab }: IPricingAndPlans) {
 
     const [loading, setLoading] = useState(false)
-    const [isAIPricingChosen, setIsAIPricingChosen] = useState("yes")
+    const [isOfferingPackagedPlans, setIsOfferingPackagedPlans] = useState(true)
 
     // #region Form Handlers
     const handleInputFormChange = (e: any) => {
@@ -75,6 +75,16 @@ export default function PricingAndPlans
     }
     // #endregion Handlers
 
+    // #region UseEffects
+    useEffect(() => {
+        // setGameTitle((old) => ({
+        //     ...old, isAIAllowedPricing: isAIPricingChosen
+        // }))
+        console.log("LOOL", gameTitle)
+
+    }, [gameTitle.isAIAllowedPricing])
+    //#endregion
+
 
     return (
         <>
@@ -92,10 +102,10 @@ export default function PricingAndPlans
                                 <div className="mb20">
                                     <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
                                         <span>
-                                            Would you like our AI to dynamically price your games?
+                                            Allow AI dynamically price your games?
                                         </span>
                                         <Tooltip anchorSelect="#ai" className="ui-tooltip" place="top">
-                                            If your game project&apos;s price aligns with market trends, you are more likely to achieve a faster turnover.
+                                            If your game project&apos;s price aligns with market trends based on our AI predictions, you are more likely to achieve a faster turnover.
                                         </Tooltip>
                                         <button id="ai" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
                                     </label>
@@ -103,92 +113,98 @@ export default function PricingAndPlans
                                         <GameUploadRadio
                                             i={1}
                                             name="AiPricing"
-                                            checked={isAIPricingChosen === "yes"}
+                                            checked={gameTitle.isAIAllowedPricing}
                                             text="Yes"
                                             value={"yes"}
-                                            onChange={(e: any) => {
-                                                setIsAIPricingChosen(e.target.value)
+                                            onClick={(e: any) => {
+                                                setGameTitle((old) => ({
+                                                    ...old, isAIAllowedPricing: true
+                                                }))
+                                                
                                             }} />
                                         <GameUploadRadio
-                                            i={1}
+                                            i={2}
                                             name="AiPricing"
-                                            checked={isAIPricingChosen === "no"}
+                                            checked={!gameTitle.isAIAllowedPricing}
                                             text="No"
                                             value="no"
-                                            onChange={(e: any) => {
-                                                setIsAIPricingChosen(e.target.value)
+                                            onClick={(e: any) => {
+                                                setGameTitle((old) => ({
+                                                    ...old, isAIAllowedPricing: false
+                                                }))
+
+
+
                                             }} />
                                     </div>
 
                                 </div>
                             </div>
-
-
-
-                            {isAIPricingChosen !== "yes"
-                                &&
-                                <div className="col-sm-12 d-flex">
-                                    <div className="mb20 ">
-                                        <label className="heading-color ff-heading fw500 mb10">
-                                            Game Price
-                                        </label>
-                                        <input
-                                            onChange={handleFormattedChange}
-                                            value={gameTitle.price}
-                                            name="price"
-                                            type="number"
-                                            className="form-control"
-                                            placeholder="Game Price ($)"
-                                        />
-                                    </div>
-                                    <span>{formatPriceToDollars(Number(gameTitle.price))}</span>
-                                </div>}
+                            <div className="col-sm-12 d-flex">
+                                <div className="mb20 ">
+                                    <label className="heading-color ff-heading fw500 mb10">
+                                        Game Price
+                                    </label>
+                                    <input
+                                        onChange={handleFormattedChange}
+                                        value={gameTitle.price}
+                                        name="price"
+                                        type="number"
+                                        className="form-control"
+                                        placeholder="Game Price ($)"
+                                    />
+                                </div>
+                                <span>{formatPriceToDollars(Number(gameTitle.price))}</span>
+                            </div>
 
                             <div className="col-sm-12">
 
                                 <div className="mb20">
                                     <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
                                         <span>
-                                            Would you like to customize purchased game projects on request?
+                                            Offer plans or packages to make your game affordable?
                                         </span>
-                                        <Tooltip anchorSelect="#bottom" className="ui-tooltip" place="bottom">
-                                            Your clients may need customization for aspects of the game projects they purchase from you.
+                                        <Tooltip anchorSelect="#studies" className="ui-tooltip" place="top">
+                                            Studies have shown that making your games affordable by Breaking your games into packages can increase revenue.
                                         </Tooltip>
-                                        <button id="bottom" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
+                                        <button id="studies" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
                                     </label>
                                     <div className="d-flex gap-3 align-items-center">
-
-                                        <GameUploadRadio i={1} checked={true} text="Yes" value="" onChange={handleInputFormChange} />
-                                        <GameUploadRadio i={1} checked={false} text="Yes" value="" onChange={handleInputFormChange} />
+                                        <GameUploadRadio
+                                            i={1}
+                                            name="packages"
+                                            checked={isOfferingPackagedPlans}
+                                            text="Yes"
+                                            value={"yes"}
+                                            onClick={(e: any) => {
+                                                setIsOfferingPackagedPlans(true)
+                                            }} />
+                                        <GameUploadRadio
+                                            i={1}
+                                            name="packages"
+                                            checked={!isOfferingPackagedPlans}
+                                            text="No"
+                                            value="no"
+                                            onClick={(e: any) => {
+                                                setIsOfferingPackagedPlans(false)
+                                            }} />
                                     </div>
 
                                 </div>
                             </div>
 
-                            <div className="col-sm-6 ">
-                                <div className="mb20">
-                                    <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
-                                        How much would you like to charge for the service?
-                                    </label>
-                                    <div className="d-flex align-items-center gap-1">
-                                        <input
-                                            onChange={handleInputFormChange}
-                                            value={gameTitle.releaseDate}
-                                            name="releaseDate"
-                                            type="number"
-                                            className="form-control"
-                                            placeholder="Amout($)"
-                                        />
-                                        <span>{gameTitle.price}</span>
 
-                                    </div>
-                                </div>
-                            </div>
+
+
+
 
                             {/* Package Plans */}
-                            <div className="col-md-6">
+                            <div className="col-md-12">
 
-                                <PackagePlans />
+                                {isOfferingPackagedPlans && <PackagePlans
+                                    gameTitle={gameTitle}
+                                    setGameTitle={setGameTitle}
+                                />}
                             </div>
 
                             <div className="col-md-12">

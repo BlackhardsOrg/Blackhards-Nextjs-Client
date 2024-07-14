@@ -251,41 +251,45 @@ export default function BasicInfo({ id, gameTitle,
                     data={[
 
                       {
-                        option: "Graphics & Design",
-                        value: "graphics-design",
+                        option: "Action",
+                        value: "action",
                       },
                       {
-                        option: "Digital Marketing",
-                        value: "digital-marketing",
+                        option: "Adventure",
+                        value: "adventure",
                       },
                       {
-                        option: "Writing & Translation",
-                        value: "writing-translation",
+                        option: "Simulation",
+                        value: "simulation",
                       },
                       {
-                        option: "Video & Animation",
-                        value: "video-animation",
+                        option: "Strategy",
+                        value: "strategy",
                       },
                       {
-                        option: "Music & Audio",
-                        value: "music-audio",
+                        option: "Sports",
+                        value: "sports",
                       },
                       {
-                        option: "Programming & Tech",
-                        value: "programming-tech",
+                        option: "Puzzle",
+                        value: "puzzle",
                       },
                       {
-                        option: "Business",
-                        value: "business",
+                        option: "Racing",
+                        value: "racing",
                       },
                       {
-                        option: "Lifestyle",
-                        value: "lifestyle",
+                        option: "Fighting",
+                        value: "fighting",
                       },
                       {
-                        option: "Trending",
-                        value: "trending",
+                        option: "Platformer",
+                        value: "platformer",
                       },
+                      {
+                        option: "Role-Playing",
+                        value: "role-playing"
+                      }
                     ]}
                   />
                 </div>

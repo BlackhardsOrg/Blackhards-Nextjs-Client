@@ -1,13 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import {
-  ICustomizations,
-  IHasAdminPanel,
-  IHasDocumentation,
-  ILauchProspect,
-  ILevel,
-  IPlanPrice,
-  IPlanTitle,
-} from "./plans";
+
 
 export interface IUser {
   email: string;
@@ -46,17 +38,19 @@ export interface AxiosError extends Error {
 
 export interface IPlan {
   type: "basic" | "standard" | "premium";
-  price: IPlanPrice;
-  title: IPlanTitle;
-  launchProspect: ILauchProspect;
+  price: number;
+  title: string;
+  howLongToLaunch: number;
 
-  customizations: ICustomizations;
+  howManyCustomizations: number;
+  customizationCharge: number;
+  
 
-  levels: ILevel;
+  howManyLevels: number;
 
-  hasDocumentation: IHasDocumentation;
+  hasDocumentation: boolean;
 
-  hasAdminPanel: IHasAdminPanel;
+  hasAdminPanel: boolean;
 }
 
 export interface IExtraService {
@@ -68,6 +62,12 @@ export interface IExtraService {
 export interface IFAQ {
   question: string;
   answer: string;
+}
+
+export interface IPlans {
+  basic: IPlan;
+  standard: IPlan;
+  premium: IPlan;
 }
 
 export interface IGameTitle {
@@ -90,9 +90,9 @@ export interface IGameTitle {
   gamePlays: number;
   isCustomizationEnabled?: boolean;
   customizationCharge?: number;
-  plans?: IPlan[];
-  extraServices?: IExtraService[];
-  isAIAllowedToManipulatePrice?: boolean;
+  plans?: IPlans;
+  isAIAllowedPricing: boolean;
+
   faqs?: IFAQ[];
 }
 
@@ -118,6 +118,10 @@ export interface IPricingAndPlans {
   setCurrentTab: Dispatch<SetStateAction<number>>;
 }
 
+export interface IPackagePlans {
+  gameTitle: IGameTitle;
+  setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
+}
 export interface IUploadAttachments {
   id: number;
   gameTitle: IGameTitle;
