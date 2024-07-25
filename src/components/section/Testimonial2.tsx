@@ -26,10 +26,10 @@ export default function Testimonial2() {
                       <div className="testi-content text-center">
                         <span className="icon fas fa-quote-left" />
                         <h4 className="testi-text">
-                          "Our family was traveling via bullet train between
+                          &quot;Our family was traveling via bullet train between
                           cities in Japan with our luggage - the location for
                           this hotel made that so easy. Agoda price was
-                          fantastic. "
+                          fantastic. &quot;
                         </h4>
                       </div>
                     </div>
@@ -43,10 +43,10 @@ export default function Testimonial2() {
                       <div className="testi-content text-center">
                         <span className="icon fas fa-quote-left" />
                         <h4 className="testi-text">
-                          "Our family was traveling via bullet train between
+                          &quot;Our family was traveling via bullet train between
                           cities in Japan with our luggage - the location for
                           this hotel made that so easy. Agoda price was
-                          fantastic. "
+                          fantastic. &quot;
                         </h4>
                       </div>
                     </div>
@@ -60,10 +60,10 @@ export default function Testimonial2() {
                       <div className="testi-content text-center">
                         <span className="icon fas fa-quote-left" />
                         <h4 className="testi-text">
-                          "Our family was traveling via bullet train between
+                          &quot;Our family was traveling via bullet train between
                           cities in Japan with our luggage - the location for
                           this hotel made that so easy. Agoda price was
-                          fantastic. "
+                          fantastic. &quot;
                         </h4>
                       </div>
                     </div>

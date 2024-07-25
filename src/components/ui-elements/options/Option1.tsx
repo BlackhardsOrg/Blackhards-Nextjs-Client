@@ -73,7 +73,7 @@ export default function Option1({ lebel, data, selected, handler }) {
                     content
                   ) : (
                     <li className="no-results">
-                      No results matched "{search}"
+                      No results matched &quot;{search}&quot;
                     </li>
                   )}
                 </ul>
