@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
 
-
 export interface IUser {
   email: string;
   password: string;
@@ -44,7 +43,6 @@ export interface IPlan {
 
   howManyCustomizations: number;
   customizationCharge: number;
-  
 
   howManyLevels: number;
 
@@ -92,14 +90,12 @@ export interface IGameTitle {
   customizationCharge?: number;
   plans?: IPlans;
   isAIAllowedPricing: boolean;
-
-  faqs?: IFAQ[];
 }
 
 export interface IBasicInformation {
   id: number;
-  gameTitle: IGameTitle;
-  setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
+  // gameTitle: IGameTitle;
+  // setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
   getPageProgress: IPageProgress[];
   setGetPageProgress: Dispatch<SetStateAction<IPageProgress[]>>;
   getCurrentPageState: number;
@@ -109,8 +105,8 @@ export interface IBasicInformation {
 
 export interface IPricingAndPlans {
   id: number;
-  gameTitle: IGameTitle;
-  setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
+  // gameTitle: IGameTitle;
+  // setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
   getPageProgress: IPageProgress[];
   setGetPageProgress: Dispatch<SetStateAction<IPageProgress[]>>;
   getCurrentPageState: number;
@@ -119,13 +115,13 @@ export interface IPricingAndPlans {
 }
 
 export interface IPackagePlans {
-  gameTitle: IGameTitle;
-  setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
+  // gameTitle: IGameTitle;
+  // setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
 }
 export interface IUploadAttachments {
   id: number;
-  gameTitle: IGameTitle;
-  setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
+  // gameTitle: IGameTitle;
+  // setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
   getPageProgress: IPageProgress[];
   setGetPageProgress: Dispatch<SetStateAction<IPageProgress[]>>;
   getCurrentPageState: number;
@@ -145,8 +141,8 @@ export interface IPageProgress {
 }
 
 export interface IGameTabs {
-  gameTitle: IGameTitle;
-  setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
+  // gameTitle: IGameTitle;
+  // setGameTitle: Dispatch<SetStateAction<IGameTitle>>;
   getPageProgress: IPageProgress[];
   setGetPageProgress: Dispatch<SetStateAction<IPageProgress[]>>;
   getCurrentPageState: number;

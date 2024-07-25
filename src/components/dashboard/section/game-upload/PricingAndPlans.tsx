@@ -9,24 +9,27 @@ import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 import TagSelect from "../../option/TagSelect";
 import SelectInputMultiple from "../../option/SelectInputMultiple";
 import PackagePlans from "./PackagePlans";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
 
 export default function PricingAndPlans
-    ({ gameTitle,
+    ({
         id,
-        setGameTitle, getPageProgress,
+        getPageProgress,
         setGetPageProgress,
         getCurrentPageState,
         setCurrentPageState,
         setCurrentTab }: IPricingAndPlans) {
 
+    const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+    const dispatch = useAppDispatch()
     const [loading, setLoading] = useState(false)
     const [isOfferingPackagedPlans, setIsOfferingPackagedPlans] = useState(true)
 
     // #region Form Handlers
     const handleInputFormChange = (e: any) => {
-        setGameTitle((old) => {
-            return { ...old, [e.target.name]: e.target.value }
-        })
+        dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: e.target.value }))
+
     }
 
     const handleFormattedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,10 +43,9 @@ export default function PricingAndPlans
 
         e = { ...e, target: { ...e.target, value } }
         console.log(e.target.value, "After")
+        dispatch(gameTitleCreateSuccess({ ...gameTitle, price: Number(value) }))
 
-        setGameTitle((old) => {
-            return { ...old, price: Number(value) }
-        })
+
     };
 
     // #endregion Form Handlers
@@ -75,16 +77,6 @@ export default function PricingAndPlans
     }
     // #endregion Handlers
 
-    // #region UseEffects
-    useEffect(() => {
-        // setGameTitle((old) => ({
-        //     ...old, isAIAllowedPricing: isAIPricingChosen
-        // }))
-        console.log("LOOL", gameTitle)
-
-    }, [gameTitle.isAIAllowedPricing])
-    //#endregion
-
 
     return (
         <>
@@ -113,27 +105,29 @@ export default function PricingAndPlans
                                         <GameUploadRadio
                                             i={1}
                                             name="AiPricing"
-                                            checked={gameTitle.isAIAllowedPricing}
+                                            checked={gameTitle ? gameTitle.isAIAllowedPricing : false}
                                             text="Yes"
                                             value={"yes"}
                                             onClick={(e: any) => {
-                                                setGameTitle((old) => ({
-                                                    ...old, isAIAllowedPricing: true
+
+                                                dispatch(gameTitleCreateSuccess({
+                                                    ...gameTitle, isAIAllowedPricing: true
                                                 }))
-                                                
+
+
                                             }} />
                                         <GameUploadRadio
                                             i={2}
                                             name="AiPricing"
-                                            checked={!gameTitle.isAIAllowedPricing}
+                                            checked={gameTitle ? !gameTitle.isAIAllowedPricing : true}
                                             text="No"
                                             value="no"
                                             onClick={(e: any) => {
-                                                setGameTitle((old) => ({
-                                                    ...old, isAIAllowedPricing: false
+
+
+                                                dispatch(gameTitleCreateSuccess({
+                                                    ...gameTitle, isAIAllowedPricing: false
                                                 }))
-
-
 
                                             }} />
                                     </div>
@@ -147,14 +141,14 @@ export default function PricingAndPlans
                                     </label>
                                     <input
                                         onChange={handleFormattedChange}
-                                        value={gameTitle.price}
+                                        value={gameTitle ? gameTitle.price : 0}
                                         name="price"
                                         type="number"
                                         className="form-control"
                                         placeholder="Game Price ($)"
                                     />
                                 </div>
-                                <span>{formatPriceToDollars(Number(gameTitle.price))}</span>
+                                <span>{formatPriceToDollars(gameTitle ? Number(gameTitle.price) : 0)}</span>
                             </div>
 
                             <div className="col-sm-12">
@@ -194,16 +188,11 @@ export default function PricingAndPlans
                             </div>
 
 
-
-
-
-
                             {/* Package Plans */}
                             <div className="col-md-12">
 
                                 {isOfferingPackagedPlans && <PackagePlans
-                                    gameTitle={gameTitle}
-                                    setGameTitle={setGameTitle}
+
                                 />}
                             </div>
 

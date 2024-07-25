@@ -10,11 +10,13 @@ import TagSelect from "../../option/TagSelect";
 import SelectInputMultiple from "../../option/SelectInputMultiple";
 import PublishSummaryText from "./PublishSummaryText";
 import PackagePlansSummaryTable from "./PackagePlansSummaryTable";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 
 export default function SummaryAndPublish({
   id,
-  gameTitle,
-  setGameTitle, getPageProgress,
+  // gameTitle,
+  // setGameTitle,
+  getPageProgress,
   setGetPageProgress,
   getCurrentPageState,
   setCurrentPageState,
@@ -23,7 +25,8 @@ export default function SummaryAndPublish({
   const [loading, setLoading] = useState(false)
 
 
-
+  const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+  const dispatch = useAppDispatch()
 
 
   // #region Submit Handlers
@@ -64,34 +67,34 @@ export default function SummaryAndPublish({
           <form onSubmit={handleGameSubmit} className="form-style1">
             <div className="row">
               <div className="col-sm-12">
-                  <PublishSummaryText labelTitle="Game Title" value={gameTitle.title} />
+                <PublishSummaryText labelTitle="Game Title" value={gameTitle ? gameTitle.title : ""} />
               </div>
 
               <div className="col-sm-12">
-                  <PublishSummaryText labelTitle="Game Description" value={gameTitle.description} />
+                <PublishSummaryText labelTitle="Game Description" value={gameTitle ?gameTitle.description: ""} />
               </div>
 
               <div className="col-sm-12">
-                  <PublishSummaryText labelTitle="Company Email" value={gameTitle.developerEmail} />
+                <PublishSummaryText labelTitle="Company Email" value={gameTitle ?gameTitle.developerEmail: ""} />
               </div>
 
               <div className="col-sm-12">
-                  <PublishSummaryText labelTitle="Genre" value={gameTitle.genre} />
+                <PublishSummaryText labelTitle="Genre" value={ gameTitle ?gameTitle.genre: []} />
               </div>
 
               <div className="col-sm-12">
-                  <PublishSummaryText labelTitle="Tags" value={gameTitle.tags} />
+                <PublishSummaryText labelTitle="Tags" value={gameTitle ?gameTitle.tags: []} />
               </div>
 
               <div className="col-sm-12">
-                  <PublishSummaryText labelTitle="Target Platform" value={gameTitle.targetPlatform} />
+                <PublishSummaryText labelTitle="Target Platform" value={gameTitle ?gameTitle.targetPlatform: []} />
               </div>
 
               <div className="col-sm-12">
-                  <PublishSummaryText labelTitle="Release Date" value={gameTitle.releaseDate} />
+                <PublishSummaryText labelTitle="Release Date" value={gameTitle ?gameTitle.releaseDate: ""} />
               </div>
 
-              
+
 
               <div className="col-sm-12">
                 <PackagePlansSummaryTable gameTitle={gameTitle} />

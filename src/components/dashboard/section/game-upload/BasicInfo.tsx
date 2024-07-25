@@ -8,15 +8,21 @@ import Radio1 from "@/components/ui-elements/radios/Radio1";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 import TagSelect from "../../option/TagSelect";
 import SelectInputMultiple from "../../option/SelectInputMultiple";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
 
-export default function BasicInfo({ id, gameTitle,
-  setGameTitle,
+export default function BasicInfo({
+  id,
+  // gameTitle,
+  // setGameTitle,
   getPageProgress,
   setGetPageProgress,
   getCurrentPageState,
   setCurrentPageState,
   setCurrentTab }: IBasicInformation) {
 
+  const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+  const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -73,7 +79,9 @@ export default function BasicInfo({ id, gameTitle,
       values: toggleElementInArray<string>(getGenre.values, value),
     });
 
-    setGameTitle({ ...gameTitle, [e.target.name]: getGenre.values })
+
+    // setGameTitle({ ...gameTitle, [e.target.name]: getGenre.values })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: getGenre.values }))
   };
 
   // handlers
@@ -83,7 +91,9 @@ export default function BasicInfo({ id, gameTitle,
       values: toggleElementInArray<string>(getTags.values, value),
     });
 
-    setGameTitle({ ...gameTitle, [e.target.name]: getGenre.values })
+    // setGameTitle({ ...gameTitle, [e.target.name]: getGenre.values })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: getGenre.values }))
+
   };
 
   const platformHandler = (option: string, value: string, e: any) => {
@@ -101,9 +111,11 @@ export default function BasicInfo({ id, gameTitle,
 
   // #region Form Handlers
   const handleInputFormChange = (e: any) => {
-    setGameTitle((old) => {
-      return { ...old, [e.target.name]: e.target.value }
-    })
+    // setGameTitle((old) => {
+    //   return { ...old, [e.target.name]: e.target.value }
+    // })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: e.target.value }))
+
   }
 
   const handleFormattedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,9 +130,11 @@ export default function BasicInfo({ id, gameTitle,
     e = { ...e, target: { ...e.target, value } }
     console.log(e.target.value, "After")
 
-    setGameTitle((old) => {
-      return { ...old, price: Number(value) }
-    })
+    // setGameTitle((old) => {
+    //   return { ...old, price: Number(value) }
+    // })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, price: Number(value) }))
+
   };
 
   // #endregion Form Handlers
@@ -154,22 +168,30 @@ export default function BasicInfo({ id, gameTitle,
 
   // #region UseEffects
   useEffect(() => {
-    setGameTitle({ ...gameTitle, targetPlatform: getPlatform.values })
+    // setGameTitle({ ...gameTitle, targetPlatform: getPlatform.values })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, targetPlatform: getPlatform.values }))
+
 
   }, [getPlatform.values])
 
   useEffect(() => {
-    setGameTitle({ ...gameTitle, tags: getTags.values })
+    // setGameTitle({ ...gameTitle, tags: getTags.values })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, tags: getTags.values }))
+
 
   }, [getTags.values])
 
   useEffect(() => {
-    setGameTitle({ ...gameTitle, genre: getGenre.values })
+    // setGameTitle({ ...gameTitle, genre: getGenre.values })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, genre: getGenre.values }))
+
 
   }, [getGenre.values])
 
   useEffect(() => {
-    setGameTitle({ ...gameTitle, tags: selectedTags })
+    // setGameTitle({ ...gameTitle, tags: selectedTags })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, tags: selectedTags }))
+
 
   }, [selectedTags])
   // #endregion MyRegion
@@ -190,7 +212,7 @@ export default function BasicInfo({ id, gameTitle,
                   </label>
                   <input
                     onChange={handleInputFormChange}
-                    value={gameTitle.title}
+                    value={gameTitle ? gameTitle.title : ""}
                     name="title"
                     type="text"
                     className="form-control"
@@ -206,7 +228,7 @@ export default function BasicInfo({ id, gameTitle,
                   </label>
                   <textarea
                     onChange={handleInputFormChange}
-                    value={gameTitle.description}
+                    value={gameTitle ? gameTitle.description : ""}
                     name="description"
                     cols={30}
                     rows={6}
@@ -221,7 +243,7 @@ export default function BasicInfo({ id, gameTitle,
                   </label>
                   <input
                     onChange={handleInputFormChange}
-                    value={gameTitle.gameFileLink}
+                    value={gameTitle ? gameTitle.gameFileLink : ""}
                     name="gameFileLink"
                     type="text"
                     className="form-control"
@@ -295,7 +317,7 @@ export default function BasicInfo({ id, gameTitle,
                 </div>
               </div>
 
-              
+
 
 
               <div className="col-sm-6">
@@ -338,7 +360,7 @@ export default function BasicInfo({ id, gameTitle,
                   </label>
                   <input
                     onChange={handleInputFormChange}
-                    value={gameTitle.releaseDate}
+                    value={gameTitle ? gameTitle.releaseDate : ""}
                     name="releaseDate"
                     type="date"
                     className="form-control"
@@ -348,8 +370,8 @@ export default function BasicInfo({ id, gameTitle,
                 </div>
               </div>
 
-              
-              
+
+
               <div className="col-md-12">
                 <div className="text-start d-flex gap-1">
                   <button

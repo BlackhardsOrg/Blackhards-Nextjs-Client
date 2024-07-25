@@ -1,9 +1,12 @@
 import FLyLoad from "@/components/loading/FLyLoad";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { IUploadAttachments } from "@/types";
 import Link from "next/link";
 import { ChangeEventHandler, useState } from "react";
 
-export default function UploadAttachment({ id, gameTitle, setGameTitle, getPageProgress,
+export default function UploadAttachment({ id,
+  //  gameTitle, setGameTitle, 
+   getPageProgress,
   setGetPageProgress,
   getCurrentPageState,
   setCurrentPageState,
@@ -11,6 +14,9 @@ export default function UploadAttachment({ id, gameTitle, setGameTitle, getPageP
   const [uploadedFiles, setUploadedFiles] = useState([]) as any;
   const [loading, setLoading] = useState(false)
 
+  const gameTitleData = useAppSelector(state => state.gametitle.gameTitle)
+  const [gameTitle] = useState(gameTitleData)
+  const dispatch = useAppDispatch()
   // upload handler
   const handleFileUpload = (event: ChangeEventHandler<HTMLInputElement> | any) => {
     const newFiles = Array.from(event.target.files);

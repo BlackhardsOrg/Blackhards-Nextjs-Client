@@ -7,12 +7,16 @@ import GameUploadCheck from "@/components/ui-elements/radios/GameUploadCheck";
 import { IGameTitle, IPackagePlans, IPlans } from "@/types";
 import PlansSelectOptionsInput from "../../option/PlanSelectOptionsInput";
 import { PlansSummaryDisplayText } from "./PlansSummaryDisplayText";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 
-interface IPackagePlansSummaryTable{
+interface IPackagePlansSummaryTable {
     gameTitle: IGameTitle
 }
-export default function PackagePlansSummaryTable({ gameTitle }: IPackagePlansSummaryTable) {
-
+export default function PackagePlansSummaryTable({
+    //  gameTitle
+}: IPackagePlansSummaryTable) {
+    const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+    // const dispatch = useAppDispatch()
     return (
         <>
             <div className="ui-content">
@@ -73,10 +77,10 @@ export default function PackagePlansSummaryTable({ gameTitle }: IPackagePlansSum
                                     <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.howLongToLaunch + "days"} />
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.howLongToLaunch+ "days"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.howLongToLaunch + "days"} />
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.howLongToLaunch+ "days"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.howLongToLaunch + "days"} />
                                 </td>
 
                             </tr>
@@ -84,13 +88,13 @@ export default function PackagePlansSummaryTable({ gameTitle }: IPackagePlansSum
                             <tr>
                                 <td>Customization</td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.howManyCustomizations+ "x"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.howManyCustomizations + "x"} />
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.howManyCustomizations+ "x"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.howManyCustomizations + "x"} />
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.howManyCustomizations+ "x"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.howManyCustomizations + "x"} />
                                 </td>
 
                             </tr>
@@ -98,13 +102,13 @@ export default function PackagePlansSummaryTable({ gameTitle }: IPackagePlansSum
                             <tr>
                                 <td>Customization Charge($)</td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.customizationCharge+ "$"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.customizationCharge + "$"} />
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.customizationCharge+ "$"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.customizationCharge + "$"} />
                                 </td>
                                 <td >
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.customizationCharge+ "$"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.customizationCharge + "$"} />
                                 </td>
 
                             </tr>
@@ -112,13 +116,13 @@ export default function PackagePlansSummaryTable({ gameTitle }: IPackagePlansSum
                             <tr>
                                 <td>How Many levels does the game have?</td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.howManyLevels+ "Levels"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.howManyLevels + "Levels"} />
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.howManyLevels+ "Levels"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.howManyLevels + "Levels"} />
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.howManyLevels+ "Levels"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.howManyLevels + "Levels"} />
                                 </td>
 
                             </tr>
@@ -126,15 +130,15 @@ export default function PackagePlansSummaryTable({ gameTitle }: IPackagePlansSum
                             <tr>
                                 <td>Has got Documentation</td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.hasDocumentation?"Yes": "No"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.hasDocumentation ? "Yes" : "No"} />
 
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.hasDocumentation?"Yes": "No"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.hasDocumentation ? "Yes" : "No"} />
 
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.hasDocumentation?"Yes": "No"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.hasDocumentation ? "Yes" : "No"} />
 
                                 </td>
 
@@ -143,15 +147,15 @@ export default function PackagePlansSummaryTable({ gameTitle }: IPackagePlansSum
                             <tr>
                                 <td>Has Admin Panel</td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.hasAdminPanel?"Yes": "No"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.hasAdminPanel ? "Yes" : "No"} />
 
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.hasAdminPanel?"Yes": "No"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.hasAdminPanel ? "Yes" : "No"} />
 
                                 </td>
                                 <td>
-                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.hasAdminPanel?"Yes": "No"} />
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.hasAdminPanel ? "Yes" : "No"} />
 
                                 </td>
 

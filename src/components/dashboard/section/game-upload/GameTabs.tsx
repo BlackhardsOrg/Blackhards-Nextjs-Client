@@ -4,11 +4,13 @@ import BasicInfo from "./BasicInfo";
 import PricingAndPlans from "./PricingAndPlans";
 import UploadAttachment from "../UploadAttachment";
 import SummaryAndPublish from "./SummaryAndPublish";
+import { useAppSelector } from "@/redux/app/hooks";
 
 const tab = ["Basic Info", "Pricing & Plans", "Upload Game Files", "Summary & Publish"];
 
-export default function GameTabs({ gameTitle,
-    setGameTitle,
+export default function GameTabs({
+    // gameTitle,
+    // setGameTitle,
     getPageProgress,
     setGetPageProgress,
     getCurrentPageState,
@@ -18,6 +20,7 @@ export default function GameTabs({ gameTitle,
     loading,
     setLoading
 }: IGameTabs) {
+    const gameTitleData = useAppSelector(state => state.gametitle.gameTitle)
     return (
         <>
             <div className="ui-content">
@@ -47,8 +50,8 @@ export default function GameTabs({ gameTitle,
                             {/* Basic Informations */}
                             <BasicInfo
                                 id={0}
-                                gameTitle={gameTitle}
-                                setGameTitle={setGameTitle}
+                                // gameTitle={gameTitle}
+                                // setGameTitle={setGameTitle}
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
                                 getCurrentPageState={getCurrentPageState}
@@ -61,8 +64,10 @@ export default function GameTabs({ gameTitle,
                                 }`}
                         >
                             {/* Pricing */}
-                            <PricingAndPlans id={1} gameTitle={gameTitle}
-                                setGameTitle={setGameTitle}
+                            <PricingAndPlans
+                                id={1}
+                                // gameTitle={gameTitle}
+                                // setGameTitle={setGameTitle}
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
                                 getCurrentPageState={getCurrentPageState}
@@ -74,8 +79,9 @@ export default function GameTabs({ gameTitle,
                                 }`}
                         >
                             {/* File Uploads */}
-                            <UploadAttachment gameTitle={gameTitle}
-                                setGameTitle={setGameTitle}
+                            <UploadAttachment
+                                // gameTitle={gameTitle}
+                                // setGameTitle={setGameTitle}
                                 id={2}
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
@@ -89,8 +95,9 @@ export default function GameTabs({ gameTitle,
                                 }`}
                         >
                             {/* Summary and Publish */}
-                            <SummaryAndPublish id={3} gameTitle={gameTitle}
-                                setGameTitle={setGameTitle}
+                            <SummaryAndPublish id={3}
+                                // gameTitle={gameTitle}
+                                // setGameTitle={setGameTitle}
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
                                 getCurrentPageState={getCurrentPageState}

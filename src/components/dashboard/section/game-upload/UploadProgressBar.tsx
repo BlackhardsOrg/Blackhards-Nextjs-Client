@@ -32,8 +32,6 @@ export default function UploadProgressBar({ currentUploadPageText, percentage }:
                         <span>{currentUploadPageText}{" "}{percentage}%</span>
                     </div>
                 </div>
-
-
             </div>
         </>
     );

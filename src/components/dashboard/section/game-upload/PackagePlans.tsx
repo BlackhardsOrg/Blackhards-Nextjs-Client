@@ -6,6 +6,8 @@ import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 import GameUploadCheck from "@/components/ui-elements/radios/GameUploadCheck";
 import { IPackagePlans, IPlans } from "@/types";
 import PlansSelectOptionsInput from "../../option/PlanSelectOptionsInput";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
 
 
 const data = {
@@ -65,7 +67,9 @@ const data = {
 
     ]
 }
-export default function PackagePlans({ gameTitle, setGameTitle }: IPackagePlans) {
+export default function PackagePlans({
+    // gameTitle, setGameTitle
+}: IPackagePlans) {
     const [getGenre, setGenre] = useState<{
         option: string,
         value: string
@@ -73,8 +77,9 @@ export default function PackagePlans({ gameTitle, setGameTitle }: IPackagePlans)
         option: "",
         value: "",
     });
-    const [isAIPricingChosen, setIsAIPricingChosen] = useState("yes")
-    const [plans, setPlans] = useState<IPlans>(gameTitle.plans ? gameTitle.plans : {
+    const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+    const dispatch = useAppDispatch()
+    const [plans, setPlans] = useState<IPlans>(gameTitle && gameTitle.plans ? gameTitle.plans : {
         basic: {
             type: "basic",
             price: 0,
@@ -119,7 +124,9 @@ export default function PackagePlans({ gameTitle, setGameTitle }: IPackagePlans)
 
     useEffect(() => {
         console.log(gameTitle)
-        setGameTitle(old => ({ ...old, plans: plans }))
+        // setGameTitle(old => ({ ...old, plans: plans }))
+        dispatch(gameTitleCreateSuccess({ ...gameTitle, plans: plans }))
+
     }, [plans])
 
     return (

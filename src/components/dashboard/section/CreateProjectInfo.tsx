@@ -1,4 +1,4 @@
-import { IGameTitle, IPageProgress } from "@/types";
+import { IGameTitle, IPageProgress, IPlans } from "@/types";
 import DashboardNavigation from "../header/DashboardNavigation";
 import BasicInformation from "./BasicInformation2";
 import UploadAttachment from "./UploadAttachment";
@@ -9,30 +9,19 @@ import UploadProgressBar from "./game-upload/UploadProgressBar";
 import SummaryAndPublish from "./game-upload/SummaryAndPublish";
 import GameTabs from "./game-upload/GameTabs";
 import FLyLoad from "@/components/loading/FLyLoad";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { createGameTitle } from "@/redux/features/gametitle/api/gameTitleApi";
+
 
 
 
 export default function CreateProjectInfo() {
-  const [gameTitle, setGameTitle] = useState<IGameTitle>({
-    developerEmail: "",
-    gameFileLink: "",
-    title: "",
-    description: "",
-    gamePlayScreenShots: [""],
-    gamePlayVideo: "",
-    genre: [""],
-    tags: [""],
-    targetPlatform: [""],
-    price: 0,
-    saleType: "",
-    releaseDate: "",
-    legal: "",
-    ageRating: "",
-    developerId: "",
-    gameRating: 0,
-    gamePlays: 0,
-  })
+  const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+  const user = useAppSelector(state => state.auth.user)
 
+  const gameTitleLoad = useAppSelector(state => state.gametitle)
+
+  const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -48,9 +37,22 @@ export default function CreateProjectInfo() {
     })
     let nextPageNumber = getCurrentPageState + 1 < getPageProgress.length ? getCurrentPageState + 1 : getCurrentPageState
 
-    setCurrentPageState(nextPageNumber)
-    setCurrentTab(nextPageNumber)
-    setLoading(false)
+    if (nextPageNumber == 3 && user) {
+      dispatch(createGameTitle({
+        ...gameTitle,
+        gamePlayVideo: "https://res.cloudinary.com/norvirae/video/upload/v1700744027/y2mate.com_-_Farlight_84_Official_Gameplay_Launch_Trailer_Farlight_84_720p_2_uvtz1i.mp4",
+        gamePlayScreenShots: [
+          "https://res.cloudinary.com/norvirae/image/upload/v1700743677/dhsqpz5iebyzwg0g8s92.jpg",
+          "https://res.cloudinary.com/norvirae/image/upload/v1700571324/test-image-1_kmdrlc.jpg"
+        ]
+      }, user.token))
+    } else {
+
+      console.log(nextPageNumber, "HULA")
+      setCurrentPageState(nextPageNumber)
+      setCurrentTab(nextPageNumber)
+      setLoading(false)
+    }
 
   }
 
@@ -59,6 +61,9 @@ export default function CreateProjectInfo() {
     console.log(getCurrentPageState, "WhatsaAAAAA", prevPageNumber)
 
     setCurrentPageState(prevPageNumber)
+
+
+
     setCurrentTab(prevPageNumber)
   }
   // #endregion Handlers
@@ -112,10 +117,10 @@ export default function CreateProjectInfo() {
                 handleGameSubmit(e)
               }}
                 type="submit"
-                style={{ opacity: loading ? .5 : 1 }}
-                disabled={loading}
+                style={{ opacity: gameTitleLoad.loading.gameTitleCreate ? .5 : 1 }}
+                disabled={gameTitleLoad.loading.gameTitleCreate}
                 className="ud-btn btn-thm p-2 px-3" >
-                {loading ? <FLyLoad /> :
+                {gameTitleLoad.loading.gameTitleCreate ? <FLyLoad /> :
                   <>
                     <span>{getCurrentPageState == getPageProgress.length - 1 ? "Publish" : "Save & Continue"}</span>
                     <i className="fal fa-arrow-right-long" />
@@ -134,8 +139,8 @@ export default function CreateProjectInfo() {
               setLoading={setLoading}
               currentTab={currentTab}
               setCurrentTab={setCurrentTab}
-              gameTitle={gameTitle}
-              setGameTitle={setGameTitle}
+              // gameTitle={gameTitle}
+              // setGameTitle={setGameTitle}
               getPageProgress={getPageProgress}
               setGetPageProgress={setGetPageProgress}
               getCurrentPageState={getCurrentPageState}
