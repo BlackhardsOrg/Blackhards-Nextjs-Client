@@ -44,16 +44,16 @@ export default function ShopSingleAreaInfo1() {
                 <div className="grids">
                   <h4 className="title mb20">Details</h4>
                   <p className="mb25 text fz15">
-                    Do you want to become a UI/UX designer but you don't know
+                    Do you want to become a UI/UX designer but you don&apos;t know
                     where to start? This course will allow you to develop your
                     user interface design skills and you can add UI designer to
                     your CV and start getting clients for your skills.
                   </p>
                   <p className="mb25 text fz15">
-                    Hi everyone. I'm Arash and I'm a UI/UX designer. In this
+                    Hi everyone. I&apos;m Arash and I&apos;m a UI/UX designer. In this
                     course, I will help you learn and master Figma app
                     comprehensively from scratch. Figma is an innovative and
-                    brilliant tool for User Interface design. It's used by
+                    brilliant tool for User Interface design. It&apos;s used by
                     everyone from entrepreneurs and start-ups to Apple, Airbnb,
                     Facebook, etc.
                   </p>

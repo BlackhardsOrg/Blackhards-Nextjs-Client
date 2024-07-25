@@ -24,7 +24,7 @@ export default function DeleteModal() {
                 </h4>
                 <p className="text-center">
                   Do you really want to delete your these record ? This process
-                  can't be undo.
+                  can&apos;t be undo.
                 </p>
               </div>
               <div className="d-flex justify-content-center gap-3 ">

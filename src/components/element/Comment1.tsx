@@ -35,9 +35,9 @@ export default function Comment1() {
               <p className="text mt20 mb20">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
+                injected humour, or randomised words which don&apos;t look even
                 slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn't anything embarrassing
+                Ipsum, you need to be sure there isn&apos;t anything embarrassing
                 hidden in the middle of text.
               </p>
               <div className="review_cansel_btns d-flex">
@@ -68,9 +68,9 @@ export default function Comment1() {
               <p className="text mt20 mb20">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
+                injected humour, or randomised words which don&apos;t look even
                 slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn't anything embarrassing
+                Ipsum, you need to be sure there isn&apos;t anything embarrassing
                 hidden in the middle of text.
               </p>
               <div className="review_cansel_btns d-flex pb30">

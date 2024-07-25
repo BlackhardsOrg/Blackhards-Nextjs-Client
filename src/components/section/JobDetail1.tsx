@@ -1,6 +1,6 @@
 import { job1 } from "@/data/job";
-import { Link } from "react-router-dom";
 import JobCard5 from "../card/JobCard5";
+import Link from "next/link";
 
 export default function JobDetail1() {
   return (
@@ -61,13 +61,13 @@ export default function JobDetail1() {
                   It is a long established fact that a reader will be distracted
                   by the readable content of a page when looking at its layout.
                   The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.{" "}
+                  normal distribution of letters, as opposed to using &apos;Content
+                  here, content here&apos;, making it look like readable English.{" "}
                 </p>
                 <p className="text mb60">
                   Many desktop publishing packages and web page editors now use
                   Lorem Ipsum as their default model text, and a search for
-                  'lorem ipsum' will uncover many web sites still in their
+                  &apos;lorem ipsum&apos; will uncover many web sites still in their
                   infancy. Various versions have evolved over the years,
                   sometimes by accident, sometimes on purpose (injected humour
                   and the like).
@@ -143,7 +143,7 @@ export default function JobDetail1() {
                   </li>
                 </ul>
                 <div className="d-grid mb60">
-                  <Link to="/contact" className="ud-btn btn-thm2">
+                  <Link href="/contact" className="ud-btn btn-thm2">
                     Apply For Job
                     <i className="fal fa-arrow-right-long" />
                   </Link>

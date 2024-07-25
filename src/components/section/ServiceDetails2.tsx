@@ -8,14 +8,15 @@ import { Sticky, StickyContainer } from "react-sticky";
 import useScreen from "@/hook/useScreen";
 import ServiceContactWidget1 from "../element/ServiceContactWidget1";
 
-import { useParams } from "react-router-dom";
 import { product1 } from "@/data/product";
+import { useRouter } from "next/router";
 
 export default function ServiceDetail2() {
   const isMatchedScreen = useScreen(1216);
-  const { id } = useParams();
+  const router = useRouter()
+  const { id } = router.query
 
-  const data = product1.find((item) => item.id == id);
+  const data = product1.find((item) => item.id == Number(id));
 
   return (
     <>
@@ -72,7 +73,7 @@ export default function ServiceDetail2() {
                       distracted by the readable content of a page when looking
                       at its layout. The point of using Lorem Ipsum is that it
                       has a more-or-less normal distribution of letters, as
-                      opposed to using 'Content here, content here', making it
+                      opposed to using &apos;Content here, content here&apos;, making it
                       look like readable English.
                     </p>
                     <p className="text mb-0">Services I provide:</p>
@@ -84,7 +85,7 @@ export default function ServiceDetail2() {
                     <p className="text mb30">
                       Many desktop publishing packages and web page editors now
                       use Lorem Ipsum as their default model text, and a search
-                      for 'lorem ipsum' will uncover many web sites still in
+                      for &apos;lorem ipsum&apos; will uncover many web sites still in
                       their infancy. Various versions have evolved over the
                       years, sometimes by accident, sometimes on purpose
                       (injected humour and the like).

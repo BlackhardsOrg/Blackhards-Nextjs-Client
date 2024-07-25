@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function PageNotFound() {
   return (
@@ -26,13 +26,13 @@ export default function PageNotFound() {
                   40<span className="text-thm">4</span>
                 </div>
                 <div className="h2 error_title">
-                  Oops! It looks like you're lost.
+                  Oops! It looks like you&apos;re lost.
                 </div>
                 <p className="text fz15 mb20">
-                  The page you're looking for isn't available. Try to search
+                  The page you&apos;re looking for isn&apos;t available. Try to search
                   again or use the go <br className="d-none d-lg-block" /> to.
                 </p>
-                <Link to="/" className="ud-btn btn-thm">
+                <Link href="/" className="ud-btn btn-thm">
                   Go back to home
                   <i className="fal fa-arrow-right-long" />
                 </Link>

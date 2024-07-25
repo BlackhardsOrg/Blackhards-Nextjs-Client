@@ -80,7 +80,7 @@ export default function MessageBox() {
                   alt="ms5.png"
                 />
               </div>
-              <p>The project finally complete! Let's go to!.</p>
+              <p>The project finally complete! Let&apos;s go to!.</p>
             </li>
             <li className="sent float-start">
               <div className="d-flex align-items-center mb15">
@@ -93,7 +93,7 @@ export default function MessageBox() {
                   Albert Flores <small className="ml10">35 mins</small>
                 </div>
               </div>
-              <p>Let's go!</p>
+              <p>Let&apos;s go!</p>
             </li>
             <li className="sent float-start">
               <div className="d-flex align-items-center mb15">
@@ -108,7 +108,7 @@ export default function MessageBox() {
               </div>
               <p>
                 simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's
+                Lorem Ipsum has been the industry&apos;s
               </p>
             </li>
             <li className="sent float-start">
@@ -137,7 +137,7 @@ export default function MessageBox() {
               </div>
               <p>
                 simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's
+                Lorem Ipsum has been the industry&apos;s
               </p>
             </li>
             <li className="reply float-end">
@@ -164,7 +164,7 @@ export default function MessageBox() {
                   alt="ms3.png"
                 />
               </div>
-              <p>The project finally complete! Let's go to!</p>
+              <p>The project finally complete! Let&apos;s go to!</p>
             </li>
             <li className="sent float-start">
               <div className="d-flex align-items-center mb15">
@@ -177,7 +177,7 @@ export default function MessageBox() {
                   Albert Flores <small className="ml10">35 mins</small>
                 </div>
               </div>
-              <p>Let's go!</p>
+              <p>Let&apos;s go!</p>
             </li>
             <li className="sent float-start">
               <div className="d-flex align-items-center mb15">
@@ -192,7 +192,7 @@ export default function MessageBox() {
               </div>
               <p>
                 simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's
+                Lorem Ipsum has been the industry&apos;s
               </p>
             </li>
             <li className="reply float-end">
@@ -219,7 +219,7 @@ export default function MessageBox() {
                   alt="ms3.png"
                 />
               </div>
-              <p>The project finally complete! Let's go to!</p>
+              <p>The project finally complete! Let&apos;s go to!</p>
             </li>
             <li className="sent float-start">
               <div className="d-flex align-items-center mb15">
@@ -232,7 +232,7 @@ export default function MessageBox() {
                   Albert Flores <small className="ml10">35 mins</small>
                 </div>
               </div>
-              <p>Let's go!</p>
+              <p>Let&apos;s go!</p>
             </li>
             <li className="sent float-start">
               <div className="d-flex align-items-center mb15">
@@ -247,7 +247,7 @@ export default function MessageBox() {
               </div>
               <p>
                 simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's
+                Lorem Ipsum has been the industry&apos;s
               </p>
             </li>
           </ul>

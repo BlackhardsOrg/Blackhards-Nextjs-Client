@@ -6,8 +6,8 @@ import AuctionPriceWidget from "../element/AuctionPriceWidget";
 import AuctionContactWidget from "../element/AuctionContactWidget";
 import useScreen from "@/hook/useScreen";
 
-import { useParams } from "react-router-dom";
 import AuctionDetailSlider from "../element/AuctionDetailSlider";
+import { useRouter } from "next/router";
 
 const skills = [
   "SaaS",
@@ -22,9 +22,11 @@ const skills = [
 
 export default function ProjectDetail2() {
   const isMatchedScreen = useScreen(1216);
-  const { id } = useParams();
+  const router = useRouter()
+  const { id } = router.query
+  // const { id } = useParams();
 
-  const data = project1.find((item) => item.id == id);
+  const data = project1.find((item) => item.id == Number(id));
 
   return (
     <>
@@ -150,13 +152,13 @@ export default function ProjectDetail2() {
                         distracted by the readable content of a page when
                         looking at its layout. The point of using Lorem Ipsum is
                         that it has a more-or-less normal distribution of
-                        letters, as opposed to using 'Content here, content
-                        here', making it look like readable English.{" "}
+                        letters, as opposed to using &apos;Content here, content
+                        here&apos;, making it look like readable English.{" "}
                       </p>
                       <p className="text mb30">
                         Many desktop publishing packages and web page editors
                         now use Lorem Ipsum as their default model text, and a
-                        search for 'lorem ipsum' will uncover many web sites
+                        search for &apos;lorem ipsum&apos; will uncover many web sites
                         still in their infancy. Various versions have evolved
                         over the years, sometimes by accident, sometimes on
                         purpose (injected humour and the like).
@@ -185,9 +187,8 @@ export default function ProjectDetail2() {
                         {skills.map((item, i) => (
                           <a
                             key={i}
-                            className={`tag list-inline-item mb-2 mb-xl-0 ${
-                              Number(item.length) === 7 ? "mr0" : "mr10"
-                            }`}
+                            className={`tag list-inline-item mb-2 mb-xl-0 ${Number(item.length) === 7 ? "mr0" : "mr10"
+                              }`}
                           >
                             {item}
                           </a>
@@ -226,7 +227,7 @@ export default function ProjectDetail2() {
                                 <input
                                   type="text"
                                   className="form-control"
-                                  placeholder={4}
+                                  placeholder={"4"}
                                 />
                               </div>
                             </div>
