@@ -7,24 +7,24 @@ import priceStore from "@/store/priceStore";
 import listingStore from "@/store/listingStore";
 
 export default function ShopArea1() {
-  const getCategory = listingStore((state) => state.getCategory);
-  const priceRange = priceStore((state) => state.priceRange);
-  const getBestSeller = listingStore((state) => state.getBestSeller);
-  const getSearch = listingStore((state) => state.getSearch);
+  const getCategory = listingStore((state: any) => state.getCategory);
+  const priceRange = priceStore((state: any) => state.priceRange);
+  const getBestSeller = listingStore((state: any) => state.getBestSeller);
+  const getSearch = listingStore((state: any) => state.getSearch);
 
   // category filter
-  const categoryFilter = (item) =>
+  const categoryFilter = (item: any) =>
     getCategory?.length !== 0 ? getCategory.includes(item.category) : item;
 
   // salary filter
-  const salaryFilter = (item) =>
+  const salaryFilter = (item: any) =>
     priceRange.min <= item.price && priceRange.max >= item.price;
 
   // sort by filter
-  const sortByFilter = (item) =>
+  const sortByFilter = (item: any) =>
     getBestSeller === "best-seller" ? item : item.sort === getBestSeller;
 
-  const searchFilter = (item) =>
+  const searchFilter = (item: any) =>
     getSearch !== ""
       ? item.title.toLowerCase().includes(getSearch.toLowerCase())
       : item;

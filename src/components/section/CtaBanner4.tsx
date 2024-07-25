@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export default function CtaBanner4() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>
@@ -11,7 +11,7 @@ export default function CtaBanner4() {
           src={
             pathname === "/about-2"
               ? "/images/about/about-7.jpg"
-              : pathname === "/home-3" && "/images/about/about-9.jpg"
+              : pathname === "/home-3" ? "/images/about/about-9.jpg" : ""
           }
           alt="about"
         />

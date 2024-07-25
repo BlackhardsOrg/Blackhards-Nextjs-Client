@@ -2,11 +2,11 @@ import { bestSeller } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function SortOption2() {
-  const getBestSeller = listingStore((state) => state.getBestSeller);
-  const setBestSeller = listingStore((state) => state.setBestSeller);
+  const getBestSeller = listingStore((state: any) => state.getBestSeller);
+  const setBestSeller = listingStore((state: any) => state.setBestSeller);
 
   // handle
-  const bestSellerHandler = (data) => {
+  const bestSellerHandler = (data: any) => {
     setBestSeller(data);
   };
 
@@ -28,7 +28,7 @@ export default function SortOption2() {
               <div className="filter-option">
                 <div className="filter-option-inner">
                   <div className="filter-option-inner-inner">
-                    {getBestSellerSelected.title}
+                    {getBestSellerSelected && getBestSellerSelected.title}
                   </div>
                 </div>
               </div>

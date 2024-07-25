@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "@/redux/app/store";
 import { useEffect } from "react";
-import WOW from 'wow.js'
+// import WOW from 'wow.js'
 import { useRouter } from "next/router";
 import PlaceBidModal from "@/components/modal/PlaceBidModal";
 import LogoutModal from "@/components/modal/LogoutModal";

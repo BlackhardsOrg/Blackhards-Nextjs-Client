@@ -7,7 +7,7 @@ export default function PaymentMethod() {
   const [methodSelect, setMethodSelect] = useState("Paypal");
 
   // handler
-  const methodHandler = (data) => {
+  const methodHandler = (data: any) => {
     setMethodSelect(data);
   };
   return (
@@ -38,9 +38,8 @@ export default function PaymentMethod() {
                   {method.map((item, i) => (
                     <li key={i} className="selected active">
                       <a
-                        className={`dropdown-item ${
-                          methodSelect === item ? "selected active" : ""
-                        }`}
+                        className={`dropdown-item ${methodSelect === item ? "selected active" : ""
+                          }`}
                         onClick={() => methodHandler(item)}
                       >
                         <span className="text">{item}</span>
@@ -59,9 +58,8 @@ export default function PaymentMethod() {
           {method.map((item, i) => (
             <li key={i} className="nav-item">
               <button
-                className={`nav-link fw500 dark-color ${
-                  methodSelect === item ? "active" : ""
-                }`}
+                className={`nav-link fw500 dark-color ${methodSelect === item ? "active" : ""
+                  }`}
                 onClick={() => methodHandler(item)}
               >
                 {item}

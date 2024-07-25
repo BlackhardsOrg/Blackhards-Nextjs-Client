@@ -2,8 +2,8 @@ import { noOfEmployee } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function NoOfEmployeeOption1() {
-  const getNoOfEmployee = listingStore((state) => state.getNoOfEmployee);
-  const setNoOfEmployee = listingStore((state) => state.setNoOfEmployee);
+  const getNoOfEmployee = listingStore((state: any) => state.getNoOfEmployee);
+  const setNoOfEmployee = listingStore((state: any) => state.setNoOfEmployee);
 
   return (
     <>

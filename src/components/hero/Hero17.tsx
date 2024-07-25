@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import React from "react";
 
 export default function Hero17() {
@@ -18,11 +18,11 @@ export default function Hero17() {
                 out of your time and cost
               </p>
               <div className="d-sm-flex align-items-center mt30 animate-up-3">
-                <Link to="/job-1" className="ud-btn btn-1 me-3 bdrs120 btn-1">
+                <Link href="/job-1" className="ud-btn btn-1 me-3 bdrs120 btn-1">
                   Find Work
                 </Link>
                 <Link
-                  to="/freelancer-1"
+                  href="/freelancer-1"
                   className="ud-btn btn-2 bdr1 bdrs120 btn-2"
                 >
                   Find Talent

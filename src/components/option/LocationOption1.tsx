@@ -3,11 +3,11 @@ import Search1 from "../element/Search1";
 import listingStore from "@/store/listingStore";
 
 export default function LocationOption1() {
-  const getLocation = listingStore((state) => state.getLocation);
-  const setLocation = listingStore((state) => state.setLocation);
+  const getLocation = listingStore((state: any) => state.getLocation);
+  const setLocation = listingStore((state: any) => state.setLocation);
 
   // handler
-  const locationHandler = (data) => {
+  const locationHandler = (data: any) => {
     setLocation(data);
   };
 

@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 
+//@ts-ignore
 import { Navigation, Pagination } from "swiper";
 
 import TrendingGameCard from "../card/TrendingGameCard";

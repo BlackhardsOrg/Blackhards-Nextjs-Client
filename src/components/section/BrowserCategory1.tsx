@@ -4,14 +4,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper";
-import { useLocation } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+//@ts-ignore
+import { Navigation, Pagination } from "swiper";
+
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function BrowserCategory1() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>
@@ -33,7 +34,7 @@ export default function BrowserCategory1() {
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-4 mb-lg-2">
-                <Link className="ud-btn2" to="/service-2">
+                <Link className="ud-btn2" href="/service-2">
                   All Categories
                   <i className="fal fa-arrow-right-long" />
                 </Link>

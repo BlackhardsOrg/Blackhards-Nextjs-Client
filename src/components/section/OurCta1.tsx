@@ -1,21 +1,19 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-
+import Link from "next/link";
+import { useRouter } from "next/router";
 export default function OurCta1() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>
       <section
-        className={`our-cta pt90 pb90 pt60-md pb60-md mt100 mt0-lg ${
-          pathname === "/" || pathname === "/about-1"
+        className={`our-cta pt90 pb90 pt60-md pb60-md mt100 mt0-lg ${pathname === "/" || pathname === "/about-1"
             ? "bgc-thm4"
             : pathname === "/home-3"
-            ? "cta-home3-last"
-            : pathname === "/home-10"
-            ? "cta-home3-last mt150 bdrs24"
-            : ""
-        }`}
+              ? "cta-home3-last"
+              : pathname === "/home-10"
+                ? "cta-home3-last mt150 bdrs24"
+                : ""
+          }`}
       >
         <div className="container">
           <div className="row justify-content-between">
@@ -28,7 +26,7 @@ export default function OurCta1() {
                   Advertise your jobs to millions of monthly users and search
                   15.8 million CVs
                 </p>
-                <Link to="/contact" className="ud-btn btn-thm2">
+                <Link href="/contact" className="ud-btn btn-thm2">
                   Get Started <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
@@ -41,8 +39,8 @@ export default function OurCta1() {
                     pathname === "/" || pathname === "/about-1"
                       ? "/images/about/about-3.png"
                       : pathname === "/home-3" || pathname === "/home-10"
-                      ? "/images/about/about-5.png"
-                      : ""
+                        ? "/images/about/about-5.png"
+                        : ""
                   }
                   alt="woman"
                 />

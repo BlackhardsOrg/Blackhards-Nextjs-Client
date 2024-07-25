@@ -13,8 +13,9 @@ import OurPartner1 from "@/components/section/OurPartner1";
 import CTa13 from "@/components/section/CTa13";
 
 import MetaComponent from "@/components/common/MetaComponent";
-import TrendingAuctions from "../../components/section/TrendingAuctions";
-import TrendingGames from "../../components/section/Trendinggames";
+import TrendingAuctions from "@/components/section/TrendingAuctions";
+import TrendingGames from "@/components/section/TrendingGames";
+// src\components\section\TrendingGames.tsx
 const metadata = {
   title: "Blackhards - AI Game Marketplace | Home",
 };

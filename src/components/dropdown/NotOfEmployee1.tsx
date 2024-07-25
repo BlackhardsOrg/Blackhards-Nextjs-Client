@@ -3,13 +3,13 @@ import listingStore from "@/store/listingStore";
 import { useEffect, useState } from "react";
 
 export default function NotOfEmployee1() {
-  const [getNoOfEmployee, setNoOfEmployee] = useState([]);
+  const [getNoOfEmployee, setNoOfEmployee] = useState<any[]>([]);
 
-  const setNoOfEmployeeState = listingStore((state) => state.setNoOfEmployee);
-  const getNoOfEmployeeState = listingStore((state) => state.getNoOfEmployee);
+  const setNoOfEmployeeState = listingStore((state: any) => state.setNoOfEmployee);
+  const getNoOfEmployeeState = listingStore((state: any) => state.getNoOfEmployee);
 
   // handler
-  const noOfEmployeeHandler = (data) => {
+  const noOfEmployeeHandler = (data: any) => {
     if (!getNoOfEmployee.includes(data)) {
       return setNoOfEmployee([...getNoOfEmployee, data]);
     }

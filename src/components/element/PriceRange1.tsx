@@ -2,11 +2,11 @@ import priceStore from "@/store/priceStore";
 import ReactSlider from "react-slider";
 
 export default function PriceRange1() {
-  const priceRange = priceStore((state) => state.priceRange);
-  const priceRangeHandler = priceStore((state) => state.priceRangeHandler);
+  const priceRange = priceStore((state: any) => state.priceRange);
+  const priceRangeHandler = priceStore((state: any) => state.priceRangeHandler);
 
   // price range handler
-  const rangeHandler = (e) => {
+  const rangeHandler = (e: any) => {
     priceRangeHandler(e[0], e[1]);
   };
 

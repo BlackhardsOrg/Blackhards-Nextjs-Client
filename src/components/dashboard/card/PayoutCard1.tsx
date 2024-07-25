@@ -1,4 +1,4 @@
-export default function PayoutCard1({ data }) {
+export default function PayoutCard1({ data }: any) {
   return (
     <>
       <tr>

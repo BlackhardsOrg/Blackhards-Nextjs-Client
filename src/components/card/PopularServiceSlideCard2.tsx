@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+// @ts-ignore
 import { Navigation, Pagination } from "swiper";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function PopularServiceSlideCard2({ data }) {
+export default function PopularServiceSlideCard2({ data }: any) {
   const [showSwiper, setShowSwiper] = useState(false);
   useEffect(() => {
     setShowSwiper(true);
@@ -31,7 +33,7 @@ export default function PopularServiceSlideCard2({ data }) {
                   clickable: true,
                 }}
               >
-                {data?.gallery?.map((item, index) => (
+                {data?.gallery?.map((item: any, index: any) => (
                   <SwiperSlide key={index}>
                     <img
                       className="w-100 h-100 object-fit-cover"
@@ -67,7 +69,7 @@ export default function PopularServiceSlideCard2({ data }) {
           </a>
           <p className="list-text body-color fz14 mb-1">{data.category}</p>
           <h5 className="list-title">
-            <Link to="/service-single">{data.title}</Link>
+            <Link href="/service-single">{data.title}</Link>
           </h5>
           <div className="review-meta d-flex align-items-center">
             <i className="fas fa-star fz10 review-color me-2" />

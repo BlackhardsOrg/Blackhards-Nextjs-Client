@@ -8,7 +8,7 @@ import LevelOption1 from "../option/LevelOption1";
 import ClearButton from "../button/ClearButton";
 
 export default function ListingSidebarModal1() {
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
 
   return (
     <>

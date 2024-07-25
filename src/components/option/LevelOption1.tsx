@@ -2,11 +2,11 @@ import { level } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function LevelOption1() {
-  const getLevel = listingStore((state) => state.getLevel);
-  const setLevel = listingStore((state) => state.setLevel);
+  const getLevel = listingStore((state: any) => state.getLevel);
+  const setLevel = listingStore((state: any) => state.setLevel);
 
   // handler
-  const levelHandler = (data) => {
+  const levelHandler = (data: any) => {
     setLevel(data);
   };
 

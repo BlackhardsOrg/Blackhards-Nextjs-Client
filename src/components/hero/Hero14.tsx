@@ -1,6 +1,6 @@
 import HeroSearch1 from "../element/HeroSearch1";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useRouter} from "next/router"
 
 const role = ["City, state, or zip", "Miami", "New York"];
 
@@ -8,10 +8,10 @@ export default function Hero14() {
   const [getSelectedRole, setSelectedRole] = useState(null);
 
   // role handler
-  const roleHandler = (select) => {
+  const roleHandler = (select: any) => {
     setSelectedRole(select);
   };
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
   // search handler
   const searchHandler = () => {

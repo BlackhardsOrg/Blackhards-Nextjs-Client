@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-export default function JobCard4({ data }) {
+export default function JobCard4({ data }: any) {
   return (
     <>
       <div className="job-list-style1 bdr1">
@@ -11,14 +11,13 @@ export default function JobCard4({ data }) {
         </div>
         <div className="details">
           <h5 className="mb20">
-            <Link to={`/job-single/${data.id}`}>{data.title}</Link>
+            <Link href={`/job-single/${data.id}`}>{data.title}</Link>
           </h5>
-          {data.benefits.map((item, index) => (
+          {data.benefits.map((item: any, index: any) => (
             <p
               key={index}
-              className={`list-inline-item c ${
-                index !== 0 ? "bdrl1 pl10" : ""
-              }`}
+              className={`list-inline-item c ${index !== 0 ? "bdrl1 pl10" : ""
+                }`}
             >
               {item}
             </p>

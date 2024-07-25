@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Comment1() {
-  const { pathname } = useLocation();
+  const router = useRouter()
+  const { pathname } = router
 
   return (
     <>
@@ -11,9 +12,8 @@ export default function Comment1() {
           <div className="row">
             <div className="col-lg-12">
               <div
-                className={`total_review d-flex align-items-center justify-content-between mb20  ${
-                  pathname !== "/shop-single" ? "mt60" : ""
-                }`}
+                className={`total_review d-flex align-items-center justify-content-between mb20  ${pathname !== "/shop-single" ? "mt60" : ""
+                  }`}
               >
                 <h4 className="mb15">80 Reviews</h4>
               </div>
@@ -86,7 +86,7 @@ export default function Comment1() {
             </div>
             <div className="col-md-12">
               <div className="position-relative bdrb1 pb50">
-                <Link to="/service-single" className="ud-btn btn-light-thm">
+                <Link href="/service-single" className="ud-btn btn-light-thm">
                   See More
                   <i className="fal fa-arrow-right-long" />
                 </Link>

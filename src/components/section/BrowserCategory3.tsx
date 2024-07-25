@@ -3,11 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+//@ts-ignore
 import { Navigation, Pagination } from "swiper";
-import { Link } from "react-router-dom";
 import BrowserCategoryCard3 from "../card/BrowserCategoryCard3";
 import BrowserCategoryCard1 from "../card/BrowserCategoryCard1";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function BrowserCategory3() {
   const [showSwiper, setShowSwiper] = useState(false);
@@ -37,7 +39,7 @@ export default function BrowserCategory3() {
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-4 mb-lg-0">
-                <Link className="ud-btn2" to="/service-single">
+                <Link className="ud-btn2" href="/service-single">
                   All Categories
                   <i className="fal fa-arrow-right-long" />
                 </Link>

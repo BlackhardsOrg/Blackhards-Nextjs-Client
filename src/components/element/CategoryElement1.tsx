@@ -1,4 +1,4 @@
-export default function CategoryElement1({ data }) {
+export default function CategoryElement1({ data }: any) {
   return (
     <>
       <div className="checkbox-style1">

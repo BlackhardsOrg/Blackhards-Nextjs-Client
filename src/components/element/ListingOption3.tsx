@@ -16,14 +16,14 @@ export default function ListingOption3() {
     max: 100000,
   });
 
-  const priceRange = priceStore((state) => state.priceRange);
-  const setPriceRange = priceStore((state) => state.priceRangeHandler);
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
-  const setOurDeliveryTime = listingStore((state) => state.setDeliveryTime);
-  const getDeliveryTime = listingStore((state) => state.getDeliveryTime);
+  const priceRange = priceStore((state: any) => state.priceRange);
+  const setPriceRange = priceStore((state: any) => state.priceRangeHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
+  const setOurDeliveryTime = listingStore((state: any) => state.setDeliveryTime);
+  const getDeliveryTime = listingStore((state: any) => state.getDeliveryTime);
 
   // filters handler
-  const deliveryHandler = (data) => {
+  const deliveryHandler = (data: any) => {
     SetDelivery(data);
   };
 
@@ -31,7 +31,7 @@ export default function ListingOption3() {
     SetDelivery(getDeliveryTime);
   }, [getDeliveryTime]);
 
-  const priceHandler = (data) => {
+  const priceHandler = (data: any) => {
     setPrice({
       min: data[0],
       max: data[1],
@@ -144,7 +144,7 @@ export default function ListingOption3() {
                               onChange={(e) =>
                                 setPrice({
                                   ...getPrice,
-                                  min: e.target.value,
+                                  min: Number(e.target.value),
                                 })
                               }
                             />
@@ -159,7 +159,7 @@ export default function ListingOption3() {
                               onChange={(e) =>
                                 setPrice({
                                   ...getPrice,
-                                  max: e.target.value,
+                                  max: Number(e.target.value),
                                 })
                               }
                             />

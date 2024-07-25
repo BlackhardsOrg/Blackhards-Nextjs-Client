@@ -3,8 +3,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import HeroSearch1 from "../element/HeroSearch1";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router"
 
 const partners = [
   "/images/partners/1.png",
@@ -20,7 +20,7 @@ const heros = [
 ];
 
 export default function Hero7() {
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
   // search handler
   const searchHandler = () => {

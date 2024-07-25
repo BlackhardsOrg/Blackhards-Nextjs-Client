@@ -1,14 +1,14 @@
 import navigation from "@/data/navigation";
 import { isActiveNavigation } from "@/utils/isActiveNavigation";
 
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 import { useRef } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { useRouter } from "next/router"
+import Link from "next/link"
 
 export default function NavSidebar() {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
   const crossRef = useRef(null);
 
   const isEarlyAccess = true;
@@ -23,7 +23,7 @@ export default function NavSidebar() {
         aria-labelledby="offcanvasExampleLabel"
       >
         <div className="offcanvas-header border-bottom">
-          <Link to="/">
+          <Link href="/">
             <img alt="Header Logo" src="/images/Blackhards-white-logo-2.svg" />
           </Link>
           <button
@@ -40,7 +40,7 @@ export default function NavSidebar() {
               <Sidebar>
                 <Menu>
                   <MenuItem
-                    component={<Link to={"/auth/login"} />}
+                    component={<Link href={"/auth/login"} />}
                     className={
                       "/auth/login" === pathname ? "ui-mobile-active" : ""
                     }
@@ -48,7 +48,7 @@ export default function NavSidebar() {
                     <span data-bs-dismiss="offcanvas">Login</span>
                   </MenuItem>
                   <MenuItem
-                    component={<Link to={"/auth/login"} />}
+                    component={<Link href={"/auth/login"} />}
                     className={
                       "/early-join" === pathname ? "ui-mobile-active" : ""
                     }
@@ -85,10 +85,10 @@ export default function NavSidebar() {
                               {item2.children.map((item3, i3) => (
                                 <MenuItem
                                   key={i3}
-                                  component={<Link to={item3.path} />}
+                                  component={<Link href={item3.path} />}
                                   className={
                                     item3.path === pathname ||
-                                    item3.path ===
+                                      item3.path ===
                                       pathname.replace(/\/\d+$/, "")
                                       ? "ui-mobile-active"
                                       : ""
@@ -103,7 +103,7 @@ export default function NavSidebar() {
                           ) : (
                             <MenuItem
                               key={i2}
-                              component={<Link to={item2.path} />}
+                              component={<Link href={item2.path} />}
                               className={
                                 item2.path === pathname
                                   ? "ui-mobile-active"
@@ -120,7 +120,7 @@ export default function NavSidebar() {
                     ) : (
                       <MenuItem
                         key={i}
-                        component={<Link to={item.path} />}
+                        component={<Link href={item.path} />}
                         className={
                           item.path === pathname ? "ui-mobile-active" : ""
                         }

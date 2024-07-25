@@ -2,11 +2,11 @@ import { category } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function CategoryOption1() {
-  const getCategory = listingStore((state) => state.getCategory);
-  const setCategory = listingStore((state) => state.setCategory);
+  const getCategory = listingStore((state: any) => state.getCategory);
+  const setCategory = listingStore((state: any) => state.setCategory);
 
   // handler
-  const categoryHandler = (data) => {
+  const categoryHandler = (data: any) => {
     setCategory(data);
   };
 

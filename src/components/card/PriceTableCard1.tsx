@@ -1,10 +1,10 @@
 import priceStore from "@/store/priceStore";
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 
-export default function PriceTableCard1({ data }) {
-  const price = priceStore((state) => state.plan);
+export default function PriceTableCard1({ data }: any) {
+  const price = priceStore((state: any) => state.plan);
 
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   return (
     <>

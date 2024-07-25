@@ -2,7 +2,7 @@ import priceStore from "@/store/priceStore";
 import PriceRange1 from "../element/PriceRange1";
 
 export default function BudgetOption1() {
-  const getPriceRange = priceStore((state) => state.priceRange);
+  const getPriceRange = priceStore((state: any) => state.priceRange);
   return (
     <>
       <div className="card-body card-body px-0 pt-0">

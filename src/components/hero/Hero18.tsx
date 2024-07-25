@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import React from "react";
 import { Colors } from "chart.js";
+import Link from "next/link";
 
 export default function Hero18() {
   return (
@@ -21,11 +21,11 @@ export default function Hero18() {
                 <b style={{ color: "#F9FCAA" }}> Be The first.</b>
               </p>
               <div className="d-sm-flex align-items-center mt30 animate-up-3">
-                <Link to="/job-1" className="ud-btn  me-3 bdrs120 btn-1">
+                <Link href="/job-1" className="ud-btn  me-3 bdrs120 btn-1">
                   Get Early Access
                 </Link>
                 <Link
-                  to="/freelancer-1"
+                  href="/freelancer-1"
                   className="ud-btn btn-white bdr1 bdrs120 btn-2"
                 >
                   Sign In

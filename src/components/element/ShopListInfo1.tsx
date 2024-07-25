@@ -1,6 +1,6 @@
 import SortOption1 from "../option/SortOption1";
 
-export default function ShopListInfo1({ length }) {
+export default function ShopListInfo1({ length }: any) {
   return (
     <>
       <div className="row mb20">

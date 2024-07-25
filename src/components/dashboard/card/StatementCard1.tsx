@@ -1,4 +1,4 @@
-export default function StatementCard1({ data }) {
+export default function StatementCard1({ data }: any) {
   return (
     <>
       <tr>

@@ -19,21 +19,21 @@ export default function ListingOption1() {
     min: 0,
     max: 100000,
   });
-  const [getLevel, setLevel] = useState([]);
-  const [getLocation, setLocation] = useState([]);
+  const [getLevel, setLevel] = useState<any>([]);
+  const [getLocation, setLocation] = useState<any>([]);
 
-  const priceRange = priceStore((state) => state.priceRange);
-  const setPriceRange = priceStore((state) => state.priceRangeHandler);
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
-  const setOurDeliveryTime = listingStore((state) => state.setDeliveryTime);
-  const getDeliveryTime = listingStore((state) => state.getDeliveryTime);
-  const setOurLevel = listingStore((state) => state.setLevel);
-  const getOurLevel = listingStore((state) => state.getLevel);
-  const getOurLocation = listingStore((state) => state.getLocation);
-  const setOurLocation = listingStore((state) => state.setLocation);
+  const priceRange = priceStore((state: any) => state.priceRange);
+  const setPriceRange = priceStore((state: any) => state.priceRangeHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
+  const setOurDeliveryTime = listingStore((state: any) => state.setDeliveryTime);
+  const getDeliveryTime = listingStore((state: any) => state.getDeliveryTime);
+  const setOurLevel = listingStore((state: any) => state.setLevel);
+  const getOurLevel = listingStore((state: any) => state.getLevel);
+  const getOurLocation = listingStore((state: any) => state.getLocation);
+  const setOurLocation = listingStore((state: any) => state.setLocation);
 
   // filters handler
-  const deliveryHandler = (data) => {
+  const deliveryHandler = (data: any) => {
     SetDelivery(data);
   };
 
@@ -41,7 +41,7 @@ export default function ListingOption1() {
     SetDelivery(getDeliveryTime);
   }, [getDeliveryTime]);
 
-  const priceHandler = (data) => {
+  const priceHandler = (data: any) => {
     setPrice({
       min: data[0],
       max: data[1],
@@ -52,12 +52,12 @@ export default function ListingOption1() {
     setPrice(priceRange);
   }, [priceRange]);
 
-  const levelHandler = (data) => {
+  const levelHandler = (data: any) => {
     const isExist = getLevel.includes(data);
     if (!isExist) {
-      return setLevel((item) => [...item, data]);
+      return setLevel((item: any) => [...item, data]);
     }
-    const deleted = getLevel.filter((item) => item !== data);
+    const deleted = getLevel.filter((item: any) => item !== data);
     setLevel(deleted);
   };
 
@@ -65,12 +65,12 @@ export default function ListingOption1() {
     setLevel(getOurLevel);
   }, [getOurLevel]);
 
-  const locationHandler = (data) => {
+  const locationHandler = (data: any) => {
     const isExist = getLocation.includes(data);
     if (!isExist) {
-      return setLocation((item) => [...item, data]);
+      return setLocation((item: any) => [...item, data]);
     }
-    const deleted = getLocation.filter((item) => item !== data);
+    const deleted = getLocation.filter((item: any) => item !== data);
     setLocation(deleted);
   };
 

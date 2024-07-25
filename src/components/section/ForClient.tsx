@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import React from "react";
 
 export default function ForClient() {
@@ -27,7 +27,7 @@ export default function ForClient() {
                 get things done—from quick turnarounds to big transformations.
               </p>
             </div>
-            <Link to="/contact" className="ud-btn btn-white2 bdrs60">
+            <Link href="/contact" className="ud-btn btn-white2 bdrs60">
               Get Started <i className="fal fa-arrow-right-long"></i>
             </Link>
           </div>
@@ -45,7 +45,7 @@ export default function ForClient() {
                 get things done—from quick turnarounds to big transformations.
               </p>
             </div>
-            <Link to="/contact" className="ud-btn btn-white2 bdrs60">
+            <Link href="/contact" className="ud-btn btn-white2 bdrs60">
               Contact Us <i className="fal fa-arrow-right-long"></i>
             </Link>
           </div>

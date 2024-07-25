@@ -1,5 +1,6 @@
 import { links } from "@/data/links";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+
 
 export default function MobileNavigation1() {
   return (
@@ -9,7 +10,7 @@ export default function MobileNavigation1() {
           <div className="header bb-white-light">
             <div className="menu_and_widgets">
               <div className="mobile_menu_bar d-flex justify-content-between align-items-center">
-                <Link className="mobile_logo" to="/">
+                <Link className="mobile_logo" href="/">
                   <img src="/images/header-logo.svg" alt="Header Logo" />
                 </Link>
                 <div className="right-side text-end">

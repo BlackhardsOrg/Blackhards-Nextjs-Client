@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useScreen(size) {
+export default function useScreen(size: any) {
   const [isMatched, setMatched] = useState(false);
 
   useEffect(() => {

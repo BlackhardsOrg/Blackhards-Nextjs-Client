@@ -1,15 +1,16 @@
 import { price1 } from "@/data/project";
 import PriceTableCard1 from "../card/PriceTableCard1";
 import priceStore from "@/store/priceStore";
-import { useLocation } from "react-router-dom";
+
+import { useRouter } from "next/router"
 
 export default function PriceTable1() {
-  const togglePlan = priceStore((state) => state.togglePlan);
+  const togglePlan = priceStore((state: any) => state.togglePlan);
 
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   // monthly & yearly price handler
-  const checkboxHandler = (e) => {
+  const checkboxHandler = (e: any) => {
     if (e.target.checked) {
       togglePlan("1y");
     } else {
@@ -20,13 +21,12 @@ export default function PriceTable1() {
   return (
     <>
       <section
-        className={`our-pricing ${
-          pathname === "/home-2"
+        className={`our-pricing ${pathname === "/home-2"
             ? "pb90"
             : pathname === "/about-1"
-            ? "pt0 pb0"
-            : ""
-        }`}
+              ? "pt0 pb0"
+              : ""
+          }`}
       >
         <div className="container">
           <div className="row">

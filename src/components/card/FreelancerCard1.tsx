@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-export default function FreelancerCard1({ data }) {
+export default function FreelancerCard1({ data }: any) {
   return (
     <>
       <div className="freelancer-style1 text-center bdr1 hover-box-shadow">
@@ -43,7 +43,7 @@ export default function FreelancerCard1({ data }) {
           </div>
           <div className="d-grid mt15">
             <Link
-              to={`/freelancer-single/${data.id}`}
+              href={`/freelancer-single/${data.id}`}
               className="ud-btn btn-light-thm"
             >
               View Profile

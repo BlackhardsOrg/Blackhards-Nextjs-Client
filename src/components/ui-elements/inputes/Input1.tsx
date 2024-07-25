@@ -1,4 +1,4 @@
-export default function Input1({ lebel, placeholder }) {
+export default function Input1({ lebel, placeholder }: any) {
   return (
     <>
       <div className="form-style1">

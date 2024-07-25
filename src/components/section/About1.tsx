@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function About1() {
   return (
@@ -74,7 +74,7 @@ export default function About1() {
                     </li>
                   </ul>
                 </div>
-                <Link to="/freelancer-1" className="ud-btn btn-thm">
+                <Link href="/freelancer-1" className="ud-btn btn-thm">
                   Find Talent
                   <i className="fal fa-arrow-right-long" />
                 </Link>

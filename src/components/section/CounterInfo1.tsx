@@ -1,6 +1,6 @@
 import CountUp from "react-countup";
 
-export default function CounterInfo1(notBorder) {
+export default function CounterInfo1(notBorder: any) {
   return (
     <>
       <section className="pb0 pt60">

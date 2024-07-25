@@ -2,11 +2,11 @@ import { designTools } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function DesignToolOption1() {
-  const getDesginTool = listingStore((state) => state.getDesginTool);
-  const setDesginTool = listingStore((state) => state.setDesginTool);
+  const getDesginTool = listingStore((state: any) => state.getDesginTool);
+  const setDesginTool = listingStore((state: any) => state.setDesginTool);
 
   // handler
-  const designToolsHandler = (data) => {
+  const designToolsHandler = (data: any) => {
     setDesginTool(data);
   };
 

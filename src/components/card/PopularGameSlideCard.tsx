@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+// @ts-ignore
 import { Navigation, Pagination } from "swiper";
 
 
@@ -33,14 +34,13 @@ export default function PopularGameSlideCard({
     <>
       <div
         className={`listing-style1 ${pathname === "/home-7" ? "style5" : ""} 
-                ${
-                  pathname === "/home-2" ||
-                  pathname === "/home-9" ||
-                  pathname === "/home-16" ||
-                  pathname === "/home-14"
-                    ? "default-box-shadow1 bdrs16"
-                    : ""
-                } 
+                ${pathname === "/home-2" ||
+            pathname === "/home-9" ||
+            pathname === "/home-16" ||
+            pathname === "/home-14"
+            ? "default-box-shadow1 bdrs16"
+            : ""
+          } 
                 ${style}`}
         style={
           pathname === "/home-20" ? { border: "none", boxShadow: "none" } : {}
@@ -92,9 +92,8 @@ export default function PopularGameSlideCard({
 
               <a
                 onClick={() => setFavActive(!isFavActive)}
-                className={`listing-fav fz12 z-1 ${
-                  isFavActive ? "ui-fav-active" : ""
-                }`}
+                className={`listing-fav fz12 z-1 ${isFavActive ? "ui-fav-active" : ""
+                  }`}
               >
                 <span className="far fa-heart" />
               </a>

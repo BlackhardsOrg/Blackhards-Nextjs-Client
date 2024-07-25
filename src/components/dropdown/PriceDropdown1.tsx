@@ -8,10 +8,10 @@ export default function PriceDropdown1() {
     max: 100000,
   });
 
-  const priceRange = priceStore((state) => state.priceRange);
-  const setPriceRange = priceStore((state) => state.priceRangeHandler);
+  const priceRange = priceStore((state: any) => state.priceRange);
+  const setPriceRange = priceStore((state: any) => state.priceRangeHandler);
 
-  const priceHandler = (data) => {
+  const priceHandler = (data: any) => {
     setPrice({
       min: data[0],
       max: data[1],
@@ -46,7 +46,7 @@ export default function PriceDropdown1() {
                 placeholder="$20"
                 min={0}
                 value={getPrice.min}
-                onChange={(e) =>
+                onChange={(e: any) =>
                   setPrice({
                     ...getPrice,
                     min: e.target.value,
@@ -61,7 +61,7 @@ export default function PriceDropdown1() {
                 min={0}
                 max={100000}
                 value={getPrice.max}
-                onChange={(e) =>
+                onChange={(e: any) =>
                   setPrice({
                     ...getPrice,
                     max: e.target.value,

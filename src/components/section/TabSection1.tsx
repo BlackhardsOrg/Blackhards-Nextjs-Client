@@ -22,6 +22,7 @@ export default function TabSection1() {
 
   const { pathname } = useRouter();
 
+  
   return (
     <>
       <section

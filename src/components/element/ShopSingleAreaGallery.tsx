@@ -1,14 +1,16 @@
 import { shopProduct1 } from "@/data/product";
 import FsLightbox from "fslightbox-react";
+import { useRouter } from "next/router";
 
-import { useParams } from "react-router-dom";
 import { useState } from "react";
 
 export default function ShopSingleAreaGallery() {
   const [toggler, setToggler] = useState(false);
-  const param = useParams();
 
-  const data = shopProduct1.find((product) => product.id == param.id);
+  const router = useRouter()
+  const { id } = router.query
+
+  const data = shopProduct1.find((product) => product.id == Number(id));
 
   return (
     <>
@@ -18,13 +20,13 @@ export default function ShopSingleAreaGallery() {
           data
             ? data.gallery
             : [
-                "/images/shop/shop-single-1.png",
-                "/images/shop/shop-single-1.png",
-                "/images/shop/shop-single-1.png",
-                "/images/shop/shop-single-1.png",
-                "/images/shop/shop-single-1.png",
-                "/images/shop/shop-single-1.png",
-              ]
+              "/images/shop/shop-single-1.png",
+              "/images/shop/shop-single-1.png",
+              "/images/shop/shop-single-1.png",
+              "/images/shop/shop-single-1.png",
+              "/images/shop/shop-single-1.png",
+              "/images/shop/shop-single-1.png",
+            ]
         }
       />
       <div className="shop-single">

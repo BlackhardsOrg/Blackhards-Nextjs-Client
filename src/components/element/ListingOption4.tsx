@@ -7,7 +7,7 @@ import LevelDropdown1 from "../dropdown/LevelDropdown1";
 import toggleStore from "@/store/toggleStore";
 
 export default function ListingOption4() {
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
 
   return (
     <>

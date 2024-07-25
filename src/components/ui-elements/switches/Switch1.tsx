@@ -1,4 +1,4 @@
-export default function Switch1({ i }) {
+export default function Switch1({ i }: any) {
   return (
     <>
       <div className="switch-style1">

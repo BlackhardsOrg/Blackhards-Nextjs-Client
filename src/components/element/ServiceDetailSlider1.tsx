@@ -13,7 +13,7 @@ const gigImages = [
 ];
 
 export default function ServiceDetailSlider1() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
     <>

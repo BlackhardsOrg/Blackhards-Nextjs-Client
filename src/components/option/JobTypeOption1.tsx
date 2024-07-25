@@ -2,11 +2,11 @@ import { jobType } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function JobTypeOption1() {
-  const getJobType = listingStore((state) => state.getJobType);
-  const setJobType = listingStore((state) => state.setJobType);
+  const getJobType = listingStore((state: any) => state.getJobType);
+  const setJobType = listingStore((state: any) => state.setJobType);
 
   // handler
-  const jobTypeHandlere = (data) => {
+  const jobTypeHandlere = (data: any) => {
     setJobType(data);
   };
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HeroSearch1 from "../element/HeroSearch1";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router"
 
 const role = [
   "Choose Category",
@@ -20,14 +20,14 @@ const partners = [
 ];
 
 export default function Hero3() {
-  const [getSelectedRole, setSelectedRole] = useState(null);
+  const [getSelectedRole, setSelectedRole] = useState<any>(null);
 
   // choose a category
-  const roleHandler = (select) => {
+  const roleHandler = (select: any) => {
     setSelectedRole(select);
   };
 
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
   // search handler
   const searchHandler = () => {
@@ -88,9 +88,8 @@ export default function Hero3() {
                                     className="selected active"
                                   >
                                     <a
-                                      className={`dropdown-item selected ${
-                                        getSelectedRole === item ? "active" : ""
-                                      }`}
+                                      className={`dropdown-item selected ${getSelectedRole === item ? "active" : ""
+                                        }`}
                                     >
                                       <span className="text">{item}</span>
                                     </a>

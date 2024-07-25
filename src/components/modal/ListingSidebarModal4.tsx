@@ -4,7 +4,7 @@ import ClearButton from "../button/ClearButton";
 import NoOfEmployeeOption1 from "../option/NoOfEmployeeOption1";
 
 export default function ListingSidebarModal4() {
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
 
   return (
     <>

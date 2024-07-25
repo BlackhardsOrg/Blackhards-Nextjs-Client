@@ -6,7 +6,7 @@ export default function Breadcumb14() {
   const [getSelectedRole, setSelectedRole] = useState(null);
 
   // role handler
-  const roleHandler = (select) => {
+  const roleHandler = (select: any) => {
     setSelectedRole(select);
   };
 

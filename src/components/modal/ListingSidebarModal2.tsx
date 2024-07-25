@@ -9,7 +9,7 @@ import EnglishLevelOption1 from "../option/EnglishLevelOption1";
 import ClearButton from "../button/ClearButton";
 
 export default function ListingSidebarModal2() {
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
 
   return (
     <>

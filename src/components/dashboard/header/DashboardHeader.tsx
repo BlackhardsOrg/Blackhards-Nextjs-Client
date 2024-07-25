@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 
 export default function DashboardHeader() {
-  const toggle = toggleStore((state) => state.dashboardSlidebarToggleHandler);
+  const toggle = toggleStore((state: any) => state.dashboardSlidebarToggleHandler);
   const { pathname } = useRouter();
 
   return (

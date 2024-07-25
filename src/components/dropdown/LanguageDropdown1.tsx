@@ -3,13 +3,13 @@ import listingStore from "@/store/listingStore";
 import { useEffect, useState } from "react";
 
 export default function LanguageDropdown1() {
-  const [getSpeak, setSpeak] = useState([]);
+  const [getSpeak, setSpeak] = useState<any[]>([]);
 
-  const setSpeakState = listingStore((state) => state.setSpeak);
-  const getSpeakState = listingStore((state) => state.getSpeak);
+  const setSpeakState = listingStore((state: any) => state.setSpeak);
+  const getSpeakState = listingStore((state: any) => state.getSpeak);
 
   // handler
-  const speakHandler = (data) => {
+  const speakHandler = (data: any) => {
     if (!getSpeak.includes(data)) {
       return setSpeak([...getSpeak, data]);
     }

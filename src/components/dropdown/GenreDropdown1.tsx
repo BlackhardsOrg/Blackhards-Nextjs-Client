@@ -3,15 +3,15 @@ import listingStore from "@/store/listingStore";
 import { useEffect, useState } from "react";
 
 export default function GenreDropdown1() {
-  const [getGenre, setGenre] = useState([]);
-  const getOurGenre = listingStore((state) => state.getGenre);
-  const setOurGenre = listingStore((state) => state.setGenre);
+  const [getGenre, setGenre] = useState<any[]>([]);
+  const getOurGenre = listingStore((state: any) => state.getGenre);
+  const setOurGenre = listingStore((state: any) => state.setGenre);
 
-  const genreHandler = (data) => {
+  const genreHandler = (data: any) => {
     console.log(getGenre, "GENRE")
     const isExist = getGenre.includes(data);
     if (!isExist) {
-      return setGenre((item) => [...item, data]);
+      return setGenre((item: any) => [...item, data]);
     }
     const deleted = getGenre.filter((item) => item !== data);
     setGenre(deleted);

@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useState } from "react";
 
-export default function FreelancerFutureCard1({ data }) {
+export default function FreelancerFutureCard1({ data }: any) {
   const [isFavActive, setFavActive] = useState(false);
   return (
     <>
@@ -22,7 +22,7 @@ export default function FreelancerFutureCard1({ data }) {
         <div className="list-content">
           <p className="list-text body-color fz14 mb-1">{data.category}</p>
           <h6 className="list-title">
-            <Link to="/services-single">{data.title.slice(0, 40) + "..."}</Link>
+            <Link href="/services-single">{data.title.slice(0, 40) + "..."}</Link>
           </h6>
           <div className="review-meta d-flex align-items-center">
             <i className="fas fa-star fz10 review-color me-2" />

@@ -11,7 +11,7 @@ import Radio1 from "@/components/ui-elements/radios/Radio1";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 
 export default function BasicInformation({ gameTitle,
-  setGameTitle }: IBasicInformation) {
+  setGameTitle }: any) {
 
   const [loading, setLoading] = useState(false)
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -89,7 +89,7 @@ export default function BasicInformation({ gameTitle,
 
 
   const handleInputFormChange = (e: any) => {
-    setGameTitle((old) => {
+    setGameTitle((old: any) => {
       return { ...old, [e.target.name]: e.target.value }
     })
   }
@@ -106,7 +106,7 @@ export default function BasicInformation({ gameTitle,
     e = { ...e, target: { ...e.target, value } }
     console.log(e.target.value, "After")
 
-    setGameTitle((old) => {
+    setGameTitle((old: any) => {
       return { ...old, price: Number(value) }
     })
   };
@@ -337,8 +337,8 @@ export default function BasicInformation({ gameTitle,
                   </label>
                   <div className="d-flex gap-3 align-items-center">
 
-                    <GameUploadRadio i={1} checked={true} text="Yes" value="" onChange={handleInputFormChange} />
-                    <GameUploadRadio i={1} checked={false} text="Yes" value="" onChange={handleInputFormChange} />
+                    <GameUploadRadio i={1} checked={true} text="Yes" value="" onClick={handleInputFormChange} />
+                    <GameUploadRadio i={1} checked={false} text="Yes" value="" onClick={handleInputFormChange} />
                   </div>
 
                 </div>

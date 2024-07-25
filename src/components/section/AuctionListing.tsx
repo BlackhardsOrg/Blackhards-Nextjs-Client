@@ -12,44 +12,44 @@ import AuctionCard from "../card/AuctionCard";
 import AuctionListingSidebar from "../sidebar/AuctionListingSidebar";
 
 export default function AuctionListing() {
-  const getCategory = listingStore((state) => state.getCategory);
-  const getProjectType = listingStore((state) => state.getProjectType);
-  const getPrice = priceStore((state) => state.priceRange);
-  const getDesginTool = listingStore((state) => state.getDesginTool);
-  const getLocation = listingStore((state) => state.getLocation);
-  const getSearch = listingStore((state) => state.getSearch);
-  const getSpeak = listingStore((state) => state.getSpeak);
-  const getBestSeller = listingStore((state) => state.getBestSeller);
-  const getEnglishLevel = listingStore((state) => state.getEnglishLevel);
+  const getCategory = listingStore((state: any) => state.getCategory);
+  const getProjectType = listingStore((state: any) => state.getProjectType);
+  const getPrice = priceStore((state: any) => state.priceRange);
+  const getDesginTool = listingStore((state: any) => state.getDesginTool);
+  const getLocation = listingStore((state: any) => state.getLocation);
+  const getSearch = listingStore((state: any) => state.getSearch);
+  const getSpeak = listingStore((state: any) => state.getSpeak);
+  const getBestSeller = listingStore((state: any) => state.getBestSeller);
+  const getEnglishLevel = listingStore((state: any) => state.getEnglishLevel);
 
   // category filter
-  const categoryFilter = (item) =>
+  const categoryFilter = (item: any) =>
     getCategory?.length !== 0 ? getCategory.includes(item.category) : item;
 
   // project-type filter
-  const projectTypeFilter = (item) =>
+  const projectTypeFilter = (item: any) =>
     getProjectType?.length !== 0
       ? getProjectType.includes(item.projectType)
       : item;
 
   // price filter
-  const priceFilter = (item) =>
+  const priceFilter = (item: any) =>
     getPrice.min <= item.price.min && getPrice.max >= item.price.max;
 
   // skill filter
-  const skillFilter = (item) =>
+  const skillFilter = (item: any) =>
     getDesginTool?.length !== 0
       ? getDesginTool.includes(item.skills.split(" ").join("-").toLowerCase())
       : item;
 
   // location filter
-  const locationFilter = (item) =>
+  const locationFilter = (item: any) =>
     getLocation?.length !== 0
       ? getLocation.includes(item.location.split(" ").join("-").toLowerCase())
       : item;
 
   // location filter
-  const searchFilter = (item) =>
+  const searchFilter = (item: any) =>
     getSearch !== ""
       ? item.location
           .split("-")
@@ -59,19 +59,19 @@ export default function AuctionListing() {
       : item;
 
   // speak filter
-  const speakFilter = (item) =>
+  const speakFilter = (item: any) =>
     getSpeak?.length !== 0
       ? getSpeak.includes(item.language.split(" ").join("-").toLowerCase())
       : item;
 
   // english level filter
-  const englishLevelFilter = (item) =>
+  const englishLevelFilter = (item: any) =>
     getEnglishLevel?.length !== 0
       ? getEnglishLevel.includes(item.englishLevel)
       : item;
 
   // sort by filter
-  const sortByFilter = (item) =>
+  const sortByFilter = (item: any) =>
     getBestSeller === "best-seller" ? item : item.sort === getBestSeller;
 
   // content

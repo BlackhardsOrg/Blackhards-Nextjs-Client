@@ -3,13 +3,13 @@ import listingStore from "@/store/listingStore";
 import { useEffect, useState } from "react";
 
 export default function LevelDropdown1() {
-  const [getLevel, setLevel] = useState([]);
+  const [getLevel, setLevel] = useState<any[]>([]);
 
-  const setOurLevel = listingStore((state) => state.setLevel);
-  const getOurLevel = listingStore((state) => state.getLevel);
+  const setOurLevel = listingStore((state: any) => state.setLevel);
+  const getOurLevel = listingStore((state: any) => state.getLevel);
 
   // handler
-  const levelHandler = (data) => {
+  const levelHandler = (data: any) => {
     const isExist = getLevel.includes(data);
     if (!isExist) {
       return setLevel((item) => [...item, data]);

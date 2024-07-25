@@ -5,7 +5,7 @@ import toggleStore from "@/store/toggleStore";
 import ClearButton from "../button/ClearButton";
 
 export default function ListingOption5() {
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
 
   return (
     <>

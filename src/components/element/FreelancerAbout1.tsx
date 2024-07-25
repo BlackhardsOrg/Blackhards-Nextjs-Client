@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function FreelancerAbout1() {
   return (
@@ -53,7 +53,7 @@ export default function FreelancerAbout1() {
           </a>
         </div>
         <div className="d-grid">
-          <Link to="/contact" className="ud-btn btn-thm">
+          <Link href="/contact" className="ud-btn btn-thm">
             Contact Me
             <i className="fal fa-arrow-right-long" />
           </Link>

@@ -28,19 +28,19 @@ const options = [
 
 export default function UiElement() {
   const [option1, setOption1] = useState("Search");
-  const [option2, setOption2] = useState([]);
+  const [option2, setOption2] = useState<any>([]);
 
   // option handler 1
-  const optionHandler1 = (data) => {
+  const optionHandler1 = (data: any) => {
     setOption1(data);
   };
 
   // option handler 2
-  const optionHandler2 = (data) => {
+  const optionHandler2 = (data: any) => {
     if (!option2.includes(data)) {
-      return setOption2((prev) => [...prev, data]);
+      return setOption2((prev: any) => [...prev, data]);
     }
-    setOption2(option2.filter((item) => item !== data));
+    setOption2(option2.filter((item: any) => item !== data));
   };
 
   return (

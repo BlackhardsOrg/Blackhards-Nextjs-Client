@@ -1,4 +1,4 @@
-export default function RecentServiceCard1({ data }) {
+export default function RecentServiceCard1({ data }: any) {
   return (
     <>
       <div className="listing-style1 list-style d-block d-xl-flex align-items-start border-0 mb10">

@@ -3,13 +3,13 @@ import listingStore from "@/store/listingStore";
 import { useEffect, useState } from "react";
 
 export default function JobTypeDropdown1() {
-  const [getJobType, setJobType] = useState([]);
+  const [getJobType, setJobType] = useState<any[]>([]);
 
-  const setJobTypeState = listingStore((state) => state.setJobType);
-  const getJobTypeState = listingStore((state) => state.getJobType);
+  const setJobTypeState = listingStore((state: any) => state.setJobType);
+  const getJobTypeState = listingStore((state: any) => state.getJobType);
 
   // handler
-  const setJobTypeHandler = (data) => {
+  const setJobTypeHandler = (data: any) => {
     if (!getJobType.includes(data)) {
       return setJobType([...getJobType, data]);
     }

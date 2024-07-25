@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function OurFunFact1() {
   return (
@@ -31,7 +31,7 @@ export default function OurFunFact1() {
                   <br className="d-none d-md-block" /> do eiusmod tempor
                   incididunt.
                 </p>
-                <Link to="/contact" className="ud-btn btn-thm">
+                <Link href="/contact" className="ud-btn btn-thm">
                   Get Started
                   <i className="fal fa-arrow-right-long" />
                 </Link>

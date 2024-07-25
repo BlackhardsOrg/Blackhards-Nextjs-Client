@@ -2,11 +2,11 @@ import { deliveryTime } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function DeliveryTimeOption1() {
-  const getDeliveryTime = listingStore((state) => state.getDeliveryTime);
-  const setDeliveryTime = listingStore((state) => state.setDeliveryTime);
+  const getDeliveryTime = listingStore((state: any) => state.getDeliveryTime);
+  const setDeliveryTime = listingStore((state: any) => state.setDeliveryTime);
 
   // handler
-  const deliveryTimeHandler = (data) => {
+  const deliveryTimeHandler = (data: any) => {
     setDeliveryTime(data);
   };
 

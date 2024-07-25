@@ -1,6 +1,6 @@
-export default function Option2({ lebel, data, selected, handler }) {
+export default function Option2({ lebel, data, selected, handler }: any) {
   // content
-  const content = data.map((item, i) => (
+  const content = data.map((item: any, i: any) => (
     <li key={i}>
       <a
         className={`dropdown-item ${selected.includes(item) ? "selected" : ""}`}

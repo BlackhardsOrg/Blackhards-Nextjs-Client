@@ -1,5 +1,9 @@
 import HeroSearch1 from "../element/HeroSearch1";
 import { useState } from "react";
+import { funfactsData } from "@/data/fanfact";
+import React from "react";
+import CountUp from "react-countup";
+import { useRouter } from "next/router";
 
 const role = [
   "Graphics & Design",
@@ -11,10 +15,7 @@ const role = [
 
 const popular = ["Designer", "Developer", "Web", "IOS", "PHP", "Senior"];
 
-import { funfactsData } from "@/data/fanfact";
-import React from "react";
-import CountUp from "react-countup";
-import { useRouter } from "next/router";
+
 
 export default function Hero13() {
   const [getSelectedRole, setSelectedRole] = useState(null);

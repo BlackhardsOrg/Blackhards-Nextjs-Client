@@ -32,7 +32,7 @@ export default function LineChart() {
     0: [148, 140, 210, 120, 160, 120, 190, 170, 135, 210, 180, 249],
     1: [140, 148, 120, 210, 140, 160, 140, 190, 210, 135, 249, 180],
     2: [170, 190, 210, 135, 249, 180, 140, 148, 120, 210, 140, 160],
-  };
+  } as any;
 
   const data = {
     labels: [
@@ -101,9 +101,8 @@ export default function LineChart() {
                         >
                           <a
                             onClick={() => setSelected(i)}
-                            className={`dropdown-item ${
-                              getSelected === i ? "selected active" : ""
-                            }`}
+                            className={`dropdown-item ${getSelected === i ? "selected active" : ""
+                              }`}
                           >
                             <span className="bs-ok-default check-mark" />
                             <span className="text">{item}</span>

@@ -3,13 +3,13 @@ import listingStore from "@/store/listingStore";
 import { useEffect, useState } from "react";
 
 export default function CategoryDropdown1() {
-  const [getCategory, setCategory] = useState([]);
+  const [getCategory, setCategory] = useState<any[]>([]);
 
-  const setCategoryState = listingStore((state) => state.setCategory);
-  const getCategoryState = listingStore((state) => state.getCategory);
+  const setCategoryState = listingStore((state: any) => state.setCategory);
+  const getCategoryState = listingStore((state: any) => state.getCategory);
 
   // handler
-  const categoryHandler = (data) => {
+  const categoryHandler = (data: any) => {
     if (!getCategory.includes(data)) {
       return setCategory([...getCategory, data]);
     }

@@ -1,11 +1,11 @@
 import shopStore from "@/store/shopStore";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function ShopCartInfo() {
-  const products = shopStore((state) => state.products);
+  const products = shopStore((state: any) => state.products);
 
   let total = 0;
-  products.forEach((item) => {
+  products.forEach((item: any) => {
     const price = item.qty * item.price;
     total = total + price;
   });
@@ -24,7 +24,7 @@ export default function ShopCartInfo() {
             <span className="float-end">${total}</span>
           </p>
           <div className="d-grid mt40">
-            <Link className="ud-btn btn-thm" to="/shop-checkout">
+            <Link className="ud-btn btn-thm" href="/shop-checkout">
               Proceed to Checkout
               <i className="fal fa-arrow-right-long" />
             </Link>

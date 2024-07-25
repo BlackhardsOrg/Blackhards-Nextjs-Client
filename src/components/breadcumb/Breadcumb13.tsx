@@ -1,11 +1,12 @@
 import { job1 } from "@/data/job";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 export default function Breadcumb13() {
-  const { id } = useParams();
-  const data = job1.find((item) => item.id == id);
+  const router = useRouter()
+  const {id} = router.query
+  const data = job1.find((item) => item.id == Number(id));
   return (
     <>
       <section className="breadcumb-section pt-0">
@@ -58,7 +59,7 @@ export default function Breadcumb13() {
                         </h6>
                       </div>
                     </div>
-                    <Link to="/contact" className="ud-btn btn-thm2">
+                    <Link href="/contact" className="ud-btn btn-thm2">
                       Apply For Job
                       <i className="fal fa-arrow-right-long" />
                     </Link>

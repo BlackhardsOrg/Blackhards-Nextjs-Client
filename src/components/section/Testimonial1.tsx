@@ -8,7 +8,7 @@ export default function Testimonial1() {
   );
 
   // handler
-  const testimonialHandler = (data) => {
+  const testimonialHandler = (data: any) => {
     setCurrentTestimonial(data);
   };
 

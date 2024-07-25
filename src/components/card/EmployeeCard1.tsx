@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-export default function EmployeeCard1({ data }) {
+export default function EmployeeCard1({ data }: any) {
   return (
     <>
       <div className="job-list-style1 bdr1 pb10">
         <div className="icon d-flex align-items-center mb20">
           <img className="wa" src={data.img} alt="icon" />
           <h6 className="mb-0 ml20">
-            <Link to={`/employee-single/${data.id}`}>{data.server}</Link>
+            <Link href={`/employee-single/${data.id}`}>{data.server}</Link>
           </h6>
           <span className="fav-icon flaticon-star" />
         </div>

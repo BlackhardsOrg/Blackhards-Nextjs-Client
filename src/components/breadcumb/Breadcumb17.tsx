@@ -1,11 +1,13 @@
 import { freelancer1 } from "@/data/product";
+import { useRouter } from "next/router";
 
-import { useParams } from "react-router-dom";
 
 export default function Breadcumb17() {
-  const { id } = useParams();
+  const router = useRouter()
 
-  const data = freelancer1.find((item) => item.id == id);
+  const { id } = router.query
+
+  const data = freelancer1.find((item) => item.id == Number(id));
 
   return (
     <>

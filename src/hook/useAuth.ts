@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const useAuth = () => {
-  const user = useSelector((state) => state.auth.user);
-  const navigate = useNavigate();
+  const user = useSelector((state: any) => state.auth.user);
+  const navigate = useRouter().push;
 
   useEffect(() => {
     if (!user) {

@@ -1,6 +1,6 @@
 import { Tooltip } from "react-tooltip";
 
-export default function ProposalCard1({ data }) {
+export default function ProposalCard1({ data }: any) {
   return (
     <>
       <tr>

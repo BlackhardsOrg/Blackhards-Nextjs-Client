@@ -1,10 +1,10 @@
 import shopStore from "@/store/shopStore";
 
 export default function OrderInfo1() {
-  const products = shopStore((state) => state.products);
+  const products = shopStore((state: any) => state.products);
 
   let total = 0;
-  products.forEach((item) => {
+  products.forEach((item: any) => {
     const price = item.qty * item.price;
     total = total + price;
   });
@@ -20,7 +20,7 @@ export default function OrderInfo1() {
               <span className="float-end">Subtotal</span>
             </h6>
           </li>
-          {products?.map((item, i) => (
+          {products?.map((item: any, i: any) => (
             <li key={i} className="mb20">
               <p className="body-color">
                 {item.title.substring(0, 10) + "..."} x {item.qty}

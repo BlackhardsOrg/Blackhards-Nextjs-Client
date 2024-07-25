@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router"
 
 export default function SearchModal1() {
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
   return (
     <>
       <div className="search-modal">

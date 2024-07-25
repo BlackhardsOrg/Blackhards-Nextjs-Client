@@ -1,6 +1,6 @@
 import { Tooltip } from "react-tooltip";
 
-export default function ProjectCard1({ data }) {
+export default function ProjectCard1({ data }: any) {
   return (
     <>
       <div className="freelancer-style1 bdr1 box-shadow-none row ms-0 pr20 align-items-lg-end">
@@ -40,7 +40,7 @@ export default function ProjectCard1({ data }) {
                 1 Received
               </p>
               <div className="skill-tags d-flex align-items-center justify-content-start mt-3">
-                {data.tags.map((item, i) => (
+                {data.tags.map((item: any, i: any) => (
                   <span key={i} className={`tag ${i === 1 ? "mx10" : ""}`}>
                     {item}
                   </span>

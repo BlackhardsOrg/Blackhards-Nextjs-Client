@@ -4,6 +4,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+
+
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
 const gigImages = [
@@ -19,7 +21,7 @@ const gigImagesSmall = [
 ];
 
 export default function EmployeeDetailSlider1() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [showSwiper, setShowSwiper] = useState(false);
   useEffect(() => {
     setShowSwiper(true);

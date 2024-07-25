@@ -1,10 +1,10 @@
 import { partners } from "@/data/partners";
-import { useNavigate } from "react-router-dom";
 import React from "react";
 import HeroSearch1 from "../element/HeroSearch1";
+import {useRouter} from "next/router"
 
 export default function Hero15() {
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
   const searchHandler = () => {
     navigate("/project-1");
   };

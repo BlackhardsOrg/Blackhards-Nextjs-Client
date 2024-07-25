@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 import { useMemo, useState } from "react";
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 const tabs = [
   "Top skills",
@@ -145,11 +145,11 @@ const skills4 = [
 export default function SkillArea1() {
   const [getCurrentTab, setCurrentTab] = useState(0);
 
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
   // skills
   const groups1 = useMemo(() => {
-    const groupsArray = [];
+    const groupsArray = [] as any;
     for (let i = 0; i < skills1.length; i += 6) {
       groupsArray.push(skills1.slice(i, i + 6));
     }
@@ -157,7 +157,7 @@ export default function SkillArea1() {
   }, []);
 
   const groups2 = useMemo(() => {
-    const groupsArray = [];
+    const groupsArray = [] as any;
     for (let i = 0; i < skills2.length; i += 6) {
       groupsArray.push(skills2.slice(i, i + 6));
     }
@@ -165,7 +165,7 @@ export default function SkillArea1() {
   }, []);
 
   const groups3 = useMemo(() => {
-    const groupsArray = [];
+    const groupsArray = [] as any;
     for (let i = 0; i < skills3.length; i += 6) {
       groupsArray.push(skills3.slice(i, i + 6));
     }
@@ -173,7 +173,7 @@ export default function SkillArea1() {
   }, []);
 
   const groups4 = useMemo(() => {
-    const groupsArray = [];
+    const groupsArray = [] as any;
     for (let i = 0; i < skills4.length; i += 6) {
       groupsArray.push(skills4.slice(i, i + 6));
     }
@@ -199,9 +199,8 @@ export default function SkillArea1() {
                         <button
                           onClick={() => setCurrentTab(i)}
                           key={i}
-                          className={`nav-link fw600 ${
-                            getCurrentTab === i ? "active" : ""
-                          }`}
+                          className={`nav-link fw600 ${getCurrentTab === i ? "active" : ""
+                            }`}
                         >
                           {item}
                         </button>
@@ -216,7 +215,7 @@ export default function SkillArea1() {
                             <ul className="p-0 mb-0">
                               {item.map((item2, i2) => (
                                 <li key={i2}>
-                                  <Link to="/home-4">{item2}</Link>
+                                  <Link href="/home-4">{item2}</Link>
                                 </li>
                               ))}
                             </ul>
@@ -230,7 +229,7 @@ export default function SkillArea1() {
                             <ul className="p-0 mb-0">
                               {item.map((item2, i2) => (
                                 <li key={i2}>
-                                  <Link to="/home-4">{item2}</Link>
+                                  <Link href="/home-4">{item2}</Link>
                                 </li>
                               ))}
                             </ul>
@@ -244,7 +243,7 @@ export default function SkillArea1() {
                             <ul className="p-0 mb-0">
                               {item.map((item2, i2) => (
                                 <li key={i2}>
-                                  <Link to="/home-4">{item2}</Link>
+                                  <Link href="/home-4">{item2}</Link>
                                 </li>
                               ))}
                             </ul>
@@ -258,7 +257,7 @@ export default function SkillArea1() {
                             <ul className="p-0 mb-0">
                               {item.map((item2, i2) => (
                                 <li key={i2}>
-                                  <Link to="/home-4">{item2}</Link>
+                                  <Link href="/home-4">{item2}</Link>
                                 </li>
                               ))}
                             </ul>

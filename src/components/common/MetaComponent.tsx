@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-export default function MetaComponent({ meta }) {
+export default function MetaComponent({ meta }: any) {
   return (
     <HelmetProvider>
       <Helmet>

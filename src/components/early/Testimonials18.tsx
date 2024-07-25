@@ -3,6 +3,8 @@ import FsLightbox from "fslightbox-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+//@ts-ignore
 import { Navigation, Pagination } from "swiper";
 import { useEffect, useState } from "react";
 import { testimonialsTwo } from "@/data/testimonials";

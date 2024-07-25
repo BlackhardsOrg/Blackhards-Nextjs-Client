@@ -186,7 +186,7 @@ const option = {
 };
 
 export default function ListingMap1() {
-  const [getLocation, setLocation] = useState(null);
+  const [getLocation, setLocation] = useState<any>(null);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM",
@@ -194,7 +194,7 @@ export default function ListingMap1() {
   const center = useMemo(() => ({ lat: 23.685, lng: 90.3563 }), []);
 
   // add long & lat
-  const locationHandler = (location) => {
+  const locationHandler = (location: any) => {
     setLocation(location);
   };
 
@@ -216,7 +216,8 @@ export default function ListingMap1() {
         >
           <MarkerClusterer>
             {(clusterer) =>
-              product1.slice(0, 6).map((marker) => (
+            // @ts-ignore
+              product1.slice(0, 6).map((marker: any) => (
                 <Marker
                   key={marker.id}
                   position={{

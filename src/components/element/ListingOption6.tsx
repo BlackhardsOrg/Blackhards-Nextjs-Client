@@ -8,7 +8,7 @@ import ClearButton from "../button/ClearButton";
 import toggleStore from "@/store/toggleStore";
 
 export default function ListingOption6() {
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
   return (
     <>
       <div className="row align-items-center mb20">

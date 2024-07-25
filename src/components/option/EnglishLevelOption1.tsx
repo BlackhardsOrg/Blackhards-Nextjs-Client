@@ -2,11 +2,11 @@ import { englishLevel } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function EnglishLevelOption1() {
-  const getEnglishLevel = listingStore((store) => store.getEnglishLevel);
-  const setEnglishLevel = listingStore((store) => store.setEnglishLevel);
+  const getEnglishLevel = listingStore((store: any) => store.getEnglishLevel);
+  const setEnglishLevel = listingStore((store: any) => store.setEnglishLevel);
 
   // handler
-  const englishLevelHandler = (data) => {
+  const englishLevelHandler = (data: any) => {
     setEnglishLevel(data);
   };
 

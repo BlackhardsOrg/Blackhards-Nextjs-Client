@@ -1,4 +1,4 @@
-export default function OurTeamCard1({ data }) {
+export default function OurTeamCard1({ data }: any) {
   return (
     <>
       <div className="feature-style2 mb30">

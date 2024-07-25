@@ -1,7 +1,5 @@
 import HeroSearch1 from "../element/HeroSearch1";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
+import { useRouter } from "next/router"
 const popular = [
   "Designer",
   "Developer",
@@ -13,7 +11,7 @@ const popular = [
 ];
 
 export default function Hero6() {
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
   // search handler
   const searchHandler = () => {

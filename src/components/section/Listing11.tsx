@@ -6,20 +6,20 @@ import ListingSidebarModal4 from "../modal/ListingSidebarModal4";
 import listingStore from "@/store/listingStore";
 
 export default function Listing11() {
-  const getCategory = listingStore((state) => state.getCategory);
-  const getNoOfEmployee = listingStore((state) => state.getNoOfEmployee);
-  const getBestSeller = listingStore((state) => state.getBestSeller);
+  const getCategory = listingStore((state: any) => state.getCategory);
+  const getNoOfEmployee = listingStore((state: any) => state.getNoOfEmployee);
+  const getBestSeller = listingStore((state: any) => state.getBestSeller);
 
   // category filter
-  const categoryFilter = (item) =>
+  const categoryFilter = (item: any) =>
     getCategory?.length !== 0 ? getCategory.includes(item.category) : item;
 
   // no of employee
-  const noOfEmployeeFilter = (item) =>
+  const noOfEmployeeFilter = (item: any) =>
     getNoOfEmployee?.length !== 0 ? getNoOfEmployee.includes(item.jobs) : item;
 
   // sort by filter
-  const sortByFilter = (item) =>
+  const sortByFilter = (item: any) =>
     getBestSeller === "best-seller" ? item : item.sort === getBestSeller;
 
   // content

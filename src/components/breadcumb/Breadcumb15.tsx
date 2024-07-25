@@ -1,10 +1,11 @@
 import { employee } from "@/data/product";
+import { useRouter } from "next/router";
 
-import { useParams } from "react-router-dom";
 
 export default function Breadcumb15() {
-  const { id } = useParams();
-  const data = employee.find((item) => item.id == id);
+  const router = useRouter()
+  const { id } = router.query
+  const data = employee.find((item) => item.id == Number(id));
   return (
     <>
       <section className="breadcumb-section pt-0">

@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-export default function BestServiceCard1({ data }) {
+export default function BestServiceCard1({ data }: any) {
   const [isFavActive, setFavActive] = useState(false);
-  const { pathname } = useLocation();
+  const router = useRouter()
+  const { pathname } = router
 
   return (
     <>
@@ -26,7 +27,7 @@ export default function BestServiceCard1({ data }) {
         <div className="list-content px20">
           <p className="list-text body-color fz14 mb-1">{data.category}</p>
           <h5 className="list-title">
-            <Link to={`/service-single/${data.id}`}>
+            <Link href={`/service-single/${data.id}`}>
               {data.title.slice(0, 40) + "..."}
             </Link>
           </h5>
@@ -39,7 +40,7 @@ export default function BestServiceCard1({ data }) {
           </div>
           <hr className="my-2" />
           <div className="list-meta d-flex justify-content-between align-items-center mt15">
-            <Link className="d-flex" to="/">
+            <Link className="d-flex" href="/">
               <span className="position-relative mr10">
                 <img
                   className="rounded-circle wa"

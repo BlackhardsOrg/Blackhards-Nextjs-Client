@@ -1,18 +1,18 @@
 import { shopProduct1 } from "@/data/product";
 import shopStore from "@/store/shopStore";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function ShopSingleAreaProductInfo() {
-  const products = shopStore((state) => state.products);
+  const products = shopStore((state: any) => state.products);
   const [getCurrentQty, setCurrentQty] = useState(1);
-  const addToCart = shopStore((state) => state.addToCart);
+  const addToCart = shopStore((state: any) => state.addToCart);
 
-  const param = useParams();
-  const data = shopProduct1.find((product) => product.id == param.id);
-  const navigate = useNavigate();
+  const router = useRouter()
+  const { id } = router.query
+  const data = shopProduct1.find((product) => product.id == Number(id));
+  const navigate = router.push;
 
   const incQty = () => {
     setCurrentQty(getCurrentQty + 1);
@@ -33,7 +33,7 @@ export default function ShopSingleAreaProductInfo() {
     }
   };
 
-  const isAddedCart = products.some((product) => product.id == param.id);
+  const isAddedCart = products.some((product: any) => product.id == id);
 
   return (
     <>
@@ -68,7 +68,7 @@ export default function ShopSingleAreaProductInfo() {
                     className="quantity-num"
                     type="number"
                     value={getCurrentQty}
-                    onChange={(e) => setCurrentQty(e.target.value)}
+                    onChange={(e) => setCurrentQty(Number(e.target.value))}
                   />
                   <button className="quantity-arrow-plus" onClick={incQty}>
                     <span className="fas fa-plus" />
@@ -137,7 +137,7 @@ export default function ShopSingleAreaProductInfo() {
                 </button>
               </div>
             </div>
-            <Link className="ud-btn btn-thm" to="/shop-cart">
+            <Link className="ud-btn btn-thm" href="/shop-cart">
               Add to cart
               <i className="fal fa-arrow-right-long" />
             </Link>

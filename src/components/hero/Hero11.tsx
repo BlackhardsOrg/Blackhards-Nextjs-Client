@@ -1,6 +1,7 @@
 import { partners } from "@/data/partners";
 
-import { Link } from "react-router-dom";
+import Link from "next/link";
+
 import React from "react";
 
 export default function Hero11() {
@@ -23,10 +24,10 @@ export default function Hero11() {
               </p>
             </div>
             <div className="d-flex align-items-center mt30 animate-up-4">
-              <Link to="/job-1" className="ud-btn btn-thm4 me-3 bdrs12">
+              <Link href="/job-1" className="ud-btn btn-thm4 me-3 bdrs12">
                 Find Work
               </Link>
-              <Link to="/freelancer-1" className="ud-btn btn-white bdr1 bdrs12">
+              <Link href="/freelancer-1" className="ud-btn btn-white bdr1 bdrs12">
                 Find Talent
               </Link>
             </div>

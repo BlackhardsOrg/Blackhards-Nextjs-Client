@@ -1,19 +1,19 @@
 import { useState } from "react";
 
-export default function Option1({ lebel, data, selected, handler }) {
+export default function Option1({ lebel, data, selected, handler }: any) {
   const [search, setSearch] = useState("");
 
   // handler
-  const searchHandler = (d) => {
+  const searchHandler = (d: any) => {
     setSearch(d);
   };
 
   // filter
-  const searchFilter = (item) =>
+  const searchFilter = (item: any) =>
     item.toLowerCase().includes(search.toLowerCase());
 
   // content
-  const content = data.filter(searchFilter).map((item, i) => (
+  const content = data.filter(searchFilter).map((item: any, i: any) => (
     <li
       key={i}
       className="selected active"

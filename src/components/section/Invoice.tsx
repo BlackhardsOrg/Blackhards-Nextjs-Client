@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function Invoice() {
   // print handler
@@ -31,7 +31,7 @@ export default function Invoice() {
                 <div className="wrapper">
                   <div className="row mb20 align-items-center">
                     <div className="col-lg-7">
-                      <Link to="/" className="main_logo mb30-md">
+                      <Link href="/" className="main_logo mb30-md">
                         <img src="/images/header-logo-dark.svg" alt="logo" />
                       </Link>
                     </div>

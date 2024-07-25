@@ -8,14 +8,14 @@ const imgs = [
 ];
 
 export default function ServiceGallery() {
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [uploadedFiles, setUploadedFiles] = useState<any[]>([]);
 
   // upload handler
-  const handleFileUpload = (event) => {
+  const handleFileUpload = (event: any) => {
     const newFiles = Array.from(event.target.files);
 
-    const isFileDuplicate = (file, fileList) => {
-      return fileList.some((existingFile) => existingFile.name === file.name);
+    const isFileDuplicate = (file: any, fileList: any) => {
+      return fileList.some((existingFile: any) => existingFile.name === file.name);
     };
 
     const uniqueNewFiles = newFiles.filter(
@@ -26,9 +26,9 @@ export default function ServiceGallery() {
   };
 
   // delete handler
-  const handleFileDelete = (fileName) => {
+  const handleFileDelete = (fileName: any) => {
     setUploadedFiles((prevFiles) =>
-      prevFiles.filter((file) => file.name !== fileName)
+      prevFiles.filter((file: any) => file.name !== fileName)
     );
   };
   return (

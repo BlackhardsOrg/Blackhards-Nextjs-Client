@@ -2,11 +2,11 @@ import { speaks } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function SpeakOption1() {
-  const getSpeak = listingStore((state) => state.getSpeak);
-  const setSpeak = listingStore((state) => state.setSpeak);
+  const getSpeak = listingStore((state: any) => state.getSpeak);
+  const setSpeak = listingStore((state: any) => state.setSpeak);
 
   // handler
-  const speakHandler = (data) => {
+  const speakHandler = (data: any) => {
     setSpeak(data);
   };
 

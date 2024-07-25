@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import React from "react";
+import Link from "next/link"
 
 export default function InspireingWork20() {
   return (
@@ -22,7 +22,7 @@ export default function InspireingWork20() {
                 <br className="d-none d-lg-block" /> get things done—from quick
                 turnaround.
               </p>
-              <Link className="ud-btn btn-dark bdrs60" to="/job-1">
+              <Link className="ud-btn btn-dark bdrs60" href="/job-1">
                 Get Started <i className="fal fa-arrow-right-long"></i>
               </Link>
             </div>
@@ -40,7 +40,7 @@ export default function InspireingWork20() {
                 <br className="d-none d-lg-block" /> get things done—from quick
                 turnaround.
               </p>
-              <Link className="ud-btn btn-dark bdrs60" to="/freelancer-1">
+              <Link className="ud-btn btn-dark bdrs60" href="/freelancer-1">
                 Get Started <i className="fal fa-arrow-right-long"></i>
               </Link>
             </div>

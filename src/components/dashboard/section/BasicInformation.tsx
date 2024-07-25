@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SelectInput from "../option/SelectInput";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function BasicInformation() {
   const [getCategory, setCategory] = useState({
@@ -33,40 +33,40 @@ export default function BasicInformation() {
   });
 
   // handlers
-  const categoryHandler = (option, value) => {
+  const categoryHandler = (option: any, value: any) => {
     setCategory({
       option,
       value,
     });
   };
-  const engLevelHandler = (option, value) => {
+  const engLevelHandler = (option: any, value: any) => {
     setEngLevel({
       option,
       value,
     });
   };
-  const resTimeHandler = (option, value) => {
+  const resTimeHandler = (option: any, value: any) => {
     setResTime({
       option,
       value,
     });
   };
-  const deliveryTimeHandler = (option, value) => {
+  const deliveryTimeHandler = (option: any, value: any) => {
     setDeliveryTime({
       option,
       value,
     });
   };
-  const skillHandler = (option, value) => {
+  const skillHandler = (option: any, value: any) => {
     setSkill({
       option,
       value,
     });
   };
-  const countryHandler = (option, value) => {
+  const countryHandler = (option: any, value: any) => {
     setCountry({ option, value });
   };
-  const cityHandler = (option, value) => {
+  const cityHandler = (option: any, value: any) => {
     setCity({ option, value });
   };
 
@@ -348,7 +348,7 @@ export default function BasicInformation() {
               </div>
               <div className="col-md-12">
                 <div className="text-start">
-                  <Link className="ud-btn btn-thm" to="/contact">
+                  <Link className="ud-btn btn-thm" href="/contact">
                     Save
                     <i className="fal fa-arrow-right-long" />
                   </Link>

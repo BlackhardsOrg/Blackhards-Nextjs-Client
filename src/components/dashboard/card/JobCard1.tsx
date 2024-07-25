@@ -1,6 +1,6 @@
 import { Tooltip } from "react-tooltip";
 
-export default function JobCard1({ data, i }) {
+export default function JobCard1({ data, i }: any) {
   return (
     <>
       <tr>

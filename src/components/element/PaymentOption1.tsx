@@ -10,7 +10,7 @@ export default function PaymentOption1() {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault1"
-              defaultChecked="checked"
+              defaultChecked={true}
             />
             <label className="form-check-label" htmlFor="flexRadioDefault1">
               Direct bank transfer
@@ -69,7 +69,7 @@ export default function PaymentOption1() {
             </label>
           </div>
 
-        
+
         </div>
       </div>
     </>

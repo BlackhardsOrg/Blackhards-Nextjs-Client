@@ -6,7 +6,7 @@ import JobTypeOption1 from "../option/JobTypeOption1";
 import LevelOption1 from "../option/LevelOption1";
 
 export default function ListingSidebarModal3() {
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const listingToggle = toggleStore((state: any) => state.listingToggleHandler);
 
   return (
     <>

@@ -1,10 +1,10 @@
 import shopStore from "@/store/shopStore";
 import ShopCartInfo from "../element/ShopCartInfo";
 import CartList1 from "../element/CartList1";
-import { Link } from "react-router-dom";
+import Link from "next/link"
 
 export default function ShopCartArea1() {
-  const products = shopStore((state) => state.products);
+  const products = shopStore((state: any) => state.products);
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function ShopCartArea1() {
                     </tr>
                   </thead>
                   <tbody className="table_body">
-                    {products.map((item, i) => (
+                    {products.map((item: any, i: any) => (
                       <CartList1 key={i} data={item} />
                     ))}
                   </tbody>
@@ -49,7 +49,7 @@ export default function ShopCartArea1() {
                         </a>
                       </div>
                       <div className="btn-lsit1">
-                        <Link to="/shop-list" className="ud-btn btn-light-thm">
+                        <Link href="/shop-list" className="ud-btn btn-light-thm">
                           Buy Product
                           <i className="fal fa-arrow-right-long" />
                         </Link>
@@ -58,7 +58,7 @@ export default function ShopCartArea1() {
                   </div>
                 ) : (
                   <div className="d-flex justify-content-center pt-5 mb30">
-                    <Link to="/shop-list" className="ud-btn btn-light-thm">
+                    <Link href="/shop-list" className="ud-btn btn-light-thm">
                       Buy Product
                       <i className="fal fa-arrow-right-long" />
                     </Link>

@@ -3,11 +3,11 @@ import listingStore from "@/store/listingStore";
 import { useEffect, useState } from "react";
 
 export default function LocationDropdown1() {
-  const [getLocation, setLocation] = useState([]);
-  const getOurLocation = listingStore((state) => state.getLocation);
-  const setOurLocation = listingStore((state) => state.setLocation);
+  const [getLocation, setLocation] = useState<any[]>([]);
+  const getOurLocation = listingStore((state: any) => state.getLocation);
+  const setOurLocation = listingStore((state: any) => state.setLocation);
 
-  const locationHandler = (data) => {
+  const locationHandler = (data: any) => {
     const isExist = getLocation.includes(data);
     if (!isExist) {
       return setLocation((item) => [...item, data]);

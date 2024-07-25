@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 
+import Link from "next/link";
 import { useState } from "react";
 
-export default function PopularServiceCard2({ data, text1 = false }) {
+export default function PopularServiceCard2({ data, text1 = false }: any) {
   const [isFavActive, setFavActive] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ export default function PopularServiceCard2({ data, text1 = false }) {
           <p className="list-text body-color fz14 mb-1">{data.category}</p>
 
           <h5 className="list-title">
-            <Link to={`/service-single/${data.id}`}>{data.title}</Link>
+            <Link href={`/service-single/${data.id}`}>{data.title}</Link>
           </h5>
           {text1 && (
             <p className="list-text body-color fz15 mb-1">

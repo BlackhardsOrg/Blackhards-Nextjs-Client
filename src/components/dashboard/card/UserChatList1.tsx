@@ -1,4 +1,4 @@
-export default function UserChatList1({ data }) {
+export default function UserChatList1({ data }: any) {
   return (
     <>
       <div className="d-flex align-items-center position-relative">

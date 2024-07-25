@@ -1,4 +1,4 @@
-export default function HeaderInfo1({ title, brief }) {
+export default function HeaderInfo1({ title, brief }: any) {
   return (
     <>
       <section className="pt40 pb0">

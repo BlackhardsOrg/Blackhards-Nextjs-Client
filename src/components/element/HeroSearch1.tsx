@@ -21,7 +21,7 @@ export default function HeroSearch1() {
     setSearchDropdownOpen(false);
   };
 
-  const selectSearch = (select) => {
+  const selectSearch = (select: any) => {
     setSelectedResult(select);
   };
 

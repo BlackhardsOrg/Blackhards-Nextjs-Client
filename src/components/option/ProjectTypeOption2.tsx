@@ -2,11 +2,11 @@ import { projectType } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function ProjectTypeOption2() {
-  const getProjectType = listingStore((state) => state.getProjectType);
-  const setProjectType = listingStore((state) => state.setProjectType);
+  const getProjectType = listingStore((state: any) => state.getProjectType);
+  const setProjectType = listingStore((state: any) => state.setProjectType);
 
   // handler
-  const projectTypeHandler = (data) => {
+  const projectTypeHandler = (data: any) => {
     setProjectType(data);
   };
 

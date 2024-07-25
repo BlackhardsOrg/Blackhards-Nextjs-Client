@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import priceStore from "@/store/priceStore";
 
 export default function BudgetOption2() {
-  const setPriceRange = priceStore((state) => state.priceRangeHandler);
-  const priceRange = priceStore((state) => state.priceRange);
+  const setPriceRange = priceStore((state: any) => state.priceRangeHandler);
+  const priceRange = priceStore((state: any) => state.priceRange);
 
   const [getPrice, setPrice] = useState(priceRange);
 
@@ -19,7 +19,7 @@ export default function BudgetOption2() {
     });
   }, [priceRange.min, priceRange.max, setPrice]);
 
-  const priceHandler = (data) => {
+  const priceHandler = (data: any) => {
     setPrice({
       min: data[0],
       max: data[1],

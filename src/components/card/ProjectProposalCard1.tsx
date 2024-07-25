@@ -1,4 +1,4 @@
-export default function ProjectProposalCard1({ data }) {
+export default function ProjectProposalCard1({ data }: any) {
   return (
     <>
       <div className="freelancer-style1 bdr1 hover-box-shadow row ms-0 align-items-start">

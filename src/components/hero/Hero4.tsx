@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-
+import Link from "next/link"
 export default function Hero4() {
   return (
     <>
@@ -18,10 +17,10 @@ export default function Hero4() {
                   reality.
                 </p>
                 <div className="d-flex align-items-center mt30 animate-up-3">
-                  <Link to="/job-1" className="ud-btn btn-thm me-3">
+                  <Link href="/job-1" className="ud-btn btn-thm me-3">
                     Find Work
                   </Link>
-                  <Link to="/freelancer-1" className="ud-btn btn-thm-border">
+                  <Link href="/freelancer-1" className="ud-btn btn-thm-border">
                     Find Talent
                   </Link>
                 </div>

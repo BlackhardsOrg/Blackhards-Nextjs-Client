@@ -1,9 +1,9 @@
 import CountUp from "react-countup";
 import HeroSearch1 from "../element/HeroSearch1";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export default function Hero5() {
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
   // search handler
   const searchHandler = () => {

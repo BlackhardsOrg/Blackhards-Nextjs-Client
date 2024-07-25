@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 interface IPopularServiceCard1 {
-  data: any,
-  style: string,
-  isContentExpanded: boolean,
+  data?: any,
+  style?: string,
+  isContentExpanded?: boolean,
 }
 export default function PopularServiceCard1({
   data,

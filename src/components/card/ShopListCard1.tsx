@@ -1,27 +1,27 @@
 import shopStore from "@/store/shopStore";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-export default function ShopListCard1({ data }) {
-  const addToCart = shopStore((state) => state.addToCart);
-  const products = shopStore((state) => state.products);
+export default function ShopListCard1({ data }: any) {
+  const addToCart = shopStore((state: any) => state.addToCart);
+  const products = shopStore((state: any) => state.products);
 
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
 
   // handler
-  const addToCartHandler = (product) => {
+  const addToCartHandler = (product : any) => {
     addToCart(product);
     navigate("/shop-cart");
   };
 
-  const isAdded = products.some((product) => product.id === data.id);
+  const isAdded = products.some((product: any) => product.id === data.id);
 
   return (
     <>
       <div className="shop-item text-center">
         <div className="thumb">
-          <Link to={`/shop-single/${data.id}`}>
+          <Link href={`/shop-single/${data.id}`}>
             <img
               className="w-100 w-100 object-fit-cover"
               src={data.img}

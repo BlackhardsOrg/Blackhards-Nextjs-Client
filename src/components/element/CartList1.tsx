@@ -2,14 +2,14 @@ import shopStore from "@/store/shopStore";
 
 import { useEffect, useState } from "react";
 
-export default function CartList1({ data }) {
+export default function CartList1({ data }: any) {
   const [qty, setQty] = useState(data.qty);
 
-  const deleteProduct = shopStore((state) => state.deleteProduct);
-  const updateQty = shopStore((state) => state.updateQty);
+  const deleteProduct = shopStore((state: any) => state.deleteProduct);
+  const updateQty = shopStore((state: any) => state.updateQty);
 
   // handler
-  const qtyHandler = (q) => {
+  const qtyHandler = (q: any) => {
     setQty(q);
   };
 
@@ -21,7 +21,7 @@ export default function CartList1({ data }) {
     qty > 1 && setQty(Number(qty) - 1);
   };
 
-  const deleteHandler = (id) => deleteProduct(id);
+  const deleteHandler = (id: any) => deleteProduct(id);
 
   useEffect(() => {
     updateQty(data.id, qty);

@@ -4,6 +4,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+
+//@ts-ignore
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
 const gigImages = [
@@ -13,7 +15,7 @@ const gigImages = [
 ];
 
 export default function AuctionDetailSlider() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
     <>

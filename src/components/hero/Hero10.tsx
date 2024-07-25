@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const herobg = [
   {
@@ -92,13 +92,13 @@ export default function Hero10() {
                                   </p>
                                   <div className="d-sm-flex justify-content-center banner-btn">
                                     <Link
-                                      to="/project-1"
+                                      href="/project-1"
                                       className="ud-btn btn-white me-0 me-sm-3"
                                     >
                                       Find Work
                                     </Link>
                                     <Link
-                                      to="/freelancer-1"
+                                      href="/freelancer-1"
                                       className="ud-btn btn-dark"
                                     >
                                       Find Talent

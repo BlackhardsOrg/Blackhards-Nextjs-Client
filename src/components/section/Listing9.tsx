@@ -7,30 +7,30 @@ import priceStore from "@/store/priceStore";
 import ListingSidebarModal3 from "../modal/ListingSidebarModal3";
 
 export default function Listing9() {
-  const getCategory = listingStore((state) => state.getCategory);
-  const priceRange = priceStore((state) => state.priceRange);
-  const getJobType = listingStore((state) => state.getJobType);
-  const getLevel = listingStore((state) => state.getLevel);
-  const getBestSeller = listingStore((state) => state.getBestSeller);
+  const getCategory = listingStore((state: any) => state.getCategory);
+  const priceRange = priceStore((state: any) => state.priceRange);
+  const getJobType = listingStore((state: any) => state.getJobType);
+  const getLevel = listingStore((state: any) => state.getLevel);
+  const getBestSeller = listingStore((state: any) => state.getBestSeller);
 
   // category filter
-  const categoryFilter = (item) =>
+  const categoryFilter = (item: any) =>
     getCategory?.length !== 0 ? getCategory.includes(item.category) : item;
 
   // salary filter
-  const salaryFilter = (item) =>
+  const salaryFilter = (item: any) =>
     priceRange.min <= item.salary && priceRange.max >= item.salary;
 
   // job type filter
-  const jobTypeFilter = (item) =>
+  const jobTypeFilter = (item: any) =>
     getJobType?.length !== 0 ? getJobType.includes(item.jobType) : item;
 
   // level filter
-  const levelFilter = (item) =>
+  const levelFilter = (item: any) =>
     getLevel?.length !== 0 ? getLevel.includes(item.level) : item;
 
   // sort by filter
-  const sortByFilter = (item) =>
+  const sortByFilter = (item: any) =>
     getBestSeller === "best-seller" ? item : item.sort === getBestSeller;
 
   return (

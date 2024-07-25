@@ -1,4 +1,4 @@
-export default function JobCard5({ data }) {
+export default function JobCard5({ data }: any) {
   return (
     <>
       <div className="job-list-style1 bdr1 d-xl-flex align-items-start">

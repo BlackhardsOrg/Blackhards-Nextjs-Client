@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+//@ts-ignore
 import { Navigation, Pagination } from "swiper";
 import BrowserCategoryCard3 from "../card/BrowserCategoryCard3";
 import { useEffect, useState } from "react";

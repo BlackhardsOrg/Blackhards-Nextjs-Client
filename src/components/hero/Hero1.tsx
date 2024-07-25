@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
+
+//@ts-ignore
 import { EffectFade, Navigation } from "swiper";
 import HeroSearch1 from "../element/HeroSearch1";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const role = [
   "Select Role",
@@ -32,11 +36,11 @@ export default function Hero1() {
   const [getSelectedRole, setSelectedRole] = useState(null);
 
   // role handler
-  const roleHandler = (select) => {
+  const roleHandler = (select: any) => {
     setSelectedRole(select);
   };
 
-  const navigate = useNavigate();
+  const navigate = useRouter().push;
   // search handler
   const searchHandler = () => {
     navigate("/freelancer-1");

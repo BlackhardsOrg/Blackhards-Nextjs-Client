@@ -1,6 +1,6 @@
 import { Tooltip } from "react-tooltip";
 
-export default function InvoiceCard1({ data }) {
+export default function InvoiceCard1({ data }: any) {
   return (
     <>
       <tr>
