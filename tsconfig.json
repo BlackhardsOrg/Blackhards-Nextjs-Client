@@ -5,10 +5,10 @@
       "dom.iterable",
       "esnext"
     ],
-    "typeRoots": [
-      "node_modules/@types",
-      "src/typings"
-    ],
+    // "typeRoots": [
+    //   "node_modules/@types",
+    //   "src/typings"
+    // ],
     "allowJs": true,
     // "skipLibCheck": true,
     "strict": true,

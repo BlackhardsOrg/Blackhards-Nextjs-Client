@@ -16,6 +16,15 @@ export interface IRegisterData {
   password: string;
 }
 
+export interface IRegisterEarlyData {
+  studioName: string;
+  country: string;
+  email: string;
+  yourPurpose: string;
+  portfolioLink: string;
+  yourRole: string;
+}
+
 export interface IResetPasswordData {
   email: string | string[] | undefined;
   password: string;

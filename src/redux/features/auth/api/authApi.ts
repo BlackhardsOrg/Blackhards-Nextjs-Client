@@ -1,6 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
+import { useRouter } from "next/router";
 import {
   forgottenPasswordFailure,
   forgottenPasswordStart,
@@ -27,6 +28,7 @@ import {
   AxiosError,
   ICredentials,
   IRegisterData,
+  IRegisterEarlyData,
   IResetPasswordData,
   IUser,
   IVerifyEmailParams,
@@ -73,18 +75,55 @@ export function registerUser(registerData: IRegisterData) {
       console.log(response, "REGISTER");
 
       // Extract card resources from the API response
-      toast("🦄 Registeration Successful!");
+      toast("🦄 Registration Successful!");
       // Dispatch the getResourcesSuccess action to update the Redux state
       dispatch(registerSuccess(response));
       return response.data;
     } catch (error: any) {
-      toast(error.response.data.message, {
-        type: "error",
-      });
+      if (error.response.data) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+      }
       dispatch(registerFailure(error));
 
       console.error("Error fetching card resources:", error);
       return error.response.data;
+    }
+  };
+}
+
+export function registerUserEarly(registerData: IRegisterEarlyData) {
+  return async (dispatch: Dispatch) => {
+    try {
+      dispatch(registerStart());
+      console.log(registerData, "LILY");
+      // Make an HTTP GET request to the API
+      const response = await axios.post(
+        `${API_URL}/auth/register/early`,
+        registerData
+      );
+      console.log(response, "REGISTER");
+
+      // Extract card resources from the API response
+      toast(
+        "🦄 'As e dey hot!', we got your response. This is the start of something huge. you will be the first to know when we go live.😊😊😊",
+        { autoClose: 15000 }
+      );
+      // Dispatch the getResourcesSuccess action to update the Redux state
+      dispatch(registerSuccess(null));
+      useRouter().push("/");
+      return response.data;
+    } catch (error: any) {
+      dispatch(registerFailure(error));
+
+      // console.error("Error fetching card resources:", error);
+      if (error.response) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+        return error.response.data;
+      }
     }
   };
 }
@@ -234,7 +273,6 @@ export function logoutUser(token: string) {
     }
   };
 }
-
 
 // developerEmail: "",
 // gameFileLink: "",
