@@ -46,7 +46,8 @@ export default function RegisterPage() {
 
   const [getEmptyErrors, setEmptyErrors] = useState({
     role: false,
-    purpose: false
+    purpose: false,
+    isSubmittable: false
   })
 
   const dispatch = useAppDispatch()
@@ -63,10 +64,21 @@ export default function RegisterPage() {
     setEmptyErrors(old => ({
       ...old,
       purpose: purpose.value == "" || purpose.value == "none" ? true : false,
-      role: role.value == "" || role.value == "none" ? true : false
-
+      role: role.value == "" || role.value == "none" ? true : false,
     }))
   }, [role.value, purpose.value])
+
+  useEffect(() => {
+    setEmptyErrors(old => ({
+      ...old,
+      isSubmittable: credentials.studioName == "" ||
+        credentials.country == "" ||
+        credentials.email == "" ||
+        credentials.yourPurpose == "" ||
+        credentials.yourRole == "" ? true : false
+    }))
+    console.log(credentials, "CREDS")
+  }, [credentials])
 
   useEffect(() => {
     setCredentials(old => ({ ...old, yourRole: role.value }))
@@ -242,10 +254,10 @@ export default function RegisterPage() {
 
                   <div className="d-grid mb20">
                     <button
-                      disabled={getEmptyErrors.role || getEmptyErrors.purpose}
+                      disabled={getEmptyErrors.role || getEmptyErrors.purpose || getEmptyErrors.isSubmittable}
                       className="ud-btn btn-thm default-box-shadow2"
                       type="submit"
-                      style={{ opacity: getEmptyErrors.role || getEmptyErrors.purpose ? ".4" : "1" }}
+                      style={{ opacity: getEmptyErrors.role || getEmptyErrors.purpose || getEmptyErrors.isSubmittable ? ".4" : "1" }}
                     >
                       {loading.register ? (
                         <FLyLoad />
