@@ -56,11 +56,11 @@ export default function Hero18() {
                   </p>
                 </div>
               </div>
-              <img
+              {/* <img
                 className="img-1 bounce-y"
                 src="/images/about/happy-client-1.png"
                 alt=" image "
-              />
+              /> */}
               <img
                 className="img-2 bounce-y"
                 src="/images/about/element-15.png"
