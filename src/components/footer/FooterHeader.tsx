@@ -2,8 +2,8 @@ import Link from "next/link";
 import FooterSocial from "./FooterSocial";
 
 const links = [
-  { id: 1, name: "Terms of Service", path: "/" },
-  { id: 2, name: "Privacy Policy", path: "/" },
+  // { id: 1, name: "Terms of Service", path: "/" },
+  // { id: 2, name: "Privacy Policy", path: "/" },
   { id: 3, name: "Site Map", path: "/" },
 ];
 
@@ -12,7 +12,13 @@ export default function FooterHeader() {
     <>
       <div className="row bb-white-light pb10 mb60">
         <div className="col-md-7">
-          <div className="d-block text-center text-md-start justify-content-center justify-content-md-start d-md-flex align-items-center mb-3 mb-md-0">
+          <Link className="header-logo logo1" href="/">
+            <img
+              src="/images/Blackhards-white-logo.svg"
+              alt="Header Logo"
+            />
+          </Link>
+          {/* <div className="d-block text-center text-md-start justify-content-center justify-content-md-start d-md-flex align-items-center mb-3 mb-md-0">
             {links.map((item, i) => (
               <Link
                 key={i}
@@ -22,7 +28,7 @@ export default function FooterHeader() {
                 {item.name}
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="col-md-5">
           <FooterSocial />

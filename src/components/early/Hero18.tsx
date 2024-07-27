@@ -12,7 +12,7 @@ export default function Hero18() {
               <h1 className="banner-title animate-up-1 mb25">
                 AI-Powered B2B Game Marketplace{" "}
                 <br className="d-none d-xl-block" />
-                For Auctions and Trading Game Code & Assets
+                For Auctions and Trading Game codes
               </h1>
               <p className="text-white text animate-up-2">
                 Accelerate Game development with ready-to-use source code &
@@ -22,15 +22,15 @@ export default function Hero18() {
                 <b style={{ color: "#F9FCAA" }}> Be The first.</b>
               </p>
               <div className="d-sm-flex align-items-center mt30 animate-up-3">
-                <Link href="/job-1" className="ud-btn  me-3 bdrs120 btn-1">
+                <Link href="/auth/register-early" className="ud-btn  me-3 bdrs120 btn-1">
                 Join Early
                 </Link>
-                <Link
-                  href="/freelancer-1"
+                {/* <Link
+                  href="/auth-login"
                   className="ud-btn btn-white bdr1 bdrs120 btn-2"
                 >
                   Sign In
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

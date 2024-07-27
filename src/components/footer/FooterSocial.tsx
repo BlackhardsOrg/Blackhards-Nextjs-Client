@@ -8,18 +8,18 @@ export default function FooterSocial() {
           <Link className="text-white me-2 fw500 fz17" href="/">
             Follow us
           </Link>
-          <a>
+          <Link href={"https://www.facebook.com/profile.php?id=61563072631626&mibextid=ZbWKwL"}>
             <i className="fab fa-facebook-f list-inline-item" />
-          </a>
-          <a>
+          </Link>
+          <Link href={"https://x.com/blackhardsgames?t=G1rhbNM1jk4LWh4kChgPzg&s=09"}>
             <i className="fab fa-twitter list-inline-item" />
-          </a>
-          <a>
+          </Link>
+          <Link href={"https://www.instagram.com/blackhards.games?igsh=cnA0enB4ZmZoZzhi"}>
             <i className="fab fa-instagram list-inline-item" />
-          </a>
-          <a>
+          </Link>
+          <Link href={"https://www.linkedin.com/company/blackhards"}>
             <i className="fab fa-linkedin-in list-inline-item" />
-          </a>
+          </Link>
         </div>
       </div>
     </>

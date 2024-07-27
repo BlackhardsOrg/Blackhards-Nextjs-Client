@@ -12,38 +12,35 @@ export default function Footer() {
     <>
       <section
         className={`footer-style1 pt25 pb-0 
-                ${
-                  pathname === "/home-2"
-                    ? "at-home6 home2-footer-radius"
-                    : pathname === "/home-4"
-                    ? "at-home7"
-                    : pathname === "/home-6"
-                    ? "at-home6"
-                    : pathname === "/home-10"
-                    ? "at-home10"
-                    : pathname === "/home-11"
+                ${pathname === "/home-2"
+            ? "at-home6 home2-footer-radius"
+            : pathname === "/home-4"
+              ? "at-home7"
+              : pathname === "/home-6"
+                ? "at-home6"
+                : pathname === "/home-10"
+                  ? "at-home10"
+                  : pathname === "/home-11"
                     ? "at-home11"
                     : ""
-                }
+          }
                  `}
       >
         <div className="container">
           <FooterHeader />
           <div className="row">
-            <div className="col-sm-6 col-lg-3">
+            {/* <div className="col-sm-6 col-lg-3">
               <div
-                className={`link-style1 mb-4 mb-sm-5 ${
-                  pathname === "/home-4"
+                className={`link-style1 mb-4 mb-sm-5 ${pathname === "/home-4"
                     ? "light-style at-home8"
                     : pathname === "/home-11"
-                    ? "light-style at-home11"
-                    : ""
-                }`}
+                      ? "light-style at-home11"
+                      : ""
+                  }`}
               >
                 <h5
-                  className={`mb15 ${
-                    pathname !== "/home-4" ? "text-white" : ""
-                  }`}
+                  className={`mb15 ${pathname !== "/home-4" ? "text-white" : ""
+                    }`}
                 >
                   About
                 </h5>
@@ -55,21 +52,19 @@ export default function Footer() {
                   ))}
                 </div>
               </div>
-            </div>
-            <div className="col-sm-6 col-lg-3">
+            </div> */}
+            {/* <div className="col-sm-6 col-lg-3">
               <div
-                className={`link-style1 mb-4 mb-sm-5 ${
-                  pathname === "/home-4"
+                className={`link-style1 mb-4 mb-sm-5 ${pathname === "/home-4"
                     ? "light-style at-home8"
                     : pathname === "/home-11"
-                    ? "light-style at-home11"
-                    : ""
-                }`}
+                      ? "light-style at-home11"
+                      : ""
+                  }`}
               >
                 <h5
-                  className={`mb15 ${
-                    pathname !== "/home-4" ? "text-white" : ""
-                  }`}
+                  className={`mb15 ${pathname !== "/home-4" ? "text-white" : ""
+                    }`}
                 >
                   Categories
                 </h5>
@@ -81,21 +76,19 @@ export default function Footer() {
                   ))}
                 </ul>
               </div>
-            </div>
-            <div className="col-sm-6 col-lg-3">
+            </div> */}
+            {/* <div className="col-sm-6 col-lg-3">
               <div
-                className={`link-style1 mb-4 mb-sm-5 ${
-                  pathname === "/home-4"
+                className={`link-style1 mb-4 mb-sm-5 ${pathname === "/home-4"
                     ? "light-style at-home8"
                     : pathname === "/home-11"
-                    ? "light-style at-home11"
-                    : ""
-                }`}
+                      ? "light-style at-home11"
+                      : ""
+                  }`}
               >
                 <h5
-                  className={`mb15 ${
-                    pathname !== "/home-4" ? "text-white" : ""
-                  }`}
+                  className={`mb15 ${pathname !== "/home-4" ? "text-white" : ""
+                    }`}
                 >
                   Support
                 </h5>
@@ -107,27 +100,24 @@ export default function Footer() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </div> */}
             <div className="col-sm-6 col-lg-3">
               <div className="footer-widget">
                 <div className="footer-widget mb-4 mb-sm-5">
                   <div className="mailchimp-widget">
-                    <h5 className="title text-white mb20">Subscribe</h5>
-                    <div
-                      className={`mailchimp-style1 ${
-                        pathname === "/home-11" ? " at-home11" : ""
-                      }`}
-                    >
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Your email address"
-                      />
-                      <button type="submit">Send</button>
+                    <h5 className="title text-white mb20">Early Signup</h5>
+                    <div className="d-sm-flex align-items-center mt30 animate-up-3">
+                      
+                      <Link
+                        href="/auth/register-early"
+                        className="ud-btn btn-white bdr1 bdrs120 btn-2"
+                      >
+                        Get Early Access
+                      </Link>
                     </div>
                   </div>
                 </div>
-                <div className="app-widget mb-4 mb-sm-5">
+                {/* <div className="app-widget mb-4 mb-sm-5">
                   <h5 className="title text-white mb20">Apps</h5>
                   <div className="row mb-4 mb-lg-5">
                     <div className="col-lg-12">
@@ -153,7 +143,7 @@ export default function Footer() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -163,12 +153,11 @@ export default function Footer() {
             <div className="col-md-6">
               <div className="text-center text-lg-start">
                 <p
-                  className={`copyright-text mb-2 mb-md-0  ${
-                    pathname === "/home-11" ? "text-white" : "text-white-light"
-                  } ff-heading`}
+                  className={`copyright-text mb-2 mb-md-0  ${pathname === "/home-11" ? "text-white" : "text-white-light"
+                    } ff-heading`}
                 >
                   © Blackhards. {new Date().getFullYear()}{" "}
-                  
+
                   . All rights reserved.
                 </p>
               </div>

@@ -24,28 +24,28 @@ export const testimonials = [
 export const testimonialsTwo = [
   {
     id: 1,
-    img: `/images/about/about-16.jpg`,
-    comment: `I have used Freeio numerous times for several different companies. I have always had great experiences. I once tried using someone else and I ended up having to cancel the order and move back to Freeio.`,
-    name: `Courtney Henry`,
-    role: "Product Manager | Envato",
-    client: "Envato",
+    img: `/images/about/coming-soon.gif`,
+    comment: `We provide a marketplace for high-quality, ready-made games, cutting development time by 80% and lowering costs.`,
+    name: `Blackhards`,
+    role: "Blackhards Family",
+    client: "Coming soon",
   },
-  {
-    id: 2,
-    img: `/images/about/about-16.jpg`,
-    comment: `I have used Freeio numerous times for several different companies. I have always had great experiences. I once tried using someone else and I ended up having to cancel the order and move back to Freeio.`,
-    name: `Courtney Henry`,
-    role: "Product Manager | Envato",
-    client: "Envato",
-  },
-  {
-    id: 3,
-    img: `/images/about/about-16.jpg`,
-    comment: `I have used Freeio numerous times for several different companies. I have always had great experiences. I once tried using someone else and I ended up having to cancel the order and move back to Freeio.`,
-    name: `Courtney Henry`,
-    role: "Product Manager | Envato",
-    client: "Envato",
-  },
+  // {
+  //   id: 2,
+  //   img: `/images/about/about-16.jpg`,
+  //   comment: `I have used Freeio numerous times for several different companies. I have always had great experiences. I once tried using someone else and I ended up having to cancel the order and move back to Freeio.`,
+  //   name: `Courtney Henry`,
+  //   role: "Product Manager | Envato",
+  //   client: "Envato",
+  // },
+  // {
+  //   id: 3,
+  //   img: `/images/about/about-16.jpg`,
+  //   comment: `I have used Freeio numerous times for several different companies. I have always had great experiences. I once tried using someone else and I ended up having to cancel the order and move back to Freeio.`,
+  //   name: `Courtney Henry`,
+  //   role: "Product Manager | Envato",
+  //   client: "Envato",
+  // },
 ];
 
 export const testimonialsThree = [

@@ -4,34 +4,34 @@ export const steps = [
     id: 1,
 
     iconClass: "flaticon-cv",
-    title: "Text to 3D/2D Animation",
+    title: "Text to Gameplay",
     description:
-      "Bring your ideas to life with stunning visuals.",
+      "Bring your ideas to life with stunning Gameplays.",
   },
-  {
-    id: 1,
+  // {
+  //   id: 1,
 
-    iconClass: "flaticon-web-design",
-    title: "Text to 3D Modeling:",
-    description:
-      "Create intricate and precise models effortlessly.",
-  },
-  {
-    id: 1,
+  //   iconClass: "flaticon-web-design",
+  //   title: "Text to 3D Modeling:",
+  //   description:
+  //     "Create intricate and precise models effortlessly.",
+  // },
+  // {
+  //   id: 1,
 
-    iconClass: "flaticon-secure",
-    title: "Text to Sound FX",
-    description:
-      "Enhance your game projects with professional-grade customizable sound effects.",
-  },
-  {
-    id: 1,
+  //   iconClass: "flaticon-secure",
+  //   title: "Text to Sound FX",
+  //   description:
+  //     "Enhance your game projects with professional-grade customizable sound effects.",
+  // },
+  // {
+  //   id: 1,
 
-    iconClass: "flaticon-customer-service",
-    title: "We’re here to help",
-    description:
-      "Enhance your game projects with professional-grade customizable sound effects.",
-  },
+  //   iconClass: "flaticon-customer-service",
+  //   title: "We’re here to help",
+  //   description:
+  //     "Enhance your game projects with professional-grade customizable sound effects.",
+  // },
 ];
 
 export const stepsTwo = [
