@@ -37,14 +37,14 @@ export default function BrowserCategory3() {
                 </p>
               </div>
             </div>
-            <div className="col-lg-3">
+            {/* <div className="col-lg-3">
               <div className="text-start text-lg-end mb-4 mb-lg-0">
                 <Link className="ud-btn2" href="/service-single">
                   All Genres
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
           <div
             className="row d-none d-lg-flex wow fadeInUp"
