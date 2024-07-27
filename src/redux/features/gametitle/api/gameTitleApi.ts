@@ -17,7 +17,8 @@ import {
   IVerifyEmailParams,
 } from "@/types";
 
-const API_URL = "http://localhost:8080";
+// const API_URL = "http://localhost:8080";
+const API_URL = "https://blackhards-13736e9f2194.herokuapp.com"
 
 export function createGameTitle(gameTitleData: IGameTitle, token: string) {
   return async (dispatch: Dispatch) => {
