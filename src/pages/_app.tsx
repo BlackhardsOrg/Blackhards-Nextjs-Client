@@ -11,9 +11,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import PlaceBidModal from "@/components/modal/PlaceBidModal";
 import LogoutModal from "@/components/modal/LogoutModal";
+import createApolloClients from "@/graphql/apollo-client"
+import { ApolloProvider } from "@apollo/client";
+
 if (typeof window !== "undefined") {
   import("bootstrap");
 }
+
+const client = createApolloClients();
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter()
@@ -26,16 +31,20 @@ export default function App({ Component, pageProps }: AppProps) {
 
   }, [pathname]);
   return (
-    <Providers>
-      <PersistGate loading={null} persistor={persistor}>
-        <ToastContainer />
-        <PlaceBidModal />
-        <LogoutModal />
+    <ApolloProvider client={client}>
+
+      <Providers>
+        <PersistGate loading={null} persistor={persistor}>
+          <ToastContainer />
+          <PlaceBidModal />
+          <LogoutModal />
 
 
-        <Component {...pageProps} />
-      </PersistGate>
+          <Component {...pageProps} />
+        </PersistGate>
 
-    </Providers>
+      </Providers>
+    </ApolloProvider>
+
   );
 }

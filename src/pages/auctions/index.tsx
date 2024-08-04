@@ -11,7 +11,7 @@ const metadata = {
   title: "Blackhards - AI Powered Game Project Marketplace | Project 1",
 };
 
-export default function ProjectPage4() {
+export default function Auctions() {
   return (
     <MarketLayouts>
       <MetaComponent meta={metadata} />

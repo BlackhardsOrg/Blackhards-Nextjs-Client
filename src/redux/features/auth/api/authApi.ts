@@ -35,7 +35,7 @@ import {
 } from "@/types";
 
 // const API_URL = "http://localhost:8080";
-const API_URL = "https://blackhards-13736e9f2194.herokuapp.com"
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export function loginUser(credentials: ICredentials) {
   return async (dispatch: Dispatch) => {

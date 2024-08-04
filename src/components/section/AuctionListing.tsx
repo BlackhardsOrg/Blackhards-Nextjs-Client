@@ -10,8 +10,12 @@ import ProjectCard3 from "../card/ProjectCard3";
 import ListingSidebar6 from "../sidebar/ListingSidebar6";
 import AuctionCard from "../card/AuctionCard";
 import AuctionListingSidebar from "../sidebar/AuctionListingSidebar";
+import { useQuery, gql } from "@apollo/client";
+import { useEffect } from "react";
 
 export default function AuctionListing() {
+
+  // #region Infos
   const getCategory = listingStore((state: any) => state.getCategory);
   const getProjectType = listingStore((state: any) => state.getProjectType);
   const getPrice = priceStore((state: any) => state.priceRange);
@@ -52,10 +56,10 @@ export default function AuctionListing() {
   const searchFilter = (item: any) =>
     getSearch !== ""
       ? item.location
-          .split("-")
-          .join(" ")
-          .toLowerCase()
-          .includes(getSearch.toLowerCase())
+        .split("-")
+        .join(" ")
+        .toLowerCase()
+        .includes(getSearch.toLowerCase())
       : item;
 
   // speak filter
@@ -91,6 +95,35 @@ export default function AuctionListing() {
         <AuctionCard data={item} />
       </div>
     ));
+
+  // #endregion Infos
+
+  const QUERY = gql`
+    query gameTitle {
+      userGameTitles(skip:Int, take: Int, developerEmail: String) {
+        title
+        _id
+        gamePlayScreenShots
+        plans{
+          basic{
+            price
+          }
+          standard{
+            price
+          }
+          premium{
+            price
+          }
+        }
+      }
+    }
+  `;
+
+  const { data, loading, error } = useQuery(QUERY);
+  useEffect(() => {
+    console.log(data, "DATA")
+  }, [loading])
+
   return (
     <>
       <section className="pt30 pb90">

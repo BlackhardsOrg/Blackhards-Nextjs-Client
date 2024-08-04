@@ -10,12 +10,13 @@ import { useEffect, useState } from "react";
 import shopStore from "@/store/shopStore";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { IPopularGameSlideCard } from "@/types";
 
 export default function PopularGameSlideCard({
   data,
   style = "",
   isContentExpanded,
-}: any) {
+}: IPopularGameSlideCard) {
   const [isFavActive, setFavActive] = useState(false);
   const { pathname } = useRouter();
   const addToCart = shopStore((state: any) => state.addToCart);
@@ -28,7 +29,7 @@ export default function PopularGameSlideCard({
     navigate("/shop-cart");
   };
 
-  const isAdded = products.some((product: any) => product.id === data.id);
+  const isAdded = products.some((product: any) => product.id === data._id);
 
   return (
     <>
@@ -62,7 +63,7 @@ export default function PopularGameSlideCard({
                   clickable: true,
                 }}
               >
-                {data?.gallery?.map((item: any, index: any) => (
+                {data?.gamePlayScreenShots?.map((item: any, index: any) => (
                   <SwiperSlide key={index}>
                     <img
                       className="w-100 object-fit-cover"
@@ -101,15 +102,15 @@ export default function PopularGameSlideCard({
           </div>
         </div>
         <div className={`list-content ${isContentExpanded ? "px-0" : ""}`}>
-          <p className="list-text body-color fz14 mb-1">{data.category}</p>
+          <p className="list-text body-color fz14 mb-1">{data.genre}</p>
           <h5 className="list-title">
-            <Link href={`/game/preview/${data.id}`}>{data.title}</Link>
+            <Link href={`/games/game-preview/${data._id}`}>{data.title}</Link>
           </h5>
           <div className="review-meta d-flex align-items-center">
             <i className="fas fa-star fz10 review-color me-2" />
             <p className="mb-0 body-color fz14">
-              <span className="dark-color me-2">{data.rating}</span>
-              {data.review} reviews
+              <span className="dark-color me-2">{data.gameRating}</span>
+              {data.gamePlays} reviews
             </p>
           </div>
           <hr className="my-2" />
@@ -118,18 +119,19 @@ export default function PopularGameSlideCard({
               <span className="position-relative mr10">
                 <img
                   className="rounded-circle object-fit-contain"
-                  src={data.author.img}
+                  style={{ width: "30px", height: "30px" }}
+                  src={"/images/team/employee-single.png"}
                   alt="Freelancer Photo"
                 />
                 <span className="online-badge" />
               </span>
-              <span className="fz14">{data.author.name}</span>
+              <span className="fz14">{data.developer.studioName}</span>
             </a>
             <div className="budget">
               <p className="mb-0 body-color">
                 Market Price
                 <span className="fz17 fw500 dark-color ms-1">
-                  ${data.price}
+                  ${data.plans?.basic.price}
                 </span>
               </p>
             </div>

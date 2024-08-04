@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 export interface IUser {
   email: string;
   password: string;
+  studioName: string;
 }
 
 export interface ICredentials {
@@ -15,6 +16,8 @@ export interface IRegisterData {
   email: string;
   password: string;
 }
+
+export interface IUserGameTitle {}
 
 export interface IRegisterEarlyData {
   studioName: string;
@@ -78,6 +81,7 @@ export interface IPlans {
 }
 
 export interface IGameTitle {
+  _id: string;
   developerEmail: string;
   gameFileLink: string;
   title: string;
@@ -101,6 +105,54 @@ export interface IGameTitle {
   isAIAllowedPricing: boolean;
 }
 
+export interface IAuction {
+  _id?: string;
+  developerEmail: string;
+  gameFileLink: string;
+  title: string;
+  description: string;
+  gamePlayScreenShots: string[];
+  gamePlayVideo: string;
+  genre: string[];
+  tags: string[];
+  targetPlatform: string[];
+  price: number;
+  saleType: string;
+  releaseDate: string;
+  legal: string;
+  ageRating: string;
+  developerId: string;
+  gameRating: number;
+  gamePlays: number;
+  isCustomizationEnabled?: boolean;
+  customizationCharge?: number;
+}
+
+export interface IHighestBidder {
+  id: string;
+  bidderEmail: string;
+  bid: number;
+  auctionId: string;
+  confirmed: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// export interface IPopularGameSlideCard {
+//   data: IGameTitleGQL;
+//   style: string;
+//   isContentExpanded: boolean;
+// }
+
+export interface IGameTitleGQL extends IGameTitle {
+  developer: IUser;
+}
+
+export interface IPopularGameSlideCard {
+  data: IGameTitleGQL;
+  style?: string;
+  isContentExpanded?: boolean;
+}
 export interface IBasicInformation {
   id: number;
   // gameTitle: IGameTitle;
@@ -158,6 +210,4 @@ export interface IGameTabs {
   setCurrentPageState: Dispatch<SetStateAction<number>>;
   currentTab: number;
   setCurrentTab: Dispatch<SetStateAction<number>>;
-  loading: boolean;
-  setLoading: Dispatch<SetStateAction<boolean>>;
 }

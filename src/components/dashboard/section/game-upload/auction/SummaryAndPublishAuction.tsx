@@ -6,13 +6,15 @@ import FLyLoad from "@/components/loading/FLyLoad";
 import { Tooltip } from "react-tooltip";
 import Radio1 from "@/components/ui-elements/radios/Radio1";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
-import TagSelect from "../../option/TagSelect";
-import SelectInputMultiple from "../../option/SelectInputMultiple";
-import PublishSummaryText from "./PublishSummaryText";
-import PackagePlansSummaryTable from "./PackagePlansSummaryTable";
+import TagSelect from "../../../option/TagSelect";
+import SelectInputMultiple from "../../../option/SelectInputMultiple";
+import PackagePlansSummaryTable from "../fixed/PackagePlansSummaryTable";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import PublishNavBtnGroup from "../fixed/PublishNavBtnGroup";
+import PublishSummaryTextAuction from "./PublishSummaryTextAuction";
+import PublishNavBtnGroupAuction from "./PublishNavBtnGroupAuction";
 
-export default function SummaryAndPublish({
+export default function SummaryAndPublishAuction({
   id,
   // gameTitle,
   // setGameTitle,
@@ -26,6 +28,7 @@ export default function SummaryAndPublish({
 
 
   const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+  const auctionLoading = useAppSelector(state => state.auction.loading.auctionStart)
   const dispatch = useAppDispatch()
 
 
@@ -67,31 +70,31 @@ export default function SummaryAndPublish({
           <form onSubmit={handleGameSubmit} className="form-style1">
             <div className="row">
               <div className="col-sm-12">
-                <PublishSummaryText labelTitle="Game Title" value={gameTitle ? gameTitle.title : ""} />
+                <PublishSummaryTextAuction labelTitle="Game Title" value={gameTitle ? gameTitle.title : ""} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryText labelTitle="Game Description" value={gameTitle ?gameTitle.description: ""} />
+                <PublishSummaryTextAuction labelTitle="Game Description" value={gameTitle ? gameTitle.description : ""} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryText labelTitle="Company Email" value={gameTitle ?gameTitle.developerEmail: ""} />
+                <PublishSummaryTextAuction labelTitle="Company Email" value={gameTitle ? gameTitle.developerEmail : ""} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryText labelTitle="Genre" value={ gameTitle ?gameTitle.genre: []} />
+                <PublishSummaryTextAuction labelTitle="Genre" value={gameTitle ? gameTitle.genre : []} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryText labelTitle="Tags" value={gameTitle ?gameTitle.tags: []} />
+                <PublishSummaryTextAuction labelTitle="Tags" value={gameTitle ? gameTitle.tags : []} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryText labelTitle="Target Platform" value={gameTitle ?gameTitle.targetPlatform: []} />
+                <PublishSummaryTextAuction labelTitle="Target Platform" value={gameTitle ? gameTitle.targetPlatform : []} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryText labelTitle="Release Date" value={gameTitle ?gameTitle.releaseDate: ""} />
+                <PublishSummaryTextAuction labelTitle="Release Date" value={gameTitle ? gameTitle.releaseDate : ""} />
               </div>
 
 
@@ -100,25 +103,12 @@ export default function SummaryAndPublish({
                 <PackagePlansSummaryTable gameTitle={gameTitle} />
               </div>
 
-              <div className="col-md-12">
-                <div className="text-start d-flex gap-1">
-                  <button type={"button"} onClick={handlePrevious} style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-dark" >
-                    {loading ? <FLyLoad /> :
-                      <>
-                        <span>Prev</span>
-                        <i className="fal fa-arrow-left-long" />
-                      </>}
-                  </button>
-
-                  <button type="submit" style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-thm" >
-                    {loading ? <FLyLoad /> :
-                      <>
-                        <span>{id == getPageProgress.length - 1 ? "Publish" : "Save & Continue"}</span>
-                        <i className="fal fa-arrow-right-long" />
-                      </>}
-                  </button>
-                </div>
-              </div>
+              <PublishNavBtnGroupAuction
+                loading={auctionLoading}
+                getCurrentPageState={getCurrentPageState}
+                handlePrevious={handlePrevious}
+                handleGameSubmit={handleGameSubmit}
+                getPageProgress={getPageProgress} />
             </div>
           </form>
         </div>

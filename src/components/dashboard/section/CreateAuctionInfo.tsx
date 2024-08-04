@@ -8,28 +8,34 @@ import PricingAndPlans from "./game-upload/fixed/PricingAndPlans";
 import UploadProgressBar from "./game-upload/fixed/UploadProgressBar";
 import SummaryAndPublish from "./game-upload/fixed/SummaryAndPublish";
 import GameTabs from "./game-upload/fixed/GameTabs";
-import FLyLoad from "@/components/loading/FLyLoad";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { createGameTitle } from "@/redux/features/gametitle/api/gameTitleApi";
 import PublishNavBtnGroup from "./game-upload/fixed/PublishNavBtnGroup";
+import { startAuction } from "@/redux/features/auction/api/auctionApi";
+import PublishNavBtnGroupAuction from "./game-upload/auction/PublishNavBtnGroupAuction";
+import UploadProgressBarAuction from "./game-upload/auction/UploadProgressBarAuction";
+import GameTabsAuction from "./game-upload/auction/GameTabsAuction";
 
 
 
 
-export default function CreateProjectInfo() {
-  const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+export default function CreateAuctionInfo() {
+  const auction = useAppSelector(state => state.auction.auction)
+  const auctionLoading = useAppSelector(state => state.auction.loading.auctionStart)
+
+
   const user = useAppSelector(state => state.auth.user)
-
-  const loading = useAppSelector(state => state.gametitle.loading.gameTitleCreate)
 
 
   const dispatch = useAppDispatch()
+  const [loading, setLoading] = useState(false)
   const [currentTab, setCurrentTab] = useState(0);
 
   // #region Submit Handlers
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
-    console.log(gameTitle)
+    setLoading(true)
+    console.log(auction)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[getCurrentPageState].isDone = true
@@ -40,9 +46,9 @@ export default function CreateProjectInfo() {
     if (nextPageNumber == 3 && user) {
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
-      dispatch(createGameTitle({
-        ...gameTitle,
-        saleType: "fixed",
+      dispatch(startAuction({
+        ...auction,
+        saleType: "auction",
         gamePlayVideo: "https://res.cloudinary.com/norvirae/video/upload/v1700744027/y2mate.com_-_Farlight_84_Official_Gameplay_Launch_Trailer_Farlight_84_720p_2_uvtz1i.mp4",
         gamePlayScreenShots: [
           "https://res.cloudinary.com/norvirae/image/upload/v1700743677/dhsqpz5iebyzwg0g8s92.jpg",
@@ -54,6 +60,7 @@ export default function CreateProjectInfo() {
       console.log(nextPageNumber, "HULA")
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
+      setLoading(false)
     }
 
   }
@@ -86,16 +93,15 @@ export default function CreateProjectInfo() {
           <div className="col-lg-12">
             <DashboardNavigation />
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-8">
             <div className="dashboard_title_area">
-              <h2>Publish Game</h2>
-              <p className="text">Easily Share Your Creations with the World</p>
+              <h2>Start Auction</h2>
+              <p className="text">Get the best & Quality bids for your games</p>
             </div>
           </div>
 
-          <PublishNavBtnGroup
-            className="justify-content-end"
-            loading={loading}
+          <PublishNavBtnGroupAuction
+            loading={auctionLoading}
             getCurrentPageState={getCurrentPageState}
             handlePrevious={handlePrevious}
             handleGameSubmit={handleGameSubmit}
@@ -103,10 +109,11 @@ export default function CreateProjectInfo() {
         </div>
         <div className="row">
           <div className="col-xl-12">
-            <UploadProgressBar currentUploadPageText={getPageProgress[getCurrentPageState].pageText}
+            <UploadProgressBarAuction
+              currentUploadPageText={getPageProgress[getCurrentPageState].pageText}
               percentage={String(getPageProgress[getCurrentPageState].percentage)} />
 
-            <GameTabs
+            <GameTabsAuction
               currentTab={currentTab}
               setCurrentTab={setCurrentTab}
               // gameTitle={gameTitle}
@@ -115,11 +122,10 @@ export default function CreateProjectInfo() {
               setGetPageProgress={setGetPageProgress}
               getCurrentPageState={getCurrentPageState}
               setCurrentPageState={setCurrentPageState}
-
             />
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }

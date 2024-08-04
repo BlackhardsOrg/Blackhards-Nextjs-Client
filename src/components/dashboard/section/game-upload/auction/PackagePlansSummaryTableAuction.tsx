@@ -1,18 +1,18 @@
 
 import { useEffect, useState } from "react";
-import SelectInput from "../../option/SelectInput";
-import SelectInputPrice from "../../option/SelectInputPrice";
+import SelectInput from "../../../option/SelectInput";
+import SelectInputPrice from "../../../option/SelectInputPrice";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 import GameUploadCheck from "@/components/ui-elements/radios/GameUploadCheck";
 import { IGameTitle, IPackagePlans, IPlans } from "@/types";
-import PlansSelectOptionsInput from "../../option/PlanSelectOptionsInput";
-import { PlansSummaryDisplayText } from "./PlansSummaryDisplayText";
+import PlansSelectOptionsInput from "../../../option/PlanSelectOptionsInput";
+import { PlansSummaryDisplayText } from "../fixed/PlansSummaryDisplayText";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 
 interface IPackagePlansSummaryTable {
     gameTitle: IGameTitle
 }
-export default function PackagePlansSummaryTable({
+export default function PackagePlansSummaryTableAuction({
     //  gameTitle
 }: IPackagePlansSummaryTable) {
     const gameTitle = useAppSelector(state => state.gametitle.gameTitle)

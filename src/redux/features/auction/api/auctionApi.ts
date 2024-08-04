@@ -2,43 +2,39 @@ import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
 import {
-  gameTitleCreateFailure,
-  gameTitleCreateStart,
-  gameTitleCreateSuccess,
-} from "../slices/gameTitleSlice";
+  auctionCreateFailure,
+  auctionCreateStart,
+  auctionCreateSuccess
+} from "../slices/auctionSlice";
 
 import {
-  AxiosError,
-  ICredentials,
+  IAuction,
   IGameTitle,
-  IRegisterData,
-  IResetPasswordData,
   IUser,
-  IVerifyEmailParams,
 } from "@/types";
 
 // const API_URL = "http://localhost:8080";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export function createGameTitle(gameTitleData: IGameTitle, token: string) {
+export function startAuction(auctionData: IAuction, token: string) {
   return async (dispatch: Dispatch) => {
     try {
-      dispatch(gameTitleCreateStart());
-      console.log(gameTitleData, "HUSZ");
+      dispatch(auctionCreateStart());
+      console.log(auctionData, "HUSZ");
       // Make an HTTP GET request to the API
       const response = await axios.post(
-        `${API_URL}/gametitle/create`,
-        gameTitleData,
+        `${API_URL}/auctions/start`,
+        auctionData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       const user: IUser = response.data;
-      toast("🦄 Game Title Creation Successful!");
-      dispatch(gameTitleCreateSuccess(null));
+      toast("🦄 Auction Started Successful!");
+      dispatch(auctionCreateSuccess(null));
     } catch (error: any) {
-      dispatch(gameTitleCreateFailure(error));
+      dispatch(auctionCreateFailure(error));
 
-      console.error("Game Title Creation failed!:", error);
+      console.error("Auction Start failed!:", error);
       // const axiosError = error as AxiosError;
       if (error.response) {
         toast(error.response.data.message, {

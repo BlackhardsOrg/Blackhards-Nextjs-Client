@@ -1,11 +1,11 @@
 
 import { useEffect, useState } from "react";
-import SelectInput from "../../option/SelectInput";
-import SelectInputPrice from "../../option/SelectInputPrice";
+import SelectInput from "../../../option/SelectInput";
+import SelectInputPrice from "../../../option/SelectInputPrice";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
 import GameUploadCheck from "@/components/ui-elements/radios/GameUploadCheck";
 import { IPackagePlans, IPlans } from "@/types";
-import PlansSelectOptionsInput from "../../option/PlanSelectOptionsInput";
+import PlansSelectOptionsInput from "../../../option/PlanSelectOptionsInput";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
 

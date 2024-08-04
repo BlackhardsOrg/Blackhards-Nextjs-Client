@@ -6,6 +6,10 @@ import TrendingGameCard from "../card/TrendingGameCard";
 import listingStore from "@/store/listingStore";
 import priceStore from "@/store/priceStore";
 import PopularGameSlideCard from "../card/PopularGameSlideCard";
+import { useQuery, gql } from "@apollo/client";
+import { useEffect } from "react";
+import { IGameTitleGQL } from "@/types";
+import { USER_GAME_TITLES } from "@/graphql";
 
 export default function GameListing() {
   const getDeliveryTime = listingStore((state: any) => state.getDeliveryTime);
@@ -52,31 +56,45 @@ export default function GameListing() {
   const speakFilter = (item: any) =>
     getSpeak?.length !== 0 ? getSpeak.includes(item.language) : item;
 
+
+
+
+  const { data, loading, error } = useQuery<{ userGameTitles: [IGameTitleGQL] }>(USER_GAME_TITLES, {
+    variables: {
+      skip: 0,
+      take: 2,
+      developerEmail: "norbertmbafrank@gmail.com"
+    }
+  });
+  useEffect(() => {
+    console.log(data, "DATA")
+  }, [loading, data])
+
   return (
     <>
       <section className="pt30 pb90">
         <div className="container">
           <ListingOption1 />
           <div className="row">
-            {product1
-              .slice(0, 12)
-              .filter(deliveryFilter)
-              .filter(priceFilter)
-              .filter(levelFilter)
-              .filter(locationFilter)
-              .filter(searchFilter)
-              .filter(sortByFilter)
-              .filter(designToolFilter)
-              .filter(speakFilter)
+            {data && data.userGameTitles ? data.userGameTitles
+              // .slice(0, 12)
+              // .filter(deliveryFilter)
+              // .filter(priceFilter)
+              // .filter(levelFilter)
+              // .filter(locationFilter)
+              // .filter(searchFilter)
+              // .filter(sortByFilter)
+              // .filter(designToolFilter)
+              // .filter(speakFilter)
               .map((item, i) => (
                 <div key={i} className="col-sm-6 col-xl-3">
-                  {item?.gallery ? (
+                  {item?.gamePlayScreenShots.length > 1 ? (
                     <PopularGameSlideCard data={item} />
                   ) : (
                     <TrendingGameCard data={item} />
                   )}
                 </div>
-              ))}
+              )) : null}
           </div>
           <Pagination1 />
         </div>

@@ -2,11 +2,11 @@ import { IBasicInformation, IGameTabs, IGameTitle, IPageProgress } from "@/types
 import { Dispatch, SetStateAction, useState } from "react";
 import BasicInfo from "./BasicInfo";
 import PricingAndPlans from "./PricingAndPlans";
-import UploadAttachment from "../UploadAttachment";
+import UploadAttachment from "./UploadAttachment";
 import SummaryAndPublish from "./SummaryAndPublish";
 import { useAppSelector } from "@/redux/app/hooks";
 
-const tab = ["Basic Info", "Pricing & Plans", "Upload Game Files", "Summary & Publish"];
+const tab = ["Basic Info", "Pricing", "Upload Game Files", "Summary & Publish"];
 
 export default function GameTabs({
     // gameTitle,
@@ -17,10 +17,9 @@ export default function GameTabs({
     setCurrentPageState,
     currentTab,
     setCurrentTab,
-    loading,
-    setLoading
+
 }: IGameTabs) {
-    const gameTitleData = useAppSelector(state => state.gametitle.gameTitle)
+
     return (
         <>
             <div className="ui-content">

@@ -3,15 +3,16 @@ import { useState } from "react";
 import shopStore from "@/store/shopStore";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { IGameTitleGQL } from "@/types";
 
-interface ITrendingGameCard{
-  data: any
+interface ITrendingGameCard {
+  data: IGameTitleGQL
 }
 export default function TrendingGameCard({ data }: ITrendingGameCard) {
   const [isFavActive, setFavActive] = useState(false);
 
   const { pathname } = useRouter();
-  const addToCart = shopStore((state:any) => state.addToCart);
+  const addToCart = shopStore((state: any) => state.addToCart);
   const products = shopStore((state: any) => state.products);
 
   const navigate = useRouter().push;
@@ -21,43 +22,39 @@ export default function TrendingGameCard({ data }: ITrendingGameCard) {
     navigate("/shop-cart");
   };
 
-  const isAdded = products.some((product: any) => product.id === data.id);
+  const isAdded = products.some((product: any) => product.id === data._id);
   return (
     <>
       <div
-        className={`listing-style1 ${
-          pathname === "/home-4" ? "default-box-shadow1 bdrs8" : ""
-        } ${pathname === "/home-6" ? "default-box-shadow1 border-0" : ""}
-                 ${
-                   pathname === "/home-9"
-                     ? "border-0 default-box-shadow1 bdrs16"
-                     : ""
-                 } 
-                ${pathname === "/home-10" ? "bdrs16" : ""}
-                ${pathname === "/home-17" ? "bdrs16" : ""}
-                ${pathname === "/home-15" ? "bdrs16" : ""}
-                ${pathname === "/home-12" ? "bdrs16" : ""}
-                 ${
-                   pathname === "/home-5"
-                     ? "style4 default-box-shadow1 mb60"
-                     : ""
-                 } 
-                 ${
-                   pathname === "/home-18"
-                     ? "style4 default-box-shadow1 mb60"
-                     : ""
-                 } 
-                 ${
-                   pathname === "/home-19"
-                     ? "style4 default-box-shadow1 mb60"
-                     : ""
-                 } 
-                ${pathname === "/home-8" ? "style5" : ""}`}
+        className={`listing-style1 
+          ${pathname === "/home-4" ? "default-box-shadow1 bdrs8" : ""} 
+          ${pathname === "/home-6" ? "default-box-shadow1 border-0" : ""}
+          ${pathname === "/home-9"
+            ? "border-0 default-box-shadow1 bdrs16"
+            : ""
+          } 
+          ${pathname === "/home-10" ? "bdrs16" : ""}
+          ${pathname === "/home-17" ? "bdrs16" : ""}
+          ${pathname === "/home-15" ? "bdrs16" : ""}
+          ${pathname === "/home-12" ? "bdrs16" : ""}
+          ${pathname === "/home-5"
+            ? "style4 default-box-shadow1 mb60"
+            : ""
+          } 
+          ${pathname === "/home-18"
+            ? "style4 default-box-shadow1 mb60"
+            : ""
+          } 
+          ${pathname === "/home-19"
+            ? "style4 default-box-shadow1 mb60"
+            : ""
+          } 
+          ${pathname === "/home-8" ? "style5" : ""}`}
       >
         <div className="list-thumb">
           <img
             className="w-100 h-100 object-fit-cover"
-            src={data.img}
+            src={data && data.gamePlayScreenShots ?data.gamePlayScreenShots[0]: ""}
             alt="thumbnail"
           />
           <a
@@ -68,17 +65,17 @@ export default function TrendingGameCard({ data }: ITrendingGameCard) {
           </a>
         </div>
         <div className={`list-content ${pathname === "/home-8" ? "px-0" : ""}`}>
-          <p className="list-text body-color fz14 mb-1">{data.category}</p>
+          <p className="list-text body-color fz14 mb-1">{data &&data.genre? data.genre[0]: ""}</p>
           <h5 className="list-title">
-            <Link href={`/game/preview/${data.id}`}>
+            <Link href={`/game/preview/${data._id}`}>
               {data.title.slice(0, 40) + "..."}
             </Link>
           </h5>
           <div className="review-meta d-flex align-items-center">
             <i className="fas fa-star fz10 review-color me-2" />
             <p className="mb-0 body-color fz14">
-              <span className="dark-color me-2">{data.rating}</span>
-              {data.review} reviews
+              <span className="dark-color me-2">{data.gameRating}</span>
+              {data.gamePlays} reviews
             </p>
           </div>
           <hr className="my-2" />
@@ -87,18 +84,18 @@ export default function TrendingGameCard({ data }: ITrendingGameCard) {
               <span className="position-relative mr10">
                 <img
                   className="rounded-circle wa"
-                  src={data.author.img}
+                  src={"/images/team/fl-s-1.png"}
                   alt="Freelancer Photo"
                 />
                 <span className="online-badges" />
               </span>
-              <span className="fz14">{data.author.name}</span>
+              {/* <span className="fz14">{data.author.name}</span> */}
             </a>
             <div className="budget">
               <p className="mb-0 body-color">
                 Market Price
                 <span className="fz17 fw500 dark-color ms-1">
-                  ${data.price}
+                  ${data.plans?.basic.price}
                 </span>
               </p>
             </div>

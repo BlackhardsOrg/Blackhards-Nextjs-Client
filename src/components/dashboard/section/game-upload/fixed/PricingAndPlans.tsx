@@ -6,11 +6,12 @@ import FLyLoad from "@/components/loading/FLyLoad";
 import { Tooltip } from "react-tooltip";
 import Radio1 from "@/components/ui-elements/radios/Radio1";
 import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
-import TagSelect from "../../option/TagSelect";
-import SelectInputMultiple from "../../option/SelectInputMultiple";
+import TagSelect from "../../../option/TagSelect";
+import SelectInputMultiple from "../../../option/SelectInputMultiple";
 import PackagePlans from "./PackagePlans";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
+import PublishNavBtnGroup from "./PublishNavBtnGroup";
 
 export default function PricingAndPlans
     ({
@@ -22,8 +23,9 @@ export default function PricingAndPlans
         setCurrentTab }: IPricingAndPlans) {
 
     const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+    const loading = useAppSelector(state => state.gametitle.loading.gameTitleCreate)
+
     const dispatch = useAppDispatch()
-    const [loading, setLoading] = useState(false)
     const [isOfferingPackagedPlans, setIsOfferingPackagedPlans] = useState(true)
 
     // #region Form Handlers
@@ -54,7 +56,6 @@ export default function PricingAndPlans
     // #region Submit Handlers
     const handleGameSubmit = (e: any) => {
         e.preventDefault()
-        setLoading(true)
         console.log(gameTitle)
         setGetPageProgress((old) => {
             const pageList = [...old]
@@ -65,7 +66,6 @@ export default function PricingAndPlans
 
         setCurrentPageState(nextPageNumber)
         setCurrentTab(nextPageNumber)
-        setLoading(false)
 
     }
 
@@ -196,30 +196,12 @@ export default function PricingAndPlans
                                 />}
                             </div>
 
-                            <div className="col-md-12">
-                                <div className="text-start d-flex gap-1">
-                                    <button
-                                        type={"button"}
-                                        onClick={handlePrevious}
-                                        style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-dark" >
-                                        {loading ? <FLyLoad /> :
-                                            <>
-                                                <span>Prev</span>
-                                                <i className="fal fa-arrow-left-long" />
-                                            </>}
-                                    </button>
-
-                                    <button
-                                        type="submit"
-                                        style={{ opacity: loading ? .5 : 1 }} disabled={loading} className="ud-btn btn-thm" >
-                                        {loading ? <FLyLoad /> :
-                                            <>
-                                                <span>Save & Continue</span>
-                                                <i className="fal fa-arrow-right-long" />
-                                            </>}
-                                    </button>
-                                </div>
-                            </div>
+                            <PublishNavBtnGroup
+                                loading={loading}
+                                getCurrentPageState={getCurrentPageState}
+                                handlePrevious={handlePrevious}
+                                handleGameSubmit={handleGameSubmit}
+                                getPageProgress={getPageProgress} />
                         </div>
                     </form>
                 </div>
