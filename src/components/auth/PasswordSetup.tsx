@@ -82,7 +82,6 @@ const PasswordSetup: React.FC<PasswordSetupProps> = ({
   };
 
   useEffect(() => {
-    console.log(setIsPasswordMismatched, "Check")
     if (credentials.confirmPassword !== "") {
       setIsPasswordMismatched(credentials.password !== credentials.confirmPassword);
     }

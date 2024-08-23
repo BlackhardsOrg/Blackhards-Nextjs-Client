@@ -16,7 +16,7 @@ import PublishNavBtnGroup from "./game-upload/fixed/PublishNavBtnGroup";
 
 
 
-export default function CreateProjectInfo() {
+export default function CreateGameTitleInfo() {
   const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
   const user = useAppSelector(state => state.auth.user)
 
@@ -29,15 +29,17 @@ export default function CreateProjectInfo() {
   // #region Submit Handlers
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
-    console.log(gameTitle)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[getCurrentPageState].isDone = true
       return pageList
     })
     let nextPageNumber = getCurrentPageState + 1 < getPageProgress.length ? getCurrentPageState + 1 : getCurrentPageState
-
     if (nextPageNumber == 3 && user) {
+      setCurrentPageState(nextPageNumber)
+      setCurrentTab(nextPageNumber)
+    }
+    if (getCurrentPageState == 3 && user) {
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
       dispatch(createGameTitle({
@@ -51,7 +53,6 @@ export default function CreateProjectInfo() {
       }, user.token))
     } else {
 
-      console.log(nextPageNumber, "HULA")
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
     }
@@ -60,7 +61,6 @@ export default function CreateProjectInfo() {
 
   const handlePrevious = () => {
     let prevPageNumber = getCurrentPageState - 1 >= 0 ? getCurrentPageState - 1 : getCurrentPageState
-    console.log(getCurrentPageState, "WhatsaAAAAA", prevPageNumber)
 
     setCurrentPageState(prevPageNumber)
 

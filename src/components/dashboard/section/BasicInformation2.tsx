@@ -78,7 +78,6 @@ export default function BasicInformation({ gameTitle,
   };
 
   const platformHandler = (option: string, value: string, e: any) => {
-    console.log(e)
     setPlatform({
       options: toggleElementInArray<string>(getPlatform.options, option),
       values: toggleElementInArray<string>(getPlatform.values, value),
@@ -95,7 +94,6 @@ export default function BasicInformation({ gameTitle,
   }
 
   const handleFormattedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value, e.target.name, "SHouut")
     let value = e.target.value;
 
     // Remove leading zeros unless it is '0' before a decimal point
@@ -104,7 +102,6 @@ export default function BasicInformation({ gameTitle,
     }
 
     e = { ...e, target: { ...e.target, value } }
-    console.log(e.target.value, "After")
 
     setGameTitle((old: any) => {
       return { ...old, price: Number(value) }

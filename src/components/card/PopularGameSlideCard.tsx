@@ -11,6 +11,8 @@ import shopStore from "@/store/shopStore";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { IPopularGameSlideCard } from "@/types";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { addItemToCart } from "@/redux/features/cart/slice/cartSlice";
 
 export default function PopularGameSlideCard({
   data,
@@ -21,15 +23,24 @@ export default function PopularGameSlideCard({
   const { pathname } = useRouter();
   const addToCart = shopStore((state: any) => state.addToCart);
   const products = shopStore((state: any) => state.products);
+  const cartItems = useAppSelector(state => state.cart.items)
+  const dispatch = useAppDispatch()
 
   const navigate = useRouter().push;
 
   const addToCartHandler = (product: any) => {
-    addToCart(product);
-    navigate("/shop-cart");
+    // addToCart(product);
+    dispatch(addItemToCart({
+      title: product.title,
+      price: data.plans?.basic.price,
+      GamePlayScreenShot: data.gamePlayScreenShots[0],
+      id: data._id, qty: 1,
+      packageType: "basic"
+    }))
+    navigate("/shop/shop-cart");
   };
 
-  const isAdded = products.some((product: any) => product.id === data._id);
+  const isAdded = cartItems.some((product: any) => product.id === data._id);
 
   return (
     <>
@@ -141,7 +152,7 @@ export default function PopularGameSlideCard({
           onClick={() => addToCartHandler(data)}
           className={`ud-btn ${isAdded ? "btn-thm2" : "btn-light-thm"}`}
         >
-          {isAdded ? "Added Cart" : "Add to cart"}
+          {isAdded ? "Added to Cart" : "Add to cart"}
           <i className="fal fa-arrow-right-long" />
         </a>
       </div>

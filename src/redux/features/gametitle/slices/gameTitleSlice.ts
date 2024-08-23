@@ -8,6 +8,8 @@ const plans: IPlans = {
     type: "basic",
     price: 0,
     title: "basic",
+    description: "",
+
     howLongToLaunch: 1,
     howManyCustomizations: 1,
     customizationCharge: 0,
@@ -18,7 +20,9 @@ const plans: IPlans = {
   standard: {
     type: "standard",
     price: 0,
-    title: "basic",
+    title: "standard",
+    description: "",
+
     howLongToLaunch: 1,
     howManyCustomizations: 1,
     customizationCharge: 0,
@@ -29,7 +33,8 @@ const plans: IPlans = {
   premium: {
     type: "premium",
     price: 0,
-    title: "basic",
+    title: "premium",
+    description: "",
     howLongToLaunch: 1,
     howManyCustomizations: 1,
     customizationCharge: 0,

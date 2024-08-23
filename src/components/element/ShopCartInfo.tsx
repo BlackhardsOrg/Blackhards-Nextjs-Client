@@ -1,14 +1,17 @@
+import { useAppSelector } from "@/redux/app/hooks";
 import shopStore from "@/store/shopStore";
 import Link from "next/link";
 
 export default function ShopCartInfo() {
-  const products = shopStore((state: any) => state.products);
+  // const products = shopStore((state: any) => state.products);
+  const cartItems = useAppSelector(state => state.cart.items)
 
   let total = 0;
-  products.forEach((item: any) => {
+  cartItems.forEach((item: any) => {
     const price = item.qty * item.price;
     total = total + price;
   });
+
 
   return (
     <>
@@ -24,7 +27,7 @@ export default function ShopCartInfo() {
             <span className="float-end">${total}</span>
           </p>
           <div className="d-grid mt40">
-            <Link className="ud-btn btn-thm" href="/shop-checkout">
+            <Link className="ud-btn btn-thm" href="/shop/shop-checkout">
               Proceed to Checkout
               <i className="fal fa-arrow-right-long" />
             </Link>

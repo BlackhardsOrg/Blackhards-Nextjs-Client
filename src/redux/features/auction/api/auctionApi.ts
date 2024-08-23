@@ -20,7 +20,6 @@ export function startAuction(auctionData: IAuction, token: string) {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(auctionCreateStart());
-      console.log(auctionData, "HUSZ");
       // Make an HTTP GET request to the API
       const response = await axios.post(
         `${API_URL}/auctions/start`,
@@ -29,8 +28,10 @@ export function startAuction(auctionData: IAuction, token: string) {
       );
 
       const user: IUser = response.data;
+      console.log(response.data, "DATTATTA")
       toast("🦄 Auction Started Successful!");
       dispatch(auctionCreateSuccess(null));
+      return user
     } catch (error: any) {
       dispatch(auctionCreateFailure(error));
 

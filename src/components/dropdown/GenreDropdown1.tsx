@@ -8,7 +8,6 @@ export default function GenreDropdown1() {
   const setOurGenre = listingStore((state: any) => state.setGenre);
 
   const genreHandler = (data: any) => {
-    console.log(getGenre, "GENRE")
     const isExist = getGenre.includes(data);
     if (!isExist) {
       return setGenre((item: any) => [...item, data]);
@@ -32,7 +31,6 @@ export default function GenreDropdown1() {
                 type="checkbox"
                 // checked={getGenre.includes(item.value)}
                 onChange={() => {
-                  console.log(item, getGenre)
                   genreHandler(item.value)}}
               />
               <span className="checkmark" />

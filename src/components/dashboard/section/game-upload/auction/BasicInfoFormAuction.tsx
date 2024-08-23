@@ -19,7 +19,7 @@ const BasicInfoFormAuction = ({
     handlePrevious,
     handleGameSubmit,
     getPageProgress }: any) => {
-    const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+    const auction = useAppSelector(state => state.auction.auction)
     const auctionLoading = useAppSelector(state => state.auction.loading.auctionStart)
     return (
 
@@ -32,7 +32,7 @@ const BasicInfoFormAuction = ({
                         </label>
                         <input
                             onChange={handleInputFormChange}
-                            value={gameTitle ? gameTitle.title : ""}
+                            value={auction ? auction.title : ""}
                             name="title"
                             type="text"
                             className="form-control"
@@ -48,7 +48,7 @@ const BasicInfoFormAuction = ({
                         </label>
                         <textarea
                             onChange={handleInputFormChange}
-                            value={gameTitle ? gameTitle.description : ""}
+                            value={auction ? auction.description : ""}
                             name="description"
                             cols={30}
                             rows={6}
@@ -63,7 +63,7 @@ const BasicInfoFormAuction = ({
                         </label>
                         <input
                             onChange={handleInputFormChange}
-                            value={gameTitle ? gameTitle.gameFileLink : ""}
+                            value={auction ? auction.gameFileLink : ""}
                             name="gameFileLink"
                             type="text"
                             className="form-control"
@@ -117,8 +117,43 @@ const BasicInfoFormAuction = ({
                         </label>
                         <input
                             onChange={handleInputFormChange}
-                            value={gameTitle ? gameTitle.releaseDate : ""}
+                            value={auction ? auction.releaseDate : ""}
                             name="releaseDate"
+                            type="date"
+                            className="form-control"
+                            placeholder="Your Email or Company Email"
+                        />
+
+                    </div>
+                </div>
+
+
+                <div className="col-sm-12">
+                    <div className="mb20">
+                        <label className="heading-color ff-heading fw500 mb10">
+                            Select the auction Start Date
+                        </label>
+                        <input
+                            onChange={handleInputFormChange}
+                            value={auction ? auction.startTime : ""}
+                            name="startTime"
+                            type="date"
+                            className="form-control"
+                            placeholder="Your Email or Company Email"
+                        />
+
+                    </div>
+                </div>
+
+                <div className="col-sm-12">
+                    <div className="mb20">
+                        <label className="heading-color ff-heading fw500 mb10">
+                            select the auction End Date
+                        </label>
+                        <input
+                            onChange={handleInputFormChange}
+                            value={auction ? auction.endTime : ""}
+                            name="endTime"
                             type="date"
                             className="form-control"
                             placeholder="Your Email or Company Email"

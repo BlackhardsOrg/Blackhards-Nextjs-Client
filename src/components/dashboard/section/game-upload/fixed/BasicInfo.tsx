@@ -175,7 +175,6 @@ export default function BasicInfo({
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(gameTitle)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true
@@ -190,12 +189,28 @@ export default function BasicInfo({
   }
 
   const handlePrevious = () => {
-    console.log(id, "WhatsaAAAAA")
     let prevPageNumber = id - 1 >= 0 ? id - 1 : id
     setCurrentPageState(prevPageNumber)
     setCurrentTab(prevPageNumber)
   }
   // #endregion Handlers
+
+
+  //innitialize
+  useEffect(() => {
+    if (gameTitle && gameTitle.tags) {
+      setSelectedTags(gameTitle.tags)
+    }
+
+    if (gameTitle && gameTitle.genre) {
+      setGenre(old => ({ options: gameTitle.genre, values: gameTitle.genre }))
+    }
+
+    if (gameTitle && gameTitle.targetPlatform) {
+      setPlatform(old => ({ options: gameTitle.targetPlatform, values: gameTitle.targetPlatform }))
+    }
+
+  }, [gameTitle])
 
   // #region UseEffects
   useEffect(() => {

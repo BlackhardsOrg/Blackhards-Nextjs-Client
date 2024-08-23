@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { IBasicInformation, IGameTitle } from "@/types";
-import { formatPriceToDollars } from "@/utils/priceFormatter";
-import FLyLoad from "@/components/loading/FLyLoad";
-import { Tooltip } from "react-tooltip";
-import Radio1 from "@/components/ui-elements/radios/Radio1";
-import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
-import TagSelect from "../../../option/TagSelect";
-import SelectInputMultiple from "../../../option/SelectInputMultiple";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
-import PublishNavBtnGroup from "../fixed/PublishNavBtnGroup";
-import BasicInfoForm from "../fixed/BasicInfoForm";
+// import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
+import { auctionCreateSuccess } from "@/redux/features/auction/slices/auctionSlice";
+import BasicInfoFormAuction from "./BasicInfoFormAuction";
 
 const genreData = [
 
@@ -88,7 +80,7 @@ export default function BasicInfoAuction({
   setCurrentPageState,
   setCurrentTab }: IBasicInformation) {
 
-  const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+  const auction = useAppSelector(state => state.auction.auction)
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -143,7 +135,7 @@ export default function BasicInfoAuction({
 
 
     // setGameTitle({ ...gameTitle, [e.target.name]: getGenre.values })
-    dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: getGenre.values }))
+    dispatch(auctionCreateSuccess({ ...auction, [e.target.name]: getGenre.values }))
   };
 
   const platformHandler = (option: string, value: string, e: any) => {
@@ -164,7 +156,7 @@ export default function BasicInfoAuction({
     // setGameTitle((old) => {
     //   return { ...old, [e.target.name]: e.target.value }
     // })
-    dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: e.target.value }))
+    dispatch(auctionCreateSuccess({ ...auction, [e.target.name]: e.target.value }))
 
   }
 
@@ -175,7 +167,7 @@ export default function BasicInfoAuction({
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(gameTitle)
+    console.log(auction)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true
@@ -197,32 +189,59 @@ export default function BasicInfoAuction({
   }
   // #endregion Handlers
 
+
+
+  // Sync component state with Redux state on mount and when auction changes
+  useEffect(() => {
+    if (auction) {
+      if (auction.tags?.length) {
+        setSelectedTags(auction.tags);
+      }
+      if (auction.genre?.length) {
+        setGenre({ options: auction.genre, values: auction.genre })
+      }
+      if (auction.targetPlatform?.length) {
+        setPlatform({ options: auction.targetPlatform, values: auction.targetPlatform })
+      }
+    }
+  }, [auction]);
+
   // #region UseEffects
   useEffect(() => {
     // setGameTitle({ ...gameTitle, targetPlatform: getPlatform.values })
-    dispatch(gameTitleCreateSuccess({ ...gameTitle, targetPlatform: getPlatform.values }))
+    if (getPlatform.values.length > 0) {
 
+      dispatch(auctionCreateSuccess({ ...auction, targetPlatform: getPlatform.values }))
+    }
 
   }, [getPlatform.values])
 
   useEffect(() => {
     // setGameTitle({ ...gameTitle, tags: getTags.values })
-    dispatch(gameTitleCreateSuccess({ ...gameTitle, tags: getTags.values }))
+    if (getTags.values.length > 0) {
+      console.log("CALLED")
+
+      dispatch(auctionCreateSuccess({ ...auction, tags: getTags.values }))
+    }
 
 
   }, [getTags.values])
 
   useEffect(() => {
     // setGameTitle({ ...gameTitle, genre: getGenre.values })
-    dispatch(gameTitleCreateSuccess({ ...gameTitle, genre: getGenre.values }))
+    if (getGenre.values.length > 0) {
 
+      dispatch(auctionCreateSuccess({ ...auction, genre: getGenre.values }))
+    }
 
   }, [getGenre.values])
 
   useEffect(() => {
     // setGameTitle({ ...gameTitle, tags: selectedTags })
-    dispatch(gameTitleCreateSuccess({ ...gameTitle, tags: selectedTags }))
+    if (selectedTags.length > 0) {
 
+      dispatch(auctionCreateSuccess({ ...auction, tags: selectedTags }))
+    }
 
   }, [selectedTags])
   // #endregion MyRegion
@@ -234,7 +253,7 @@ export default function BasicInfoAuction({
           <h5 className="list-title">Basic Info</h5>
         </div>
         <div className="col-xl-8">
-          <BasicInfoForm
+          <BasicInfoFormAuction
             handleInputFormChange={handleInputFormChange}
             selectedTags={selectedTags}
             setSelectedTags={setSelectedTags}

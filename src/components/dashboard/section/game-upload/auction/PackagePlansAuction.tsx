@@ -86,6 +86,8 @@ export default function PackagePlansAuction({
             title: "",
             howLongToLaunch: 0,
             howManyCustomizations: 0,
+            description: "",
+
             howManyLevels: 0,
             hasDocumentation: false,
             hasAdminPanel: false,
@@ -96,6 +98,8 @@ export default function PackagePlansAuction({
             price: 0,
             title: "",
             howLongToLaunch: 0,
+            description: "",
+
             howManyCustomizations: 0,
             howManyLevels: 0,
             hasDocumentation: false,
@@ -106,6 +110,7 @@ export default function PackagePlansAuction({
             type: "basic",
             price: 0,
             title: "",
+            description: "",
             howLongToLaunch: 0,
             howManyCustomizations: 0,
             howManyLevels: 0,
@@ -123,7 +128,6 @@ export default function PackagePlansAuction({
     };
 
     useEffect(() => {
-        console.log(gameTitle)
         // setGameTitle(old => ({ ...old, plans: plans }))
         dispatch(gameTitleCreateSuccess({ ...gameTitle, plans: plans }))
 
@@ -364,7 +368,6 @@ export default function PackagePlansAuction({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, basic: { ...old["basic"], hasDocumentation: e.target.checked } }))
                                         }} />
                                 </td>
@@ -376,7 +379,6 @@ export default function PackagePlansAuction({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, standard: { ...old["standard"], hasDocumentation: e.target.checked } }))
                                         }} />
                                 </td>
@@ -388,7 +390,6 @@ export default function PackagePlansAuction({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, premium: { ...old["premium"], hasDocumentation: e.target.checked } }))
                                         }} />
                                 </td>
@@ -405,7 +406,6 @@ export default function PackagePlansAuction({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, basic: { ...old["basic"], hasAdminPanel: e.target.checked } }))
                                         }} />
                                 </td>
@@ -417,7 +417,6 @@ export default function PackagePlansAuction({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, standard: { ...old["standard"], hasAdminPanel: e.target.checked } }))
                                         }} />
                                 </td>
@@ -429,7 +428,6 @@ export default function PackagePlansAuction({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, premium: { ...old["premium"], hasAdminPanel: e.target.checked } }))
                                         }} />
                                 </td>

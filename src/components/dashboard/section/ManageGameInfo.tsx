@@ -1,11 +1,14 @@
 import DashboardNavigation from "../header/DashboardNavigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination1 from "@/components/section/Pagination1";
 import ManageProjectCard from "../card/ManageProjectCard";
 import ProposalModal1 from "../modal/ProposalModal1";
 import DeleteModal from "../modal/DeleteModal";
 import Link from "next/link";
 import { links } from "@/data/links";
+import { useQuery } from "@apollo/client";
+import { IGameTitleGQL } from "@/types";
+import { USER_GAME_TITLES } from "@/graphql";
 
 const tab = [
   "Published Games",
@@ -15,7 +18,16 @@ const tab = [
 
 export default function ManageGameInfo() {
   const [selectedTab, setSelectedTab] = useState(0);
-
+  const { data, loading, error } = useQuery<{ userGameTitles: [IGameTitleGQL] }>(USER_GAME_TITLES, {
+    variables: {
+      skip: 0,
+      take: 2,
+      developerEmail: "norbertmbafrank@gmail.com"
+    }
+  });
+  useEffect(() => {
+    console.log(data, "DATA")
+  }, [loading, data])
   return (
     <>
       <div className="dashboard__content hover-bgc-color">
@@ -65,17 +77,26 @@ export default function ManageGameInfo() {
                       <thead className="t-head">
                         <tr>
                           <th scope="col">Title</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Type/Cost</th>
+                          <th scope="col">Genre</th>
+                          <th scope="col">Cost/Package Type</th>
                           <th scope="col">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="t-body">
-                        {Array(7)
-                          .fill(7)
-                          .map((_, i) => (
-                            <ManageProjectCard key={i} />
-                          ))}
+                        {
+                          data && data.userGameTitles ?
+                            data.userGameTitles.map((item, i) => {
+                              return (
+                                <ManageProjectCard gametitle={item} key={i} />
+
+                              )
+                            }) : null
+                        }
+                         {/* {Array(7)
+                           .fill(7)
+                           .map((_, i) => (
+                             <ManageProjectCard key={i} />
+                           ))} */}
                       </tbody>
                     </table>
                     <div className="mt30">

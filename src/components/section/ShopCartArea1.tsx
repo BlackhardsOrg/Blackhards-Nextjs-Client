@@ -2,10 +2,11 @@ import shopStore from "@/store/shopStore";
 import ShopCartInfo from "../element/ShopCartInfo";
 import CartList1 from "../element/CartList1";
 import Link from "next/link"
+import { useAppSelector } from "@/redux/app/hooks";
 
 export default function ShopCartArea1() {
   const products = shopStore((state: any) => state.products);
-
+  const cartItems = useAppSelector(state => state.cart.items)
   return (
     <>
       <section className="shop-checkout pt-0">
@@ -23,13 +24,13 @@ export default function ShopCartArea1() {
                         Price
                       </th>
                       <th className="ps-0" scope="col">
-                        Subtotal
+                        Package Type
                       </th>
                       <th scope="col" />
                     </tr>
                   </thead>
                   <tbody className="table_body">
-                    {products.map((item: any, i: any) => (
+                    {cartItems.map((item: any, i: any) => (
                       <CartList1 key={i} data={item} />
                     ))}
                   </tbody>

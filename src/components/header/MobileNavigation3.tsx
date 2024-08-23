@@ -10,7 +10,7 @@ export default function MobileNavigation3() {
             <div className="menu_and_widgets">
               <div className="mobile_menu_bar d-flex justify-content-between align-items-center">
                 <Link className="mobile_logo" href="/home-2">
-                  <img src="/images/header-logo2.svg" alt="Header Logo" />
+                  <img src="/images/Blackhards-white-logo-2.svg" alt="Header Logo" />
                 </Link>
                 <div className="right-side text-end">
                   <Link href={links.login}>join</Link>

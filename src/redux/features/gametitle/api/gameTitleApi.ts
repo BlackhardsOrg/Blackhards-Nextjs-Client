@@ -24,7 +24,6 @@ export function createGameTitle(gameTitleData: IGameTitle, token: string) {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(gameTitleCreateStart());
-      console.log(gameTitleData, "HUSZ");
       // Make an HTTP GET request to the API
       const response = await axios.post(
         `${API_URL}/gametitle/create`,

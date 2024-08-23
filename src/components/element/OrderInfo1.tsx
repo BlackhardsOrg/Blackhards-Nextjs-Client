@@ -1,13 +1,21 @@
+import { useAppSelector } from "@/redux/app/hooks";
 import shopStore from "@/store/shopStore";
+import { useEffect } from "react";
 
 export default function OrderInfo1() {
-  const products = shopStore((state: any) => state.products);
+  const cartItems = useAppSelector(state => state.cart.items)
+  const licenseFee = useAppSelector(state => state.cart.licenseFee)
 
   let total = 0;
-  products.forEach((item: any) => {
+  let Licensing = licenseFee;
+  cartItems.forEach((item: any) => {
     const price = item.qty * item.price;
     total = total + price;
   });
+
+  useEffect(() => {
+    console.log(total, Licensing, "HALO")
+  }, [total])
 
   return (
     <>
@@ -20,7 +28,7 @@ export default function OrderInfo1() {
               <span className="float-end">Subtotal</span>
             </h6>
           </li>
-          {products?.map((item: any, i: any) => (
+          {cartItems?.map((item: any, i: any) => (
             <li key={i} className="mb20">
               <p className="body-color">
                 {item.title.substring(0, 10) + "..."} x {item.qty}
@@ -35,10 +43,10 @@ export default function OrderInfo1() {
             </h6>
           </li>
           <li className=" bdrb1 mb15">
-            <h6>
-              Shipping
+            <h6> 
+              Licensing
               <span className="float-end">
-                {products?.length !== 0 ? "$100" : "$0.00"}
+                {cartItems?.length !== 0 ? "$10" : "$0.00"}
               </span>
             </h6>
           </li>
@@ -47,8 +55,8 @@ export default function OrderInfo1() {
               Total
               <span className="float-end">
                 $
-                {products?.length !== 0
-                  ? (Number(total) + 100).toFixed(2)
+                {cartItems?.length !== 0
+                  ? (Number(total) +10).toFixed(2)
                   : "$0.00"}
               </span>
             </h6>

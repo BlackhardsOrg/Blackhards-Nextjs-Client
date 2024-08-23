@@ -71,6 +71,22 @@ export default function PackagePlansSummaryTable({
                                 </td>
 
                             </tr>
+
+                            <tr>
+
+                                <td>Description</td>
+                                <td>
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.basic.description} />
+
+                                </td>
+                                <td>
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.standard.description} />
+                                </td>
+                                <td>
+                                    <PlansSummaryDisplayText text={gameTitle && gameTitle.plans && gameTitle.plans.premium.description} />
+                                </td>
+
+                            </tr>
                             <tr>
                                 <td>How long to launch game project?</td>
                                 <td>

@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { IBasicInformation, IGameTitle } from "@/types";
-import { formatPriceToDollars } from "@/utils/priceFormatter";
-import FLyLoad from "@/components/loading/FLyLoad";
-import { Tooltip } from "react-tooltip";
-import Radio1 from "@/components/ui-elements/radios/Radio1";
-import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio";
-import TagSelect from "../../../option/TagSelect";
-import SelectInputMultiple from "../../../option/SelectInputMultiple";
+import { useState } from "react";
+
+import { IBasicInformation } from "@/types";
+
 import PackagePlansSummaryTable from "../fixed/PackagePlansSummaryTable";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import PublishNavBtnGroup from "../fixed/PublishNavBtnGroup";
 import PublishSummaryTextAuction from "./PublishSummaryTextAuction";
 import PublishNavBtnGroupAuction from "./PublishNavBtnGroupAuction";
+import { formatPriceToDollars } from "@/utils/priceFormatter";
 
 export default function SummaryAndPublishAuction({
   id,
@@ -27,7 +21,7 @@ export default function SummaryAndPublishAuction({
   const [loading, setLoading] = useState(false)
 
 
-  const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+  const auction = useAppSelector(state => state.auction.auction)
   const auctionLoading = useAppSelector(state => state.auction.loading.auctionStart)
   const dispatch = useAppDispatch()
 
@@ -36,7 +30,7 @@ export default function SummaryAndPublishAuction({
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(gameTitle)
+    console.log(auction)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true
@@ -52,7 +46,6 @@ export default function SummaryAndPublishAuction({
 
   const handlePrevious = () => {
     let prevPageNumber = id - 1 >= 0 ? id - 1 : id
-    console.log(getCurrentPageState, "WhatsaAAAAA", prevPageNumber)
 
     setCurrentPageState(prevPageNumber)
     setCurrentTab(prevPageNumber)
@@ -70,38 +63,63 @@ export default function SummaryAndPublishAuction({
           <form onSubmit={handleGameSubmit} className="form-style1">
             <div className="row">
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Game Title" value={gameTitle ? gameTitle.title : ""} />
+                <PublishSummaryTextAuction labelTitle="Game Title" value={auction ? auction.title : ""} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Game Description" value={gameTitle ? gameTitle.description : ""} />
+                <PublishSummaryTextAuction labelTitle="Game Description" value={auction ? auction.description : ""} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Company Email" value={gameTitle ? gameTitle.developerEmail : ""} />
+                <PublishSummaryTextAuction labelTitle="Company Email" value={auction ? auction.developerEmail : ""} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Genre" value={gameTitle ? gameTitle.genre : []} />
+                <PublishSummaryTextAuction labelTitle="Genre" value={auction ? auction.genre : []} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Tags" value={gameTitle ? gameTitle.tags : []} />
+                <PublishSummaryTextAuction labelTitle="Tags" value={auction ? auction.tags : []} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Target Platform" value={gameTitle ? gameTitle.targetPlatform : []} />
+                <PublishSummaryTextAuction labelTitle="Target Platform" value={auction ? auction.targetPlatform : []} />
               </div>
 
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Release Date" value={gameTitle ? gameTitle.releaseDate : ""} />
+                <PublishSummaryTextAuction labelTitle="Release Date" value={auction ? auction.releaseDate : ""} />
+              </div>
+
+              
+
+              <div className="col-sm-12">
+                <PublishSummaryTextAuction labelTitle="Game File Link" value={auction ? auction.gameFileLink : ""} />
+              </div>
+
+              <div className="col-sm-12">
+                <PublishSummaryTextAuction labelTitle="Gameplay Video" value={auction ? auction.gamePlayVideo : ""} />
               </div>
 
 
+              <hr/>
+              <h1 className="h3 text-center"> Auction Info</h1>
+              <div className="col-sm-12">
+                <PublishSummaryTextAuction labelTitle="Reserved Price" value={auction ? formatPriceToDollars(auction.reservedPrice) : ""} />
+              </div>
+              <div className="col-sm-12">
+                <PublishSummaryTextAuction labelTitle="Auction Starts" value={auction ? auction.startTime : ""} />
+              </div>
 
               <div className="col-sm-12">
+                <PublishSummaryTextAuction labelTitle="Auction Ends" value={auction ? auction.endTime : ""} />
+              </div>
+
+              
+
+
+              {/* <div className="col-sm-12">
                 <PackagePlansSummaryTable gameTitle={gameTitle} />
-              </div>
+              </div> */}
 
               <PublishNavBtnGroupAuction
                 loading={auctionLoading}

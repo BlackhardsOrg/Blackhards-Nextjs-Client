@@ -84,6 +84,7 @@ export default function PackagePlans({
             type: "basic",
             price: 0,
             title: "",
+            description: "",
             howLongToLaunch: 0,
             howManyCustomizations: 0,
             howManyLevels: 0,
@@ -95,6 +96,7 @@ export default function PackagePlans({
             type: "basic",
             price: 0,
             title: "",
+            description: "",
             howLongToLaunch: 0,
             howManyCustomizations: 0,
             howManyLevels: 0,
@@ -106,6 +108,7 @@ export default function PackagePlans({
             type: "basic",
             price: 0,
             title: "",
+            description: "",
             howLongToLaunch: 0,
             howManyCustomizations: 0,
             howManyLevels: 0,
@@ -245,6 +248,57 @@ export default function PackagePlans({
                                 </td>
 
                             </tr>
+
+                            <tr>
+                                <td>Description</td>
+                                <td>
+                                    <textarea
+                                        onChange={(e) => {
+                                            setPlans((old) => {
+                                                return { ...old, basic: { ...old.basic, description: e.target.value } }
+                                            })
+                                        }}
+                                        value={plans.basic.description}
+                                        rows={54}
+                                        cols={50}
+                                        name="description"
+                                        className="form-control"
+                                        placeholder="Description on the plan"
+                                    />
+                                </td>
+                                <td>
+                                    <textarea
+                                        rows={890}
+                                        cols={50}
+                                        onChange={(e) => {
+                                            setPlans((old) => {
+                                                return { ...old, standard: { ...old.standard, description: e.target.value } }
+                                            })
+                                        }}
+                                        value={plans.standard.description}
+                                        name="description"
+                                        className="form-control"
+                                        placeholder="Description on the plan"
+                                    />
+                                </td>
+                                <td>
+                                    <textarea
+                                        rows={890}
+                                        cols={50}
+                                        onChange={(e) => {
+                                            setPlans((old) => {
+                                                return { ...old, premium: { ...old.premium, description: e.target.value } }
+                                            })
+                                        }}
+                                        value={plans.premium.description}
+                                        name="description"
+                                        className="form-control"
+                                        placeholder="Description on the plan"
+                                    />
+                                </td>
+
+                            </tr>
+
                             <tr>
                                 <td>How long to launch game project?</td>
                                 <td>
@@ -364,7 +418,6 @@ export default function PackagePlans({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, basic: { ...old["basic"], hasDocumentation: e.target.checked } }))
                                         }} />
                                 </td>
@@ -376,7 +429,6 @@ export default function PackagePlans({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, standard: { ...old["standard"], hasDocumentation: e.target.checked } }))
                                         }} />
                                 </td>
@@ -388,7 +440,6 @@ export default function PackagePlans({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, premium: { ...old["premium"], hasDocumentation: e.target.checked } }))
                                         }} />
                                 </td>
@@ -405,7 +456,6 @@ export default function PackagePlans({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, basic: { ...old["basic"], hasAdminPanel: e.target.checked } }))
                                         }} />
                                 </td>
@@ -417,7 +467,6 @@ export default function PackagePlans({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, standard: { ...old["standard"], hasAdminPanel: e.target.checked } }))
                                         }} />
                                 </td>
@@ -429,7 +478,6 @@ export default function PackagePlans({
                                         text="Yes"
                                         // value={"yes"}
                                         onChange={(e: any) => {
-                                            console.log(e.target.checked, "HUSLA")
                                             setPlans(old => ({ ...old, premium: { ...old["premium"], hasAdminPanel: e.target.checked } }))
                                         }} />
                                 </td>

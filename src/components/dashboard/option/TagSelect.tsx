@@ -40,6 +40,7 @@ export default function TagSelect({
     setSelectedTags(selectedTags.filter((t: string) => t !== tag));
   };
 
+  
   const filteredTags = tagOptions.filter(tag => tag.option.toLowerCase().includes(search.toLowerCase()));
 
 

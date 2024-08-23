@@ -3,41 +3,6 @@ import { IAuction, IPlans } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
-const plans: IPlans = {
-  basic: {
-    type: "basic",
-    price: 0,
-    title: "basic",
-    howLongToLaunch: 1,
-    howManyCustomizations: 1,
-    customizationCharge: 0,
-    howManyLevels: 1,
-    hasDocumentation: true,
-    hasAdminPanel: true,
-  },
-  standard: {
-    type: "standard",
-    price: 0,
-    title: "basic",
-    howLongToLaunch: 1,
-    howManyCustomizations: 1,
-    customizationCharge: 0,
-    howManyLevels: 1,
-    hasDocumentation: true,
-    hasAdminPanel: true,
-  },
-  premium: {
-    type: "premium",
-    price: 0,
-    title: "basic",
-    howLongToLaunch: 1,
-    howManyCustomizations: 1,
-    customizationCharge: 0,
-    howManyLevels: 1,
-    hasDocumentation: true,
-    hasAdminPanel: true,
-  }
-}
 
 const defaultAuctionData: IAuction = {
   developerEmail: "gbgbgbgbgb",
@@ -48,8 +13,8 @@ const defaultAuctionData: IAuction = {
   gamePlayVideo: "",
   genre: [""],
   tags: [""],
+  reservedPrice: 0,
   targetPlatform: [""],
-  price: 0,
   saleType: "",
   releaseDate: "",
   legal: "",
@@ -57,6 +22,9 @@ const defaultAuctionData: IAuction = {
   developerId: "",
   gameRating: 0,
   gamePlays: 0,
+  endTime: "",
+  startTime: ""
+  
 }
 
 interface IInitialState {

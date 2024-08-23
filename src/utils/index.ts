@@ -1,0 +1,27 @@
+export function timeAgo(dateString: string): string {
+    const units: [number, string][] = [
+        [60, 'second'],
+        [60, 'minute'],
+        [24, 'hour'],
+        [30, 'day'],
+        [12, 'month'],
+        [Number.MAX_SAFE_INTEGER, 'year']
+    ];
+
+    const date = new Date(dateString);
+    const now = new Date();
+    let seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+    for (const [unit, name] of units) {
+        if (seconds < unit) {
+            return `${seconds} ${name}${seconds !== 1 ? 's' : ''} ago`;
+        }
+        seconds = Math.floor(seconds / unit);
+    }
+    
+    return 'just now';
+}
+
+// Example usage:
+const isoDate = "2024-07-18T19:45:10.460Z";
+console.log(timeAgo(isoDate)); // Output will be something like "X days ago"

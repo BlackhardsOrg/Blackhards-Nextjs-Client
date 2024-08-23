@@ -13,14 +13,29 @@ import GameDetailSlider from "../element/GameDetailSlider";
 import GameDetailPrice from "../element/GameDetailPrice";
 import GameContactWidget from "../element/GameContactWidget";
 import { useRouter } from "next/router";
+import { SINGLE_GAME_TITLE } from "@/graphql";
+import { IGameTitleGQL } from "@/types";
+import { useQuery } from "@apollo/client";
+import { useEffect } from "react";
+import { formatPriceToDollars } from "@/utils/priceFormatter";
+import { useAppDispatch } from "@/redux/app/hooks";
 
 export default function GameDetail() {
   const isMatchedScreen = useScreen(1216);
   const { query } = useRouter()
   const { id } = query;
 
-  const data = product1.find((item: any) => item.id == id);
+  const dispatch = useAppDispatch()
 
+  // const data = product1.find((item: any) => item.id == id);
+  const { data, loading, error } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
+    variables: {
+      id
+    }
+  });
+  useEffect(() => {
+    console.log(data, "SINGLE DATA")
+  }, [loading, data])
   return (
     <>
       <StickyContainer>
@@ -32,8 +47,8 @@ export default function GameDetail() {
                   <div className="row mb30 pb30 bdrb1">
                     <div className="col-xl-12">
                       <div className="position-relative">
-                        {data ? (
-                          <h2>{data.title}</h2>
+                        {data && data.gameTitle ? (
+                          <h2>{data.gameTitle.title}</h2>
                         ) : (
                           <h2>
                             Escape from Tarkov
@@ -68,45 +83,30 @@ export default function GameDetail() {
                     </div>
                   </div>
 
-                  <GameDetailSlider />
+                  {data && data.gameTitle ? <GameDetailSlider gigImages={data.gameTitle.gamePlayScreenShots} /> : null}
                   <div className="service-about">
                     <h4>About</h4>
                     <p className="text mb30">
-                      It is a long established fact that a reader will be
-                      distracted by the readable content of a page when looking
-                      at its layout. The point of using Lorem Ipsum is that it
-                      has a more-or-less normal distribution of letters, as
-                      opposed to using &apos;Content here, content here&apos;,
-                      making it look like readable English.
+                      {data && data.gameTitle ? data.gameTitle.description : null}
                     </p>
-                    <p className="text mb-0">Services I provide:</p>
-                    <p className="text mb-0">1) Website Design</p>
-                    <p className="text mb-0">2) Mobile App Design</p>
-                    <p className="text mb-0">3) Brochure Design</p>
-                    <p className="text mb-0">4) Business Card Design</p>
-                    <p className="text mb30">5) Flyer Design</p>
-                    <p className="text mb30">
-                      Many desktop publishing packages and web page editors now
-                      use Lorem Ipsum as their default model text, and a search
-                      for &apos;lorem ipsum&apos; will uncover many web sites
-                      still in their infancy. Various versions have evolved over
-                      the years, sometimes by accident, sometimes on purpose
-                      (injected humour and the like).
-                    </p>
+                    
                     <div className="d-flex align-items-start mb50">
                       <div className="list1">
-                        <h6>App type</h6>
-                        <p className="text mb-0">Business, Food &amp; drink,</p>
-                        <p className="text">Graphics &amp; design</p>
+                        <h6>Genre</h6>
+                        <p className="text mb-0">
+                          {data && data.gameTitle ? data.gameTitle.genre.map(((item, index) => `${item}, `)) : null}
+                        </p>
                       </div>
-                      <div className="list1 ml80">
+                      {/* <div className="list1 ml80">
                         <h6>Design tool</h6>
                         <p className="text mb-0">Adobe XD, Figma,</p>
                         <p className="text">Adobe Photoshop</p>
-                      </div>
+                      </div> */}
                       <div className="list1 ml80">
                         <h6>Device</h6>
-                        <p className="text">Mobile, Desktop</p>
+                        <p className="text">
+                          {data && data.gameTitle ? data.gameTitle.targetPlatform.map(((item, index) => `${item}, `)) : null}
+                        </p>
                       </div>
                     </div>
                     <hr className="opacity-100 mb60" />
@@ -114,123 +114,139 @@ export default function GameDetail() {
                     <div className="table-style2 table-responsive bdr1 mt30 mb60">
                       <table className="table table-borderless mb-0">
                         <thead className="t-head">
-                          <tr>
-                            <th className="col" scope="col" />
-                            <th className="col" scope="col">
-                              <span className="h2">
-                                $29 <small>/ monthly</small>
-                              </span>
-                              <br />
-                              <span className="h4">Basic</span>
-                              <br />
-                              <span className="text">
-                                I will redesign your current{" "}
-                                <br className="d-none d-lg-block" /> landing
-                                page or create one for{" "}
-                                <br className="d-none d-lg-block" /> you (upto 4
-                                sections)
-                              </span>
-                            </th>
-                            <th className="col" scope="col">
-                              <span className="h2">
-                                $49 <small>/ monthly</small>
-                              </span>
-                              <br />
-                              <span className="h4">Standard</span>
-                              <br />
-                              <span className="text">
-                                4 High Quality Desktop{" "}
-                                <br className="d-none d-lg-block" /> Pages.
-                              </span>
-                            </th>
-                            <th className="col" scope="col">
-                              <span className="h2">
-                                $89 <small>/ monthly</small>
-                              </span>
-                              <br />
-                              <span className="h4">Premium</span>
-                              <br />
-                              <span className="text">
-                                4 High Quality Desktop and{" "}
-                                <br className="d-none d-lg-block" /> Mobile
-                                Pages.
-                              </span>
-                            </th>
-                          </tr>
+                          {data && data.gameTitle && data.gameTitle.plans ?
+                            <tr>
+                              <th className="col" scope="col" />
+
+                              <th className="col" scope="col">
+                                <span className="h2">
+                                  {formatPriceToDollars(Number(data.gameTitle.plans.basic.price))} <small>/ onetime</small>
+                                </span>
+                                <br />
+                                <span className="h4">{data.gameTitle.plans.basic.title}</span>
+                                <br />
+                                <span className="text">
+                                  {data.gameTitle.plans.basic.description}
+
+                                </span>
+                              </th>
+                              <th className="col" scope="col">
+                                <span className="h2">
+                                  {data && data.gameTitle ? formatPriceToDollars(Number(data.gameTitle.plans?.standard.price)) : null} <small>/ onetime</small>
+                                </span>
+                                <br />
+                                <span className="h4">{data.gameTitle.plans.standard.title}</span>
+                                <br />
+                                <span className="text">
+                                  {data.gameTitle.plans.standard.description}
+                                </span>
+                              </th>
+                              <th className="col" scope="col">
+                                <span className="h2">
+                                  {data && data.gameTitle ? formatPriceToDollars(Number(data.gameTitle.plans?.premium.price)) : null} <small>/ onetime</small>
+                                </span>
+                                <br />
+                                <span className="h4">{data.gameTitle.plans.premium.title}</span>
+                                <br />
+                                <span className="text">
+                                  {data.gameTitle.plans.premium.description}
+                                </span>
+                              </th>
+                            </tr>
+                            : null}
                         </thead>
-                        <tbody className="t-body">
-                          <tr className="bgc-thm3">
-                            <th scope="row">Source file</th>
-                            <td>
-                              <a className="check_circle bgc-thm">
-                                <span className="fas fa-check" />
-                              </a>
-                            </td>
-                            <td>
-                              <a className="check_circle bgc-thm">
-                                <span className="fas fa-check" />
-                              </a>
-                            </td>
-                            <td>
-                              <a className="check_circle bgc-thm">
-                                <span className="fas fa-check" />
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Number of pages</th>
-                            <td>2</td>
-                            <td>4</td>
-                            <td>6</td>
-                          </tr>
-                          <tr className="bgc-thm3">
-                            <th scope="row">Revisions</th>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Delivery Time </th>
-                            <td>2 Days</td>
-                            <td>3 Days</td>
-                            <td>4 Days</td>
-                          </tr>
-                          <tr className="bgc-thm3">
-                            <th scope="row">Total</th>
-                            <td>$29</td>
-                            <td>$49</td>
-                            <td>$89</td>
-                          </tr>
-                          <tr>
-                            <th scope="row" />
-                            <td>
-                              <a className="ud-btn btn-thm">
-                                Select
-                                <i className="fal fa-arrow-right-long" />
-                              </a>
-                            </td>
-                            <td>
-                              <a className="ud-btn btn-thm">
-                                Select
-                                <i className="fal fa-arrow-right-long" />
-                              </a>
-                            </td>
-                            <td>
-                              <a className="ud-btn btn-thm">
-                                Select
-                                <i className="fal fa-arrow-right-long" />
-                              </a>
-                            </td>
-                          </tr>
-                        </tbody>
+                        {data && data.gameTitle && data.gameTitle.plans ?
+                          <tbody className="t-body">
+                            <tr className="bgc-thm3">
+                              <th scope="row">It Has an Admin Panel</th>
+                              <td>
+                                <a className="check_circle bgc-thm">
+                                  <span className={`fas ${data.gameTitle.plans.basic.hasAdminPanel ? "fa-check" : "fa-square"} `} />
+                                </a>
+                              </td>
+                              <td>
+                                <a className="check_circle bgc-thm">
+                                  <span className={`fas ${data.gameTitle.plans.standard.hasAdminPanel ? "fa-check" : "fa-square"} `} />
+                                </a>
+                              </td>
+                              <td>
+                                <a className="check_circle bgc-thm">
+                                  <span className={`fas ${data.gameTitle.plans.premium.hasAdminPanel ? "fa-check" : "fa-square"} `} />
+                                </a>
+                              </td>
+                            </tr>
+                            <tr className="bgc-thm3">
+                              <th scope="row">It has Documentation</th>
+                              <td>
+                                <a className="check_circle bgc-thm">
+                                  <span className={`fas ${data.gameTitle.plans.basic.hasDocumentation ? "fa-check" : "fa-square"} `} />
+                                </a>
+                              </td>
+                              <td>
+                                <a className="check_circle bgc-thm">
+                                  <span className={`fas ${data.gameTitle.plans.standard.hasDocumentation ? "fa-check" : "fa-square"} `} />
+                                </a>
+                              </td>
+                              <td>
+                                <a className="check_circle bgc-thm">
+                                  <span className={`fas ${data.gameTitle.plans.premium.hasDocumentation ? "fa-check" : "fa-square"} `} />
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Number of Levels</th>
+                              <td>{data.gameTitle.plans.basic.howManyLevels}</td>
+                              <td>{data.gameTitle.plans.standard.howManyLevels}</td>
+                              <td>{data.gameTitle.plans.premium.howManyLevels}</td>
+                            </tr>
+                            <tr className="bgc-thm3">
+                              <th scope="row">Customization Requests</th>
+                              <td>{data.gameTitle.plans.basic.howManyCustomizations}</td>
+                              <td>{data.gameTitle.plans.standard.howManyCustomizations}</td>
+                              <td>{data.gameTitle.plans.premium.howManyCustomizations}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">How may days to Launch </th>
+                              <td>{data.gameTitle.plans.basic.howLongToLaunch} Days</td>
+                              <td>{data.gameTitle.plans.standard.howLongToLaunch} Days</td>
+                              <td>{data.gameTitle.plans.premium.howLongToLaunch} Days</td>
+                            </tr>
+                            <tr className="bgc-thm3">
+                              <th scope="row">Customization Charge</th>
+                              <td>{formatPriceToDollars(Number(data.gameTitle.plans.basic.customizationCharge))}</td>
+                              <td>{formatPriceToDollars(Number(data.gameTitle.plans.standard.customizationCharge))}</td>
+                              <td>{formatPriceToDollars(Number(data.gameTitle.plans.premium.customizationCharge))}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" />
+                              <td>
+                                <a className="ud-btn btn-thm">
+                                  Select
+                                  <i className="fal fa-arrow-right-long" />
+                                </a>
+                              </td>
+                              <td>
+                                <a className="ud-btn btn-thm">
+                                  Select
+                                  <i className="fal fa-arrow-right-long" />
+                                </a>
+                              </td>
+                              <td>
+                                <a className="ud-btn btn-thm">
+                                  Select
+                                  <i className="fal fa-arrow-right-long" />
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody> : null}
                       </table>
                     </div>
                     <hr className="opacity-100 mb60" />
                     <h4>Frequently Asked Questions</h4>
                     <ServiceDetailFaq1 />
                     <hr className="opacity-100 mb60" />
-                    <h4>Add Extra Services</h4>
-                    <ServiceDetailExtra1 />
+                    {/* <h4>Add Extra Services</h4>
+                    <ServiceDetailExtra1 /> */}
                     <hr className="opacity-100 mb15" />
                     <ServiceDetailReviewInfo1 />
                     <ServiceDetailComment1 />

@@ -1,34 +1,42 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import MarketLayouts from "../layouts/MarketLayouts";
+import { IAuctionGQL } from "@/types";
+import { timeAgo } from "@/utils";
+import { formatPriceToDollars } from "@/utils/priceFormatter";
+import { useEffect } from "react";
 
-export default function AuctionCard({ data }: any) {
+export default function AuctionCard({ data }: { data: IAuctionGQL }) {
   const navigate = useRouter().push;
+  useEffect(() => {
+    console.log(data.gametitle ? data.gametitle.gamePlayScreenShots : "", "GAMEPLAY")
+  }, [data])
   return (
     <>
       <div
-        
+
         className="freelancer-style1 bdr1 bdrs12 hover-box-shadow row ms-0 align-items-lg-center"
       >
         <div className="col-lg-8 ps-0 bdrr1 bdrn-xl">
           <div className="d-lg-flex">
             <div className="thumb w60 position-relative rounded-circle mb15-md">
               <img
+                style={{ width: "60px", height: "60px" }}
                 className="rounded-circle mx-auto"
-                src={data.img}
+                src={data.gametitle ? data.gametitle?.gamePlayScreenShots[0] : ""}
                 alt="rounded-circle"
               />
               <span className="online-badge2"></span>
             </div>
             <div className="details ml15 ml0-md mb15-md">
-              <h5 className="title mb-3">{data.title}</h5>
+              <h5 className="title mb-3">{data.gametitle?.title}</h5>
               <p className="mb-0 fz14 list-inline-item mb5-sm pe-1">
                 <i className="flaticon-place fz16 vam text-thm2 me-1"></i>{" "}
-                {data.location}
+                {data.gamePlays}
               </p>
               <p className="mb-0 fz14 list-inline-item mb5-sm pe-1">
                 <i className="flaticon-30-days fz16 vam text-thm2 me-1 bdrl1 pl15 pl0-xs bdrn-xs"></i>{" "}
-                2 hours ago
+                {timeAgo(data.updatedAt)}
               </p>
               <p className="mb-0 fz14 list-inline-item mb5-sm">
                 <i className="flaticon-contract fz16 vam text-thm2 me-1 bdrl1 pl15 pl0-xs bdrn-xs"></i>{" "}
@@ -37,29 +45,28 @@ export default function AuctionCard({ data }: any) {
             </div>
           </div>
           <p className="text mt10">
-            {data.brief
-              ? data.brief
+            {data.gametitle ? data.gametitle?.description
               : "Many desktop publishing packages and web page editors now use Lorem Ipsum  as their default model text."}{" "}
           </p>
           <div className="skill-tags d-flex align-items-center justify-content-start mb20-md">
-            {data.tags.map((item: any, i: any) => (
+            {data.gametitle ? data.gametitle.tags.map((item: any, i: any) => (
               <span key={i} className={`tag ${i === 1 ? "mx10" : ""}`}>
                 {item}
               </span>
-            ))}
+            )) : null}
           </div>
         </div>
         <div className="col-lg-4 ps-0 ps-xl-3 pe-0">
           <div className="details">
             <div className="text-lg-end">
               <h4>
-                $20,000
+                {formatPriceToDollars(data.reservedPrice)}
               </h4>
               <p className="text">Current Bid</p>
             </div>
             <div className="d-grid mt15">
               <Link
-                href={`/auction/preview/${data.id}`}
+                href={`/auctions/auction-preview/${data.id}`}
                 className="ud-btn btn-thm-border bdrs12 hover-default-box-shadow1"
               >
                 View

@@ -78,7 +78,8 @@ const BasicInfoForm = ({
                         <label className="heading-color ff-heading fw500 mb10">
                             Tags
                         </label>
-                        <TagSelect selectedTags={selectedTags}
+                        <TagSelect
+                            selectedTags={selectedTags}
                             setSelectedTags={setSelectedTags} />
                     </div>
                 </div>
@@ -127,6 +128,8 @@ const BasicInfoForm = ({
 
                     </div>
                 </div>
+
+                
 
                 <PublishNavBtnGroup
                     loading={gameTitleLoading}

@@ -15,6 +15,7 @@ import { startAuction } from "@/redux/features/auction/api/auctionApi";
 import PublishNavBtnGroupAuction from "./game-upload/auction/PublishNavBtnGroupAuction";
 import UploadProgressBarAuction from "./game-upload/auction/UploadProgressBarAuction";
 import GameTabsAuction from "./game-upload/auction/GameTabsAuction";
+import { useRouter } from "next/router";
 
 
 
@@ -31,33 +32,43 @@ export default function CreateAuctionInfo() {
   const [loading, setLoading] = useState(false)
   const [currentTab, setCurrentTab] = useState(0);
 
+  const router = useRouter()
+
   // #region Submit Handlers
-  const handleGameSubmit = (e: any) => {
+  const handleGameSubmit = async (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(auction)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[getCurrentPageState].isDone = true
       return pageList
     })
     let nextPageNumber = getCurrentPageState + 1 < getPageProgress.length ? getCurrentPageState + 1 : getCurrentPageState
-
     if (nextPageNumber == 3 && user) {
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
-      dispatch(startAuction({
+    }
+    if (getCurrentPageState == 3 && user) {
+      setCurrentPageState(nextPageNumber)
+      setCurrentTab(nextPageNumber)
+      console.log("BEForE", "RESULT")
+
+      const result = await dispatch(startAuction({
         ...auction,
         saleType: "auction",
-        gamePlayVideo: "https://res.cloudinary.com/norvirae/video/upload/v1700744027/y2mate.com_-_Farlight_84_Official_Gameplay_Launch_Trailer_Farlight_84_720p_2_uvtz1i.mp4",
+        //gamePlayVideo: "https://res.cloudinary.com/norvirae/video/upload/v1700744027/y2mate.com_-_Farlight_84_Official_Gameplay_Launch_Trailer_Farlight_84_720p_2_uvtz1i.mp4",
         gamePlayScreenShots: [
           "https://res.cloudinary.com/norvirae/image/upload/v1700743677/dhsqpz5iebyzwg0g8s92.jpg",
           "https://res.cloudinary.com/norvirae/image/upload/v1700571324/test-image-1_kmdrlc.jpg"
         ]
       }, user.token))
+      if (result.success) {
+        console.log(result, "RESULT AAAAAAAS")
+
+        router.push("/user/manage-auctions")
+      }
     } else {
 
-      console.log(nextPageNumber, "HULA")
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
       setLoading(false)
@@ -67,7 +78,6 @@ export default function CreateAuctionInfo() {
 
   const handlePrevious = () => {
     let prevPageNumber = getCurrentPageState - 1 >= 0 ? getCurrentPageState - 1 : getCurrentPageState
-    console.log(getCurrentPageState, "WhatsaAAAAA", prevPageNumber)
 
     setCurrentPageState(prevPageNumber)
 

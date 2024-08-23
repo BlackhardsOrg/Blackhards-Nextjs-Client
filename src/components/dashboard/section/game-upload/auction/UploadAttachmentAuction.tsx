@@ -1,12 +1,13 @@
 import FLyLoad from "@/components/loading/FLyLoad";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { auctionCreateSuccess } from "@/redux/features/auction/slices/auctionSlice";
 import { IUploadAttachments } from "@/types";
 import Link from "next/link";
 import { ChangeEventHandler, useState } from "react";
 
 export default function UploadAttachmentAuction({ id,
   //  gameTitle, setGameTitle, 
-   getPageProgress,
+  getPageProgress,
   setGetPageProgress,
   getCurrentPageState,
   setCurrentPageState,
@@ -14,8 +15,8 @@ export default function UploadAttachmentAuction({ id,
   const [uploadedFiles, setUploadedFiles] = useState([]) as any;
   const [loading, setLoading] = useState(false)
 
-  const gameTitleData = useAppSelector(state => state.gametitle.gameTitle)
-  const [gameTitle] = useState(gameTitleData)
+  const auctionData = useAppSelector(state => state.auction.auction)
+  const [auction] = useState(auctionData)
   const dispatch = useAppDispatch()
   // upload handler
   const handleFileUpload = (event: ChangeEventHandler<HTMLInputElement> | any) => {
@@ -60,7 +61,6 @@ export default function UploadAttachmentAuction({ id,
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(gameTitle)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true
@@ -75,14 +75,19 @@ export default function UploadAttachmentAuction({ id,
   }
 
   const handlePrevious = () => {
-    console.log(id, "WhatsaAAAAA")
     let prevPageNumber = id - 1 >= 0 ? id - 1 : id
     setCurrentPageState(prevPageNumber)
     setCurrentTab(prevPageNumber)
   }
   // #endregion Handlers
 
+  const handleInputFormChange = (e: any) => {
+    // setGameTitle((old) => {
+    //   return { ...old, [e.target.name]: e.target.value }
+    // })
+    dispatch(auctionCreateSuccess({ ...auction, [e.target.name]: e.target.value }))
 
+  }
   return (
     <form onSubmit={handleGameSubmit}>
       <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative">
@@ -120,53 +125,40 @@ export default function UploadAttachmentAuction({ id,
           <h5 className="list-title">Upload Game Videos</h5>
         </div>
         <div className="row">
-          {content}
-          <div className="col-6 col-xl-3">
-            <label>
-              <a className="upload-img">
-                Videos
-                <input
-                  type="file"
-                  accept="application/pdf"
-                  className="d-none"
-                  onChange={handleFileUpload}
-                  multiple
-                />
-              </a>
-            </label>
+          {/* {content} */}
+          <div className="col-sm-12">
+            <div className="mb20">
+              <label className="heading-color ff-heading fw500 mb10">
+                A Video Link to your Trailer or game play(<i className="text-info">Note your game must be live</i>)
+              </label>
+              <input
+                onChange={handleInputFormChange}
+                value={auction ? auction.gamePlayVideo : ""}
+                name="gamePlayVideo"
+                type="text"
+                className="form-control"
+                placeholder="youtube, vimeo, etc"
+              />
+            </div>
+          </div>
+
+          <div className="col-sm-12">
+            <div className="mb20">
+              <label className="heading-color ff-heading fw500 mb10">
+                A Link to Your Playable Demo
+              </label>
+              <input
+                onChange={handleInputFormChange}
+                value={auction ? auction.gameFileLink : ""}
+                name="gameFileLink"
+                type="text"
+                className="form-control"
+                placeholder="app store, steam, itch.io link"
+              />
+            </div>
           </div>
         </div>
         <p className="text">Maximum file size: 10 MB</p>
-        <div className="text-start">
-          <Link className="ud-btn btn-thm" href="/contact">
-            Upload
-            <i className="fas fa-upload" />
-          </Link>
-        </div>
-      </div>
-
-      <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative">
-        <div className="bdrb1 pb15 mb25">
-          <h5 className="list-title">Upload Game Project</h5>
-        </div>
-        <div className="row">
-          {content}
-          <div className="col-6 col-xl-3">
-            <label>
-              <a className="upload-img">
-                zip
-                <input
-                  type="file"
-                  accept="application/pdf"
-                  className="d-none"
-                  onChange={handleFileUpload}
-                  multiple
-                />
-              </a>
-            </label>
-          </div>
-        </div>
-        <p className="text">Maximum file size: 40 GB</p>
         <div className="text-start">
           <Link className="ud-btn btn-thm" href="/contact">
             Upload

@@ -35,7 +35,6 @@ export default function PricingAndPlans
     }
 
     const handleFormattedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value, e.target.name, "SHouut")
         let value = e.target.value;
 
         // Remove leading zeros unless it is '0' before a decimal point
@@ -44,7 +43,6 @@ export default function PricingAndPlans
         }
 
         e = { ...e, target: { ...e.target, value } }
-        console.log(e.target.value, "After")
         dispatch(gameTitleCreateSuccess({ ...gameTitle, price: Number(value) }))
 
 

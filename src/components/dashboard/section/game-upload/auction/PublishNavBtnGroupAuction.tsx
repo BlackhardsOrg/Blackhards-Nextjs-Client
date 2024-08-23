@@ -18,7 +18,7 @@ const PublishNavBtnGroupAuction = ({
     handlePrevious,
     handleGameSubmit,
     getPageProgress }: IPublishNavBtnGroup) => {
-    const gameTitleLoad = useAppSelector(state => state.gametitle)
+    const auctionLoad = useAppSelector(state => state.auction)
 
 
     return (
@@ -40,10 +40,10 @@ const PublishNavBtnGroupAuction = ({
                     handleGameSubmit(e)
                 }}
                     type="submit"
-                    style={{ opacity: gameTitleLoad.loading.gameTitleCreate ? .5 : 1 }}
-                    disabled={gameTitleLoad.loading.gameTitleCreate}
+                    style={{ opacity: auctionLoad.loading.auctionStart ? .5 : 1 }}
+                    disabled={auctionLoad.loading.auctionStart}
                     className="ud-btn btn-thm p-2 px-3" >
-                    {gameTitleLoad.loading.gameTitleCreate ? <FLyLoad /> :
+                    {auctionLoad.loading.auctionStart ? <FLyLoad /> :
                         <>
                             <span>{getCurrentPageState == getPageProgress.length - 1 ? "Publish" : "Save & Continue"}</span>
                             <i className="fal fa-arrow-right-long" />

@@ -1,3 +1,5 @@
+import { useAppDispatch } from "@/redux/app/hooks";
+import { removeItemFromCart } from "@/redux/features/cart/slice/cartSlice";
 import shopStore from "@/store/shopStore";
 
 import { useEffect, useState } from "react";
@@ -7,7 +9,7 @@ export default function CartList1({ data }: any) {
 
   const deleteProduct = shopStore((state: any) => state.deleteProduct);
   const updateQty = shopStore((state: any) => state.updateQty);
-
+  const dispatch = useAppDispatch()
   // handler
   const qtyHandler = (q: any) => {
     setQty(q);
@@ -33,8 +35,9 @@ export default function CartList1({ data }: any) {
         <td className="pl30 ">
           <div className="cart_list d-flex align-items-center">
             <div className="cart-img">
-              <img src={data.img} alt="cart-1.png" />
+              <img style={{ width: "63px", height: "77px", objectFit: "cover" }} src={data.GamePlayScreenShot} alt="cart-1.png" />
             </div>
+
             <h5 className="mb-0">{data.title.substring(0, 40) + "..."}</h5>
           </div>
         </td>
@@ -60,11 +63,15 @@ export default function CartList1({ data }: any) {
           </div>
         </td> */}
         <td>
-          <div className="cart-subtotal pl5">${data.qty * data.price}</div>
+          <div className="cart-subtotal pl5">{data.packageType}</div>
         </td>
         <td>
           <a
-            onClick={() => deleteHandler(data.id)}
+            onClick={() => {
+              dispatch(removeItemFromCart(data.id))
+              console.log("Remove id, " + data.id)
+            }
+            }
             className="cart-delete d-inline-block"
           >
             <span className="flaticon-delete" />

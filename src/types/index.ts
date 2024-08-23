@@ -51,6 +51,7 @@ export interface IPlan {
   type: "basic" | "standard" | "premium";
   price: number;
   title: string;
+  description: string;
   howLongToLaunch: number;
 
   howManyCustomizations: number;
@@ -81,7 +82,7 @@ export interface IPlans {
 }
 
 export interface IGameTitle {
-  _id: string;
+  _id?: string;
   developerEmail: string;
   gameFileLink: string;
   title: string;
@@ -92,6 +93,8 @@ export interface IGameTitle {
   tags: string[];
   targetPlatform: string[];
   price: number;
+  isApproved?: boolean;
+  isOnSale?: boolean;
   saleType: string;
   releaseDate: string;
   legal: string;
@@ -103,6 +106,8 @@ export interface IGameTitle {
   customizationCharge?: number;
   plans?: IPlans;
   isAIAllowedPricing: boolean;
+  updatedAt?: string;
+  createdAt?: string;
 }
 
 export interface IAuction {
@@ -116,7 +121,6 @@ export interface IAuction {
   genre: string[];
   tags: string[];
   targetPlatform: string[];
-  price: number;
   saleType: string;
   releaseDate: string;
   legal: string;
@@ -126,6 +130,11 @@ export interface IAuction {
   gamePlays: number;
   isCustomizationEnabled?: boolean;
   customizationCharge?: number;
+
+  gameTitleId?: string;
+  endTime: string;
+  reservedPrice: number;
+  startTime: string;
 }
 
 export interface IHighestBidder {
@@ -146,6 +155,20 @@ export interface IHighestBidder {
 
 export interface IGameTitleGQL extends IGameTitle {
   developer: IUser;
+}
+
+export interface IAuctionGQL extends IAuction {
+  id: string;
+  gametitle: IGameTitle;
+  updatedAt: string;
+  developer: {
+    studioName: string;
+  };
+}
+
+export interface IGamePackageIDs {
+  id: string;
+  packageType: string;
 }
 
 export interface IPopularGameSlideCard {
@@ -210,4 +233,128 @@ export interface IGameTabs {
   setCurrentPageState: Dispatch<SetStateAction<number>>;
   currentTab: number;
   setCurrentTab: Dispatch<SetStateAction<number>>;
+}
+
+// Payment Order
+export interface IVerificationResponse {
+  status: boolean;
+  message: string;
+  data: IData;
+}
+
+export interface IData {
+  id: number;
+  domain: string;
+  status: string;
+  reference: string;
+  receipt_number: string | null;
+  amount: number;
+  message: string | null;
+  gateway_response: string;
+  paid_at: string;
+  created_at: string;
+  channel: string;
+  currency: string;
+  ip_address: string;
+  metadata: IMetadata;
+  log: ILog;
+  fees: number;
+  fees_split: any; // Use an appropriate type if available
+  authorization: IAuthorization;
+  customer: ICustomer;
+  plan: any; // Use an appropriate type if available
+  split: Record<string, any>; // Adjust the type based on actual data
+  order_id: string | null;
+  paidAt: string;
+  createdAt: string;
+  requested_amount: number;
+  pos_transaction_data: any; // Use an appropriate type if available
+  source: any; // Use an appropriate type if available
+  fees_breakdown: any; // Use an appropriate type if available
+  connect: any; // Use an appropriate type if available
+  transaction_date: string;
+  plan_object: Record<string, any>; // Adjust the type based on actual data
+  subaccount: Record<string, any>; // Adjust the type based on actual data
+}
+
+export interface IOrder {
+  firstName: string;
+  lastName: string;
+  companyName: string;
+  country: string;
+  houseNo: string;
+  streetName: string;
+  town: string;
+  state: string;
+  zip: string;
+  phone: string;
+  additionalInfo: string;
+  paymentType: string;
+  totalAmount: number;
+  email: string;
+  GamePackageAndIds: IGamePackageIDs[];
+}
+
+export interface IShopCheckoutAreaForm {
+  order: IOrder;
+  setOrder: Dispatch<SetStateAction<IOrder>>;
+}
+
+export interface IMetadata {
+  saleType: string;
+  custom_fields: ICustomField[];
+}
+
+export interface ICustomField {
+  gameTitle: string;
+  id: string;
+  price: string;
+  value: string;
+}
+
+export interface ILog {
+  start_time: number;
+  time_spent: number;
+  attempts: number;
+  errors: number;
+  success: boolean;
+  mobile: boolean;
+  input: any[]; // Use an appropriate type if available
+  history: IHistory[];
+}
+
+export interface IHistory {
+  type: string;
+  message: string;
+  time: number;
+}
+
+export interface IAuthorization {
+  authorization_code: string;
+  bin: string;
+  last4: string;
+  exp_month: string;
+  exp_year: string;
+  channel: string;
+  card_type: string;
+  bank: string;
+  country_code: string;
+  brand: string;
+  reusable: boolean;
+  signature: string;
+  account_name: string | null;
+  receiver_bank_account_number: string | null;
+  receiver_bank: string | null;
+}
+
+export interface ICustomer {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  customer_code: string;
+  phone: string;
+  metadata: any; // Use an appropriate type if available
+  risk_action: string;
+  international_format_phone: string | null;
 }

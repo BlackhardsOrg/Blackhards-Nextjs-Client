@@ -10,8 +10,9 @@ import TagSelect from "../../../option/TagSelect";
 import SelectInputMultiple from "../../../option/SelectInputMultiple";
 import PackagePlans from "../fixed/PackagePlans";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
+// import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
 import PublishNavBtnGroup from "../fixed/PublishNavBtnGroup";
+import { auctionCreateSuccess } from "@/redux/features/auction/slices/auctionSlice";
 
 export default function PricingAndPlansAuction
     ({
@@ -22,7 +23,7 @@ export default function PricingAndPlansAuction
         setCurrentPageState,
         setCurrentTab }: IPricingAndPlans) {
 
-    const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
+    const auction = useAppSelector(state => state.auction.auction)
     const dispatch = useAppDispatch()
     const [loading, setLoading] = useState(false)
     const [isOfferingPackagedPlans, setIsOfferingPackagedPlans] = useState(true)
@@ -30,7 +31,6 @@ export default function PricingAndPlansAuction
     // #region Form Handlers
 
     const handleFormattedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value, e.target.name, "SHouut")
         let value = e.target.value;
 
         // Remove leading zeros unless it is '0' before a decimal point
@@ -39,8 +39,7 @@ export default function PricingAndPlansAuction
         }
 
         e = { ...e, target: { ...e.target, value } }
-        console.log(e.target.value, "After")
-        dispatch(gameTitleCreateSuccess({ ...gameTitle, price: Number(value) }))
+        dispatch(auctionCreateSuccess({ ...auction, reservedPrice: Number(value) }))
 
 
     };
@@ -52,7 +51,6 @@ export default function PricingAndPlansAuction
     const handleGameSubmit = (e: any) => {
         e.preventDefault()
         setLoading(true)
-        console.log(gameTitle)
         setGetPageProgress((old) => {
             const pageList = [...old]
             pageList[id].isDone = true
@@ -67,7 +65,6 @@ export default function PricingAndPlansAuction
     }
 
     const handlePrevious = () => {
-        console.log(id, "WhatsaAAAAA")
         let prevPageNumber = id - 1 >= 0 ? id - 1 : id
         setCurrentPageState(prevPageNumber)
         setCurrentTab(prevPageNumber)
@@ -92,14 +89,14 @@ export default function PricingAndPlansAuction
                                     </label>
                                     <input
                                         onChange={handleFormattedChange}
-                                        value={gameTitle ? gameTitle.price : 0}
-                                        name="reservedprice"
+                                        value={auction ? auction.reservedPrice : 0}
+                                        name="reservedPrice"
                                         type="number"
                                         className="form-control"
                                         placeholder="Reserved Price"
                                     />
                                 </div>
-                                <span>{formatPriceToDollars(gameTitle ? Number(gameTitle.price) : 0)}</span>
+                                <span>{formatPriceToDollars(auction ? Number(auction.reservedPrice) : 0)}</span>
                             </div>
 
 

@@ -8,13 +8,13 @@ import "swiper/css/thumbs";
 //@ts-ignore
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
-const gigImages = [
-  "/images/listings/service-details-1.jpg",
-  "/images/listings/service-details-1.jpg",
-  "/images/listings/service-details-1.jpg",
-];
+// const gigImages = [
+//   "/images/listings/service-details-1.jpg",
+//   "/images/listings/service-details-1.jpg",
+//   "/images/listings/service-details-1.jpg",
+// ];
 
-export default function GameDetailSlider() {
+export default function GameDetailSlider({gigImages}: {gigImages: string[]}) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (

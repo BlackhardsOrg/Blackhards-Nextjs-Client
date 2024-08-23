@@ -35,10 +35,10 @@ export default function ManageAuctionInfo() {
           <div className="col-lg-3">
             <div className="text-lg-end">
               <Link
-                href="/dashboard-add-service"
+                href="/user/create-auction"
                 className="ud-btn btn-dark default-box-shadow2"
               >
-                Add Service
+                Start Auction
                 <i className="fal fa-arrow-right-long" />
               </Link>
             </div>

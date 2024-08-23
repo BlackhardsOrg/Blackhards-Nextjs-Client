@@ -12,6 +12,8 @@ import AuctionCard from "../card/AuctionCard";
 import AuctionListingSidebar from "../sidebar/AuctionListingSidebar";
 import { useQuery, gql } from "@apollo/client";
 import { useEffect } from "react";
+import { IAuctionGQL, IGameTitleGQL } from "@/types";
+import { AUCTIONS } from "@/graphql";
 
 export default function AuctionListing() {
 
@@ -78,18 +80,24 @@ export default function AuctionListing() {
   const sortByFilter = (item: any) =>
     getBestSeller === "best-seller" ? item : item.sort === getBestSeller;
 
+
+  const { data, loading, error } = useQuery<{ auctions: [IAuctionGQL] }>(AUCTIONS);
+  useEffect(() => {
+    console.log(data, "DATA")
+  }, [loading, data])
+
   // content
-  let content = project1
+  let content = data?.auctions
     .slice(0, 8)
-    .filter(categoryFilter)
-    .filter(projectTypeFilter)
-    .filter(priceFilter)
-    .filter(skillFilter)
-    .filter(locationFilter)
-    .filter(searchFilter)
-    .filter(speakFilter)
-    .filter(englishLevelFilter)
-    .filter(sortByFilter)
+    // .filter(categoryFilter)
+    // .filter(projectTypeFilter)
+    // .filter(priceFilter)
+    // .filter(skillFilter)
+    // .filter(locationFilter)
+    // .filter(searchFilter)
+    // .filter(speakFilter)
+    // .filter(englishLevelFilter)
+    // .filter(sortByFilter)
     .map((item, i) => (
       <div key={i} className="col-md-6 col-xl-12">
         <AuctionCard data={item} />
@@ -98,31 +106,8 @@ export default function AuctionListing() {
 
   // #endregion Infos
 
-  const QUERY = gql`
-    query gameTitle {
-      userGameTitles(skip:Int, take: Int, developerEmail: String) {
-        title
-        _id
-        gamePlayScreenShots
-        plans{
-          basic{
-            price
-          }
-          standard{
-            price
-          }
-          premium{
-            price
-          }
-        }
-      }
-    }
-  `;
 
-  const { data, loading, error } = useQuery(QUERY);
-  useEffect(() => {
-    console.log(data, "DATA")
-  }, [loading])
+
 
   return (
     <>

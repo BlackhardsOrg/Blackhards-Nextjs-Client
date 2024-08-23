@@ -41,7 +41,6 @@ export function loginUser(credentials: ICredentials) {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(loginStart());
-      console.log(credentials, "HUSZ");
       // Make an HTTP GET request to the API
       const response = await axios.post(`${API_URL}/auth/login`, credentials);
 

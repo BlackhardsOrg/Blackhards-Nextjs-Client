@@ -1,4 +1,44 @@
+import { useAppDispatch } from "@/redux/app/hooks";
+import { verifyPayments } from "@/redux/features/cart/api/checkoutApi";
+import { clearCart } from "@/redux/features/cart/slice/cartSlice";
+import { IData, IMetadata, IVerificationResponse } from "@/types";
+import { formatPriceToDollars } from "@/utils/priceFormatter";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+
 export default function OrderComplete1() {
+  const [refrenceData, setRefrenceData] = useState<IData | null>(null)
+  const { query } = useRouter()
+  const { reference, orderID } = query;
+  const dispatch = useAppDispatch()
+
+
+  const handleFetchReference = async (ref: string, orderID: string) => {
+    const data = await verifyPayments(ref, orderID) as IVerificationResponse
+    if (data.status && data.data && data.data) {
+      setRefrenceData(data.data)
+      console.log(data.data, "HULIa")
+      dispatch(clearCart())
+    }
+
+  }
+  useEffect(() => {
+    if (reference && orderID) {
+      const ref = reference as string
+      const orderId = orderID as string
+
+      console.log(ref, "HUAkjeke")
+      handleFetchReference(ref, orderId)
+    }
+  }, [reference])
+
+
+  useEffect(() => {
+    if (refrenceData) {
+      console.log(refrenceData, "HOUSE")
+    }
+  }, [refrenceData])
   return (
     <>
       <section>
@@ -20,20 +60,20 @@ export default function OrderComplete1() {
                 <div className="order_list_raw">
                   <ul className="d-md-flex align-items-center justify-content-md-between p-0 mb-0">
                     <li className="mb20-sm">
-                      <p className="text mb5">Order Number</p>
-                      <h6 className="mb-0">039422</h6>
+                      <p className="text mb5">Ref Number</p>
+                      <h6 className="mb-0">{refrenceData?.reference}</h6>
                     </li>
                     <li className="mb20-sm">
                       <p className="text mb5">Date</p>
-                      <h6 className="mb-0">27/04/2022</h6>
+                      <h6 className="mb-0">{refrenceData?.createdAt}</h6>
                     </li>
                     <li className="mb20-sm">
                       <p className="text mb5">Total</p>
-                      <h6 className="mb-0">$2984.10</h6>
+                      <h6 className="mb-0">{formatPriceToDollars(Number(refrenceData?.amount) / 100)}</h6>
                     </li>
                     <li>
                       <p className="text mb5">Payment Method</p>
-                      <h6 className="mb-0">Direct Bank Transfer</h6>
+                      <h6 className="mb-0">Card Payment</h6>
                     </li>
                   </ul>
                 </div>
@@ -47,33 +87,28 @@ export default function OrderComplete1() {
                           <span className="float-end">Subtotal</span>
                         </h6>
                       </li>
-                      <li className="mb20">
-                        <p className="body-color">
-                          Hoodie x2
-                          <span className="float-end">$59.00</span>
-                        </p>
-                      </li>
-                      <li className="mb20">
-                        <p className="body-color">
-                          Seo Books x 1<span className="float-end">$67.00</span>
-                        </p>
-                      </li>
+                      {refrenceData?.metadata.custom_fields.map((item, index) => {
+                        return (
+                          <li key={index} className="mb20">
+                            <p className="body-color">
+                              {item.gameTitle} x1
+                              <span className="float-end">{formatPriceToDollars(Number(item.price))}</span>
+                            </p>
+                          </li>
+                        )
+                      })}
+
                       <li className=" bdrb1 mb15">
                         <h6>
                           Subtotal
-                          <span className="float-end">$178.00</span>
+                          <span className="float-end">{formatPriceToDollars(Number(refrenceData?.amount) / 100)}</span>
                         </h6>
                       </li>
-                      <li className=" bdrb1 mb15">
-                        <h6>
-                          Shipping
-                          <span className="float-end">$178.00</span>
-                        </h6>
-                      </li>
+
                       <li>
                         <h6>
                           Total
-                          <span className="float-end">$9,218.00</span>
+                          <span className="float-end">{formatPriceToDollars((Number(refrenceData?.amount) / 100))}</span>
                         </h6>
                       </li>
                     </ul>

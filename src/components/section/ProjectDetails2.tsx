@@ -1,5 +1,5 @@
 import { project1, projectProposal1 } from "@/data/product";
-import ProjectProposalCard1 from "../card/ProjectProposalCard1";
+import TopBidCard from "../card/TopBidCard";
 import ServiceDetailExtra1 from "../element/ServiceDetailExtra1";
 import { Sticky, StickyContainer } from "react-sticky";
 import AuctionPriceWidget from "../element/AuctionPriceWidget";
@@ -199,7 +199,7 @@ export default function ProjectDetail2() {
                       <div className="row">
                         {projectProposal1.slice(0, 3).map((item, i) => (
                           <div key={i} className="col-md-6 col-lg-12">
-                            <ProjectProposalCard1 data={item} />
+                            <TopBidCard data={item} />
                           </div>
                         ))}
                       </div>

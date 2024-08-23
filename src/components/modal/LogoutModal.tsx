@@ -11,7 +11,6 @@ export default function LogoutModal() {
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.auth.user)
   const handleLogout = async (e: any) => {
-    console.log("called");
     if (!user) {
       toast("You are not logged in!", { type: "error" })
       navigate(links.login)

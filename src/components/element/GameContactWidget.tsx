@@ -1,12 +1,36 @@
+import { SINGLE_GAME_TITLE } from "@/graphql";
+import { IGameTitleGQL } from "@/types";
+import { useQuery } from "@apollo/client";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function GameContactWidget() {
+
+  const { query } = useRouter()
+  const { id } = query;
+
+  const removeTypename = (obj: any) => {
+    const { __typename, ...rest } = obj;
+    return rest;
+  };
+
+  // const data = product1.find((item: any) => item.id == id);
+  const { data, loading, error } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
+    variables: {
+      id
+    }
+  });
+  useEffect(() => {
+    console.log(data, "SINGLE DATA")
+  }, [loading, data])
   return (
     <>
       <div className="freelancer-style1 service-single mb-0">
         <div className="wrapper d-flex align-items-center">
           <div className="thumb position-relative mb25">
             <img
+              style={{ width: "90px", height: "90px" }}
               className="rounded-circle mx-auto"
               src="/images/team/fl-1.png"
               alt="rounded-circle"
@@ -14,7 +38,7 @@ export default function GameContactWidget() {
             <span className="online" />
           </div>
           <div className="ml20">
-            <h5 className="title mb-1">Kristin Watson</h5>
+            <h5 className="title mb-1">{data?.gameTitle.developer.studioName}</h5>
             <p className="mb-0">Dog Trainer</p>
             <div className="review">
               <p>
@@ -46,7 +70,7 @@ export default function GameContactWidget() {
         </div>
         <div className="d-grid mt30">
           <Link href="/freelancer-single" className="ud-btn btn-thm-border">
-            Contact Me
+            Send Message
             <i className="fal fa-arrow-right-long" />
           </Link>
         </div>
