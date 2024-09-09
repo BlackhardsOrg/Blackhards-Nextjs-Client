@@ -1,4 +1,4 @@
-const GameGenreNotFound = () => {
+const GameDataNotFound = () => {
 
     return (
         <section className="our-error">
@@ -15,8 +15,6 @@ const GameGenreNotFound = () => {
                             </div>
                         </div>
                     </div>
-
-
                     <div
                         className="col-xl-5 offset-xl-1 wow fadeInLeft"
                         data-wow-delay="300ms"
@@ -26,10 +24,10 @@ const GameGenreNotFound = () => {
                             40<span className="text-thm">4</span>
                           </div> */}
                             <div className="h2 error_title">
-                                E choke!
+                                Omo!
                             </div>
                             <p className="text fz15 mb20">
-                                It looks like we can&apos;t find what you are looking for
+                                Something went wrong!
                             </p>
                             {/* <Link href="/" className="ud-btn btn-thm">
                             Go back to home
@@ -43,4 +41,4 @@ const GameGenreNotFound = () => {
     )
 }
 
-export default GameGenreNotFound
+export default GameDataNotFound
