@@ -1,18 +1,17 @@
-import { bestSeller } from "@/data/listing";
+import { GameTitleTags } from "@/data/listing";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { setTag } from "@/redux/features/sitepages/slices/pageSlice";
 import listingStore from "@/store/listingStore";
+import { useEffect, useState } from "react";
 
-export default function SortOption1() {
-  const getBestSeller = listingStore((state: any) => state.getBestSeller);
-  const setBestSeller = listingStore((state: any) => state.setBestSeller);
+export default function SortOption() {
 
+  const authorTag= useAppSelector(state => state.pages.games.tag)
+  const dispatch = useAppDispatch()
   // handle
   const bestSellerHandler = (data: any) => {
-    setBestSeller(data);
+    dispatch(setTag({tag: data}));
   };
-
-  const getBestSellerSelected = bestSeller.find((item) =>
-    item.value === getBestSeller ? item : false
-  );
 
   return (
     <>
@@ -27,7 +26,7 @@ export default function SortOption1() {
             <div className="filter-option">
               <div className="filter-option-inner">
                 <div className="filter-option-inner-inner">
-                  {getBestSellerSelected && getBestSellerSelected.title}
+                  {authorTag && authorTag.title}
                 </div>
               </div>
             </div>
@@ -35,13 +34,12 @@ export default function SortOption1() {
           <div className="dropdown-menu">
             <div className="inner show">
               <ul className="dropdown-menu inner show">
-                {bestSeller.map((item, i) => (
+                {GameTitleTags.map((item, i) => (
                   <li key={i}>
                     <a
-                      onClick={() => bestSellerHandler(item.value)}
-                      className={`dropdown-item ${
-                        item.value === getBestSeller ? "active selected" : ""
-                      }`}
+                      onClick={() => bestSellerHandler(item)}
+                      className={`dropdown-item ${item.value === authorTag?.value ? "active selected" : ""
+                        }`}
                     >
                       <span className="bs-ok-default check-mark" />
                       <span className="text">{item.title}</span>

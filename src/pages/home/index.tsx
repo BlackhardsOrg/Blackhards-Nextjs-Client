@@ -15,6 +15,7 @@ import CTa13 from "@/components/section/CTa13";
 import MetaComponent from "@/components/common/MetaComponent";
 import TrendingAuctions from "@/components/section/TrendingAuctions";
 import TrendingGames from "@/components/section/TrendingGames";
+import HomeLayoutsMain from "@/components/layouts/HomeLayoutsMain";
 // src\components\section\TrendingGames.tsx
 const metadata = {
   title: "Blackhards - AI Game Marketplace | Home",
@@ -22,9 +23,8 @@ const metadata = {
 
 export default function HomePage13() {
   return (
-    <>
+    <HomeLayoutsMain>
       <MetaComponent meta={metadata} />
-      <Header14 />
       <MobileNavigation6 />
       <div className="body_content">
         <Hero13 />
@@ -41,6 +41,6 @@ export default function HomePage13() {
         <OurPartner1 />
         <CTa13 />
       </div>
-    </>
+    </HomeLayoutsMain>
   );
 }

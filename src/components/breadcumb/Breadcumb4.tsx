@@ -23,15 +23,14 @@ const Breadcumb4: React.FC<Breadcumb4Props> = ({
     <>
       <section className="breadcumb-section pt-0">
         <div
-          className={`cta-banner mx-auto maxw1700 pt120 pb120 bdrs16 position-relative overflow-hidden d-flex align-items-center px30-lg ${
-            pathname === "/service-1"
+          className={`cta-banner mx-auto maxw1700  bdrs16 position-relative overflow-hidden d-flex align-items-center px30-lg ${pathname === "/service-1"
               ? "cta-service-v1 mx20-lg"
               : pathname === "/service-2"
-              ? "cta-service-v2"
-              : pathname === "/service-5"
-              ? "cta-service-v1 mb55 mx0"
-              : ""
-          }`}
+                ? "cta-service-v2"
+                : pathname === "/service-5"
+                  ? "cta-service-v1 mb55 mx0"
+                  : ""
+            }`}
         >
           <img
             className="left-top-img wow zoomIn"
@@ -44,7 +43,7 @@ const Breadcumb4: React.FC<Breadcumb4Props> = ({
             alt="vector-img"
           />
           <img
-            className="service-v1-vector bounce-y d-none d-lg-block"
+            className="service-v1-vector bounce-y d-none d-lg-block game-banner-image"
             src={`${img}`}
             alt="vector-img"
           />
@@ -52,14 +51,12 @@ const Breadcumb4: React.FC<Breadcumb4Props> = ({
           <div className="container">
             <div className="row wow fadeInUp">
               <div
-                className={`${
-                  pathname === "/service-5" ? "col-xl-8" : "col-xl-5 "
-                } `}
+                className={`${pathname === "/service-5" ? "col-xl-8" : "col-xl-5 "
+                  } `}
               >
                 <div
-                  className={`position-relative ${
-                    pathname === "/service-5" ? "pl80 pl0-sm" : ""
-                  }`}
+                  className={`position-relative ${pathname === "/service-5" ? "pl80 pl0-sm" : ""
+                    }`}
                 >
                   <h2>{title}</h2>
                   <p className="text mb30">{subtitle}</p>

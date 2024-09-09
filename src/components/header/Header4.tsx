@@ -28,19 +28,27 @@ export default function Header4() {
                 </div>
               </div>
               <div className="col-auto">
-                {user ? <div className="d-flex gap-1 align-items-center ">
+                {user ? <div className="d-flex gap-3 align-items-center ">
+
                   <CartNavButton />
+                  <Link className="btn" href="/user/dashboard" >
+                    <img
+                      className="border rounded-circle"
+                      style={{ width: "30px", height: "30px", objectFit: "cover" }}
+                      src="/images/resource/user-50by50.png" alt="user.png" />
+                  </Link>
                   <Link
                     data-bs-toggle="modal"
 
-                    className="login-info mx15-lg mx30 d-flex gap-1 cursor-pointer"
+                    className="login-info  d-flex gap-1 cursor-pointer"
                     href="#logoutModalToggle"
                   >
                     <i className="fas fa-sign-out"></i>
                     <span>Logout</span>
                   </Link>
+
                 </div> :
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex gap-3 align-items-center">
                     <a
                       className="login-info"
                       data-bs-toggle="modal"
@@ -48,11 +56,11 @@ export default function Header4() {
                     >
                       <span className="flaticon-loupe" />
                     </a>
-                    <Link className="login-info mx15-lg mx30" href="/become-seller">
+                    <Link className="login-info " href="/become-seller">
                       <span className="d-none d-xl-inline-block">Become a </span>
                       Seller
                     </Link>
-                    <Link className="login-info mr15-lg mr30" href={links.login}>
+                    <Link className="login-info " href={links.login}>
                       Sign in
                     </Link>
                     <Link className="ud-btn btn-home3 add-joining" href={links.registerEarly}>

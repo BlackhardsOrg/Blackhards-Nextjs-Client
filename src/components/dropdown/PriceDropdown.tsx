@@ -1,15 +1,39 @@
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { setPriceRange } from "@/redux/features/sitepages/slices/pageSlice";
 import priceStore from "@/store/priceStore";
 import { useEffect, useState } from "react";
 import ReactSlider from "react-slider";
 
-export default function PriceDropdown1() {
+export default function PriceDropdown() {
   const [getPrice, setPrice] = useState({
     min: 0,
     max: 100000,
   });
 
-  const priceRange = priceStore((state: any) => state.priceRange);
-  const setPriceRange = priceStore((state: any) => state.priceRangeHandler);
+  useEffect(() => {
+    // Dynamically import Bootstrap only on the client side
+    if (typeof window !== 'undefined') {
+      import('bootstrap').then((bootstrap) => {
+        const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+        dropdownElementList.map(function (dropdownToggleEl) {
+          return new bootstrap.Dropdown(dropdownToggleEl);
+        });
+      });
+    }
+  }, []);
+
+  const closeDropdown = (e) => {
+    if (typeof window !== 'undefined') {
+      import('bootstrap').then((bootstrap) => {
+        const dropdownElement = e.target.closest('.dropdown-menu');
+        const dropdown = new bootstrap.Dropdown(dropdownElement.previousElementSibling);
+        dropdown.hide();
+      });
+    }
+  };
+
+  const priceRange = useAppSelector(state => state.pages.games.priceRange);
+  const dispatch = useAppDispatch();
 
   const priceHandler = (data: any) => {
     setPrice({
@@ -18,9 +42,6 @@ export default function PriceDropdown1() {
     });
   };
 
-  useEffect(() => {
-    setPrice(priceRange);
-  }, [priceRange]);
 
   return (
     <>
@@ -73,8 +94,13 @@ export default function PriceDropdown1() {
         </div>
       </div>
       <button
-        onClick={() => setPriceRange(getPrice.min, getPrice.max)}
+        onClick={(e) => {
+          e.stopPropagation()
+          dispatch(setPriceRange({ priceRange: getPrice }))
+          closeDropdown(e)
+        }}
         className="done-btn ud-btn btn-thm drop_btn3"
+        data-bs-dismiss="dropdown"
       >
         Apply
         <i className="fal fa-arrow-right-long" />

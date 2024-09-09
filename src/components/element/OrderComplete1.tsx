@@ -18,7 +18,6 @@ export default function OrderComplete1() {
     const data = await verifyPayments(ref, orderID) as IVerificationResponse
     if (data.status && data.data && data.data) {
       setRefrenceData(data.data)
-      console.log(data.data, "HULIa")
       dispatch(clearCart())
     }
 
@@ -28,17 +27,12 @@ export default function OrderComplete1() {
       const ref = reference as string
       const orderId = orderID as string
 
-      console.log(ref, "HUAkjeke")
       handleFetchReference(ref, orderId)
     }
   }, [reference])
 
 
-  useEffect(() => {
-    if (refrenceData) {
-      console.log(refrenceData, "HOUSE")
-    }
-  }, [refrenceData])
+
   return (
     <>
       <section>

@@ -9,7 +9,7 @@ import { useAppSelector } from "@/redux/app/hooks";
 export default function Header14() {
   const sticky = useStickyMenu(50);
   const user = useAppSelector(state => state.auth.user)
-  
+
   return (
     <header
       className={`header-nav nav-homepage-style at-home3  stricky  stricky main-menu border-0 animated  ${sticky ? "slideInDown stricky-fixed" : "slideIn"
@@ -35,13 +35,21 @@ export default function Header14() {
             <div className="col-auto pe-0 pe-xl-3">
               {user ? <div className="d-flex gap-2 justify-content-center align-items-center">
                 <Link className="btn" href="/user/dashboard" >
-                  <img src="/images/resource/user-50by50.png" alt="user.png" />
+                  <img
+                  className="border rounded-circle"
+                   style={{ width: "30px", height: "30px", objectFit: "cover" }}
+                    src="/images/resource/user-50by50.png" alt="user.png" />
                 </Link>
-                <h4>{user.studioName}</h4>
+                <Link className="login-info d-flex gap-1 justify-content-center align-items-center" 
+                  data-bs-toggle="modal"
+                  href="#logoutModalToggle">
+                  <i className="fas fa-sign-out"></i>
+                  <span className="d-none d-xl-inline-block">Logout</span>
+                </Link>
               </div> : <div className="d-flex align-items-center">
-                <Link className="login-info mx15-xl mx30" href="/become-seller">
-                  <span className="d-none d-xl-inline-block">Become a</span>{" "}
-                  Seller
+                <Link className="login-info mx15-xl mx30" href="/register">
+                  <span className="d-none d-xl-inline-block">Create your</span>{" "}
+                  Studio
                 </Link>
                 <Link
                   className="login-info mr15-xl mr10 ud-btn btn-dark add-joining bdrs12 dark-color bg-transparent"

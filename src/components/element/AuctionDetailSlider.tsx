@@ -31,9 +31,7 @@ export default function AuctionDetailSlider() {
       id
     }
   });
-  useEffect(() => {
-    console.log(data, "SINGLE DATA")
-  }, [loading, data])
+
   
   return (
     <>

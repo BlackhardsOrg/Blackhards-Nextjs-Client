@@ -15,9 +15,7 @@ export default function AuctionContactWidget() {
       id
     }
   });
-  useEffect(() => {
-    console.log(data, "SINGLE DATA")
-  }, [loading, data])
+
   return (
     <>
       {data && data.auction && data.auction.gametitle ?

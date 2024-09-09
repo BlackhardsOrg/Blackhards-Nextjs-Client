@@ -56,9 +56,7 @@ export default function RegisterPage() {
   const handleChange = (e) => {
     setCredentials(old => ({ ...old, [e.target.name]: e.target.value }))
   }
-  useEffect(() => {
-    console.log(loading)
-  }, [loading])
+
 
   useEffect(() => {
     setEmptyErrors(old => ({
@@ -77,7 +75,6 @@ export default function RegisterPage() {
         credentials.yourPurpose == "" ||
         credentials.yourRole == "" ? true : false
     }))
-    console.log(credentials, "CREDS")
   }, [credentials])
 
   useEffect(() => {
@@ -97,7 +94,6 @@ export default function RegisterPage() {
       return
     }
     const result = await dispatch(registerUserEarly(credentials)) as any;
-    console.log(result, "CRED")
 
     if (result && result.success) {
       navigate(

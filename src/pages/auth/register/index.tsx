@@ -34,7 +34,6 @@ export default function RegisterPage() {
     e.preventDefault();
 
     const result = await dispatch(registerUser(credentials)) as any;
-    console.log(result, "RESuLT");
     if (result && result.success) {
       navigate(
         "/auth/login?message=Verification email sent, please check your inbox"
@@ -43,18 +42,15 @@ export default function RegisterPage() {
   };
 
   const shouldAllowSubmit = () => {
-    console.log(isPasswordMismatched, credentials);
     if (
       !isPasswordMismatched &&
       credentials.email != "" &&
       credentials.password != "" &&
       credentials.confirmPassword != ""
     ) {
-      console.log("called");
       setIsSubmitAllowable(true);
     } else {
       setIsSubmitAllowable(false);
-      console.log("uncalled");
     }
   };
 

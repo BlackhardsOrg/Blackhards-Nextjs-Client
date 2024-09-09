@@ -6,7 +6,7 @@ export const deliveryTime = [
 ];
 
 export const level = [
-  { id: 1, title: "Top Rated Seller", value: "top-rated", total: "1,945" },
+  { id: 1, title: "Top Rated Studio", value: "top-rated", total: "1,945" },
   { id: 2, title: "Level Two", value: "lavel-2", total: "8,136" },
   { id: 3, title: "Level One", value: "lavel-1", total: "917" },
   { id: 4, title: "New Seller", value: "new", total: "240" },
@@ -28,7 +28,7 @@ export const genre = [
   { id: 5, title: "Strategy", value: "strategy", total: "2,460" },
 ];
 
-export const bestSeller = [
+export const GameTitleTags = [
   { id: 1, title: "Best Seller", value: "best-seller" },
   { id: 2, title: "Recommended", value: "recommended" },
   { id: 3, title: "New Arrivals", value: "new-arrivals" },

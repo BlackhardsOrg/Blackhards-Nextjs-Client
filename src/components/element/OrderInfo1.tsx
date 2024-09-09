@@ -13,9 +13,7 @@ export default function OrderInfo1() {
     total = total + price;
   });
 
-  useEffect(() => {
-    console.log(total, Licensing, "HALO")
-  }, [total])
+
 
   return (
     <>

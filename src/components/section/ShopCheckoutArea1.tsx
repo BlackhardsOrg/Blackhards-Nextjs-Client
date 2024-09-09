@@ -41,7 +41,6 @@ export default function ShopCheckoutArea1() {
       total = total + price;
     });
     const GameIdsPackage = cartItems.map(item => ({ id: item.id, packageType: item.packageType })) as IGamePackageIDs[]
-    console.log(GameIdsPackage, "IDSD")
     const data = await dispatch(innitializePayments({
       ...order,
       totalAmount: total + 10,
@@ -49,7 +48,6 @@ export default function ShopCheckoutArea1() {
       GamePackageAndIds: GameIdsPackage
     },
       user.token))
-    console.log(data, "DTAT")
     if (data && data.data && data.data.authorization_url) {
       router.push(data.data.authorization_url)
     }

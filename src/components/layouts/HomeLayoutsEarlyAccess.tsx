@@ -5,7 +5,7 @@ import Footer from "../footer/Footer"
 interface IHomeLayouts {
     children: ReactNode
 }
-const HomeLayouts = ({ children }: IHomeLayouts) => {
+const HomeLayoutsEarlyAccess = ({ children }: IHomeLayouts) => {
     return (
         <>
             <Header19 />
@@ -16,4 +16,4 @@ const HomeLayouts = ({ children }: IHomeLayouts) => {
     )
 }
 
-export default HomeLayouts
+export default HomeLayoutsEarlyAccess

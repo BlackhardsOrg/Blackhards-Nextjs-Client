@@ -54,7 +54,6 @@ export default function PricingAndPlans
     // #region Submit Handlers
     const handleGameSubmit = (e: any) => {
         e.preventDefault()
-        console.log(gameTitle)
         setGetPageProgress((old) => {
             const pageList = [...old]
             pageList[id].isDone = true
@@ -68,7 +67,6 @@ export default function PricingAndPlans
     }
 
     const handlePrevious = () => {
-        console.log(id, "WhatsaAAAAA")
         let prevPageNumber = id - 1 >= 0 ? id - 1 : id
         setCurrentPageState(prevPageNumber)
         setCurrentTab(prevPageNumber)

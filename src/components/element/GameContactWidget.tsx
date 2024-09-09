@@ -21,9 +21,7 @@ export default function GameContactWidget() {
       id
     }
   });
-  useEffect(() => {
-    console.log(data, "SINGLE DATA")
-  }, [loading, data])
+
   return (
     <>
       <div className="freelancer-style1 service-single mb-0">

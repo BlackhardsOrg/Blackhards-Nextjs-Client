@@ -35,7 +35,6 @@ export default function SummaryAndPublish({
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(gameTitle)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true
@@ -51,7 +50,6 @@ export default function SummaryAndPublish({
 
   const handlePrevious = () => {
     let prevPageNumber = id - 1 >= 0 ? id - 1 : id
-    console.log(getCurrentPageState, "WhatsaAAAAA", prevPageNumber)
 
     setCurrentPageState(prevPageNumber)
     setCurrentTab(prevPageNumber)

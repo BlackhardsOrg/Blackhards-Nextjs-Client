@@ -139,7 +139,6 @@ export default function BasicInfoAuction({
   };
 
   const platformHandler = (option: string, value: string, e: any) => {
-    console.log(e)
     setPlatform({
       options: toggleElementInArray<string>(getPlatform.options, option),
       values: toggleElementInArray<string>(getPlatform.values, value),
@@ -167,7 +166,6 @@ export default function BasicInfoAuction({
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(auction)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true
@@ -182,7 +180,6 @@ export default function BasicInfoAuction({
   }
 
   const handlePrevious = () => {
-    console.log(id, "WhatsaAAAAA")
     let prevPageNumber = id - 1 >= 0 ? id - 1 : id
     setCurrentPageState(prevPageNumber)
     setCurrentTab(prevPageNumber)
@@ -219,7 +216,6 @@ export default function BasicInfoAuction({
   useEffect(() => {
     // setGameTitle({ ...gameTitle, tags: getTags.values })
     if (getTags.values.length > 0) {
-      console.log("CALLED")
 
       dispatch(auctionCreateSuccess({ ...auction, tags: getTags.values }))
     }

@@ -60,7 +60,6 @@ export default function UploadAttachment({ id,
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(gameTitle)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true
@@ -75,7 +74,6 @@ export default function UploadAttachment({ id,
   }
 
   const handlePrevious = () => {
-    console.log(id, "WhatsaAAAAA")
     let prevPageNumber = id - 1 >= 0 ? id - 1 : id
     setCurrentPageState(prevPageNumber)
     setCurrentTab(prevPageNumber)

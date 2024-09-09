@@ -1,6 +1,6 @@
-import SortOption1 from "../option/SortOption1";
+import SortOption from "../option/SortOption";
 import CategoryDropdown1 from "../dropdown/CategoryDropdown1";
-import PriceDropdown1 from "../dropdown/PriceDropdown1";
+import PriceDropdown from "../dropdown/PriceDropdown";
 import LocationDropdown1 from "../dropdown/LocationDropdown1";
 import LevelDropdown1 from "../dropdown/LevelDropdown1";
 import LanguageDropdown1 from "../dropdown/LanguageDropdown1";
@@ -55,7 +55,7 @@ export default function ListingOption6() {
                     <i className="fa fa-angle-down ms-2" />
                   </button>
                   <div className="dropdown-menu dd3">
-                    <PriceDropdown1 />
+                    <PriceDropdown />
                   </div>
                 </li>
                 <li className="list-inline-item position-relative d-none d-xl-inline-block">
@@ -110,7 +110,7 @@ export default function ListingOption6() {
         </div>
         <div className="col-sm-6 col-lg-3">
           <div className="page_control_shorting mb10 d-flex align-items-center justify-content-center justify-content-sm-end">
-            <SortOption1 />
+            <SortOption />
           </div>
         </div>
       </div>

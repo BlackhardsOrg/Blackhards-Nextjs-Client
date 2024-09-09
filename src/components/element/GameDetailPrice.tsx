@@ -26,9 +26,7 @@ export default function GameDetailPrice() {
       id
     }
   });
-  useEffect(() => {
-    console.log(data, "SINGLE DATA")
-  }, [loading, data])
+
 
   return (
     <>

@@ -111,7 +111,6 @@ export default function BasicInformation({ gameTitle,
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(gameTitle)
     setTimeout(() => setLoading(false), 3000)
   }
 

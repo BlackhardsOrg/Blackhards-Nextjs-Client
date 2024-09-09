@@ -2701,6 +2701,10 @@ li {
   right: 5%;
 }
 
+.game-banner-image{
+  bottom: -115px;
+}
+
 .service-v1-vector.at-job {
   bottom: 0;
 }

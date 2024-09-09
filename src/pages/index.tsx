@@ -9,7 +9,7 @@ import NeedSomething18 from "@/components/early/NeedSomething18";
 import CounterInfo1 from "@/components/early/CounterInfo1";
 import Testimonials13 from "@/components/early/Testimonials18";
 import ForClient from "@/components/early/ForClient";
-import HomeLayouts from "@/components/layouts/HomeLayouts";
+import HomeLayoutsEarlyAccess from "@/components/layouts/HomeLayoutsEarlyAccess";
 import PlaceBidModal from "@/components/modal/PlaceBidModal";
 import { useEffect } from "react";
 import { useAppSelector } from "@/redux/app/hooks";
@@ -20,11 +20,11 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter()
   const user = useAppSelector(state => state.auth.user)
-  useEffect(( ) => {
-    if(user){
+  useEffect(() => {
+    if (user) {
       router.push("/home")
     }
-  },  [user])
+  }, [user])
   return (
     <>
       <Head>
@@ -33,7 +33,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomeLayouts>
+      <HomeLayoutsEarlyAccess>
         <div className="body_content">
 
           <Hero18 />
@@ -48,7 +48,7 @@ export default function Home() {
           <ForClient />
           {/* <OurBlog1 /> */}
         </div>
-      </HomeLayouts>
+      </HomeLayoutsEarlyAccess>
     </>
   );
 }

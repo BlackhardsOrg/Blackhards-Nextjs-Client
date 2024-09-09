@@ -82,9 +82,7 @@ export default function AuctionListing() {
 
 
   const { data, loading, error } = useQuery<{ auctions: [IAuctionGQL] }>(AUCTIONS);
-  useEffect(() => {
-    console.log(data, "DATA")
-  }, [loading, data])
+
 
   // content
   let content = data?.auctions

@@ -1,4 +1,4 @@
-import SortOption1 from "../option/SortOption1";
+import SortOption from "../option/SortOption";
 import CategoryDropdown2 from "../dropdown/CategoryDropdown2";
 import NotOfEmployee1 from "../dropdown/NotOfEmployee1";
 import toggleStore from "@/store/toggleStore";
@@ -65,7 +65,7 @@ export default function ListingOption5() {
         </div>
         <div className="col-sm-6 col-lg-3">
           <div className="page_control_shorting mb10 d-flex align-items-center justify-content-center justify-content-sm-end">
-            <SortOption1 />
+            <SortOption />
           </div>
         </div>
       </div>

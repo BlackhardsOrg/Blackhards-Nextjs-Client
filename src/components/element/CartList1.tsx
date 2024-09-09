@@ -69,7 +69,6 @@ export default function CartList1({ data }: any) {
           <a
             onClick={() => {
               dispatch(removeItemFromCart(data.id))
-              console.log("Remove id, " + data.id)
             }
             }
             className="cart-delete d-inline-block"

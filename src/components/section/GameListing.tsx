@@ -9,66 +9,30 @@ import PopularGameSlideCard from "../card/PopularGameSlideCard";
 import { useQuery, gql } from "@apollo/client";
 import { useEffect } from "react";
 import { IGameTitleGQL } from "@/types";
-import { USER_GAME_TITLES } from "@/graphql";
+import { ALL_GAME_TITLES, USER_GAME_TITLES } from "@/graphql";
+import { useAppSelector } from "@/redux/app/hooks";
+import Link from "next/link";
+import GameGenreNotFound from "../dashboard/section/GameGenreNotFound";
 
 export default function GameListing() {
-  const getDeliveryTime = listingStore((state: any) => state.getDeliveryTime);
-  const getPriceRange = priceStore((state: any) => state.priceRange);
-  const getLevel = listingStore((state: any) => state.getLevel);
-  const getLocation = listingStore((state: any) => state.getLocation);
-  const getBestSeller = listingStore((state: any) => state.getBestSeller);
-  const getDesginTool = listingStore((state: any) => state.getDesginTool);
-  const getSpeak = listingStore((state: any) => state.getSpeak);
-  const getSearch = listingStore((state: any) => state.getSearch);
 
-  // delivery filter
-  const deliveryFilter = (item: any) =>
-    getDeliveryTime === "" || getDeliveryTime === "anytime"
-      ? item
-      : item.deliveryTime === getDeliveryTime;
-
-  // price filter
-  const priceFilter = (item: any) =>
-    getPriceRange.min <= item.price && getPriceRange.max >= item.price;
-
-  // level filter
-  const levelFilter = (item: any) =>
-    getLevel?.length !== 0 ? getLevel.includes(item.level) : item;
-
-  // location filter
-  const locationFilter = (item: any) =>
-    getLocation?.length !== 0 ? getLocation.includes(item.location) : item;
-
-  const searchFilter = (item: any) =>
-    getSearch !== ""
-      ? item.location.split("-").join(" ").includes(getSearch.toLowerCase())
-      : item;
-
-  // sort by filter
-  const sortByFilter = (item: any) =>
-    getBestSeller === "best-seller" ? item : item.sort === getBestSeller;
-
-  // design tool filter
-  const designToolFilter = (item: any) =>
-    getDesginTool?.length !== 0 ? getDesginTool.includes(item.tool) : item;
-
-  // speak filter
-  const speakFilter = (item: any) =>
-    getSpeak?.length !== 0 ? getSpeak.includes(item.language) : item;
+  const currentGenreTab = useAppSelector(state => state.pages.games.genreCurrentTab)
+  const priceRange = useAppSelector(state => state.pages.games.priceRange)
+  const tag = useAppSelector(state => state.pages.games.tag)
+  const rating = useAppSelector(state => state.pages.games.rating)
 
 
-
-
-  const { data, loading, error } = useQuery<{ userGameTitles: [IGameTitleGQL] }>(USER_GAME_TITLES, {
+  const { data, loading, error, refetch } = useQuery<{ allGameTitles: [IGameTitleGQL] }>(ALL_GAME_TITLES, {
     variables: {
       skip: 0,
-      take: 2,
-      developerEmail: "norbertmbafrank@gmail.com"
+      take: 10,
+      genre: currentGenreTab?.toLowerCase(),
+      priceMin: priceRange?.min,
+      priceMax: priceRange?.max,
+      rating,
+      tag: tag?.value,
     }
   });
-  useEffect(() => {
-    console.log(data, "DATA")
-  }, [loading, data])
 
   return (
     <>
@@ -76,25 +40,29 @@ export default function GameListing() {
         <div className="container">
           <ListingOption1 />
           <div className="row">
-            {data && data.userGameTitles ? data.userGameTitles
-              // .slice(0, 12)
-              // .filter(deliveryFilter)
-              // .filter(priceFilter)
-              // .filter(levelFilter)
-              // .filter(locationFilter)
-              // .filter(searchFilter)
-              // .filter(sortByFilter)
-              // .filter(designToolFilter)
-              // .filter(speakFilter)
-              .map((item, i) => (
-                <div key={i} className="col-sm-6 col-xl-3">
-                  {item?.gamePlayScreenShots.length > 1 ? (
-                    <PopularGameSlideCard data={item} />
-                  ) : (
-                    <TrendingGameCard data={item} />
-                  )}
-                </div>
-              )) : null}
+            {data && data.allGameTitles ?
+              data.allGameTitles.length > 0 ? data.allGameTitles
+                // .slice(0, 12)
+                // .filter(deliveryFilter)
+                // .filter(priceFilter)
+                // .filter(levelFilter)
+                // .filter(locationFilter)
+                // .filter(searchFilter)
+                // .filter(sortByFilter)
+                // .filter(designToolFilter)
+                // .filter(speakFilter)
+                .map((item, i) => (
+                  <div key={i} className="col-sm-6 col-xl-3">
+                    {item?.gamePlayScreenShots.length > 1 ? (
+                      <PopularGameSlideCard data={item} />
+                    ) : (
+                      <TrendingGameCard data={item} />
+                    )}
+                  </div>
+                )) :
+                <GameGenreNotFound />
+
+              : null}
           </div>
           <Pagination1 />
         </div>

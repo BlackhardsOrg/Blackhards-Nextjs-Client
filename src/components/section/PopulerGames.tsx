@@ -17,9 +17,7 @@ export default function PopularGames() {
       developerEmail: "norbertmbafrank@gmail.com"
     }
   });
-  useEffect(() => {
-    console.log(data, "DATA")
-  }, [loading, data])
+
   return (
     <>
       <section className="pb40-md pb70 mt70 mt0-lg">

@@ -34,7 +34,6 @@ export function innitializePayments(checkoutOrderData: IOrder, token: string) {
       );
 
       const data: any = response.data;
-      console.log(data, "USER");
       toast("🦄 Payment Initialized");
       dispatch(innitializePaymentFixedSuccess(null));
       return data;

@@ -39,7 +39,6 @@ export default function ProfileDetails() {
 
   const handleImageChange = (event: any) => {
     const file = event.target.files[0];
-    console.log(event);
     setSelectedImage(URL.createObjectURL(file) as any);
   };
 

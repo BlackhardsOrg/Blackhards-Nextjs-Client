@@ -41,9 +41,6 @@ export default function AuctionDetails() {
       id
     }
   });
-  useEffect(() => {
-    console.log(data, "SINGLE DATA")
-  }, [loading, data])
 
   return (
     <>

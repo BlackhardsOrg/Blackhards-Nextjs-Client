@@ -17,7 +17,6 @@ export default function DashboardSidebar() {
   const user = useAppSelector(state => state.auth.user)
 
   const handleLogout = async (e: any) => {
-    console.log("called");
     await dispatch(logoutUser(user.token));
     persistor.purge().then(() => {
       navigate(links.login);

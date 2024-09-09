@@ -28,7 +28,6 @@ export function startAuction(auctionData: IAuction, token: string) {
       );
 
       const user: IUser = response.data;
-      console.log(response.data, "DATTATTA")
       toast("🦄 Auction Started Successful!");
       dispatch(auctionCreateSuccess(null));
       return user

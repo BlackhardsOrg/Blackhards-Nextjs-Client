@@ -51,7 +51,6 @@ export default function CreateAuctionInfo() {
     if (getCurrentPageState == 3 && user) {
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
-      console.log("BEForE", "RESULT")
 
       const result = await dispatch(startAuction({
         ...auction,
@@ -63,7 +62,6 @@ export default function CreateAuctionInfo() {
         ]
       }, user.token))
       if (result.success) {
-        console.log(result, "RESULT AAAAAAAS")
 
         router.push("/user/manage-auctions")
       }

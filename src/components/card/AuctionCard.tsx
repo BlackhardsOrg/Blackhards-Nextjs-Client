@@ -8,9 +8,7 @@ import { useEffect } from "react";
 
 export default function AuctionCard({ data }: { data: IAuctionGQL }) {
   const navigate = useRouter().push;
-  useEffect(() => {
-    console.log(data.gametitle ? data.gametitle.gamePlayScreenShots : "", "GAMEPLAY")
-  }, [data])
+ 
   return (
     <>
       <div

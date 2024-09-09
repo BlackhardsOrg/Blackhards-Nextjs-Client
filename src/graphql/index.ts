@@ -1,9 +1,18 @@
 import { gql } from "@apollo/client";
 
-export const 
-USER_GAME_TITLES = gql`
-  query userGameTitles($skip: Int, $take: Int, $developerEmail: String!) {
-    userGameTitles(skip: $skip, take: $take, developerEmail: $developerEmail) {
+export const USER_GAME_TITLES = gql`
+  query userGameTitles(
+    $skip: Int
+    $take: Int
+    $developerEmail: String!
+    $genre: String
+  ) {
+    userGameTitles(
+      skip: $skip
+      take: $take
+      developerEmail: $developerEmail
+      genre: $genre
+    ) {
       title
       _id
       genre
@@ -19,7 +28,51 @@ USER_GAME_TITLES = gql`
       developer {
         studioName
       }
-      
+
+      plans {
+        basic {
+          price
+        }
+      }
+    }
+  }
+`;
+
+export const ALL_GAME_TITLES = gql`
+  query allGameTitles(
+    $skip: Int
+    $take: Int
+    $genre: String
+    $priceMin: Int
+    $priceMax: Int
+    $rating: Int
+    $tag: String
+  ) {
+    allGameTitles(
+      skip: $skip
+      take: $take
+      genre: $genre
+      priceMin: $priceMin
+      priceMax: $priceMax
+      rating: $rating
+      tag: $tag
+    ) {
+      title
+      _id
+      genre
+      gameRating
+      updatedAt
+      createdAt
+      isOnSale
+      gamePlays
+      isApproved
+      isOnSale
+      gamePlays
+      gamePlayScreenShots
+      developer {
+        studioName
+      }
+
       plans {
         basic {
           price

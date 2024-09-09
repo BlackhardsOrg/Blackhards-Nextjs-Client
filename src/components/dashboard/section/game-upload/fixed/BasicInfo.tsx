@@ -147,7 +147,6 @@ export default function BasicInfo({
   };
 
   const platformHandler = (option: string, value: string, e: any) => {
-    console.log(e)
     setPlatform({
       options: toggleElementInArray<string>(getPlatform.options, option),
       values: toggleElementInArray<string>(getPlatform.values, value),

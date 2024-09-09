@@ -7,7 +7,7 @@ import TabSection1 from "@/components/section/TabSection1";
 import MetaComponent from "@/components/common/MetaComponent";
 import GameListing from "@/components/section/GameListing";
 const metadata = {
-  title: "Blackhards - Freelance Marketplace ReactJs Template | Games",
+  title: "Blackhards - Game Marketplace | Games",
 };
 
 export default function Games() {

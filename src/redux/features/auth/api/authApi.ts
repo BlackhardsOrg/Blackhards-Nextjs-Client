@@ -66,13 +66,11 @@ export function registerUser(registerData: IRegisterData) {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(registerStart());
-      console.log(registerData, "LILY");
       // Make an HTTP GET request to the API
       const response = await axios.post(
         `${API_URL}/auth/register`,
         registerData
       );
-      console.log(response, "REGISTER");
 
       // Extract card resources from the API response
       toast("🦄 Registration Successful!");
@@ -97,13 +95,11 @@ export function registerUserEarly(registerData: IRegisterEarlyData) {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(registerStart());
-      console.log(registerData, "LILY");
       // Make an HTTP GET request to the API
       const response = await axios.post(
         `${API_URL}/auth/register/early`,
         registerData
       );
-      console.log(response, "REGISTER");
 
       // Extract card resources from the API response
       toast(
@@ -169,7 +165,6 @@ export function resetPasswordUser(resetPasswordData: IResetPasswordData) {
       toast(response.data.message);
       // Dispatch the getResourcesSuccess action to update the Redux state
       dispatch(resetPasswordSuccess());
-      console.log(response, "CHECK THIS");
       return response.data;
     } catch (error: any) {
       dispatch(resetPasswordFailure(error));

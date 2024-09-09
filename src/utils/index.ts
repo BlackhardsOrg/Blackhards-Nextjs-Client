@@ -24,4 +24,3 @@ export function timeAgo(dateString: string): string {
 
 // Example usage:
 const isoDate = "2024-07-18T19:45:10.460Z";
-console.log(timeAgo(isoDate)); // Output will be something like "X days ago"

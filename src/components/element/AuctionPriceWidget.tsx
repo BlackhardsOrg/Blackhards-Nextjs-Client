@@ -16,9 +16,7 @@ export default function AuctionPriceWidget() {
       id
     }
   });
-  useEffect(() => {
-    console.log(data, "SINGLE DATA")
-  }, [loading, data])
+
   return (
     <>
       {data && data.auction ? <div className="price-widget pt25 bdrs8">

@@ -1,4 +1,4 @@
-import SortOption1 from "../option/SortOption1";
+import SortOption from "../option/SortOption";
 
 export default function ShopListInfo1({ length }: any) {
   return (
@@ -13,7 +13,7 @@ export default function ShopListInfo1({ length }: any) {
         </div>
         <div className="col-sm-6">
           <div className="page_control_shorting d-flex align-items-center justify-content-center justify-content-sm-end">
-            <SortOption1 />
+            <SortOption />
           </div>
         </div>
       </div>

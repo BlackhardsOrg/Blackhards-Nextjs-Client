@@ -27,7 +27,6 @@ export default function LoginPage() {
     e.preventDefault();
 
     const result = await dispatch(loginUser(credentials)) as any;
-    console.log(result, "RESuLT");
     // if (result.success) {
     //   navigate(links.dashboard);
     // }

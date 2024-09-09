@@ -8,7 +8,7 @@ import MarketLayouts from "@/components/layouts/MarketLayouts"
 import PlaceBidModal from "@/components/modal/PlaceBidModal";
 
 const metadata = {
-  title: "Blackhards - Freelance Marketplace ReactJs Template | Project Signle",
+  title: "Blackhards - Game Marketplace| Game",
 };
 
 export default function AuctionPreview() {

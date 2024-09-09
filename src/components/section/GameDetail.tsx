@@ -33,9 +33,7 @@ export default function GameDetail() {
       id
     }
   });
-  useEffect(() => {
-    console.log(data, "SINGLE DATA")
-  }, [loading, data])
+  
   return (
     <>
       <StickyContainer>

@@ -30,7 +30,6 @@ export default function SummaryAndPublishAuction({
   const handleGameSubmit = (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log(auction)
     setGetPageProgress((old) => {
       const pageList = [...old]
       pageList[id].isDone = true

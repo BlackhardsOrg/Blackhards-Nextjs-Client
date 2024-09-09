@@ -238,7 +238,10 @@ export default function DashboardHeader() {
                     <li className="user_setting">
                       <div className="dropdown">
                         <a className="btn" data-bs-toggle="dropdown">
-                          <img src="/images/resource/user-50by50.png" alt="user.png" />
+                          <img
+                          className="border rounded-circle"
+                            style={{ width: "40px", height: "40px", objectFit: "cover" }}
+                            src="/images/resource/user-50by50.png" alt="user.png" />
                         </a>
                         <div className="dropdown-menu">
                           <div className="user_setting_content">

@@ -25,9 +25,7 @@ export default function ManageGameInfo() {
       developerEmail: "norbertmbafrank@gmail.com"
     }
   });
-  useEffect(() => {
-    console.log(data, "DATA")
-  }, [loading, data])
+
   return (
     <>
       <div className="dashboard__content hover-bgc-color">

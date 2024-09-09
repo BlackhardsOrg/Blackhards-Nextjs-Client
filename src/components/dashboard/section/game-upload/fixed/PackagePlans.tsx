@@ -126,7 +126,6 @@ export default function PackagePlans({
     };
 
     useEffect(() => {
-        console.log(gameTitle)
         // setGameTitle(old => ({ ...old, plans: plans }))
         dispatch(gameTitleCreateSuccess({ ...gameTitle, plans: plans }))
 

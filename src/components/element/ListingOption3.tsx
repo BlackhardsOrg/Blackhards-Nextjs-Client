@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import priceStore from "@/store/priceStore";
 import ReactSlider from "react-slider";
 import ClearButton from "../button/ClearButton";
-import SortOption1 from "../option/SortOption1";
+import SortOption from "../option/SortOption";
 
 export default function ListingOption3() {
   const [getDelivery, SetDelivery] = useState("");
@@ -185,7 +185,7 @@ export default function ListingOption3() {
         </div>
         <div className="col-6 col-sm-6 col-lg-3 px-0">
           <div className="page_control_shorting mb10 d-flex align-items-center justify-content-center justify-content-sm-end">
-            <SortOption1 />
+            <SortOption />
           </div>
         </div>
       </div>

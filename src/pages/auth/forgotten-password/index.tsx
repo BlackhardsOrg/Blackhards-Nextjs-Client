@@ -27,7 +27,6 @@ export default function ForgottenPasswordPage() {
     e.preventDefault();
 
     const result = await dispatch(forgottenPasswordUser(email)) as any;
-    console.log(result, "RESuLT");
     // if (result.success) {
     //   navigate(links.dashboard);
     // }

@@ -1,25 +1,30 @@
 
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { setCurrentGenreTab } from "@/redux/features/sitepages/slices/pageSlice";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const genres = [
-  "All Genre's",
+  "All",
   "Action",
   "Adventure",
-  "Role-Playing Game (RPG)",
+  "RPG",
   "Simulation",
   "Strategy",
-  "Sports & Racing",
+  "Sports",
+  "Racing",
   "Puzzle",
-  "Party and Music",
+  "Party",
+  "Music",
   "Horror",
 ];
 
 // categories_list_section overflow-hidden
 
 export default function TabSection1() {
-  const [getCurrentTab, setCurrentTab] = useState("All Categories");
-
+  // const [getCurrentTab, setCurrentTab] = useState("All Genre's");
+  const getCurrentTab = useAppSelector(state => state.pages.games.genreCurrentTab)
+  const dispatch = useAppDispatch()
   const { pathname } = useRouter();
 
   
@@ -38,7 +43,7 @@ export default function TabSection1() {
                   {genres.map((item, index) => (
                     <li key={index}>
                       <a
-                        onClick={() => setCurrentTab(item)}
+                        onClick={() => dispatch(setCurrentGenreTab({currentTab: item}))}
                         className={getCurrentTab == item ? "active" : ""}
                       >
                         {item}

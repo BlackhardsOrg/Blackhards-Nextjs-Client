@@ -1,5 +1,5 @@
 import toggleStore from "@/store/toggleStore";
-import SortOption1 from "../option/SortOption1";
+import SortOption from "../option/SortOption";
 import ClearButton from "../button/ClearButton";
 
 export default function ListingOption2({ itemLength }: any) {
@@ -34,7 +34,7 @@ export default function ListingOption2({ itemLength }: any) {
                 </li>
               </ul>
             </div>
-            <SortOption1 />
+            <SortOption />
           </div>
         </div>
       </div>

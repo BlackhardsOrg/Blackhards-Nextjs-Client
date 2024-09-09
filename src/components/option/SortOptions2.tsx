@@ -1,4 +1,4 @@
-import { bestSeller } from "@/data/listing";
+import { GameTitleTags } from "@/data/listing";
 import listingStore from "@/store/listingStore";
 
 export default function SortOption2() {
@@ -10,7 +10,7 @@ export default function SortOption2() {
     setBestSeller(data);
   };
 
-  const getBestSellerSelected = bestSeller.find((item) =>
+  const getBestSellerSelected = GameTitleTags.find((item) =>
     item.value === getBestSeller ? item : false
   );
 
@@ -36,13 +36,12 @@ export default function SortOption2() {
             <div className="dropdown-menu">
               <div className="inner show">
                 <ul className="dropdown-menu inner show">
-                  {bestSeller.map((item, i) => (
+                  {GameTitleTags.map((item, i) => (
                     <li key={i}>
                       <a
                         onClick={() => bestSellerHandler(item.value)}
-                        className={`dropdown-item ${
-                          item.value === getBestSeller ? "active selected" : ""
-                        }`}
+                        className={`dropdown-item ${item.value === getBestSeller ? "active selected" : ""
+                          }`}
                       >
                         <span className="bs-ok-default check-mark" />
                         <span className="text">{item.title}</span>
