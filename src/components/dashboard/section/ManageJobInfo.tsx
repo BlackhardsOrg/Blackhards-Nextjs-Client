@@ -1,4 +1,4 @@
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import DashboardNavigation from "../header/DashboardNavigation";
 import ManageJobCard from "../card/ManageJobCard";
 import { managejob } from "@/data/dashboard";
@@ -35,13 +35,13 @@ export default function ManageJobInfo() {
                     </tr>
                   </thead>
                   <tbody className="t-body">
-                    {managejob.map((item,i) => (
+                    {managejob.map((item, i) => (
                       <ManageJobCard key={i} data={item} />
                     ))}
                   </tbody>
                 </table>
                 <div className="mt30">
-                  <Pagination1 />
+                  <Pagination />
                 </div>
               </div>
             </div>

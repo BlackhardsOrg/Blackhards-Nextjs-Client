@@ -1,7 +1,7 @@
 import { product1 } from "@/data/product";
 import ListingOption1 from "../element/ListingOption1";
 import ListingSidebarModal1 from "../modal/ListingSidebarModal1";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import TrendingGameCard from "../card/TrendingGameCard";
 import listingStore from "@/store/listingStore";
 import priceStore from "@/store/priceStore";
@@ -78,7 +78,7 @@ export default function Listing1() {
                 </div>
               ))}
           </div>
-          <Pagination1 />
+          <Pagination />
         </div>
       </section>
       <ListingSidebarModal1 />

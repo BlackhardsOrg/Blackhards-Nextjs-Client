@@ -4,6 +4,7 @@ export interface IUser {
   email: string;
   password: string;
   studioName: string;
+  profileImageURL: string
 }
 
 export interface ICredentials {
@@ -175,6 +176,7 @@ export interface IPopularGameSlideCard {
   data: IGameTitleGQL;
   style?: string;
   isContentExpanded?: boolean;
+  profileImageURL: string;
 }
 export interface IBasicInformation {
   id: number;

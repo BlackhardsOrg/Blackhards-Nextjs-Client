@@ -1,7 +1,7 @@
 import { project1 } from "@/data/product";
 import ProjectCard1 from "../card/ProjectCard1";
 import ListingOption2 from "../element/ListingOption2";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import listingStore from "@/store/listingStore";
 import priceStore from "@/store/priceStore";
 import ListingSidebarModal2 from "../modal/ListingSidebarModal2";
@@ -119,7 +119,7 @@ export default function AuctionListing() {
               <ListingOption2 itemLength={content?.length} />
               <div className="row">{content}</div>
               <div className="mt30">
-                <Pagination1 />
+                <Pagination />
               </div>
             </div>
           </div>

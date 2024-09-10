@@ -1,4 +1,4 @@
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import DashboardNavigation from "../header/DashboardNavigation";
 import { useState } from "react";
 import ServiceCard1 from "../card/ServiceCard1";
@@ -36,9 +36,8 @@ export default function SavedInfo() {
                       <button
                         onClick={() => setCurrentTab(i)}
                         key={i}
-                        className={`nav-link fw500 ps-0 ${
-                          getCurrentTab === i ? "active" : ""
-                        }`}
+                        className={`nav-link fw500 ps-0 ${getCurrentTab === i ? "active" : ""
+                          }`}
                       >
                         {item}
                       </button>
@@ -81,7 +80,7 @@ export default function SavedInfo() {
                 )}
               </div>
 
-              <Pagination1 />
+              <Pagination />
             </div>
           </div>
         </div>

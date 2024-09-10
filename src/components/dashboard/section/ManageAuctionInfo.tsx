@@ -1,6 +1,6 @@
 import DashboardNavigation from "../header/DashboardNavigation";
 import { useState } from "react";
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import ManageAuctionCard from "../card/ManageAuctionCard";
 import { manageService } from "@/data/dashboard";
 import ProposalModal1 from "../modal/ProposalModal1";
@@ -80,7 +80,7 @@ export default function ManageAuctionInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -102,7 +102,7 @@ export default function ManageAuctionInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -124,7 +124,7 @@ export default function ManageAuctionInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -146,7 +146,7 @@ export default function ManageAuctionInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -168,7 +168,7 @@ export default function ManageAuctionInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}

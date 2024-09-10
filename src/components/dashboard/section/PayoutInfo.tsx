@@ -1,5 +1,5 @@
 import DashboardNavigation from "../header/DashboardNavigation";
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import PaymentMethod from "./PaymentMethod";
 import PayoutCard1 from "../card/PayoutCard1";
 import { payout } from "@/data/dashboard";
@@ -53,7 +53,7 @@ export default function PayoutInfo() {
                   </tbody>
                 </table>
                 <div className="mt30">
-                  <Pagination1 />
+                  <Pagination />
                 </div>
               </div>
             </div>

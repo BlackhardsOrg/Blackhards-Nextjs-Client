@@ -1,4 +1,4 @@
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import DashboardNavigation from "../header/DashboardNavigation";
 import InvoiceCard1 from "../card/InvoiceCard1";
 import { invoice } from "@/data/dashboard";
@@ -49,13 +49,13 @@ export default function InvoiceInfo() {
                     </tr>
                   </thead>
                   <tbody className="t-body">
-                    {invoice.map((item,i) => (
+                    {invoice.map((item, i) => (
                       <InvoiceCard1 key={i} data={item} />
                     ))}
                   </tbody>
                 </table>
                 <div className="mt30">
-                  <Pagination1 />
+                  <Pagination />
                 </div>
               </div>
             </div>

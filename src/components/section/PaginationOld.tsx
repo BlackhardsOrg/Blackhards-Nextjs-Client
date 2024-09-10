@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function Pagination1() {
+export default function PaginationOld() {
   const { pathname } = useRouter();
   return (
     <>

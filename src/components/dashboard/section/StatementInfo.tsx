@@ -1,4 +1,4 @@
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import DashboardNavigation from "../header/DashboardNavigation";
 import StatementCard1 from "../card/StatementCard1";
 import { statement } from "@/data/dashboard";
@@ -91,13 +91,13 @@ export default function StatementInfo() {
                     </tr>
                   </thead>
                   <tbody className="t-body">
-                    {statement.map((item,i) => (
-                      <StatementCard1 key={ i } data={item} />
+                    {statement.map((item, i) => (
+                      <StatementCard1 key={i} data={item} />
                     ))}
                   </tbody>
                 </table>
                 <div className="mt30">
-                  <Pagination1 />
+                  <Pagination />
                 </div>
               </div>
             </div>

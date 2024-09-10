@@ -1,6 +1,6 @@
 import DashboardNavigation from "../header/DashboardNavigation";
 import { useEffect, useState } from "react";
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import ManageProjectCard from "../card/ManageProjectCard";
 import ProposalModal1 from "../modal/ProposalModal1";
 import DeleteModal from "../modal/DeleteModal";
@@ -90,7 +90,7 @@ export default function ManageGameInfo() {
                               )
                             }) : null
                         }
-                         {/* {Array(7)
+                        {/* {Array(7)
                            .fill(7)
                            .map((_, i) => (
                              <ManageProjectCard key={i} />
@@ -98,7 +98,7 @@ export default function ManageGameInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -122,7 +122,7 @@ export default function ManageGameInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -146,7 +146,7 @@ export default function ManageGameInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -170,7 +170,7 @@ export default function ManageGameInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -194,7 +194,7 @@ export default function ManageGameInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -218,7 +218,7 @@ export default function ManageGameInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}

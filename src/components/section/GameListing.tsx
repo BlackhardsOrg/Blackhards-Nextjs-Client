@@ -1,6 +1,6 @@
 import ListingOption1 from "../element/ListingOption1";
 import ListingSidebarModal1 from "../modal/ListingSidebarModal1";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import TrendingGameCard from "../card/TrendingGameCard";
 import PopularGameSlideCard from "../card/PopularGameSlideCard";
 import { useQuery } from "@apollo/client";
@@ -12,8 +12,19 @@ import { useEffect, useState } from "react";
 import { SkeletonCard } from "../card/SkeletonCard";
 import { SkeletonLoadContainer } from "../card/SkeletonLoadContainer";
 import GameDataNotFound from "../dashboard/section/GameDataNotFound";
+import PaginationOld from "./PaginationOld";
 
 export default function GameListing() {
+
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalGames = 300;
+  const itemsPerPage = 10;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Logic to fetch new items based on `page`
+  };
 
   const currentGenreTab = useAppSelector(state => state.pages.games.genreCurrentTab)
   const priceRange = useAppSelector(state => state.pages.games.priceRange)
@@ -22,8 +33,8 @@ export default function GameListing() {
   const gamesPage = useAppSelector(state => state.pages.games)
 
   const [pageParams, setParams] = useState({
-    skip: 0,
-    take: 10,
+    skip: currentPage,
+    take: itemsPerPage,
     genre: currentGenreTab?.toLowerCase(),
     ...(priceRange?.min != null && { priceMin: priceRange.min }),
     ...(priceRange?.max != null && { priceMax: priceRange.max }),
@@ -38,8 +49,8 @@ export default function GameListing() {
 
   useEffect(() => {
     setParams({
-      skip: 0,
-      take: 10,
+      skip: currentPage,
+      take: itemsPerPage,
       genre: currentGenreTab?.toLowerCase(),
       ...(priceRange?.min != null && { priceMin: Number(priceRange.min) }),
       ...(priceRange?.max != null && { priceMax: Number(priceRange.max) }),
@@ -73,7 +84,10 @@ export default function GameListing() {
               : !loading && <GameDataNotFound />}
           </div>
           {loading && <SkeletonLoadContainer count={5} />}
-          <Pagination1 />
+          <Pagination totalItems={data && data.allGameTitles ? data.allGameTitles.length : totalGames} currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+            onPageChange={handlePageChange} />
+          {/* <PaginationOld/> */}
         </div>
       </section>
       <ListingSidebarModal1 />

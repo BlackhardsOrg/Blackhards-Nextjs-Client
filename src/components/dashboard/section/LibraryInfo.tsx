@@ -1,6 +1,6 @@
 import DashboardNavigation from "../header/DashboardNavigation";
 import { useState } from "react";
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import ManageProjectCard from "../card/ManageProjectCard";
 import ProposalModal1 from "../modal/ProposalModal1";
 import DeleteModal from "../modal/DeleteModal";
@@ -77,7 +77,7 @@ export default function LibraryInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -101,7 +101,7 @@ export default function LibraryInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -125,7 +125,7 @@ export default function LibraryInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -149,7 +149,7 @@ export default function LibraryInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -173,7 +173,7 @@ export default function LibraryInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}
@@ -197,7 +197,7 @@ export default function LibraryInfo() {
                       </tbody>
                     </table>
                     <div className="mt30">
-                      <Pagination1 />
+                      <Pagination />
                     </div>
                   </div>
                 )}

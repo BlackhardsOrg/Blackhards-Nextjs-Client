@@ -1,5 +1,5 @@
 import { product1 } from "@/data/product";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import PopularGameSlideCard from "../card/PopularGameSlideCard";
 import PopularServiceCard1 from "../card/PopularServiceCard1";
 import PopularServiceCard2 from "../card/PopularServiceCard2";
@@ -150,7 +150,7 @@ export default function ListStyleContent() {
               </div>
             ))}
           </div>
-          <Pagination1 />
+          <Pagination />
         </div>
       </section>
     </>

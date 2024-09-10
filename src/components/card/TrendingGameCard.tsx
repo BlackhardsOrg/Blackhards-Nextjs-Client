@@ -4,6 +4,8 @@ import shopStore from "@/store/shopStore";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { IGameTitleGQL } from "@/types";
+import StarRating from "../dropdown/StarRatingComponent";
+import StarRatingCardDisplay from "../dropdown/StarRatingCardDisplay";
 
 interface ITrendingGameCard {
   data: IGameTitleGQL
@@ -65,7 +67,7 @@ export default function TrendingGameCard({ data }: ITrendingGameCard) {
           </a>
         </div>
         <div className={`list-content ${pathname === "/home-8" ? "px-0" : ""}`}>
-          <p className="list-text body-color fz14 mb-1">{data &&data.genre? data.genre[0]: ""}</p>
+          <p className="list-text body-color fz14 mb-1">{data && data.genre? data.genre.map(item => `${item},`): ""}</p>
           <h5 className="list-title">
             <Link href={`/game/preview/${data._id}`}>
               {data.title.slice(0, 40) + "..."}
@@ -74,8 +76,9 @@ export default function TrendingGameCard({ data }: ITrendingGameCard) {
           <div className="review-meta d-flex align-items-center">
             <i className="fas fa-star fz10 review-color me-2" />
             <p className="mb-0 body-color fz14">
-              <span className="dark-color me-2">{data.gameRating}</span>
-              {data.gamePlays} reviews
+              {/* <span className="dark-color me-2">{data.gameRating}</span>
+              {data.gamePlays} reviews */}
+              <StarRatingCardDisplay rating={4} />
             </p>
           </div>
           <hr className="my-2" />

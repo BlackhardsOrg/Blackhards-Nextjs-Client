@@ -13,6 +13,7 @@ import Link from "next/link";
 import { IPopularGameSlideCard } from "@/types";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { addItemToCart } from "@/redux/features/cart/slice/cartSlice";
+import StarRatingCardDisplay from "../dropdown/StarRatingCardDisplay";
 
 export default function PopularGameSlideCard({
   data,
@@ -113,16 +114,18 @@ export default function PopularGameSlideCard({
           </div>
         </div>
         <div className={`list-content ${isContentExpanded ? "px-0" : ""}`}>
-          <p className="list-text body-color fz14 mb-1">{data.genre}</p>
+          <p className="list-text body-color fz14 mb-1">{data.genre.map(item =>  `${item != "all" ? item+", ": ""} `)}</p>
           <h5 className="list-title">
             <Link href={`/games/game-preview/${data._id}`}>{data.title}</Link>
           </h5>
           <div className="review-meta d-flex align-items-center">
-            <i className="fas fa-star fz10 review-color me-2" />
+            {/* <i className="fas fa-star fz10 review-color me-2" />
             <p className="mb-0 body-color fz14">
               <span className="dark-color me-2">{data.gameRating}</span>
               {data.gamePlays} reviews
-            </p>
+            </p> */}
+
+            <StarRatingCardDisplay rating={data.gameRating} />
           </div>
           <hr className="my-2" />
           <div className="list-meta d-flex justify-content-between align-items-center mt15">
@@ -131,7 +134,7 @@ export default function PopularGameSlideCard({
                 <img
                   className="rounded-circle object-fit-contain"
                   style={{ width: "30px", height: "30px" }}
-                  src={"/images/team/employee-single.png"}
+                  src={data.developer.profileImageURL}
                   alt="Freelancer Photo"
                 />
                 <span className="online-badge" />

@@ -2,7 +2,7 @@ import { shopProduct1 } from "@/data/product";
 import ShopListCard1 from "../card/ShopListCard1";
 import ShopListInfo1 from "../element/ShopListInfo1";
 import ShopAreaSidebar1 from "../sidebar/ShopAreaSidebar1";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import priceStore from "@/store/priceStore";
 import listingStore from "@/store/listingStore";
 
@@ -52,7 +52,7 @@ export default function ShopArea1() {
             <div className="col-lg-9">
               <ShopListInfo1 length={content?.length} />
               <div className="row">{content}</div>
-              <Pagination1 />
+              <Pagination />
             </div>
           </div>
         </div>

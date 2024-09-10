@@ -1,7 +1,7 @@
 import listingStore from "@/store/listingStore";
 import FreelancerCard1 from "../card/FreelancerCard1";
 import ListingOption6 from "../element/ListingOption6";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import { freelancer1 } from "@/data/product";
 import priceStore from "@/store/priceStore";
 import ListingSidebarModal5 from "../modal/ListingSidebarModal5";
@@ -70,7 +70,7 @@ export default function Listing13() {
               ))}
           </div>
           <div className="row mt30">
-            <Pagination1 />
+            <Pagination />
           </div>
         </div>
       </section>

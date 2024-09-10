@@ -1,4 +1,4 @@
-import Pagination1 from "@/components/section/Pagination1";
+import Pagination from "@/components/section/Pagination";
 import ProposalCard1 from "../card/ProposalCard1";
 import DashboardNavigation from "../header/DashboardNavigation";
 import { project1 } from "@/data/product";
@@ -33,13 +33,13 @@ export default function ProposalInfo() {
                     </tr>
                   </thead>
                   <tbody className="t-body">
-                    {project1.slice(0, 7).map((item,i) => (
+                    {project1.slice(0, 7).map((item, i) => (
                       <ProposalCard1 key={i} data={item} />
                     ))}
                   </tbody>
                 </table>
                 <div className="mt30">
-                  <Pagination1 />
+                  <Pagination />
                 </div>
               </div>
             </div>

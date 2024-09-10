@@ -2,7 +2,7 @@ import { product1 } from "@/data/product";
 import ListingOption2 from "../element/ListingOption2";
 import ListingSidebarModal1 from "../modal/ListingSidebarModal1";
 import ListingSidebar1 from "../sidebar/ListingSidebar1";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import TrendingGameCard from "../card/TrendingGameCard";
 import listingStore from "@/store/listingStore";
 import priceStore from "@/store/priceStore";
@@ -85,7 +85,7 @@ export default function Listing3() {
             <div className="col-lg-9">
               <ListingOption2 itemLength={content?.length} />
               <div className="row">{content}</div>
-              <Pagination1 />
+              <Pagination />
             </div>
           </div>
         </div>

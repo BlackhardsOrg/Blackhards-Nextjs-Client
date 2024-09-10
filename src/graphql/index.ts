@@ -71,6 +71,7 @@ export const ALL_GAME_TITLES = gql`
       gamePlayScreenShots
       developer {
         studioName
+        profileImageURL
       }
 
       plans {

@@ -1,6 +1,6 @@
 import { job1 } from "@/data/job";
 import ListingOption4 from "../element/ListingOption4";
-import Pagination1 from "./Pagination1";
+import Pagination from "./Pagination";
 import JobCard4 from "../card/JobCard4";
 import listingStore from "@/store/listingStore";
 import priceStore from "@/store/priceStore";
@@ -53,7 +53,7 @@ export default function Listing9() {
               ))}
           </div>
           <div className="mt30">
-            <Pagination1 />
+            <Pagination />
           </div>
         </div>
       </section>
