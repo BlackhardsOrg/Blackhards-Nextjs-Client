@@ -250,6 +250,17 @@ a {
   border-radius: 4px !important;
   cursor: pointer;
 }
+.ui-service-gig-slder-bottom-new .swiper-slide {
+  border-radius: 4px !important;
+  height: 120px !important;
+  width: 150px !important;
+  margin-top: 1rem;
+}
+
+.ui-service-gig-slder-bottom-new .swiper-slide img {
+  border-radius: 4px !important;
+  cursor: pointer;
+}
 
 .ui-tooltip {
   height: unset;

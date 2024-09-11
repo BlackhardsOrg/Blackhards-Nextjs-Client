@@ -14,51 +14,37 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 //   "/images/listings/service-details-1.jpg",
 // ];
 
-export default function GameDetailSlider({gigImages}: {gigImages: string[]}) {
+export default function GameDetailSlider({ gigImages }: { gigImages: string[] }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [selected, setSelected] = useState(0)
+
+  useEffect(() => {
+    console.log(gigImages, "GIG IMAgES", thumbsSwiper)
+  }, [gigImages, thumbsSwiper])
 
   return (
     <>
       <div className="scrollbalance-inner">
-        <div className="row">
-          <div className="col-sm-6 col-md-4">
-            <div className="iconbox-style1 contact-style d-flex align-items-start mb30">
-              <div className="icon flex-shrink-0">
-                <span className="flaticon-calendar" />
-              </div>
-              <div className="details">
-                <h5 className="title">Delivery Time</h5>
-                <p className="mb-0 text">1-3 Days</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-md-4">
-            <div className="iconbox-style1 contact-style d-flex align-items-start mb30">
-              <div className="icon flex-shrink-0">
-                <span className="flaticon-goal" />
-              </div>
-              <div className="details">
-                <h5 className="title">English Level</h5>
-                <p className="mb-0 text">Professional</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-md-4">
-            <div className="iconbox-style1 contact-style d-flex align-items-start mb30">
-              <div className="icon flex-shrink-0">
-                <span className="flaticon-tracking" />
-              </div>
-              <div className="details">
-                <h5 className="title">Location</h5>
-                <p className="mb-0 text">New York</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="service-single-sldier vam_nav_style slider-1-grid owl-carousel owl-theme mb60 owl-loaded owl-drag">
-          <div className="thumb p50 p30-sm">
+
+        <div className="service-single-sldier vam_nav_style slider-1-grid owl-carousel owl-theme mb60 owl-loaded owl-drag ">
+          <div className="thumb">
             <Swiper
-              loop={true}
+              // onChange={(res) => {
+              //   console.log(res)
+              // }}
+              // onClick={(res) => {
+              //   // console.log("res", res, "Clicked")
+              // }}
+              // onSelect={(res) => {
+              //   console.log("res", res, "Slected")
+              // }}
+              onSlideChange={(res) => {
+                console.log(res, "SLIDE CHANGE")
+                setSelected(res.activeIndex)
+              }}
+
+    
+              loop={false}
               spaceBetween={10}
               navigation={{
                 prevEl: ".prev-btn",
@@ -72,8 +58,8 @@ export default function GameDetailSlider({gigImages}: {gigImages: string[]}) {
               className="mySwiper2"
             >
               {gigImages.map((item, i) => (
-                <SwiperSlide key={i}>
-                  <img src={item} alt="gallery" className="w-100 h-auto" />
+                <SwiperSlide key={i} className="p-1">
+                  <img src={item} alt="gallery" className="w-100 rounded" />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -87,9 +73,9 @@ export default function GameDetailSlider({gigImages}: {gigImages: string[]}) {
 
           <Swiper
             onSwiper={setThumbsSwiper}
-            loop={true}
+            loop={false}
             spaceBetween={10}
-            slidesPerView={4}
+            slidesPerView={5}
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
@@ -97,12 +83,12 @@ export default function GameDetailSlider({gigImages}: {gigImages: string[]}) {
           >
             {gigImages.map((item, i) => (
               <SwiperSlide key={i}>
-                <img src={item} alt="image" className="w-100" />
+                <img style={{ objectFit: "cover", height: "100%" }} src={item} alt="image" className={`swipe-image w-100  ${selected == i && "border-bh-success"} `} />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-      </div>
+      </div >
     </>
   );
 }

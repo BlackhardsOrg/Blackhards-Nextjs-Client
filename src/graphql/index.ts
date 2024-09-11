@@ -94,6 +94,7 @@ export const SINGLE_GAME_TITLE = gql`
       id
       gamePlayScreenShots
       targetPlatform
+      gameRating
       genre
       isApproved
       isOnSale
@@ -101,6 +102,7 @@ export const SINGLE_GAME_TITLE = gql`
       tags
       developer {
         studioName
+        profileImageURL
       }
       plans {
         basic {

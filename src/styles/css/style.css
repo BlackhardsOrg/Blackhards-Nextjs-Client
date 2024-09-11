@@ -128,8 +128,8 @@ a,
 }
 
 .skeleton-card {
-  width: 100%;
-  max-width: 250px;
+  /* width: 100%; */
+  /* max-width: 250px; */
   padding: 20px;
   border-radius: 10px;
   display: flex;
@@ -11096,17 +11096,27 @@ input:focus-visible {
   position: relative;
 }
 
-.service-single-sldier:after {
-  background-color: #404040;
+
+.swipe-image{
+  transition: border .4s ease-in-out;
+  border: .2rem solid transparent;
+}
+.border-bh-success{
+  border: .2rem solid #3E4B40;
+}
+
+
+/* .service-single-sldier:after {
+  background-color: #005499;
   border-radius: 4px;
-  bottom: 130px;
+  bottom: 190px;
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   z-index: -1;
-}
+} */
 
 @media (max-width: 767.98px) {
   .service-single-sldier:after {

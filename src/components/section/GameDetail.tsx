@@ -19,6 +19,7 @@ import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
 import { useAppDispatch } from "@/redux/app/hooks";
+import StarRatingCardDisplay from "../dropdown/StarRatingCardDisplay";
 
 export default function GameDetail() {
   const isMatchedScreen = useScreen(1216);
@@ -33,7 +34,7 @@ export default function GameDetail() {
       id
     }
   });
-  
+
   return (
     <>
       <StickyContainer>
@@ -56,26 +57,28 @@ export default function GameDetail() {
                           <a className="list-inline-item mb5-sm" href="#">
                             <span className="position-relative mr10">
                               <img
+                                style={{ width: "40px", height: "40px", objectFit: "cover" }}
                                 className="rounded-circle"
-                                src="/images/team/fl-d-1.png"
+                                src={data && data.gameTitle && data.gameTitle.developer ? data.gameTitle.developer.profileImageURL : ""}
                                 alt="Freelancer Photo"
                               />
                               <span className="online-badge"></span>
                             </span>
-                            <span className="fz14">Eleanor Pena</span>
+                            <span className="fz14"> {data && data.gameTitle && data.gameTitle.developer ? data.gameTitle.developer.studioName : "Eleanor Pena"}</span>
                           </a>
                           <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">
-                            <i className="fas fa-star vam fz10 review-color me-2"></i>{" "}
-                            4.82 94 reviews
+                            {/* <i className="fas fa-star vam fz10 review-color me-2"></i>{" "} */}
+                          
+                           <StarRatingCardDisplay rating={data && data.gameTitle ? data.gameTitle.gameRating: 5}/>
                           </p>
-                          <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">
+                          {/* <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">
                             <i className="fas fa-play vam me-2"></i>
                             700 plays
                           </p>
                           <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">
                             <i className="flaticon-website vam fz20 me-2"></i>{" "}
                             902 Views
-                          </p>
+                          </p> */}
                         </div>
                       </div>
                     </div>
@@ -87,7 +90,7 @@ export default function GameDetail() {
                     <p className="text mb30">
                       {data && data.gameTitle ? data.gameTitle.description : null}
                     </p>
-                    
+
                     <div className="d-flex align-items-start mb50">
                       <div className="list1">
                         <h6>Genre</h6>
@@ -259,7 +262,7 @@ export default function GameDetail() {
                         <div className="scrollbalance-inner" style={style}>
                           <div className="blog-sidebar ms-lg-auto">
                             <GameDetailPrice />
-                            <GameContactWidget />
+                            {/* <GameContactWidget /> */}
                           </div>
                         </div>
                       )}
@@ -268,7 +271,7 @@ export default function GameDetail() {
                     <div className="scrollbalance-inner">
                       <div className="blog-sidebar ms-lg-auto">
                         <GameDetailPrice />
-                        <GameContactWidget />
+                        {/* <GameContactWidget /> */}
                       </div>
                     </div>
                   )}

@@ -13,7 +13,7 @@ const StarRatingCardDisplay: React.FC<IStarRating> = ({ rating }) => {
 
     return (
         <div className="star-rating d-flex gap-1 align-items-center justify-content-center">
-            <span style={{ color: "#4D3105", fontWeight: "bold" }}>{rating} </span>
+            <span style={{ color: "#4D3105", fontWeight: "bold" }}>{rating.toFixed(1)} </span>
 
             {[...Array(maxStars)].map((_, index) => {
                 const starValue = index + 1;

@@ -83,7 +83,7 @@ export default function GameListing() {
 
               : !loading && <GameDataNotFound />}
           </div>
-          {loading && <SkeletonLoadContainer count={5} />}
+          {loading && <SkeletonLoadContainer count={10} />}
           <Pagination totalItems={data && data.allGameTitles ? data.allGameTitles.length : totalGames} currentPage={currentPage}
             itemsPerPage={itemsPerPage}
             onPageChange={handlePageChange} />
