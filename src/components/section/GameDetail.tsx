@@ -218,27 +218,7 @@ export default function GameDetail() {
                               <td>{formatPriceToDollars(Number(data.gameTitle.plans.standard.customizationCharge))}</td>
                               <td>{formatPriceToDollars(Number(data.gameTitle.plans.premium.customizationCharge))}</td>
                             </tr>
-                            <tr>
-                              <th scope="row" />
-                              <td>
-                                <a className="ud-btn btn-thm">
-                                  Select
-                                  <i className="fal fa-arrow-right-long" />
-                                </a>
-                              </td>
-                              <td>
-                                <a className="ud-btn btn-thm">
-                                  Select
-                                  <i className="fal fa-arrow-right-long" />
-                                </a>
-                              </td>
-                              <td>
-                                <a className="ud-btn btn-thm">
-                                  Select
-                                  <i className="fal fa-arrow-right-long" />
-                                </a>
-                              </td>
-                            </tr>
+                            
                           </tbody> : null}
                       </table>
                     </div>
