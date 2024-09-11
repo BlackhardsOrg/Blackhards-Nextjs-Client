@@ -222,12 +222,7 @@ export default function GameDetail() {
                           </tbody> : null}
                       </table>
                     </div>
-                    <hr className="opacity-100 mb60" />
-                    <h4>Frequently Asked Questions</h4>
-                    <ServiceDetailFaq1 />
-                    <hr className="opacity-100 mb60" />
-                    {/* <h4>Add Extra Services</h4>
-                    <ServiceDetailExtra1 /> */}
+                    
                     <hr className="opacity-100 mb15" />
                     <ServiceDetailReviewInfo1 />
                     <ServiceDetailComment1 />
