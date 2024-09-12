@@ -4,7 +4,7 @@ export interface IUser {
   email: string;
   password: string;
   studioName: string;
-  profileImageURL: string
+  profileImageURL: string;
 }
 
 export interface ICredentials {
@@ -165,6 +165,18 @@ export interface IAuctionGQL extends IAuction {
   developer: {
     studioName: string;
   };
+}
+
+export interface IReview {
+  gameTitle: {
+    id: string;
+  };
+  rating: number;
+  gameTitleId: string;
+  name: string;
+  email: string;
+  comment: string;
+  createdAt: string;
 }
 
 export interface IGamePackageIDs {

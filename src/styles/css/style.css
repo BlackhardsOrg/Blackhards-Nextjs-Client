@@ -109,6 +109,7 @@ a,
   0% {
     background-position: -200px 0;
   }
+
   100% {
     background-position: calc(200px + 100%) 0;
   }
@@ -116,12 +117,10 @@ a,
 
 .skeleton {
   background-color: #e0e0e0;
-  background-image: linear-gradient(
-    90deg,
-    #e0e0e0 25%,
-    #f0f0f0 50%,
-    #e0e0e0 75%
-  );
+  background-image: linear-gradient(90deg,
+      #e0e0e0 25%,
+      #f0f0f0 50%,
+      #e0e0e0 75%);
   background-size: 200px 100%;
   animation: skeleton-loading 1.5s infinite;
   border-radius: 4px;
@@ -157,15 +156,15 @@ a,
 
 /* Cart Container */
 
-.cart-container{
+.cart-container {
   position: relative;
 
 }
 
-.cart-count{
+.cart-count {
   position: absolute;
   background-color: red;
-  display: flex ;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 12px;
@@ -2756,7 +2755,7 @@ li {
   right: 5%;
 }
 
-.game-banner-image{
+.game-banner-image {
   bottom: -115px;
 }
 
@@ -2891,6 +2890,30 @@ li {
   top: 35%;
   text-align: center;
   width: 80px;
+}
+
+.video-button-click {
+  background: #ffffff;
+  border-radius: 50%;
+  color: var(--headings-color);
+  font-size: 17px;
+  height: 30px;
+  left: 0;
+  line-height: 80px;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 35%;
+  text-align: center;
+  width: 30px;
+}
+
+.play-icon{
+  z-index: 10;
+}
+
+.video-button-click.at-home13 {
+  top: 40%;
 }
 
 .video-button-home11.at-home13 {
@@ -11097,11 +11120,12 @@ input:focus-visible {
 }
 
 
-.swipe-image{
+.swipe-image {
   transition: border .4s ease-in-out;
   border: .2rem solid transparent;
 }
-.border-bh-success{
+
+.border-bh-success {
   border: .2rem solid #3E4B40;
 }
 

@@ -1,8 +1,8 @@
-import ServiceDetailComment1 from "../element/ServiceDetailComment1";
+import GameDetailComment from "../element/GameDetailComment";
 import ServiceDetailExtra1 from "../element/ServiceDetailExtra1";
 import ServiceDetailFaq1 from "../element/ServiceDetailFaq1";
 import ServiceDetailPrice1 from "../element/ServiceDetailPrice1";
-import ServiceDetailReviewInfo1 from "../element/ServiceDetailReviewInfo1";
+import GameDetailReviewInfo from "../element/GameDetailReviewInfo";
 import ServiceDetailSlider1 from "../element/ServiceDetailSlider1";
 import { Sticky, StickyContainer } from "react-sticky";
 import useScreen from "@/hook/useScreen";
@@ -26,7 +26,7 @@ export default function GameDetail() {
   const { query } = useRouter()
   const { id } = query;
 
-  const dispatch = useAppDispatch()
+
 
   // const data = product1.find((item: any) => item.id == id);
   const { data, loading, error } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
@@ -68,8 +68,8 @@ export default function GameDetail() {
                           </a>
                           <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">
                             {/* <i className="fas fa-star vam fz10 review-color me-2"></i>{" "} */}
-                          
-                           <StarRatingCardDisplay rating={data && data.gameTitle ? data.gameTitle.gameRating: 5}/>
+
+                            <StarRatingCardDisplay rating={data && data.gameTitle ? data.gameTitle.gameRating : 5} />
                           </p>
                           {/* <p className="mb-0 dark-color fz14 list-inline-item ml25 ml15-sm mb5-sm ml0-xs">
                             <i className="fas fa-play vam me-2"></i>
@@ -84,7 +84,7 @@ export default function GameDetail() {
                     </div>
                   </div>
 
-                  {data && data.gameTitle ? <GameDetailSlider gigImages={data.gameTitle.gamePlayScreenShots} /> : null}
+                  {data && data.gameTitle ? <GameDetailSlider videoUrl={data.gameTitle.gamePlayVideo} gigImages={data.gameTitle.gamePlayScreenShots} /> : null}
                   <div className="service-about">
                     <h4>About</h4>
                     <p className="text mb30">
@@ -218,14 +218,14 @@ export default function GameDetail() {
                               <td>{formatPriceToDollars(Number(data.gameTitle.plans.standard.customizationCharge))}</td>
                               <td>{formatPriceToDollars(Number(data.gameTitle.plans.premium.customizationCharge))}</td>
                             </tr>
-                            
+
                           </tbody> : null}
                       </table>
                     </div>
-                    
-                    <hr className="opacity-100 mb15" />
-                    <ServiceDetailReviewInfo1 />
-                    <ServiceDetailComment1 />
+
+                    {/* <hr className="opacity-100 mb15" />
+                    <GameDetailReviewInfo />
+                    <GameDetailComment /> */}
                   </div>
                 </div>
               </div>

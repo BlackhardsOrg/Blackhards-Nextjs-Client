@@ -7,6 +7,8 @@ import "swiper/css/thumbs";
 
 //@ts-ignore
 import { FreeMode, Navigation, Thumbs } from "swiper";
+import FsLightbox from "fslightbox-react";
+import { FaPlay } from "react-icons/fa";
 
 // const gigImages = [
 //   "/images/listings/service-details-1.jpg",
@@ -14,13 +16,12 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 //   "/images/listings/service-details-1.jpg",
 // ];
 
-export default function GameDetailSlider({ gigImages }: { gigImages: string[] }) {
+export default function GameDetailSlider({ gigImages, videoUrl }: { gigImages: string[], videoUrl: string }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [selected, setSelected] = useState(0)
+  const [toggler, settoggler] = useState(false);
 
-  useEffect(() => {
-    console.log(gigImages, "GIG IMAgES", thumbsSwiper)
-  }, [gigImages, thumbsSwiper])
+
 
   return (
     <>
@@ -43,7 +44,7 @@ export default function GameDetailSlider({ gigImages }: { gigImages: string[] })
                 setSelected(res.activeIndex)
               }}
 
-    
+
               loop={false}
               spaceBetween={10}
               navigation={{
@@ -57,9 +58,25 @@ export default function GameDetailSlider({ gigImages }: { gigImages: string[] })
               modules={[FreeMode, Navigation, Thumbs]}
               className="mySwiper2"
             >
+
               {gigImages.map((item, i) => (
                 <SwiperSlide key={i} className="p-1">
-                  <img src={item} alt="gallery" className="w-100 rounded" />
+                  <div className="item">
+                    <div className="row align-items-center ">
+                      <div className="col-lg-5 col-xl-5 w-100">
+                        <div className="position-relative "></div>
+                        <img src={item} alt="gallery" className="w-100 rounded" />
+                        {i == 0 && <div
+                          className="video-button-home11 at-home13 popup-iframe popup-youtube"
+                          onClick={() => settoggler((pre) => !pre)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <i className="far fa-play"></i>
+                        </div>}
+                      </div>
+                    </div>
+
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -81,14 +98,28 @@ export default function GameDetailSlider({ gigImages }: { gigImages: string[] })
             modules={[FreeMode, Navigation, Thumbs]}
             className="mySwiper ui-service-gig-slder-bottom"
           >
+
             {gigImages.map((item, i) => (
               <SwiperSlide key={i}>
-                <img style={{ objectFit: "cover", height: "100%" }} src={item} alt="image" className={`swipe-image w-100  ${selected == i && "border-bh-success"} `} />
+                <img style={{ objectFit: "cover", height: "100%" }}
+                  src={item} alt="image"
+                  className={`swipe-image w-100  ${selected == i && "border-bh-success"} `} />
+                {i == 0 && <div
+                  className="video-button-click at-home13 popup-iframe popup-youtube d-flex align-items-center justify-content-center"
+                  style={{ cursor: "pointer" }}
+                >
+                  <FaPlay />
+                </div>}
+
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       </div >
+      <FsLightbox
+        toggler={toggler}
+        sources={[videoUrl]}
+      />
     </>
   );
 }

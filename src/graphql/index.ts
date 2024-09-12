@@ -83,6 +83,22 @@ export const ALL_GAME_TITLES = gql`
   }
 `;
 
+export const FETCH_GAME_REVIEWS = gql`
+  query fetchReviews($gameTitleId: String!) {
+    fetchGameReviews(gameTitleId: $gameTitleId) {
+      gameTitle {
+        id
+      }
+      rating
+      gameTitleId
+      name
+      email
+      comment
+      createdAt
+    }
+  }
+`;
+
 export const SINGLE_GAME_TITLE = gql`
   query fetchSingleGameTitle($id: String!) {
     gameTitle(id: $id) {
@@ -93,6 +109,8 @@ export const SINGLE_GAME_TITLE = gql`
 
       id
       gamePlayScreenShots
+      gameFileLink
+      gamePlayVideo
       targetPlatform
       gameRating
       genre

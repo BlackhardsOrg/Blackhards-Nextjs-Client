@@ -4,6 +4,7 @@ import { addItemToCart } from "@/redux/features/cart/slice/cartSlice";
 import { IGameTitleGQL } from "@/types";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
 import { useQuery } from "@apollo/client";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 const tabs = ["Basic", "Standard", "Premium"];
@@ -92,10 +93,20 @@ export default function GameDetailPrice() {
                       </ul>
                     </div>
                     <div className="d-grid gap-3">
-                      <a className="ud-btn btn-thm">
+                      <Link href={"/shop/shop-cart"}
+                        onClick={() => {
+                          dispatch(addItemToCart({
+                            id: data.gameTitle._id,
+                            title: data.gameTitle.title,
+                            price: data.gameTitle.plans[item].price,
+                            GamePlayScreenShot: data.gameTitle.gamePlayScreenShots[0],
+                            packageType: item, qty: 1
+                          }))
+                        }}
+                        className="ud-btn btn-thm">
                         Buy Now {data.gameTitle.plans && formatPriceToDollars(data.gameTitle.plans[item].price)}
                         <i className="fal fa-arrow-right-long" />
-                      </a>
+                      </Link>
 
                       <a onClick={() => {
                         dispatch(addItemToCart({
@@ -110,10 +121,10 @@ export default function GameDetailPrice() {
                         <i className="fa fa-shopping-cart" />
                       </a>
 
-                      <a className="ud-btn btn-btn-white">
+                      <Link target="_blank" href={data.gameTitle.gameFileLink} className="ud-btn btn-btn-white">
                         Play Game Demo
                         <i className="fa fa-gamepad" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 )

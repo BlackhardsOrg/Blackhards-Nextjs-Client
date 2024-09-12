@@ -1,8 +1,8 @@
 import { job1 } from "@/data/job";
 import AboutMe1 from "../element/AboutMe1";
 import EmployeeDetailSlider1 from "../element/EmployeeDetailSlider1";
-import ServiceDetailComment1 from "../element/ServiceDetailComment1";
-import ServiceDetailReviewInfo1 from "../element/ServiceDetailReviewInfo1";
+import GameDetailComment from "../element/GameDetailComment";
+import GameDetailReviewInfo from "../element/GameDetailReviewInfo";
 import JobCard5 from "../card/JobCard5";
 
 export default function EmplyeeDetail1() {
@@ -49,15 +49,15 @@ export default function EmplyeeDetail1() {
                 <EmployeeDetailSlider1 />
                 <div className="row">
                   <h4 className="mb25">Projects</h4>
-                  {job1.slice(0, 3).map((item,i) => (
-                    <div key={ i } className="col-sm-6 col-xl-12">
+                  {job1.slice(0, 3).map((item, i) => (
+                    <div key={i} className="col-sm-6 col-xl-12">
                       <JobCard5 data={item} />
                     </div>
                   ))}
                 </div>
 
-                <ServiceDetailReviewInfo1 />
-                <ServiceDetailComment1 />
+                <GameDetailReviewInfo />
+                <GameDetailComment />
               </div>
             </div>
             <div className="col-lg-4">

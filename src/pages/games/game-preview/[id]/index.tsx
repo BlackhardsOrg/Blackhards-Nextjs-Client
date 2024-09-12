@@ -24,7 +24,7 @@ export default function GamePreview() {
       {/* <TabSection1 /> */}
       <Breadcumb3 path={["Home", "games", data && data.gameTitle.title ? data.gameTitle.title : "Ghosts From Idemili"]} />
       <GameDetail />
-      <PopularGames />
+      {/* <PopularGames /> */}
     </MarketLayouts>
   );
 }

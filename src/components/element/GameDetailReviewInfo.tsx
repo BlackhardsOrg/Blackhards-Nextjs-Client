@@ -1,6 +1,24 @@
+import { FETCH_GAME_REVIEWS } from "@/graphql";
+import { IReview } from "@/types";
+import { useQuery } from "@apollo/client";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import ReviewCard from "./ReviewCard";
 
-export default function ServiceDetailReviewInfo1() {
+export default function GameDetailReviewInfo() {
+  const { query } = useRouter()
+  const { id } = query;
+  // const { data, error, refetch } = useQuery(FETCH_GAME_REVIEWS, { variables: { gameTitleId: String(id) } })
+  const { data, loading, error, refetch } = useQuery<{ fetchGameReviews: IReview[] }>(FETCH_GAME_REVIEWS, {
+    variables: {
+      gameTitleId: id
+    }
+  });
+  useEffect(() => {
+    console.log(data, error, "DATA", id)
+    refetch({ gameTitleId: id })
+  }, [data, id, error])
   return (
     <>
       <div className="product_single_content mb50">
@@ -90,81 +108,28 @@ export default function ServiceDetailReviewInfo1() {
                   </div>
                 </div>
               </div>
+
             </div>
-            <div className="col-md-12">
-              <div className="mbp_first position-relative d-flex align-items-center justify-content-start mb30-sm">
-                <img
-                  src="/images/blog/comments-2.png"
-                  className="mr-3"
-                  alt="comments-2.png"
-                />
-                <div className="ml20">
-                  <h6 className="mt-0 mb-0">Bessie Cooper</h6>
-                  <div>
-                    <span className="fz14">12 March 2022</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text mt20 mb20">
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don&apos;t look even
-                slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn&apos;t anything embarrassing
-                hidden in the middle of text.
-              </p>
-              <div className="review_cansel_btns d-flex">
-                <a>
-                  <i className="fas fa-thumbs-up" />
-                  Helpful
-                </a>
-                <a>
-                  <i className="fas fa-thumbs-down" />
-                  Not helpful
-                </a>
-              </div>
-            </div>
-            <div className="col-md-12">
-              <div className="mbp_first position-relative d-flex align-items-center justify-content-start mt30 mb30-sm">
-                <img
-                  src="/images/blog/comments-2.png"
-                  className="mr-3"
-                  alt="comments-2.png"
-                />
-                <div className="ml20">
-                  <h6 className="mt-0 mb-0">Darrell Steward</h6>
-                  <div>
-                    <span className="fz14">12 March 2022</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text mt20 mb20">
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don&apos;t look even
-                slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn&apos;t anything embarrassing
-                hidden in the middle of text.
-              </p>
-              <div className="review_cansel_btns d-flex pb30">
-                <a>
-                  <i className="fas fa-thumbs-up" />
-                  Helpful
-                </a>
-                <a>
-                  <i className="fas fa-thumbs-down" />
-                  Not helpful
-                </a>
-              </div>
-            </div>
-            <div className="col-md-12">
+
+            {data && data.fetchGameReviews ?
+              data.fetchGameReviews.map((item, index) => {
+                return (
+                  <ReviewCard key={index}
+                    name={item.name}
+                    comment={item.comment}
+                    createdAt={item.createdAt} />
+                )
+              }) : null}
+
+
+            {/* <div className="col-md-12">
               <div className="position-relative bdrb1 pb50">
                 <Link href="/service-single" className="ud-btn btn-light-thm">
                   See More
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
