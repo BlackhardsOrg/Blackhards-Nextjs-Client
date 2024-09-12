@@ -18,7 +18,7 @@ export default function ShopCartArea1() {
                   <thead>
                     <tr>
                       <th className="pl20" scope="col">
-                        Product
+                        Game Title(s)
                       </th>
                       <th className="ps-0" scope="col">
                         Price
@@ -49,12 +49,7 @@ export default function ShopCartArea1() {
                           <i className="fal fa-arrow-right-long" />
                         </a>
                       </div>
-                      <div className="btn-lsit1">
-                        <Link href="/shop-list" className="ud-btn btn-light-thm">
-                          Buy Product
-                          <i className="fal fa-arrow-right-long" />
-                        </Link>
-                      </div>
+                      
                     </div>
                   </div>
                 ) : (

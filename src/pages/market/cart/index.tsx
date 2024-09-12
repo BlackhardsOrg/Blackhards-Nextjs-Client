@@ -13,10 +13,10 @@ export default function ShopPageCart() {
   return (
     <MarketLayouts>
       <MetaComponent meta={metadata} />
-      <Breadcumb3 path={["Home", "Services", "Design & Creative"]} />
+      <Breadcumb3 path={["Home", "cart"]} />
       <HeaderInfo1
-        title="Shop Cart"
-        brief="Give your visitor a smooth online experience with a solid UX design"
+        title="Cart"
+        brief="Your digital basket"
       />
       <ShopCartArea1 />
     </MarketLayouts>

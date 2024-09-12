@@ -38,7 +38,7 @@ export default function PopularGameSlideCard({
       id: data._id, qty: 1,
       packageType: "basic"
     }))
-    navigate("/shop/shop-cart");
+    navigate("/market/cart");
   };
 
   const isAdded = cartItems.some((product: any) => product.id === data._id);

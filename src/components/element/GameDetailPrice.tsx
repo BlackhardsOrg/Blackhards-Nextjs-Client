@@ -93,7 +93,7 @@ export default function GameDetailPrice() {
                       </ul>
                     </div>
                     <div className="d-grid gap-3">
-                      <Link href={"/shop/shop-cart"}
+                      <Link href={"/market/cart"}
                         onClick={() => {
                           dispatch(addItemToCart({
                             id: data.gameTitle._id,
