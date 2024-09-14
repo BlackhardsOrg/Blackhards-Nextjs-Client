@@ -1,11 +1,17 @@
 import DashboardNavigation from "../header/DashboardNavigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "@/components/section/Pagination";
 import ManageProjectCard from "../card/ManageProjectCard";
 import ProposalModal1 from "../modal/ProposalModal1";
 import DeleteModal from "../modal/DeleteModal";
 import Link from "next/link";
 import { links } from "@/data/links";
+import PurchasedGamesCard from "../card/PurchasedGamesCard";
+import { useQuery } from "@apollo/client";
+import { FETCH_GAME_IN_INVENTORY } from "@/graphql";
+import { useAppSelector } from "@/redux/app/hooks";
+import { IGameTitleInventory } from "@/types";
+import NoGamePurchased from "./NoGamePurchased";
 
 const tab = [
   "Purchased Games",
@@ -13,6 +19,11 @@ const tab = [
 
 export default function LibraryInfo() {
   const [selectedTab, setSelectedTab] = useState(0);
+  const user = useAppSelector(state => state.auth.user)
+  const { data } = useQuery<{ fetchUserGamesInInventory: IGameTitleInventory[] }>(FETCH_GAME_IN_INVENTORY, { variables: { buyerEmail: user?.email } })
+  useEffect(() => {
+    console.log(data, "DATA")
+  }, [data])
 
   return (
     <>
@@ -27,7 +38,7 @@ export default function LibraryInfo() {
               <p className="text">All the  Games you purchased</p>
             </div>
           </div>
-          <div className="col-lg-3">
+          {/* <div className="col-lg-3">
             <div className="text-lg-end">
               <Link
                 href={links.publishGame}
@@ -37,7 +48,7 @@ export default function LibraryInfo() {
                 <i className="fal fa-arrow-right-long" />
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="row">
           <div className="col-xl-12">
@@ -65,142 +76,24 @@ export default function LibraryInfo() {
                           <th scope="col">Title</th>
                           <th scope="col">Category</th>
                           <th scope="col">Type/Cost</th>
-                          <th scope="col">Actions</th>
+                          <th scope="col">Downloads</th>
                         </tr>
                       </thead>
                       <tbody className="t-body">
-                        {Array(7)
-                          .fill(7)
-                          .map((_, i) => (
-                            <ManageProjectCard key={i} />
-                          ))}
+                        {data ? data.fetchUserGamesInInventory
+                          .map((item, i) => (
+                            <PurchasedGamesCard updatedAt={item.updatedAt} packageTypeGameLink={item.packageTypeGameLink} packageType={item.packageType} gametitle={item.gametitle} key={i} />
+                          )) : null}
                       </tbody>
                     </table>
-                    <div className="mt30">
+                    {/* <div className="mt30">
                       <Pagination />
-                    </div>
+                    </div> */}
                   </div>
+
                 )}
-                {selectedTab === 1 && (
-                  <div className="packages_table table-responsive">
-                    <table className="table-style3 table at-savesearch">
-                      <thead className="t-head">
-                        <tr>
-                          <th scope="col">Title</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Type/Cost</th>
-                          <th scope="col">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="t-body">
-                        {Array(7)
-                          .fill(7)
-                          .map((_, i) => (
-                            <ManageProjectCard key={i} />
-                          ))}
-                      </tbody>
-                    </table>
-                    <div className="mt30">
-                      <Pagination />
-                    </div>
-                  </div>
-                )}
-                {selectedTab === 2 && (
-                  <div className="packages_table table-responsive">
-                    <table className="table-style3 table at-savesearch">
-                      <thead className="t-head">
-                        <tr>
-                          <th scope="col">Title</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Type/Cost</th>
-                          <th scope="col">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="t-body">
-                        {Array(7)
-                          .fill(7)
-                          .map((_, i) => (
-                            <ManageProjectCard key={i} />
-                          ))}
-                      </tbody>
-                    </table>
-                    <div className="mt30">
-                      <Pagination />
-                    </div>
-                  </div>
-                )}
-                {selectedTab === 3 && (
-                  <div className="packages_table table-responsive">
-                    <table className="table-style3 table at-savesearch">
-                      <thead className="t-head">
-                        <tr>
-                          <th scope="col">Title</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Type/Cost</th>
-                          <th scope="col">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="t-body">
-                        {Array(7)
-                          .fill(7)
-                          .map((_, i) => (
-                            <ManageProjectCard key={i} />
-                          ))}
-                      </tbody>
-                    </table>
-                    <div className="mt30">
-                      <Pagination />
-                    </div>
-                  </div>
-                )}
-                {selectedTab === 4 && (
-                  <div className="packages_table table-responsive">
-                    <table className="table-style3 table at-savesearch">
-                      <thead className="t-head">
-                        <tr>
-                          <th scope="col">Title</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Type/Cost</th>
-                          <th scope="col">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="t-body">
-                        {Array(7)
-                          .fill(7)
-                          .map((_, i) => (
-                            <ManageProjectCard key={i} />
-                          ))}
-                      </tbody>
-                    </table>
-                    <div className="mt30">
-                      <Pagination />
-                    </div>
-                  </div>
-                )}
-                {selectedTab === 5 && (
-                  <div className="packages_table table-responsive">
-                    <table className="table-style3 table at-savesearch">
-                      <thead className="t-head">
-                        <tr>
-                          <th scope="col">Title</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Type/Cost</th>
-                          <th scope="col">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="t-body">
-                        {Array(7)
-                          .fill(7)
-                          .map((_, i) => (
-                            <ManageProjectCard key={i} />
-                          ))}
-                      </tbody>
-                    </table>
-                    <div className="mt30">
-                      <Pagination />
-                    </div>
-                  </div>
-                )}
+                {data && data.fetchUserGamesInInventory.length==0 && <NoGamePurchased />}
+
               </div>
             </div>
           </div>

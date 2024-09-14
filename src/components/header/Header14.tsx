@@ -34,7 +34,7 @@ export default function Header14() {
             </div>
             <div className="col-auto pe-0 pe-xl-3">
               {user ? <div className="d-flex gap-2 justify-content-center align-items-center">
-                <Link className="btn" href="/user/dashboard" >
+                <Link className="btn" href="/user/library" >
                   <img
                   className="border rounded-circle"
                    style={{ width: "30px", height: "30px", objectFit: "cover" }}

@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import OrderInfo1 from "../element/OrderInfo1";
-import PaymentOption1 from "../element/PaymentOption1";
+import PaymentOption from "../element/PaymentOption";
 import { innitializePayments } from "@/redux/features/cart/api/checkoutApi";
 import FLyLoad from "../loading/FLyLoad";
 import { useRouter } from "next/router";
@@ -22,7 +22,7 @@ export default function ShopCheckoutAreaInfo1({ handlePlaceOrder, order, setOrde
     <>
       <div className="shop-sidebar ms-md-auto">
         <OrderInfo1 />
-        <PaymentOption1
+        <PaymentOption
           order={order}
           setOrder={setOrder} />
         <div className="d-grid default-box-shadow2">

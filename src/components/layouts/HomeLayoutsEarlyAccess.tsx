@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import Header19 from "../early/Header19"
+import HeaderEarly from "../early/HeaderEarly"
 import Footer from "../footer/Footer"
 
 interface IHomeLayouts {
@@ -8,7 +8,7 @@ interface IHomeLayouts {
 const HomeLayoutsEarlyAccess = ({ children }: IHomeLayouts) => {
     return (
         <>
-            <Header19 />
+            <HeaderEarly />
             {children}
             <Footer />
         </>

@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import Header19 from "../early/Header19"
+import HeaderEarly from "../early/HeaderEarly"
 import Footer from "../footer/Footer"
 import AuthHeader from "../early/AuthHeader"
 

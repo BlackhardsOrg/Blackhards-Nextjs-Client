@@ -1,30 +1,20 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import Header19 from "@/components/early/Header19";
-import Hero18 from "@/components/early/Hero18";
-import BrowserCategory3 from "@/components/early/BrowserCategory3";
-import NeedSomething18 from "@/components/early/NeedSomething18";
-import CounterInfo1 from "@/components/early/CounterInfo1";
-import Testimonials13 from "@/components/early/Testimonials18";
+import NeedSomething from "@/components/early/NeedSomething18";
+import CounterInfo from "@/components/early/CounterInfo1";
+import Testimonials from "@/components/early/Testimonials18";
 import ForClient from "@/components/early/ForClient";
 import HomeLayoutsEarlyAccess from "@/components/layouts/HomeLayoutsEarlyAccess";
-import PlaceBidModal from "@/components/modal/PlaceBidModal";
-import { useEffect } from "react";
 import { useAppSelector } from "@/redux/app/hooks";
 import { useRouter } from "next/router";
+import Hero from "@/components/early/Hero";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter()
   const user = useAppSelector(state => state.auth.user)
-  useEffect(() => {
-    if (user) {
-      router.push("/home")
-    }
-  }, [user])
+
   return (
     <>
       <Head>
@@ -36,17 +26,11 @@ export default function Home() {
       <HomeLayoutsEarlyAccess>
         <div className="body_content">
 
-          <Hero18 />
-          <BrowserCategory3 />
-          {/* <TrendingService3 /> */}
-          {/* <TrendingAuctions1 /> */}
-
-          <NeedSomething18 />
-          <CounterInfo1 />
-          {/* <HighestRated18 /> */}
-          <Testimonials13 />
+          <Hero />
+          <NeedSomething />
+          <CounterInfo />
+          <Testimonials />
           <ForClient />
-          {/* <OurBlog1 /> */}
         </div>
       </HomeLayoutsEarlyAccess>
     </>

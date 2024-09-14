@@ -133,12 +133,12 @@ export default function Invoice() {
                   <div className="row justify-content-center">
                     <div className="col-auto">
                       <div className="invoice_footer_content text-center">
-                        <a className="ff-heading">www.freeio.com</a>
+                        <a className="ff-heading">www.Blackhards.com</a>
                       </div>
                     </div>
                     <div className="col-auto">
                       <div className="invoice_footer_content text-center">
-                        <a className="ff-heading">invoice@freeio.com</a>
+                        <a className="ff-heading">invoice@Blackhards.com</a>
                       </div>
                     </div>
                     <div className="col-auto">

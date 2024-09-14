@@ -10,33 +10,33 @@ export default function Navigation() {
   return (
     <>
       <ul
-        className={`ace-responsive-menu ui-navigation ${
-          pathname == "/home-3" ||
+        className={`ace-responsive-menu ui-navigation ${pathname == "/home-3" ||
           pathname == "/home-4" ||
           pathname == "/home-10"
-            ? "menu-without-paddingy"
-            : ""
-        } `}
+          ? "menu-without-paddingy"
+          : ""
+          } `}
       >
         {navigation.map((item, i) => (
           <li
+
             key={i}
-            className={`visible_list menu-active ${
-              item.id == 1 ? "home-menu-parent" : ""
-            } `}
+            className={`visible_list menu-active ${item.id == 1 ? "home-menu-parent" : ""
+              } `}
           >
             {item.children ? (
               <a
-                className={`list-item  ${
-                  isActiveNavigation(pathname, item) ? "ui-active" : ""
-                }`}
+
+                className={`list-item  ${isActiveNavigation(pathname, item) ? "ui-active" : ""
+                  }`}
               >
                 <span className="title">{item.name}</span>{" "}
                 {item.children && <span className="arrow "></span>}
               </a>
             ) : (
               <Link
-                href={item.path}
+
+                href={item.active ? item.path : "#Coming#soon"}
                 className={`list-item
                                 ${item.path === pathname ? "ui-active" : ""}`}
               >
@@ -49,12 +49,11 @@ export default function Navigation() {
                 {item.children?.map((item2, i2) => (
                   <li
                     key={i2}
-                    className={`menu-active ${
-                      isActiveNavigation(pathname, item2) ||
+                    className={`menu-active ${isActiveNavigation(pathname, item2) ||
                       item2.path === pathname
-                        ? "ui-child-active"
-                        : ""
-                    }`}
+                      ? "ui-child-active"
+                      : ""
+                      }`}
                   >
                     {item2.children ? (
                       <a>
@@ -62,7 +61,7 @@ export default function Navigation() {
                         {item2.children && <span className="arrow "></span>}
                       </a>
                     ) : (
-                      <Link href={item2.path}>
+                      <Link href={item2.active ? item2.path : "#Coming#soon"}>
                         <span className="title">{item2.name}</span>
                       </Link>
                     )}
@@ -74,12 +73,12 @@ export default function Navigation() {
                             key={i3}
                             className={
                               item3.path === pathname ||
-                              item3.path === pathname.replace(/\/\d+$/, "")
+                                item3.path === pathname.replace(/\/\d+$/, "")
                                 ? "ui-child-active"
                                 : ""
                             }
                           >
-                            <Link href={item3.path}>{item3.name}</Link>
+                            <Link href={item3.active ? item3.path : "#Coming#soon"}>{item3.name}</Link>
                           </li>
                         ))}
                       </ul>

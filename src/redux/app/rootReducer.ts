@@ -7,6 +7,14 @@ import auctionSlice from "../features/auction/slices/auctionSlice";
 import cartReducer from "../features/cart/slice/cartSlice";
 import checkoutReducer from "../features/cart/slice/checkoutSlice";
 import pageSlice from "../features/sitepages/slices/pageSlice";
+import storage from "redux-persist/lib/storage";
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+// const persistedGameTitleReducer = persistReducer(persistConfig, rootReducer);
 
 const rootReducer = combineReducers({
   auth: authSliceReducer,
@@ -14,7 +22,7 @@ const rootReducer = combineReducers({
   auction: auctionSlice,
   cart: cartReducer,
   checkout: checkoutReducer,
-  pages: pageSlice
+  pages: pageSlice,
 });
 
 export default rootReducer;

@@ -107,7 +107,7 @@ export default function Hero1() {
                     any job, online.
                   </h3>
                   <p className="banner-text text-white ff-heading mb25 animate-up-3">
-                    Millions of people use freeio.com to turn their ideas into
+                    Millions of people use Blackhards.com to turn their ideas into
                     reality.
                   </p>
                   <div className="advance-search-tab bgc-white bgct-sm p10 p0-md bdrs4 banner-btn position-relative zi9 animate-up-4">
@@ -145,11 +145,10 @@ export default function Hero1() {
                                       className="selected active"
                                     >
                                       <a
-                                        className={`dropdown-item selected ${
-                                          getSelectedRole === item
+                                        className={`dropdown-item selected ${getSelectedRole === item
                                             ? "active"
                                             : ""
-                                        }`}
+                                          }`}
                                       >
                                         <span className="text">{item}</span>
                                       </a>

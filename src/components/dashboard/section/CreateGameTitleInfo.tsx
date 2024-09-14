@@ -44,13 +44,9 @@ export default function CreateGameTitleInfo() {
       setCurrentTab(nextPageNumber)
       dispatch(createGameTitle({
         ...gameTitle,
+        gameFileLink: "https://github.com/NorVirae/Idemili.git",
         saleType: "fixed",
         genre: [...gameTitle.genre, "all"],
-        gamePlayVideo: "https://res.cloudinary.com/norvirae/video/upload/v1700744027/y2mate.com_-_Farlight_84_Official_Gameplay_Launch_Trailer_Farlight_84_720p_2_uvtz1i.mp4",
-        gamePlayScreenShots: [
-          "https://res.cloudinary.com/norvirae/image/upload/v1700743677/dhsqpz5iebyzwg0g8s92.jpg",
-          "https://res.cloudinary.com/norvirae/image/upload/v1700571324/test-image-1_kmdrlc.jpg"
-        ]
       }, user.token))
     } else {
 

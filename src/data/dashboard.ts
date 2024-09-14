@@ -2,88 +2,13 @@ import { links } from "./links";
 
 export const dasboardNavigation = [
   {
-    id: 1,
-    name: "Dashboard",
-    icon: "flaticon-home",
-    path: "/user/dashboard",
-  },
-  {
-    id: 2,
-    name: "Manage Games",
-    icon: "flaticon-content",
-    path: "/user/manage-games",
-    // name: "Customization Requests",
-    // icon: "flaticon-document",
-    // path: "/proposal",
-  },
-  {
-    id: 3,
-    // name: "Saved",
-    // icon: "flaticon-like",
-    // path: "/saved",
-    name: "Manage Auctions",
-    icon: "flaticon-presentation",
-    path: "/user/manage-auctions",
-  },
-
-  {
     id: 4,
-    // name: "Saved",
-    // icon: "flaticon-like",
-    // path: "/saved",
+
     name: "Library",
     icon: "flaticon-document",
     path: "/user/library",
   },
-  {
-    id: 5,
-    name: "Message",
-    icon: "flaticon-chat",
-    path: "/user/message",
-  },
-  {
-    id: 6,
-    name: "Reviews",
-    icon: "flaticon-review-1",
-    path: "/user/reviews",
-  },
-  {
-    id: 7,
-    name: "Invoice",
-    icon: "flaticon-receipt",
-    path: "/user/invoice",
-  },
-  {
-    id: 8,
-    name: "Payouts",
-    icon: "flaticon-dollar",
-    path: "/user/payouts",
-  },
-  {
-    id: 9,
-    name: "Statements",
-    icon: "flaticon-web",
-    path: "/user/statements",
-  },
-  {
-    id: 10,
-    // name: "Manage Auctions",
-    // icon: "flaticon-presentation",
-    // path: "/manage-services",
-    name: "Saved",
-    icon: "flaticon-like",
-    path: "/user/saved",
-  },
 
-  {
-    id: 11,
-    // name: "Manage Games",
-    // icon: "flaticon-content",
-    // path: "/manage-projects",
-    name: "Customization Requests",
-    icon: "flaticon-document",
-    path: "/user/proposal",
-  },
   {
     id: 12,
     name: "Publish Game Title",
@@ -92,9 +17,9 @@ export const dasboardNavigation = [
   },
   {
     id: 13,
-    name: "My Profile",
-    icon: "flaticon-photo",
-    path: "/user/my-profile",
+    name: "Manage Games",
+    icon: "flaticon-content",
+    path: links.manageGames,
   },
   {
     id: 14,

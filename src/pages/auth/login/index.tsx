@@ -93,10 +93,10 @@ export default function LoginPage() {
                     <p className="text">
                       Don&apos;t have an account?{" "}
                       <Link
-                        href={links.registerEarly}
+                        href={links.register}
                         className="text-thm"
                       >
-                        Get Early Access
+                        register
                       </Link>
                     </p>
                   </div>

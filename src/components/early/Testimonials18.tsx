@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { testimonialsTwo } from "@/data/testimonials";
 import React from "react";
 
-export default function Testimonials13() {
+export default function Testimonials() {
   const [toggler, settoggler] = useState(false);
   const [showSwiper, setShowSwiper] = useState(false);
   useEffect(() => {

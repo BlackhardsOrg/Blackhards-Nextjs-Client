@@ -1,7 +1,7 @@
 import Breadcumb3 from "@/components/breadcumb/Breadcumb3";
 
 import HeaderInfo1 from "@/components/section/HeaderInfo1";
-import ShopArea1 from "@/components/section/ShopArea1";
+import ShopArea from "@/components/section/ShopArea";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
@@ -18,7 +18,7 @@ export default function ShopPageList() {
         brief="Give your visitor a smooth online experience
                                     with a solid UX design"
       />
-      <ShopArea1 />
+      <ShopArea />
     </>
   );
 }

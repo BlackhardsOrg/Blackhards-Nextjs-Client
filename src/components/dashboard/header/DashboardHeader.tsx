@@ -1,11 +1,14 @@
 import { dasboardNavigation } from "@/data/dashboard";
+import { useAppSelector } from "@/redux/app/hooks";
 import toggleStore from "@/store/toggleStore";
+import { shortenEmail } from "@/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 
 export default function DashboardHeader() {
   const toggle = toggleStore((state: any) => state.dashboardSlidebarToggleHandler);
+  const user = useAppSelector(state => state.auth.user)
   const { pathname } = useRouter();
 
   return (
@@ -36,18 +39,7 @@ export default function DashboardHeader() {
                   >
                     <span className="flaticon-loupe" />
                   </a>
-                  <div className="ml40 d-none d-xl-block">
-                    <div className="search_area dashboard-style">
-                      <input
-                        type="text"
-                        className="form-control border-0"
-                        placeholder="What service are you looking for today?"
-                      />
-                      <label>
-                        <span className="flaticon-loupe" />
-                      </label>
-                    </div>
-                  </div>
+
                 </div>
               </div>
               <div className="col-6 col-lg-auto">
@@ -237,11 +229,12 @@ export default function DashboardHeader() {
                     </li>
                     <li className="user_setting">
                       <div className="dropdown">
-                        <a className="btn" data-bs-toggle="dropdown">
+                        <a className="btn d-flex flex-column align-items center justify-content-center" data-bs-toggle="dropdown">
                           <img
-                          className="border rounded-circle"
+                            className="border rounded-circle"
                             style={{ width: "40px", height: "40px", objectFit: "cover" }}
                             src="/images/resource/user-50by50.png" alt="user.png" />
+                          <span style={{fontSize: ".8rem"}}>{user && shortenEmail(user.email)}</span>
                         </a>
                         <div className="dropdown-menu">
                           <div className="user_setting_content">

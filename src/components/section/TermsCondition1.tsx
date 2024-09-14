@@ -36,9 +36,8 @@ export default function TermsCondition1() {
                         <button
                           onClick={() => setCurrentTab(item)}
                           key={i}
-                          className={`nav-link text-start ${
-                            currentTab == item ? "active" : ""
-                          }`}
+                          className={`nav-link text-start ${currentTab == item ? "active" : ""
+                            }`}
                         >
                           {item}
                         </button>
@@ -52,9 +51,8 @@ export default function TermsCondition1() {
               <div className="terms_condition_grid text-start">
                 <div className="tab-content">
                   <div
-                    className={`tab-pane fade ${
-                      tab.indexOf(currentTab) === 4 ? "show active" : ""
-                    }`}
+                    className={`tab-pane fade ${tab.indexOf(currentTab) === 4 ? "show active" : ""
+                      }`}
                   >
                     <div className="grids mb90 mb40-md">
                       <h4 className="title">1. Introduction</h4>
@@ -87,7 +85,7 @@ export default function TermsCondition1() {
                       </p>
                     </div>
                     <div className="grids mb90 mb40-md">
-                      <h4 className="title">2. Your Use of the Freeio Sites</h4>
+                      <h4 className="title">2. Your Use of the Blackhards Sites</h4>
                       <p className="mb25 text fz15">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Risus nascetur morbi nisl, mi, in semper metus porttitor
@@ -148,9 +146,8 @@ export default function TermsCondition1() {
                     </div>
                   </div>
                   <div
-                    className={`tab-pane fade ${
-                      tab.indexOf(currentTab) === 3 ? "show active" : ""
-                    }`}
+                    className={`tab-pane fade ${tab.indexOf(currentTab) === 3 ? "show active" : ""
+                      }`}
                   >
                     <div className="grids mb90 mb40-md">
                       <h4 className="title">1. Introduction</h4>
@@ -183,7 +180,7 @@ export default function TermsCondition1() {
                       </p>
                     </div>
                     <div className="grids mb90 mb40-md">
-                      <h4 className="title">2. Your Use of the Freeio Sites</h4>
+                      <h4 className="title">2. Your Use of the Blackhards Sites</h4>
                       <p className="mb25 text fz15">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Risus nascetur morbi nisl, mi, in semper metus porttitor
@@ -244,9 +241,8 @@ export default function TermsCondition1() {
                     </div>
                   </div>
                   <div
-                    className={`tab-pane fade ${
-                      tab.indexOf(currentTab) === 2 ? "show active" : ""
-                    }`}
+                    className={`tab-pane fade ${tab.indexOf(currentTab) === 2 ? "show active" : ""
+                      }`}
                   >
                     <div className="grids mb90 mb40-md">
                       <h4 className="title">1. Introduction</h4>
@@ -279,7 +275,7 @@ export default function TermsCondition1() {
                       </p>
                     </div>
                     <div className="grids mb90 mb40-md">
-                      <h4 className="title">2. Your Use of the Freeio Sites</h4>
+                      <h4 className="title">2. Your Use of the Blackhards Sites</h4>
                       <p className="mb25 text fz15">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Risus nascetur morbi nisl, mi, in semper metus porttitor
@@ -340,9 +336,8 @@ export default function TermsCondition1() {
                     </div>
                   </div>
                   <div
-                    className={`tab-pane fade ${
-                      tab.indexOf(currentTab) === 1 ? "show active" : ""
-                    }`}
+                    className={`tab-pane fade ${tab.indexOf(currentTab) === 1 ? "show active" : ""
+                      }`}
                   >
                     <div className="grids mb90 mb40-md">
                       <h4 className="title">1. Introduction</h4>
@@ -375,7 +370,7 @@ export default function TermsCondition1() {
                       </p>
                     </div>
                     <div className="grids mb90 mb40-md">
-                      <h4 className="title">2. Your Use of the Freeio Sites</h4>
+                      <h4 className="title">2. Your Use of the Blackhards Sites</h4>
                       <p className="mb25 text fz15">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Risus nascetur morbi nisl, mi, in semper metus porttitor
@@ -436,9 +431,8 @@ export default function TermsCondition1() {
                     </div>
                   </div>
                   <div
-                    className={`tab-pane fade ${
-                      tab.indexOf(currentTab) === 0 ? "show active" : ""
-                    }`}
+                    className={`tab-pane fade ${tab.indexOf(currentTab) === 0 ? "show active" : ""
+                      }`}
                   >
                     <div className="grids mb90 mb40-md">
                       <h4 className="title">1. Introduction</h4>
@@ -471,7 +465,7 @@ export default function TermsCondition1() {
                       </p>
                     </div>
                     <div className="grids mb90 mb40-md">
-                      <h4 className="title">2. Your Use of the Freeio Sites</h4>
+                      <h4 className="title">2. Your Use of the Blackhards Sites</h4>
                       <p className="mb25 text fz15">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Risus nascetur morbi nisl, mi, in semper metus porttitor

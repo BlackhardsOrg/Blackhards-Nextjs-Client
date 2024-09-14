@@ -39,9 +39,9 @@ const Breadcumb7: React.FC = () => {
             <div className="row wow fadeInUp">
               <div className="col-xl-7">
                 <div className="position-relative">
-                  <h2 className="text-white">Design & Creative</h2>
+                  <h2 className="text-white">Games</h2>
                   <p className="text mb30 text-white">
-                    Give your visitor a smooth online experience with a solid UX design
+                    All Things Look Equal
                   </p>
                   <div className="advance-search-tab bgc-white p10 bdrs4">
                     <div className="row">
@@ -78,11 +78,10 @@ const Breadcumb7: React.FC = () => {
                                       className="selected active"
                                     >
                                       <a
-                                        className={`dropdown-item selected ${
-                                          getSelectedRole === item
+                                        className={`dropdown-item selected ${getSelectedRole === item
                                             ? "active"
                                             : ""
-                                        }`}
+                                          }`}
                                       >
                                         <span className="text">{item}</span>
                                       </a>

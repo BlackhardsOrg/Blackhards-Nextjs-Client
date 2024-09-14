@@ -99,6 +99,37 @@ export const FETCH_GAME_REVIEWS = gql`
   }
 `;
 
+export const FETCH_GAME_IN_INVENTORY = gql`
+  query fetchUserGamesInInventory($buyerEmail: String!) {
+    fetchUserGamesInInventory(buyerEmail: $buyerEmail) {
+      gameId
+      packageType
+      updatedAt
+      packageTypeGameLink
+      gametitle {
+        _id
+        title
+        description
+        gamePlayScreenShots
+        genre
+        plans {
+          basic {
+            price
+          }
+
+          standard {
+            price
+          }
+
+          premium {
+            price
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const SINGLE_GAME_TITLE = gql`
   query fetchSingleGameTitle($id: String!) {
     gameTitle(id: $id) {

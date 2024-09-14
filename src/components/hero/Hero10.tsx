@@ -17,7 +17,7 @@ const herobg = [
       </>
     ),
     brief:
-      "Millions of people use freeio.com to turn their ideas into reality.",
+      "Millions of people use Blackhards.com to turn their ideas into reality.",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const herobg = [
       </>
     ),
     brief:
-      "Millions of people use freeio.com to turn their ideas into reality.",
+      "Millions of people use Blackhards.com to turn their ideas into reality.",
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const herobg = [
       </>
     ),
     brief:
-      "Millions of people use freeio.com to turn their ideas into reality.",
+      "Millions of people use Blackhards.com to turn their ideas into reality.",
   },
 ];
 

@@ -30,8 +30,8 @@ export const category = [
 export const support = [
   { id: 1, name: "Help & Support", path: "/" },
   { id: 2, name: "Trust & Safety", path: "/" },
-  { id: 3, name: "Selling on Freeio", path: "/" },
-  { id: 4, name: "Buying on Freeio", path: "/" },
+  { id: 3, name: "Selling on Blackhards", path: "/" },
+  { id: 4, name: "Buying on Blackhards", path: "/" },
 ];
 
 export const momney = ["US$ USD", "Euro", "Pound"];

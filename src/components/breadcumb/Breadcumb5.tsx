@@ -27,9 +27,9 @@ const Breadcumb5: React.FC = () => {
             <div className="row wow fadeInUp">
               <div className="col-xl-5">
                 <div className="position-relative">
-                  <h2 className="text-white">Design & Creative</h2>
+                  <h2 className="text-white">Games</h2>
                   <p className="text mb30 text-white">
-                    Give your visitor a smooth online experience with a solid UX design
+                    All Things equally
                   </p>
                   <div className="d-flex align-items-center">
                     <a
@@ -38,7 +38,7 @@ const Breadcumb5: React.FC = () => {
                     >
                       <i className="fal fa-play" />
                     </a>
-                    <h6 className="mb-0 text-white">How Freeio Works</h6>
+                    <h6 className="mb-0 text-white">How Blackhards Works</h6>
                   </div>
                 </div>
               </div>

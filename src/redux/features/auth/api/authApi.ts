@@ -75,18 +75,25 @@ export function registerUser(registerData: IRegisterData) {
       // Extract card resources from the API response
       toast("🦄 Registration Successful!");
       // Dispatch the getResourcesSuccess action to update the Redux state
-      dispatch(registerSuccess(response));
+      console.log(response.data, "DATA REG");
+
+      // dispatch(registerSuccess(response.data));
       return response.data;
     } catch (error: any) {
-      if (error.response.data) {
-        toast(error.response.data.message, {
-          type: "error",
-        });
-      }
-      dispatch(registerFailure(error));
+      console.log(error, "ERROR");
+      if (error instanceof Error) {
+        if (error && error.response && error.response.data) {
+          toast(error.response.data.message, {
+            type: "error",
+          });
 
-      console.error("Error fetching card resources:", error);
-      return error.response.data;
+          dispatch(registerFailure(error));
+
+          console.error("Error fetching card resources:", error);
+          return error.response.data;
+        }
+      }
+      return error
     }
   };
 }

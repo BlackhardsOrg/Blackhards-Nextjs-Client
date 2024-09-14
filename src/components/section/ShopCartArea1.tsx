@@ -35,7 +35,7 @@ export default function ShopCartArea1() {
                     ))}
                   </tbody>
                 </table>
-                {products?.length !== 0 ? (
+                {/* {products?.length !== 0 ? (
                   <div className="coupon-form mt30 mb30-md">
                     <div className="d-md-flex align-items-center justify-content-between">
                       <div className="d-md-flex justify-content-between">
@@ -59,7 +59,7 @@ export default function ShopCartArea1() {
                       <i className="fal fa-arrow-right-long" />
                     </Link>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
             <div className="col-lg-4">

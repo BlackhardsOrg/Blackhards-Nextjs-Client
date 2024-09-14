@@ -31,7 +31,7 @@ export default function Header4() {
                 {user ? <div className="d-flex gap-3 align-items-center ">
 
                   <CartNavButton />
-                  <Link className="btn" href="/user/dashboard" >
+                  <Link className="btn" href="/user/library" >
                     <img
                       className="border rounded-circle"
                       style={{ width: "30px", height: "30px", objectFit: "cover" }}

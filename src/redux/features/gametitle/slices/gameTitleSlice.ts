@@ -91,7 +91,7 @@ const gameTitleSlice = createSlice({
     gameTitleCreateStart: (state) => {
       state.loading.gameTitleCreate = true;
     },
-    gameTitleCreateSuccess: (state, action: PayloadAction<any>) => {
+    gameTitleCreateSuccess: (state, action: PayloadAction<IGameTitle>) => {
       state.loading.gameTitleCreate = false;
       state.gameTitle = action.payload;
     },

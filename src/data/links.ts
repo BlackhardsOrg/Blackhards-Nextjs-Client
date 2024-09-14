@@ -8,7 +8,7 @@ export const links = {
 
 
 
-  dashboard: "/user/dashboard",
+  dashboard: "/user/library",
   manageGames: "/user/manage-games", //manage-projects
   manageAuctions: "/user/manage-auctions", ///user/manage-services
   message: "/user/message",

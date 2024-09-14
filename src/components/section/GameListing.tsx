@@ -51,11 +51,12 @@ export default function GameListing() {
     setParams({
       skip: currentPage,
       take: itemsPerPage,
-      genre: currentGenreTab?.toLowerCase(),
-      ...(priceRange?.min != null && { priceMin: Number(priceRange.min) }),
-      ...(priceRange?.max != null && { priceMax: Number(priceRange.max) }),
-      ...(rating != null && { rating: Number(rating) }),
-      ...(tag?.value != null && { tag: tag.value }),
+      // genre: "all"
+      genre: currentGenreTab? currentGenreTab.toLowerCase(): "all",
+      // ...(priceRange?.min != null && { priceMin: Number(priceRange.min) }),
+      // ...(priceRange?.max != null && { priceMax: Number(priceRange.max) }),
+      // ...(rating != null && { rating: Number(rating) }),
+      // ...(tag?.value != null && { tag: tag.value }),
     })
     console.log(data, "GAME POAGE", gamesPage, " DATA ", pageParams)
 

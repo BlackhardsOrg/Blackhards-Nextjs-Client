@@ -2,7 +2,7 @@ import { steps } from "@/data/steps";
 
 import React from "react";
 
-export default function NeedSomething18() {
+export default function NeedSomething() {
   return (
     <section className="cta-banner-about2 at-home18 mx-auto maxw1700 position-relative pt60-lg pb60-lg">
       <img
@@ -17,8 +17,8 @@ export default function NeedSomething18() {
             <div className="main-title">
               <h2 className="title text-capitalize">Welcome to Black.AI</h2>
               <p className="text">
-                Unlock the power of our AI-driven marketplace with dynamic<br/>
-                pricing to keep your products aligned with market trends,<br/>
+                Unlock the power of our AI-driven marketplace with dynamic<br />
+                pricing to keep your products aligned with market trends,<br />
                 ensuring steady revenue growth.
               </p>
             </div>

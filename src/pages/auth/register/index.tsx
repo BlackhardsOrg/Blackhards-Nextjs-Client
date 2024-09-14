@@ -22,7 +22,7 @@ export default function RegisterPage() {
   const dispatch = useAppDispatch();
   const { loading, error } = useAppSelector((state) => state.auth);
   const navigate = useRouter().push;
-
+  const [gameLoading, setGameLoading] = useState(false)
   const [isPasswordMismatched, setIsPasswordMismatched] = useState(false);
   const [isSubmitAllowable, setIsSubmitAllowable] = useState(false);
 
@@ -32,13 +32,17 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
+    setGameLoading(true)
     const result = await dispatch(registerUser(credentials)) as any;
+    console.log(result, "RESULT")
     if (result && result.success) {
       navigate(
         "/auth/login?message=Verification email sent, please check your inbox"
       );
     }
+
+    setGameLoading(false)
+
   };
 
   const shouldAllowSubmit = () => {
@@ -97,7 +101,7 @@ export default function RegisterPage() {
                       type="text"
                       name="studioName"
                       className="form-control"
-                      placeholder="Raven Illusion Studio"
+                      placeholder="Quiva Games Studio"
                     />
                   </div>
 
@@ -111,7 +115,7 @@ export default function RegisterPage() {
                       name="email"
                       type="email"
                       className="form-control"
-                      placeholder="davido@ravenillusion.com"
+                      placeholder="davido@quiva.com"
                     />
                   </div>
                   <PasswordSetup
@@ -128,7 +132,7 @@ export default function RegisterPage() {
                       type="submit"
                       style={{ opacity: !isSubmitAllowable ? ".4" : "1" }}
                     >
-                      {loading.register ? (
+                      {gameLoading ? (
                         <FLyLoad />
                       ) : (
                         <>

@@ -1,3 +1,4 @@
+import { ethers } from "ethers";
 import { Dispatch, SetStateAction } from "react";
 
 export interface IUser {
@@ -167,6 +168,32 @@ export interface IAuctionGQL extends IAuction {
   };
 }
 
+///Web3
+
+// Define the interfaces for transactions and contracts
+export interface Transaction {
+  buyer: string;
+  amount: string; // Use string to handle large numbers in ethers.js
+  gameId: string;
+  timestamp: number;
+}
+
+// Define the type for the USDT and marketplace contracts
+export interface USDTContract extends ethers.Contract {
+  approve(
+    spender: string,
+    amount: ethers.BigNumber
+  ): Promise<ethers.providers.TransactionResponse>;
+}
+
+export interface MarketplaceContract extends ethers.Contract {
+  payForGame(
+    gameId: string,
+    amount: ethers.BigNumber
+  ): Promise<ethers.providers.TransactionResponse>;
+}
+///
+
 export interface IReview {
   gameTitle: {
     id: string;
@@ -182,6 +209,8 @@ export interface IReview {
 export interface IGamePackageIDs {
   id: string;
   packageType: string;
+  price: string;
+  title: string;
 }
 
 export interface IPopularGameSlideCard {
@@ -231,6 +260,14 @@ export interface ITagSearch {
   handler: any;
 }
 
+export interface IGameTitleInventory {
+  gameId: string;
+  gametitle: IGameTitleGQL;
+  packageType: string;
+  packageTypeGameLink: string;
+  updatedAt: string;
+}
+
 export interface IPageProgress {
   id: number;
   pageText: string;
@@ -251,9 +288,11 @@ export interface IGameTabs {
 
 // Payment Order
 export interface IVerificationResponse {
-  status: boolean;
-  message: string;
   data: IData;
+}
+
+export interface IVerificationDataResponse {
+  data: IDataCrypto;
 }
 
 export interface IData {
@@ -290,7 +329,10 @@ export interface IData {
   plan_object: Record<string, any>; // Adjust the type based on actual data
   subaccount: Record<string, any>; // Adjust the type based on actual data
 }
-
+export interface IDataCrypto {
+  order: IOrder;
+  onChainOrder: any[];
+}
 export interface IOrder {
   firstName: string;
   lastName: string;
@@ -307,6 +349,8 @@ export interface IOrder {
   totalAmount: number;
   email: string;
   GamePackageAndIds: IGamePackageIDs[];
+  transactionHash?: string;
+  createdAt?: string;
 }
 
 export interface IShopCheckoutAreaForm {

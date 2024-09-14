@@ -1,4 +1,4 @@
-export default function LearnFreeioCard({ data }: any) {
+export default function LearnBlackhardsCard({ data }: any) {
   return (
     <>
       <div className="testimonial-style1 default-box-shadow1 position-relative bdrs16">
