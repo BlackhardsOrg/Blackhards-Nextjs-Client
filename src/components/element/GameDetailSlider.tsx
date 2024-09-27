@@ -10,11 +10,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import FsLightbox from "fslightbox-react";
 import { FaPlay } from "react-icons/fa";
 
-// const gigImages = [
-//   "/images/listings/service-details-1.jpg",
-//   "/images/listings/service-details-1.jpg",
-//   "/images/listings/service-details-1.jpg",
-// ];
+
 
 export default function GameDetailSlider({ gigImages, videoUrl }: { gigImages: string[], videoUrl: string }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);

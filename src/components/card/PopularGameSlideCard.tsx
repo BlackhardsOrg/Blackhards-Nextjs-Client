@@ -79,6 +79,7 @@ export default function PopularGameSlideCard({
                   <SwiperSlide key={index}>
                     <img
                       className="w-100 object-fit-cover"
+                      style={{height: "15rem"}}
                       src={item}
                       alt="thumbnail"
                     />
