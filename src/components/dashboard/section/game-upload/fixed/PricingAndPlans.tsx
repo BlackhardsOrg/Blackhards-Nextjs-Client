@@ -10,8 +10,9 @@ import TagSelect from "../../../option/TagSelect";
 import SelectInputMultiple from "../../../option/SelectInputMultiple";
 import PackagePlans from "./PackagePlans";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
+import { gameTitleCreateSuccess, updateIsPackagedPlansEnabled } from "@/redux/features/gametitle/slices/gameTitleSlice";
 import PublishNavBtnGroup from "./PublishNavBtnGroup";
+import { capitalize } from "@/utils";
 
 export default function PricingAndPlans
     ({
@@ -25,8 +26,27 @@ export default function PricingAndPlans
     const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
     const loading = useAppSelector(state => state.gametitle.loading.gameTitleCreate)
 
+    const gameTitleUploadTypeParam = useAppSelector(state => state.gametitle.gameUploadType)
+    const [gameTitleUploadType, setgameTitleUploadType] = useState(gameTitleUploadTypeParam ? gameTitleUploadTypeParam : "title")
+
+    const isOfferingPackagedPlans = useAppSelector(state => state.gametitle.isOfferingPackagedPlans)
+    const [getIsOfferingPackagedPlans, setIsOfferingPackagedPlans] = useState<string>(isOfferingPackagedPlans ? isOfferingPackagedPlans : "yes")
+
+
+    useEffect(() => {
+        if (gameTitleUploadType) {
+            setgameTitleUploadType(gameTitleUploadTypeParam)
+        }
+
+        if (isOfferingPackagedPlans) {
+            setIsOfferingPackagedPlans(isOfferingPackagedPlans)
+        }
+
+    }, [gameTitleUploadTypeParam, isOfferingPackagedPlans])
+
     const dispatch = useAppDispatch()
-    const [isOfferingPackagedPlans, setIsOfferingPackagedPlans] = useState(true)
+
+
 
     // #region Form Handlers
     const handleInputFormChange = (e: any) => {
@@ -90,10 +110,10 @@ export default function PricingAndPlans
                                 <div className="mb20">
                                     <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
                                         <span>
-                                            Allow AI dynamically price your games?
+                                            Allow AI dynamically price your game {gameTitleUploadType ? gameTitleUploadType : ""}
                                         </span>
                                         <Tooltip anchorSelect="#ai" className="ui-tooltip" place="top">
-                                            If your game project&apos;s price aligns with market trends based on our AI predictions, you are more likely to achieve a faster turnover.
+                                            If your game {gameTitleUploadType ? gameTitleUploadType : ""} project&apos;s price aligns with market trends based on our AI predictions, you are more likely to achieve a faster turnover.
                                         </Tooltip>
                                         <button id="ai" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
                                     </label>
@@ -105,12 +125,9 @@ export default function PricingAndPlans
                                             text="Yes"
                                             value={"yes"}
                                             onClick={(e: any) => {
-
                                                 dispatch(gameTitleCreateSuccess({
                                                     ...gameTitle, isAIAllowedPricing: true
                                                 }))
-
-
                                             }} />
                                         <GameUploadRadio
                                             i={2}
@@ -130,10 +147,10 @@ export default function PricingAndPlans
 
                                 </div>
                             </div>
-                            <div className="col-sm-12 d-flex">
+                            {!isOfferingPackagedPlans && <div className="col-sm-12 d-flex">
                                 <div className="mb20 ">
                                     <label className="heading-color ff-heading fw500 mb10">
-                                        Game Price
+                                        Game {gameTitleUploadType ? capitalize(gameTitleUploadType) : ""} Price
                                     </label>
                                     <input
                                         onChange={handleFormattedChange}
@@ -144,15 +161,15 @@ export default function PricingAndPlans
                                         placeholder="Game Price ($)"
                                     />
                                 </div>
-                                <span>{formatPriceToDollars(gameTitle ? Number(gameTitle.price) : 0)}</span>
-                            </div>
+                                <span>{formatPriceToDollars(gameTitle && gameTitle.price ? Number(gameTitle.price) : 0)}</span>
+                            </div>}
 
                             <div className="col-sm-12">
 
                                 <div className="mb20">
                                     <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
                                         <span>
-                                            Offer plans or packages to make your game affordable?
+                                            would you like to offer plans or packages to make your game {gameTitleUploadType ? gameTitleUploadType : ""} affordable?
                                         </span>
                                         <Tooltip anchorSelect="#studies" className="ui-tooltip" place="top">
                                             Studies have shown that making your games affordable by Breaking your games into packages can increase revenue.
@@ -163,20 +180,21 @@ export default function PricingAndPlans
                                         <GameUploadRadio
                                             i={1}
                                             name="packages"
-                                            checked={isOfferingPackagedPlans}
+                                            checked={getIsOfferingPackagedPlans === "yes"}
                                             text="Yes"
                                             value={"yes"}
                                             onClick={(e: any) => {
-                                                setIsOfferingPackagedPlans(true)
+
+                                                dispatch(updateIsPackagedPlansEnabled("yes"))
                                             }} />
                                         <GameUploadRadio
                                             i={1}
                                             name="packages"
-                                            checked={!isOfferingPackagedPlans}
+                                            checked={getIsOfferingPackagedPlans === "no"}
                                             text="No"
                                             value="no"
                                             onClick={(e: any) => {
-                                                setIsOfferingPackagedPlans(false)
+                                                dispatch(updateIsPackagedPlansEnabled("no"))
                                             }} />
                                     </div>
 
@@ -187,7 +205,7 @@ export default function PricingAndPlans
                             {/* Package Plans */}
                             <div className="col-md-12">
 
-                                {isOfferingPackagedPlans && <PackagePlans
+                                {isOfferingPackagedPlans === "yes" && <PackagePlans
 
                                 />}
                             </div>

@@ -66,10 +66,7 @@ export default function HeaderEarly() {
                     <span className="d-none d-xl-inline-block">Logout</span>
                   </Link>
                 </div> : <div className="d-flex align-items-center">
-                  <Link className="login-info mx15-xl mx30" href="/register">
-                    <span className="d-none d-xl-inline-block">Create your</span>{" "}
-                    Studio
-                  </Link>
+
                   <Link
                     className="login-info mr15-xl mr10 ud-btn btn-dark add-joining bdrs12 dark-color bg-transparent"
                     href={links.login}
@@ -80,7 +77,7 @@ export default function HeaderEarly() {
                     className="ud-btn btn-dark add-joining bdrs12 text-white"
                     href={links.register}
                   >
-                    Join
+                    Join & Create Studio
                   </Link>
                 </div>
                 }

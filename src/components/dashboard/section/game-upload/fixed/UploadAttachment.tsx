@@ -6,6 +6,7 @@ import { uploadImages, uploadZip } from "@/utils/imageUploader";
 import Link from "next/link";
 import { ChangeEventHandler, useState } from "react";
 import { toast } from "react-toastify";
+import FileUploadTablePlans from "./FileUploadTablePlans";
 
 export default function UploadAttachment({ id,
   //  gameTitle, setGameTitle, 
@@ -149,15 +150,14 @@ export default function UploadAttachment({ id,
   return (
     <form onSubmit={handleGameSubmit}>
       <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative">
-        <div className="bdrb1 pb15 mb25">
-          <h5 className="list-title">Upload Game Play Photos</h5>
-        </div>
 
-        <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative d-flex gap-2 flex-column">
-          <div className="bdrb1 pb15 mb25">
-            <h5 className="list-title">Game Play Video url (youtube)</h5>
-          </div>
+
+        <div className="ps-widget bgc-white p30 bdrs12 overflow-hidden position-relative d-flex gap-5 flex-column">
+
           <div className="row">
+            <div className="bdrb1 pb15 mb25">
+              <h5 className="list-title">Game Play Video url (youtube)</h5>
+            </div>
             {/* {content} */}
             <div className="col-6 col-xl-3">
               <label>
@@ -177,69 +177,50 @@ export default function UploadAttachment({ id,
             </div>
           </div>
 
-        </div>
-        <div className="row">
-          {content}
-          <div className="col-6 col-xl-3">
-            <label>
-              <a className="upload-img">
-                photos
-                <input
-                  type="file"
-                  accept="application/image"
-                  className="d-none"
-                  onChange={handleFileUpload}
-                  multiple
-                />
-              </a>
-            </label>
-          </div>
-        </div>
-        <p className="text">Maximum file size: 10 MB</p>
-        <div className="text-start">
-          <button type="button" onClick={handleFileServerUpload} className="ud-btn btn-thm" >
-            {imageLoading ? <FLyLoad /> : <>
-              <span>Upload</span>
-              <i className="fas fa-upload" />
-            </>}
+          <section className=" p-1 d-flex flex-column gap-1">
+            <div className="bdrb1 mb-4">
+              <h5 className="list-title">Upload Game Play Photos</h5>
+            </div>
+            <div className="row p-0">
+              {content}
+              <div className="col-6 col-xl-3">
+                <label>
+                  <a className="upload-img">
+                    photos
+                    <input
+                      type="file"
+                      accept="application/image"
+                      className="d-none"
+                      onChange={handleFileUpload}
+                      multiple
+                    />
+                  </a>
+                </label>
+              </div>
+            </div>
+            <p className="text m-0">Maximum file size: 10 MB</p>
+            <div className="text-start mt-2">
+              <button type="button" onClick={handleFileServerUpload} className="ud-btn btn-thm" >
+                {imageLoading ? <FLyLoad /> : <>
+                  <span>Upload</span>
+                  <i className="fas fa-upload" />
+                </>}
+              </button>
+            </div>
+          </section>
 
-          </button>
+
+          <div className="row">
+            <FileUploadTablePlans />
+          </div>
+
         </div>
+
       </div>
 
 
 
-      {/* <div className="ps-widget bgc-white bdrs12 p30 mb30 overflow-hidden position-relative">
-        <div className="bdrb1 pb15 mb25">
-          <h5 className="list-title">Upload Game Project</h5>
-        </div>
-        <div className="row">
-          {gameProjContent}
-          <div className="col-6 col-xl-3">
-            <label>
-              <a className="upload-img">
-                zip
-                <input
-                  type="file"
-                  accept="application/zip"
-                  className="d-none"
-                  onChange={handleFileUploadGameProj}
-                  multiple
-                />
-              </a>
-            </label>
-          </div>
-        </div>
-        <p className="text">Maximum file size: 500 MB</p>
-        <div className="text-start">
-          <button onClick={handleFileServerUploadGameProj} type={"button"} className="ud-btn btn-thm" >
-            {gameProjLoading ? <FLyLoad /> : <>
-              <span>Upload</span>
-              <i className="fas fa-upload" />
-            </>}
-          </button>
-        </div>
-      </div> */}
+
 
       <div className="col-md-12">
         <div className="text-start d-flex gap-1">

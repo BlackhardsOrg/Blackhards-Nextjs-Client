@@ -24,22 +24,12 @@ export default function ForClient() {
                 <br className="d-none d-lg-block" />
                 with Blackhards
               </h2>
-              <p className="paragraph">
-                The African B2B marketplace where you can{" "}
-                <span className="text-success font-weight-bold h5">Buy,</span>
+              <p className="paragraph"> The leading African B2B marketplace where you can easily
+                {" "} <span className="text-success font-weight-bold h5">Buy</span>,{" "}
                 <span className="text-success h5">Sell</span>, and{" "}
-                <span className="text-success h5">
-                  Auction high-quality game codes and assets.
-                </span>
-                Elevate your games with lightning speed using{" "}
-                <span className="text-success h5">AI-powered tools</span> for{" "}
-                <span className="text-success h5">2D/3D animation</span> and{" "}
-                <span className="text-success h5">Modeling</span>, alongside{" "}
-                <span className="text-success h5">
-                  Customizable sound effects
-                </span>{" "}
-                generated effortlessly from text prompts.
-              </p>
+                <span className="text-success h5">Auction</span>{" "}
+                high-quality game codes and assets, fully customizable.
+                Why build from scratch when you can assemble your games piece by piece?</p>
             </div>
             <Link href={links.registerEarly} className="ud-btn btn-white2 bdrs60">
               Get Early Access <i className="fal fa-arrow-right-long"></i>
@@ -58,8 +48,8 @@ export default function ForClient() {
                 <span className="text-success h5">Dynamically price</span> your{" "}
                 <span className="text-success h5">Game Projects</span> to{" "}
                 <span className="text-success h5">supercharge</span> revenue,{" "}
-                <span className="text-success h5">skyrocket</span> sales,
-                <span className="text-success h5">optimize profit margins</span>
+                <span className="text-success h5">skyrocket</span> sales
+                <span className="text-success h5">, optimize profit margins</span>
                 , instantly adapt to market changes, personalize pricing, and
                 beyond.
               </p>

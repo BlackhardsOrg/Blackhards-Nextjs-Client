@@ -1,7 +1,12 @@
-import { useAppSelector } from "@/redux/app/hooks"
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks"
 import TagSelect from "../../../option/TagSelect"
 import SelectInputMultiple from "../../../option/SelectInputMultiple"
 import PublishNavBtnGroup from "./PublishNavBtnGroup"
+import GameUploadRadio from "@/components/ui-elements/radios/GameUploadRadio"
+import { Tooltip } from "react-tooltip"
+import { gameTitleCreateSuccess, updateGameUploadType } from "@/redux/features/gametitle/slices/gameTitleSlice"
+import { useEffect, useState } from "react"
+import { capitalize } from "@/utils"
 
 
 const BasicInfoForm = ({
@@ -20,16 +25,61 @@ const BasicInfoForm = ({
     handleGameSubmit,
     getPageProgress }: any) => {
     const gameTitle = useAppSelector(state => state.gametitle.gameTitle)
-    const gameTitleLoading = useAppSelector(state => state.gametitle.loading.gameTitleCreate)
+    const gameTitleUploadTypeParam = useAppSelector(state => state.gametitle.gameUploadType)
+    const [gameTitleUploadType, setgameTitleUploadType] = useState(gameTitleUploadTypeParam ? gameTitleUploadTypeParam : "title")
 
+    useEffect(() => {
+        if (gameTitleUploadType) {
+            setgameTitleUploadType(gameTitleUploadTypeParam)
+        }
+
+    }, [gameTitleUploadTypeParam])
+
+    const gameTitleLoading = useAppSelector(state => state.gametitle.loading.gameTitleCreate)
+    const dispatch = useAppDispatch()
     return (
 
         <form onSubmit={handleGameSubmit} className="form-style1">
             <div className="row">
+
+                <div className="col-sm-12">
+
+                    <div className="mb20">
+                        <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
+                            <span>
+                                What do you want to publish?
+                            </span>
+                            <Tooltip anchorSelect="#ai" className="ui-tooltip" place="top">
+                                you can choose to publish a Game Title code or a Game Tool code (tools, that  help manage, organize, build games)
+                            </Tooltip>
+                            <button id="ai" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
+                        </label>
+                        <div className="d-flex gap-3 align-items-center">
+                            <GameUploadRadio
+                                i={1}
+                                name="AiPricing"
+                                checked={gameTitleUploadType === "title" ? true : false}
+                                text="Game Title Code"
+                                value={"title"}
+                                onClick={(e: any) => {
+                                    dispatch(updateGameUploadType("title"))
+                                }} />
+                            <GameUploadRadio
+                                i={2}
+                                name="AiPricing"
+                                checked={gameTitleUploadType === "tool" ? true : false}
+                                text="Game Tool Code"
+                                value="tool"
+                                onClick={(e: any) => {
+                                    dispatch(updateGameUploadType("tool"))
+                                }} />
+                        </div>
+                    </div>
+                </div>
                 <div className="col-sm-12">
                     <div className="mb20">
                         <label className="heading-color ff-heading fw500 mb10">
-                            Game Title
+                            Game {gameTitleUploadType ? capitalize(gameTitleUploadType) : "Title"}
                         </label>
                         <input
                             onChange={handleInputFormChange}
@@ -45,7 +95,7 @@ const BasicInfoForm = ({
                 <div className="col-md-12">
                     <div className="mb10">
                         <label className="heading-color ff-heading fw500 mb10">
-                            Game Title Description
+                            Game {gameTitleUploadType ? capitalize(gameTitleUploadType) : "Title"} Description
                         </label>
                         <textarea
                             onChange={handleInputFormChange}
@@ -60,7 +110,7 @@ const BasicInfoForm = ({
                 <div className="col-sm-12">
                     <div className="mb20">
                         <label className="heading-color ff-heading fw500 mb10">
-                            Game Demo Link
+                            {gameTitleUploadType ? capitalize(gameTitleUploadType) : "Title"} Demo Link
                         </label>
                         <input
                             onChange={handleInputFormChange}
@@ -68,7 +118,7 @@ const BasicInfoForm = ({
                             name="gameFileLink"
                             type="text"
                             className="form-control"
-                            placeholder="https://itche.io/my-game-link"
+                            placeholder={gameTitleUploadType == "title" ? "https://itche.io/my-playable-demo-game-link" : "https://toolkit-runnable-link.app"}
                         />
                     </div>
                 </div>
@@ -97,9 +147,6 @@ const BasicInfoForm = ({
                     </div>
                 </div>
 
-
-
-
                 <div className="col-sm-6">
                     <div className="mb20">
                         <SelectInputMultiple
@@ -112,7 +159,7 @@ const BasicInfoForm = ({
                     </div>
                 </div>
 
-                <div className="col-sm-12">
+                {gameTitleUploadType == "title" && <div className="col-sm-12">
                     <div className="mb20">
                         <label className="heading-color ff-heading fw500 mb10">
                             Release Date
@@ -127,9 +174,9 @@ const BasicInfoForm = ({
                         />
 
                     </div>
-                </div>
+                </div>}
 
-                
+
 
                 <PublishNavBtnGroup
                     loading={gameTitleLoading}

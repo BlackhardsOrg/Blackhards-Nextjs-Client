@@ -31,3 +31,9 @@ export const shortenEmail = (email: string) => {
   let companyPart = result[1];
   return `${namePart.slice(0, 4)}...@${companyPart}`;
 };
+
+
+export const capitalize = (text: string) => {
+
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}

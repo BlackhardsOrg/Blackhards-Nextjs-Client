@@ -125,8 +125,21 @@ export default function PackagePlans({
         setPlans((old) => ({ ...old, [type]: { ...old[type], [name]: value } }))
     };
 
+    const gameTitleUploadTypeParam = useAppSelector(state => state.gametitle.gameUploadType)
+    const isOfferingPackagedPlans = useAppSelector(state => state.gametitle.isOfferingPackagedPlans)
+
+    const [gameTitleUploadType, setgameTitleUploadType] = useState(gameTitleUploadTypeParam ? gameTitleUploadTypeParam : "title")
+
+
+
     useEffect(() => {
-        // setGameTitle(old => ({ ...old, plans: plans }))
+        if (gameTitleUploadTypeParam) {
+            setgameTitleUploadType(gameTitleUploadTypeParam)
+        }
+
+    }, [gameTitleUploadTypeParam])
+
+    useEffect(() => {
         dispatch(gameTitleCreateSuccess({ ...gameTitle, plans: plans }))
 
     }, [plans])
@@ -298,7 +311,7 @@ export default function PackagePlans({
 
                             </tr>
 
-                            <tr>
+                            {gameTitleUploadType && gameTitleUploadType === "title" && <tr>
                                 <td>How long to launch game project?</td>
                                 <td>
                                     <PlansSelectOptionsInput
@@ -326,7 +339,7 @@ export default function PackagePlans({
                                         data={data.howLongToLaunch} />
                                 </td>
 
-                            </tr>
+                            </tr>}
 
                             <tr>
                                 <td>Customization</td>
@@ -384,7 +397,7 @@ export default function PackagePlans({
 
                             </tr>
 
-                            <tr>
+                            {gameTitleUploadType && gameTitleUploadType === "title" && <tr>
                                 <td>How Many levels does the game have?</td>
                                 <td><PlansSelectOptionsInput
                                     name="howManyLevels"
@@ -405,7 +418,7 @@ export default function PackagePlans({
                                     defaultSelect={plans.premium.howManyLevels}
                                     data={data.howManyLevels} /></td>
 
-                            </tr>
+                            </tr>}
 
                             <tr>
                                 <td>Has got Documentation</td>

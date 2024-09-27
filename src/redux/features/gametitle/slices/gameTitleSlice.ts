@@ -2,7 +2,6 @@
 import { IGameTitle, IPlans } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
 const plans: IPlans = {
   basic: {
     type: "basic",
@@ -41,8 +40,8 @@ const plans: IPlans = {
     howManyLevels: 1,
     hasDocumentation: true,
     hasAdminPanel: true,
-  }
-}
+  },
+};
 
 const defaultGameTitleData: IGameTitle = {
   developerEmail: "gbgbgbgbgb",
@@ -63,11 +62,13 @@ const defaultGameTitleData: IGameTitle = {
   gameRating: 0,
   gamePlays: 0,
   plans: plans,
-  isAIAllowedPricing: true
-}
+  isAIAllowedPricing: true,
+};
 
 interface IInitialState {
   gameTitle: IGameTitle;
+  gameUploadType: string;
+  isOfferingPackagedPlans: string;
   status: string;
   error: any;
   loading: {
@@ -78,6 +79,8 @@ interface IInitialState {
 const initialState: IInitialState = {
   gameTitle: defaultGameTitleData,
   status: "idle",
+  gameUploadType: "title",
+  isOfferingPackagedPlans: "yes",
   error: null,
   loading: {
     gameTitleCreate: false,
@@ -99,6 +102,13 @@ const gameTitleSlice = createSlice({
       state.loading.gameTitleCreate = false;
       state.error = action.payload;
     },
+    updateGameUploadType: (state, action: PayloadAction<string>) => {
+      state.gameUploadType = action.payload;
+    },
+
+    updateIsPackagedPlansEnabled: (state, action: PayloadAction<string>) => {
+      state.isOfferingPackagedPlans = action.payload;
+    },
   },
 });
 
@@ -106,6 +116,8 @@ export const {
   gameTitleCreateStart,
   gameTitleCreateSuccess,
   gameTitleCreateFailure,
+  updateGameUploadType,
+  updateIsPackagedPlansEnabled
 } = gameTitleSlice.actions;
 
 export default gameTitleSlice.reducer;
