@@ -22,8 +22,7 @@ export default function PopularGameSlideCard({
 }: IPopularGameSlideCard) {
   const [isFavActive, setFavActive] = useState(false);
   const { pathname } = useRouter();
-  const addToCart = shopStore((state: any) => state.addToCart);
-  const products = shopStore((state: any) => state.products);
+
   const cartItems = useAppSelector(state => state.cart.items)
   const dispatch = useAppDispatch()
 
@@ -31,13 +30,14 @@ export default function PopularGameSlideCard({
 
   const addToCartHandler = (product: any) => {
     // addToCart(product);
-    dispatch(addItemToCart({
-      title: product.title,
-      price: data.plans?.basic.price,
-      GamePlayScreenShot: data.gamePlayScreenShots[0],
-      id: data._id, qty: 1,
-      packageType: "basic"
-    }))
+    if (data.plans)
+      dispatch(addItemToCart({
+        title: product.title,
+        price: data.plans?.basic.price,
+        GamePlayScreenShot: data.gamePlayScreenShots[0],
+        id: data._id, qty: 1,
+        packageType: "basic"
+      }))
     navigate("/market/cart");
   };
 
@@ -79,7 +79,7 @@ export default function PopularGameSlideCard({
                   <SwiperSlide key={index}>
                     <img
                       className="w-100 object-fit-cover"
-                      style={{height: "15rem"}}
+                      style={{ height: "15rem" }}
                       src={item}
                       alt="thumbnail"
                     />
@@ -115,7 +115,7 @@ export default function PopularGameSlideCard({
           </div>
         </div>
         <div className={`list-content ${isContentExpanded ? "px-0" : ""}`}>
-          <p className="list-text body-color fz14 mb-1">{data.genre.map(item =>  `${item != "all" ? item+", ": ""} `)}</p>
+          <p className="list-text body-color fz14 mb-1">{data.genre.map(item => `${item != "all" ? item + ", " : ""} `)}</p>
           <h5 className="list-title">
             <Link href={`/games/game-preview/${data._id}`}>{data.title}</Link>
           </h5>

@@ -22,21 +22,21 @@ const FileUpload = () => {
         );
     };
 
-     // upload handler
-  const handleFileUpload = (event: ChangeEventHandler<HTMLInputElement> | any) => {
-    const newFiles = Array.from(event.target.files);
+    // upload handler
+    const handleFileUpload = (event: ChangeEventHandler<HTMLInputElement> | any) => {
+        const newFiles = Array.from(event.target.files);
 
-    const isFileDuplicate = (file: any, fileList: any) => {
-      return fileList.some((existingFile: any) => existingFile.name === file.name);
+        const isFileDuplicate = (file: any, fileList: any) => {
+            return fileList.some((existingFile: any) => existingFile.name === file.name);
+        };
+
+        const uniqueNewFiles = newFiles.filter(
+            (file) => !isFileDuplicate(file, uploadedImageFiles)
+        );
+
+        setUploadedImageFiles((prevFiles: any) => [...prevFiles, ...uniqueNewFiles]);
+        console.log(uploadedImageFiles, "Uploaded FIles")
     };
-
-    const uniqueNewFiles = newFiles.filter(
-      (file) => !isFileDuplicate(file, uploadedImageFiles)
-    );
-
-    setUploadedImageFiles((prevFiles: any) => [...prevFiles, ...uniqueNewFiles]);
-    console.log(uploadedImageFiles, "Uploaded FIles")
-  };
 
     const handleFileServerUpload = async (e) => {
         setImageLoading(true)
@@ -76,7 +76,7 @@ const FileUpload = () => {
                                 type="file"
                                 accept=".zip"
                                 className="d-none"
-                                onChange={handleFileUpload}
+                                // onChange={handleFileUpload}
                                 multiple
                             />
                         </a>
@@ -85,7 +85,9 @@ const FileUpload = () => {
             </div>
             <p className="text">Maximum file size: 5GB</p>
             <div className="text-start">
-                <button type="button" onClick={handleFileServerUpload} className="ud-btn btn-thm" >
+                <button type="button"
+                    // onClick={handleFileServerUpload}
+                    className="ud-btn btn-thm" >
                     {imageLoading ? <FLyLoad /> : <>
                         <span>Upload</span>
                         <i className="fas fa-upload" />

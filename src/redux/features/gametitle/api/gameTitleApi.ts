@@ -51,3 +51,100 @@ export function createGameTitle(gameTitleData: IGameTitle, token: string) {
     }
   };
 }
+
+export function updateGameTitle(gameTitleData: IGameTitle, gameTitleId: string, token: string) {
+  return async (dispatch: Dispatch) => {
+    try {
+      dispatch(gameTitleCreateStart());
+      // Make an HTTP GET request to the API
+      const response = await axios.put(
+        `${API_URL}/gametitle/update`,
+        {...gameTitleData, id: gameTitleId},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const user: IUser = response.data;
+      toast("🦄 Game Title Update Successful!");
+      dispatch(gameTitleCreateSuccess(null));
+    } catch (error: any) {
+      dispatch(gameTitleCreateFailure(error));
+
+      console.error("Game Title Update failed!:", error);
+      // const axiosError = error as AxiosError;
+      if (error.response) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+      }
+      toast(error.message, {
+        type: "error",
+      });
+      return error.message;
+    }
+  };
+}
+
+
+export function deleteGameTitle(gameTitleData: IGameTitle, gameTitleId: string, token: string) {
+  return async (dispatch: Dispatch) => {
+    try {
+      dispatch(gameTitleCreateStart());
+      // Make an HTTP GET request to the API
+      const response = await axios.post(
+        `${API_URL}/gametitle/delete`,
+        { id: gameTitleId},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const user: IUser = response.data;
+      toast("🦄 Deletion Successful!");
+      dispatch(gameTitleCreateSuccess(null));
+    } catch (error: any) {
+      dispatch(gameTitleCreateFailure(error));
+
+      console.error("Deletion failed!:", error);
+      // const axiosError = error as AxiosError;
+      if (error.response) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+      }
+      toast(error.message, {
+        type: "error",
+      });
+      return error.message;
+    }
+  };
+}
+
+export function fetchGameTitle(gameTitleId: string, token: string) {
+  return async (dispatch: Dispatch) => {
+    try {
+      dispatch(gameTitleCreateStart());
+      // Make an HTTP GET request to the API
+      const response = await axios.get(
+        `${API_URL}/gametitle/fetch/${gameTitleId}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const gameTitle: IGameTitle = response.data.data;
+      console.log(gameTitle, "AGME")
+      toast("🦄 Game Title Fetch Successful!");
+      dispatch(gameTitleCreateSuccess(gameTitle));
+    } catch (error: any) {
+      dispatch(gameTitleCreateFailure(error));
+
+      console.error("Game Title Creation failed!:", error);
+      // const axiosError = error as AxiosError;
+      if (error.response) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+      }
+      toast(error.message, {
+        type: "error",
+      });
+      return error.message;
+    }
+  };
+}

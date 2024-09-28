@@ -49,8 +49,7 @@ export default function GameTabs({
                             {/* Basic Informations */}
                             <BasicInfo
                                 id={0}
-                                // gameTitle={gameTitle}
-                                // setGameTitle={setGameTitle}
+                            
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
                                 getCurrentPageState={getCurrentPageState}
@@ -65,8 +64,7 @@ export default function GameTabs({
                             {/* Pricing */}
                             <PricingAndPlans
                                 id={1}
-                                // gameTitle={gameTitle}
-                                // setGameTitle={setGameTitle}
+                            
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
                                 getCurrentPageState={getCurrentPageState}
@@ -79,8 +77,7 @@ export default function GameTabs({
                         >
                             {/* File Uploads */}
                             <UploadAttachment
-                                // gameTitle={gameTitle}
-                                // setGameTitle={setGameTitle}
+                             
                                 id={2}
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
@@ -94,9 +91,9 @@ export default function GameTabs({
                                 }`}
                         >
                             {/* Summary and Publish */}
-                            <SummaryAndPublish id={3}
-                                // gameTitle={gameTitle}
-                                // setGameTitle={setGameTitle}
+                            <SummaryAndPublish
+                                id={3}
+                             
                                 getPageProgress={getPageProgress}
                                 setGetPageProgress={setGetPageProgress}
                                 getCurrentPageState={getCurrentPageState}

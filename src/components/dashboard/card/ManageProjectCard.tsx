@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { Tooltip } from "react-tooltip";
 
-export default function ManageProjectCard({gametitle}:{gametitle?: IGameTitleGQL}) {
+export default function ManageProjectCard({ gametitle }: { gametitle?: IGameTitleGQL }) {
 
   return (
     <>
@@ -23,11 +23,11 @@ export default function ManageProjectCard({gametitle}:{gametitle?: IGameTitleGQL
                 </p>
                 <p className="mb-0 fz14 list-inline-item mb5-sm pe-1">
                   <i className="flaticon-30-days fz16 vam text-thm2 me-1 bdrl1 pl15 pl0-xs bdrn-xs" />{" "}
-                  {gametitle && gametitle.updatedAt &&  timeAgo(gametitle.updatedAt) }
+                  {gametitle && gametitle.updatedAt && timeAgo(gametitle.updatedAt)}
                 </p>
                 <p className="mb-0 fz14 list-inline-item mb5-sm text-thm">
                   <i className="flaticon-contract fz16 vam me-1 bdrl1 pl15 pl0-xs bdrn-xs" />{" "}
-                  {gametitle?.isOnSale ? "On Sale": "Pending"}
+                  {gametitle?.isOnSale ? "On Sale" : "Pending"}
                 </p>
               </div>
             </div>
@@ -43,17 +43,16 @@ export default function ManageProjectCard({gametitle}:{gametitle?: IGameTitleGQL
         </td>
         <td>
           <div className="d-flex">
-            <a
+            <Link href={`http://localhost:3000/user/publish-game?gameId=${gametitle?._id}`}
               className="icon me-2"
               id="edit"
-              data-bs-toggle="modal"
-              data-bs-target="#proposalModal"
+
             >
               <Tooltip anchorSelect="#edit" className="ui-tooltip" place="top">
                 Edit
               </Tooltip>
               <span className="flaticon-pencil" />
-            </a>
+            </Link>
             <a
               className="icon"
               id="delete"

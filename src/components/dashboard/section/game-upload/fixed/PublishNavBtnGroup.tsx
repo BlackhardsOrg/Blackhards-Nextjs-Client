@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/redux/app/hooks"
 import FLyLoad from "@/components/loading/FLyLoad";
 import { IPageProgress } from "@/types";
+import { useRouter } from "next/router";
 
 interface IPublishNavBtnGroup {
     loading: boolean
@@ -19,6 +20,9 @@ const PublishNavBtnGroup = ({
     handleGameSubmit,
     getPageProgress }: IPublishNavBtnGroup) => {
     const gameTitleLoad = useAppSelector(state => state.gametitle)
+    const router = useRouter()
+
+    const { gameId } = router.query
 
 
     return (
@@ -33,7 +37,6 @@ const PublishNavBtnGroup = ({
 
                     <span>Prev</span>
                     <i className="fal fa-arrow-left-long" />
-
                 </button>
 
                 <button onClick={(e) => {
@@ -45,7 +48,7 @@ const PublishNavBtnGroup = ({
                     className="ud-btn btn-thm p-2 px-3" >
                     {gameTitleLoad.loading.gameTitleCreate ? <FLyLoad /> :
                         <>
-                            <span>{getCurrentPageState == getPageProgress.length - 1 ? "Publish" : "Save & Continue"}</span>
+                            <span>{getCurrentPageState == getPageProgress.length - 1 ? gameId ? "Update" : "Publish" : "Save & Continue"}</span>
                             <i className="fal fa-arrow-right-long" />
                         </>}
                 </button>

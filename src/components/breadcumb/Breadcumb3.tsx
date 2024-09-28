@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface Breadcumb3Props {
   path: string[] | undefined;
 }
@@ -11,7 +13,7 @@ const Breadcumb3: React.FC<Breadcumb3Props> = ({ path }) => {
             <div className="breadcumb-style1">
               <div className="breadcumb-list">
                 {path?.map((item, i) => (
-                  <a key={i}>{item}</a>
+                  <Link href={"/"+item} key={i}>{item}</Link>
                 ))}
               </div>
             </div>

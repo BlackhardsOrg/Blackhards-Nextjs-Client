@@ -52,7 +52,7 @@ export default function GameListing() {
       skip: currentPage,
       take: itemsPerPage,
       // genre: "all"
-      genre: currentGenreTab? currentGenreTab.toLowerCase(): "all",
+      genre: currentGenreTab ? currentGenreTab.toLowerCase() : "all",
       // ...(priceRange?.min != null && { priceMin: Number(priceRange.min) }),
       // ...(priceRange?.max != null && { priceMax: Number(priceRange.max) }),
       // ...(rating != null && { rating: Number(rating) }),
@@ -73,11 +73,12 @@ export default function GameListing() {
               data.allGameTitles.length > 0 ? data.allGameTitles
                 .map((item, i) => (
                   <div key={i} className="col-sm-6 col-xl-3">
-                    {item?.gamePlayScreenShots.length > 1 ? (
-                      <PopularGameSlideCard data={item} />
+                    {/* {item?.gamePlayScreenShots.length > 1 ? (
                     ) : (
                       <TrendingGameCard data={item} />
-                    )}
+                    )} */}
+                    <PopularGameSlideCard data={item} />
+
                   </div>
                 )) :
                 !loading && <GameGenreNotFound />

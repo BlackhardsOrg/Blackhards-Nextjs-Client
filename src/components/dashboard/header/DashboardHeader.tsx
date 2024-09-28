@@ -234,28 +234,14 @@ export default function DashboardHeader() {
                             className="border rounded-circle"
                             style={{ width: "40px", height: "40px", objectFit: "cover" }}
                             src="/images/resource/user-50by50.png" alt="user.png" />
-                          <span style={{fontSize: ".8rem"}}>{user && shortenEmail(user.email)}</span>
+                          <span style={{ fontSize: ".8rem" }}>{user && shortenEmail(user.email)}</span>
                         </a>
                         <div className="dropdown-menu">
                           <div className="user_setting_content">
-                            <p className="fz15 fw400 ff-heading mb10 pl30">
-                              Start
-                            </p>
-                            {dasboardNavigation.slice(0, 8).map((item, i) => (
-                              <Link
-                                key={i}
-                                className={`dropdown-item ${pathname === item.path ? "active" : ""
-                                  }`}
-                                href={item.path}
-                              >
-                                <i className={`${item.icon} mr10`} />
-                                {item.name}
-                              </Link>
-                            ))}
                             <p className="fz15 fw400 ff-heading mt30 pl30">
                               Organize and Manage
                             </p>
-                            {dasboardNavigation.slice(8, 13).map((item, i) => (
+                            {dasboardNavigation.slice(0, 3).map((item, i) => (
                               <Link
                                 key={i}
                                 className={`dropdown-item ${pathname === item.path ? "active" : ""
@@ -266,20 +252,25 @@ export default function DashboardHeader() {
                                 {item.name}
                               </Link>
                             ))}
+
                             <p className="fz15 fw400 ff-heading mt30 pl30">
                               Account
                             </p>
-                            {dasboardNavigation.slice(13, 15).map((item, i) => (
+                            {dasboardNavigation.slice(3, 4).map((item, i) => (
                               <Link
                                 key={i}
+                                data-bs-toggle="modal"
+                                href="#logoutModalToggle"
                                 className={`dropdown-item ${pathname === item.path ? "active" : ""
                                   }`}
-                                href={item.path}
+                                // href={item.path}
                               >
                                 <i className={`${item.icon} mr10`} />
                                 {item.name}
                               </Link>
                             ))}
+
+
                           </div>
                         </div>
                       </div>

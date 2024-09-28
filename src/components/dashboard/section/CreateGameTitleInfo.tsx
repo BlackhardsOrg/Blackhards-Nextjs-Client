@@ -2,7 +2,7 @@ import { IGameTitle, IPageProgress, IPlans } from "@/types";
 import DashboardNavigation from "../header/DashboardNavigation";
 import BasicInformation from "./BasicInformation2";
 import UploadAttachment from "./game-upload/fixed/UploadAttachment";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import BasicInfo from "./game-upload/fixed/BasicInfo";
 import PricingAndPlans from "./game-upload/fixed/PricingAndPlans";
 import UploadProgressBar from "./game-upload/fixed/UploadProgressBar";
@@ -10,8 +10,9 @@ import SummaryAndPublish from "./game-upload/fixed/SummaryAndPublish";
 import GameTabs from "./game-upload/fixed/GameTabs";
 import FLyLoad from "@/components/loading/FLyLoad";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { createGameTitle } from "@/redux/features/gametitle/api/gameTitleApi";
+import { createGameTitle, fetchGameTitle, updateGameTitle } from "@/redux/features/gametitle/api/gameTitleApi";
 import PublishNavBtnGroup from "./game-upload/fixed/PublishNavBtnGroup";
+import { useRouter } from "next/router";
 
 
 
@@ -22,12 +23,24 @@ export default function CreateGameTitleInfo() {
 
   const loading = useAppSelector(state => state.gametitle.loading.gameTitleCreate)
 
+  const router = useRouter()
+  const { gameId } = router.query
+
 
   const dispatch = useAppDispatch()
   const [currentTab, setCurrentTab] = useState(0);
 
+  useEffect(() => {
+    const gameTitleId = gameId as string
+    if (gameTitleId) {
+      console.log(gameTitleId, "QUERY")
+      dispatch(fetchGameTitle(gameTitleId, user.token))
+    }
+  }, [router.query])
+
+
   // #region Submit Handlers
-  const handleGameSubmit = (e: any) => {
+  const handleGameSubmit = async (e: any) => {
     e.preventDefault()
     setGetPageProgress((old) => {
       const pageList = [...old]
@@ -40,16 +53,29 @@ export default function CreateGameTitleInfo() {
       setCurrentTab(nextPageNumber)
     }
     if (getCurrentPageState == 3 && user) {
+      let gameTitleId = gameId as string
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
-      dispatch(createGameTitle({
-        ...gameTitle,
-        gameFileLink: "https://github.com/NorVirae/Idemili.git",
-        saleType: "fixed",
-        genre: [...gameTitle.genre, "all"],
-      }, user.token))
-    } else {
+      if (gameId) {
+        await dispatch(updateGameTitle({
+          ...gameTitle,
+          gameFileLink: "https://github.com/NorVirae/Idemili.git",
+          saleType: "fixed",
+          genre: [...gameTitle.genre, "all"],
+        }, gameTitleId, user.token))
+      } else {
 
+        await dispatch(createGameTitle({
+          ...gameTitle,
+          gameFileLink: "https://github.com/NorVirae/Idemili.git",
+          saleType: "fixed",
+          genre: [...gameTitle.genre, "all"],
+        }, user.token))
+      }
+
+
+      router.push("/user/manage-games")
+    } else {
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
     }
@@ -58,11 +84,7 @@ export default function CreateGameTitleInfo() {
 
   const handlePrevious = () => {
     let prevPageNumber = getCurrentPageState - 1 >= 0 ? getCurrentPageState - 1 : getCurrentPageState
-
     setCurrentPageState(prevPageNumber)
-
-
-
     setCurrentTab(prevPageNumber)
   }
   // #endregion Handlers
@@ -73,8 +95,8 @@ export default function CreateGameTitleInfo() {
     { id: 1, pageText: "Pricing & Plans", percentage: 60, isDone: false },
     { id: 2, pageText: "Upload Project Files", percentage: 90, isDone: false },
     { id: 3, pageText: "Summary & Publish", percentage: 100, isDone: false },
-
   ])
+
   const [getCurrentPageState, setCurrentPageState] = useState(0)
   return (
     <>

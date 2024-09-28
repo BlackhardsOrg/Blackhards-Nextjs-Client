@@ -32,6 +32,7 @@ export default function ManageGameInfo() {
   useEffect(() => {
     console.log(data, "DATA", user.email)
   }, [data])
+  
   return (
     <>
       <div className="dashboard__content hover-bgc-color">

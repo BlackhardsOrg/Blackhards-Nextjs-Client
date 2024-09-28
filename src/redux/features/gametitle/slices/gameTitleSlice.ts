@@ -98,6 +98,7 @@ const gameTitleSlice = createSlice({
       state.loading.gameTitleCreate = false;
       state.gameTitle = action.payload;
     },
+
     gameTitleCreateFailure: (state, action: PayloadAction<any>) => {
       state.loading.gameTitleCreate = false;
       state.error = action.payload;

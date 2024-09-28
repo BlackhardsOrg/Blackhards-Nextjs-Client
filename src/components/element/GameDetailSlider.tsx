@@ -61,7 +61,7 @@ export default function GameDetailSlider({ gigImages, videoUrl }: { gigImages: s
                     <div className="row align-items-center ">
                       <div className="col-lg-5 col-xl-5 w-100">
                         <div className="position-relative "></div>
-                        <img src={item} alt="gallery" className="w-100 rounded" />
+                        <img src={item} alt="gallery" className="w-100 rounded" style={{height: "70vh", objectFit: "cover"}} />
                         {i == 0 && <div
                           className="video-button-home11 at-home13 popup-iframe popup-youtube"
                           onClick={() => settoggler((pre) => !pre)}

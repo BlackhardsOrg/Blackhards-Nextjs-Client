@@ -217,7 +217,7 @@ export interface IPopularGameSlideCard {
   data: IGameTitleGQL;
   style?: string;
   isContentExpanded?: boolean;
-  profileImageURL: string;
+  profileImageURL?: string;
 }
 export interface IBasicInformation {
   id: number;
