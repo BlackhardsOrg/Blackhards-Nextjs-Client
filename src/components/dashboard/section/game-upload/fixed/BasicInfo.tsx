@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTitleSlice";
 import PublishNavBtnGroup from "./PublishNavBtnGroup";
 import BasicInfoForm from "./BasicInfoForm";
+import { toast } from "react-toastify";
 
 const genreData = [
 
@@ -167,6 +168,13 @@ export default function BasicInfo({
 
   }
 
+  const handleAuctionInputFormChange = (e: any) => {
+    // setGameTitle((old) => {
+    //   return { ...old, [e.target.name]: e.target.value }
+    // })
+    dispatch(gameTitleCreateSuccess({ ...gameTitle, auction: { ...gameTitle.auction, [e.target.name]: e.target.value } }))
+  }
+
   // #endregion Form Handlers
 
 
@@ -250,6 +258,7 @@ export default function BasicInfo({
         <div className="col-xl-8">
           <BasicInfoForm
             handleInputFormChange={handleInputFormChange}
+            handleAuctionInputFormChange={handleAuctionInputFormChange}
             selectedTags={selectedTags}
             setSelectedTags={setSelectedTags}
             getGenre={getGenre}

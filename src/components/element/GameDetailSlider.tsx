@@ -9,10 +9,12 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import FsLightbox from "fslightbox-react";
 import { FaPlay } from "react-icons/fa";
+import { IAuctionGQL } from "@/types";
+import Countdown from "../section/Countdown";
 
 
 
-export default function GameDetailSlider({ gigImages, videoUrl }: { gigImages: string[], videoUrl: string }) {
+export default function GameDetailSlider({ gigImages, videoUrl, auctionData }: { gigImages: string[], videoUrl: string, auctionData: IAuctionGQL }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [selected, setSelected] = useState(0)
   const [toggler, settoggler] = useState(false);
@@ -22,6 +24,18 @@ export default function GameDetailSlider({ gigImages, videoUrl }: { gigImages: s
   return (
     <>
       <div className="scrollbalance-inner">
+        {auctionData && <div className="col-sm-6 col-md-6">
+          <div className="iconbox-style1 contact-style d-flex align-items-start mb30">
+            <div className="icon flex-shrink-0">
+              <span className="flaticon-calendar" />
+            </div>
+            <div className="details">
+              {/* <h3 className="title">01:02:11</h3> */}
+              <Countdown targetDateStr={auctionData.endTime} />
+              <p className="mb-0 text">Auction Deadline</p>
+            </div>
+          </div>
+        </div>}
 
         <div className="service-single-sldier vam_nav_style slider-1-grid owl-carousel owl-theme mb60 owl-loaded owl-drag ">
           <div className="thumb">
@@ -61,7 +75,7 @@ export default function GameDetailSlider({ gigImages, videoUrl }: { gigImages: s
                     <div className="row align-items-center ">
                       <div className="col-lg-5 col-xl-5 w-100">
                         <div className="position-relative "></div>
-                        <img src={item} alt="gallery" className="w-100 rounded" style={{height: "70vh", objectFit: "cover"}} />
+                        <img src={item} alt="gallery" className="w-100 rounded" style={{ height: "70vh", objectFit: "cover" }} />
                         {i == 0 && <div
                           className="video-button-home11 at-home13 popup-iframe popup-youtube"
                           onClick={() => settoggler((pre) => !pre)}

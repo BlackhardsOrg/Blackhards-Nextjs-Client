@@ -7,14 +7,16 @@ import DeleteModal from "../modal/DeleteModal";
 import Link from "next/link";
 import { links } from "@/data/links";
 import { useQuery } from "@apollo/client";
-import { IGameTitleGQL } from "@/types";
-import { USER_GAME_TITLES } from "@/graphql";
+import { IGameTitleGQL, IUserAuction } from "@/types";
+import { USER_AUCTIONS, USER_GAME_TITLES } from "@/graphql";
 import { useAppSelector } from "@/redux/app/hooks";
 import NoGamePublished from "./NoGamePublished";
+import ManageAuctionCard from "../card/ManageAuctionCard";
+import ManageAuctionProjectCard from "../card/ManageAuctionProjectCard";
 
 const tab = [
   "Games",
-
+  "Auctions"
 ];
 
 export default function ManageGameInfo() {
@@ -23,16 +25,25 @@ export default function ManageGameInfo() {
   const { data, loading, error } = useQuery<{ userGameTitles: [IGameTitleGQL] }>(USER_GAME_TITLES, {
     variables: {
       skip: 0,
-      take: 2,
-      developerEmail: user.email,
+      take: 10,
+      developerEmail: user ? user.email : "",
+      genre: "all"
+    }
+  });
+
+  const { data: userAuctions, loading: auctionLoad } = useQuery<{ userAuctions: [IUserAuction] }>(USER_AUCTIONS, {
+    variables: {
+      skip: 0,
+      take: 10,
+      developerEmail: user ? user.email : "",
       genre: "all"
     }
   });
 
   useEffect(() => {
-    console.log(data, "DATA", user.email)
-  }, [data])
-  
+    console.log(userAuctions, "USER AUCTIONS")
+  }, [data, userAuctions])
+
   return (
     <>
       <div className="dashboard__content hover-bgc-color">
@@ -42,8 +53,8 @@ export default function ManageGameInfo() {
           </div>
           <div className="col-lg-9">
             <div className="dashboard_title_area">
-              <h2>Manage Games</h2>
-              <p className="text">All the Games you built.</p>
+              <h2>Manage Projects</h2>
+              <p className="text">All the Projects you built.</p>
             </div>
           </div>
           <div className="col-lg-3">
@@ -93,11 +104,34 @@ export default function ManageGameInfo() {
                             data.userGameTitles.map((item, i) => {
                               return (
                                 <ManageProjectCard gametitle={item} key={i} />
-
                               )
                             }) : null
                         }
+                      </tbody>
+                    </table>
 
+                  </div>
+                )}
+
+                {selectedTab === 1 && (
+                  <div className="packages_table table-responsive">
+                    <table className="table-style3 table at-savesearch">
+                      <thead className="t-head">
+                        <tr>
+                          <th scope="col">Title</th>
+                          <th scope="col">Genre</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="t-body">
+                        {
+                          userAuctions && userAuctions.userAuctions ?
+                          userAuctions.userAuctions.map((item, i) => {
+                              return (
+                                <ManageAuctionProjectCard auction={item} key={i} />
+                              )
+                            }) : null
+                        }
                       </tbody>
                     </table>
 

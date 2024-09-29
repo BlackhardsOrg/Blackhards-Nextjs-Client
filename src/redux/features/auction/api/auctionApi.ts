@@ -1,17 +1,13 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Bounce, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import {
   auctionCreateFailure,
   auctionCreateStart,
-  auctionCreateSuccess
+  auctionCreateSuccess,
 } from "../slices/auctionSlice";
 
-import {
-  IAuction,
-  IGameTitle,
-  IUser,
-} from "@/types";
+import { IAuction, IUser } from "@/types";
 
 // const API_URL = "http://localhost:8080";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -30,7 +26,7 @@ export function startAuction(auctionData: IAuction, token: string) {
       const user: IUser = response.data;
       toast("🦄 Auction Started Successful!");
       dispatch(auctionCreateSuccess(null));
-      return user
+      return user;
     } catch (error: any) {
       dispatch(auctionCreateFailure(error));
 
@@ -48,3 +44,90 @@ export function startAuction(auctionData: IAuction, token: string) {
     }
   };
 }
+
+export function PlaceBidOnAuction(
+  bidAmountToPlace: number,
+  auctionId: string,
+  token: string
+) {
+  return async (dispatch: Dispatch) => {
+    try {
+      // Make an HTTP GET request to the API
+      const response = await axios.post(
+        `${API_URL}/auctions/placebid`,
+        { auctionId, bidAmountToPlace },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const auctionBid: IUser = response.data;
+      toast("🦄 Bid Placed Successful!");
+      return auctionBid;
+    } catch (error: any) {
+      console.error("Bidding failed!:", error);
+      // const axiosError = error as AxiosError;
+      if (error.response) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+      }
+      toast(error.message, {
+        type: "error",
+      });
+      return error.message;
+    }
+  };
+}
+
+export function resultAuction(
+  bidAmountToPlace: number,
+  auctionId: string,
+  token: string
+) {
+  return async (dispatch: Dispatch) => {
+    try {
+      // Make an HTTP GET request to the API
+      const response = await axios.post(
+        `${API_URL}/auctions/placebid`,
+        { auctionId, bidAmountToPlace },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const auctionBid: IUser = response.data;
+      toast("🦄 Bid Placed Successful!");
+      return auctionBid;
+    } catch (error: any) {
+      console.error("Bidding failed!:", error);
+      // const axiosError = error as AxiosError;
+      if (error.response) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+      }
+      toast(error.message, {
+        type: "error",
+      });
+      return error.message;
+    }
+  };
+}
+
+export const fetchMinimumBid = async (auctionId: string) => {
+  try {
+    const response = await axios.post(`${API_URL}/auctions/minimumbid/bid`, {
+      auctionId,
+    });
+    return response.data
+  } catch (error: any) {
+    console.error("Bidding failed!:", error);
+    // const axiosError = error as AxiosError;
+    if (error.response) {
+      toast(error.response.data.message, {
+        type: "error",
+      });
+    }
+    toast(error.message, {
+      type: "error",
+    });
+    return error.message;
+  }
+};

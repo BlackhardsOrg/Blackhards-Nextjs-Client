@@ -1,23 +1,69 @@
+import { SINGLE_GAME_TITLE } from "@/graphql";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { fetchMinimumBid, PlaceBidOnAuction } from "@/redux/features/auction/api/auctionApi";
+import { IGameTitleGQL } from "@/types";
+import { formatPriceToDollars } from "@/utils/priceFormatter";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { use, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import FLyLoad from "../loading/FLyLoad";
 
 export default function PlaceBidModal() {
   const navigate = useRouter().push;
+  const dispatch = useAppDispatch()
+  const [bidAmount, setBidAmount] = useState(0)
+  const [minimumBid, setMinimumBid] = useState(0)
+  const user = useAppSelector(state => state.auth.user)
+  const [getLoading, setLoading] = useState(false)
 
-  // useEffect(() => {
-  //   // Ensure Bootstrap's JS is loaded
-  //   if (typeof window !== 'undefined' && window.bootstrap) {
-  //     const myModal = new window.bootstrap.Modal(document.getElementById('placeBidModalToggle'), {
-  //       keyboard: true
-  //     });
 
-  //     // To open the modal programmatically
-  //     myModal.show();
 
-  //     // To close the modal programmatically
-  //     // myModal.hide();
-  //   }
-  // }, []);
+  const router = useRouter()
+  const { id } = router.query
+
+  // const data = product1.find((item: any) => item.id == id);
+  const { data, loading, error } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
+    variables: {
+      id
+    }
+  });
+
+  const fetchUpMinimumBid = async (auctionId) => {
+    const data = await fetchMinimumBid(auctionId)
+    if (data && data.success) {
+      setMinimumBid(data.data)
+      setBidAmount(data.data)
+    }
+    toast(data)
+    console.log(data, "CHECK DATA")
+  }
+
+  useEffect(() => {
+    //fetch minimumBid
+    if (data?.gameTitle && data?.gameTitle.auctionId)
+      fetchUpMinimumBid(data.gameTitle.auctionId)
+  }, [data?.gameTitle.auctionId])
+
+  const handlePlaceBid = async (e) => {
+    setLoading(true)
+    if (bidAmount < minimumBid) {
+      toast("Bid Amount must Exceed Minimum Bid!")
+      setLoading(false)
+
+      return
+    }
+    if (data?.gameTitle.auctionId)
+      await dispatch(PlaceBidOnAuction(bidAmount, data?.gameTitle.auctionId, user.token))
+    setLoading(false)
+
+  }
+
+  const handleBidAmountChange = (e) => {
+    setBidAmount(e.target.value)
+  }
+
   return (
     <>
       <div className="search-modal">
@@ -41,14 +87,16 @@ export default function PlaceBidModal() {
                 </button>
               </div>
               <div className="modal-body d-flex flex-column gap-3 bg-white rounded ">
-                <h3>Bid</h3>
+                <h3>Place a Bid</h3>
 
-
+                <small>Min Bid: {formatPriceToDollars(minimumBid)}</small>
                 <div className="popup-search-field search_area">
                   <input
                     type="number"
+                    value={bidAmount}
                     className="form-control border-0"
                     placeholder="Bid Amount"
+                    onChange={handleBidAmountChange}
                   />
                   <label>
                     <span className="fa fa-gavel" />
@@ -56,11 +104,11 @@ export default function PlaceBidModal() {
 
                 </div>
                 <button
-                  onClick={() => navigate("/service-1")}
+                  onClick={handlePlaceBid}
                   className="ud-btn btn-thm"
                   type="submit"
                 >
-                  Place Bid
+                  {getLoading ? <FLyLoad /> : "Place Bid"}
                 </button>
               </div>
             </div>

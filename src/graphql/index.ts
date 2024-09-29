@@ -17,12 +17,18 @@ export const USER_GAME_TITLES = gql`
       _id
       genre
       gameRating
+      saleType
       updatedAt
       createdAt
       isOnSale
       gamePlays
       isApproved
       isOnSale
+      auction {
+        reservedPrice
+        startTime
+        endTime
+      }
       gamePlays
       gamePlayScreenShots
       developer {
@@ -68,6 +74,12 @@ export const ALL_GAME_TITLES = gql`
       isApproved
       isOnSale
       gamePlays
+      auctionId
+      auctionData {
+        reservedPrice
+        endTime
+        startTime
+      }
       gamePlayScreenShots
       developer {
         studioName
@@ -143,6 +155,12 @@ export const SINGLE_GAME_TITLE = gql`
       gameFileLink
       gamePlayVideo
       targetPlatform
+      auctionId
+      auctionData {
+        reservedPrice
+        endTime
+        startTime
+      }
       gameRating
       genre
       isApproved
@@ -193,6 +211,31 @@ export const SINGLE_GAME_TITLE = gql`
   }
 `;
 
+export const HIHGEST_BIDDER = gql`
+  query highestBidder($auctionId: String!) {
+    highestBidder(auctionId: $auctionId) {
+      sellerEmail
+      bidderEmail
+      bid
+      auctionId
+    }
+  }
+`;
+
+export const BID_HISTORIES = gql`
+  query bids($auctionId: String!) {
+    bids(auctionId: $auctionId) {
+      bidder {
+        studioName
+        email
+        profileImageURL
+      }
+      bid
+      updatedAt
+    }
+  }
+`;
+
 export const AUCTIONS = gql`
   query fetchAuctions {
     auctions {
@@ -212,6 +255,31 @@ export const AUCTIONS = gql`
     }
   }
 `;
+
+export const USER_AUCTIONS = gql`
+  query userAuctions($developerEmail: String!) {
+    userAuctions(developerEmail: $developerEmail) {
+      _id
+      id
+      gametitle {
+        _id
+        gamePlayScreenShots
+        title
+        description
+        tags
+        isOnSale
+        gamePlays
+        genre
+      }
+      reservedPrice
+      endTime
+      startTime
+      started
+      updatedAt
+    }
+  }
+`;
+
 export const SINGLE_AUCTION = gql`
   query auction($id: String!) {
     auction(id: $id) {

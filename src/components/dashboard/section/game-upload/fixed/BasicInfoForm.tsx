@@ -11,6 +11,7 @@ import { capitalize } from "@/utils"
 
 const BasicInfoForm = ({
     handleInputFormChange,
+    handleAuctionInputFormChange,
     selectedTags,
     setSelectedTags,
     getGenre,
@@ -72,6 +73,41 @@ const BasicInfoForm = ({
                                 value="tool"
                                 onClick={(e: any) => {
                                     dispatch(updateGameUploadType("tool"))
+                                }} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-sm-12">
+
+                    <div className="mb20">
+                        <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
+                            <span>
+                                Sale Type
+                            </span>
+                            <Tooltip anchorSelect="#sale" className="ui-tooltip" place="top">
+                                You can choose to <b>Auction</b> you game code once, or have recurrent sale by selecting <b>Fixed</b>
+                            </Tooltip>
+                            <button id="sale" type={"button"} className="fas fa-info-circle text-info cursor-pointer border-none" />
+                        </label>
+                        <div className="d-flex gap-3 align-items-center">
+                            <GameUploadRadio
+                                i={1}
+                                name="sale"
+                                checked={gameTitle && gameTitle.saleType === "fixed" ? true : false}
+                                text="Fixed Sale"
+                                value={"fixed"}
+                                onClick={(e: any) => {
+                                    dispatch(gameTitleCreateSuccess({ ...gameTitle, saleType: "fixed" }))
+                                }} />
+                            <GameUploadRadio
+                                i={2}
+                                name="sale"
+                                checked={gameTitle && gameTitle.saleType === "auction" ? true : false}
+                                text="Auction Sale"
+                                value={"auction"}
+                                onClick={(e: any) => {
+                                    dispatch(gameTitleCreateSuccess({ ...gameTitle, saleType: "auction" }))
                                 }} />
                         </div>
                     </div>
@@ -159,7 +195,7 @@ const BasicInfoForm = ({
                     </div>
                 </div>
 
-                {gameTitleUploadType == "title" && <div className="col-sm-12">
+                {gameTitleUploadType == "title" && gameTitle && gameTitle.saleType == "fixed" && <div className="col-sm-12">
                     <div className="mb20">
                         <label className="heading-color ff-heading fw500 mb10">
                             Release Date
@@ -171,6 +207,38 @@ const BasicInfoForm = ({
                             type="date"
                             className="form-control"
                             placeholder="Your Email or Company Email"
+                        />
+
+                    </div>
+                </div>}
+
+                {gameTitle&& gameTitle.saleType == "auction" && <div className="col-sm-12">
+                    <div className="mb20">
+                        <label className="heading-color ff-heading fw500 mb10">
+                            Auction Start Date
+                        </label>
+                        <input
+                            onChange={handleAuctionInputFormChange}
+                            value={gameTitle && gameTitle.auction ? gameTitle.auction.startTime : ""}
+                            name="startTime"
+                            type="date"
+                            className="form-control"
+                        />
+
+                    </div>
+                </div>}
+
+                {gameTitle&& gameTitle.saleType == "auction" && <div className="col-sm-12">
+                    <div className="mb20">
+                        <label className="heading-color ff-heading fw500 mb10">
+                            Auction End Date
+                        </label>
+                        <input
+                            onChange={handleAuctionInputFormChange}
+                            value={gameTitle && gameTitle.auction ? gameTitle.auction.endTime : ""}
+                            name="endTime"
+                            type="date"
+                            className="form-control"
                         />
 
                     </div>

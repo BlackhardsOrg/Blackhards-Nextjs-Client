@@ -8,6 +8,17 @@ export interface IUser {
   profileImageURL: string;
 }
 
+export interface IBidHistory {
+  bidder: {
+      studioName: string
+      email: string
+      profileImageURL: string
+  }
+  bid: number
+  updatedAt: string
+}
+
+
 export interface ICredentials {
   email: string;
   password: string;
@@ -107,36 +118,19 @@ export interface IGameTitle {
   isCustomizationEnabled?: boolean;
   customizationCharge?: number;
   plans?: IPlans;
+  auctionId?: string;
+  auctionData?: IAuctionGQL;
   isAIAllowedPricing: boolean;
   updatedAt?: string;
   createdAt?: string;
+  auction?: IAuction;
 }
 
 export interface IAuction {
-  _id?: string;
-  developerEmail: string;
-  gameFileLink: string;
-  title: string;
-  description: string;
-  gamePlayScreenShots: string[];
-  gamePlayVideo: string;
-  genre: string[];
-  tags: string[];
-  targetPlatform: string[];
-  saleType: string;
-  releaseDate: string;
-  legal: string;
-  ageRating: string;
-  developerId: string;
-  gameRating: number;
-  gamePlays: number;
-  isCustomizationEnabled?: boolean;
-  customizationCharge?: number;
-
   gameTitleId?: string;
-  endTime: string;
-  reservedPrice: number;
-  startTime: string;
+  endTime?: string;
+  reservedPrice?: number;
+  startTime?: string;
 }
 
 export interface IHighestBidder {
@@ -147,6 +141,27 @@ export interface IHighestBidder {
   confirmed: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface IUserAuction {
+  _id: string;
+  id: string;
+  gametitle: {
+    _id: string;
+    gamePlayScreenShots: string[];
+    title: string;
+    description: string;
+    tags: string[];
+    isOnSale: boolean;
+    gamePlays: number;
+    genre: string[];
+  };
+
+  reservedPrice: number;
+  endTime: string;
+  startTime: string;
+  started: boolean;
+  updatedAt: string;
 }
 
 // export interface IPopularGameSlideCard {
@@ -162,6 +177,7 @@ export interface IGameTitleGQL extends IGameTitle {
 export interface IAuctionGQL extends IAuction {
   id: string;
   gametitle: IGameTitle;
+  reservedPrice: number;
   updatedAt: string;
   developer: {
     studioName: string;

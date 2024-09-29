@@ -14,12 +14,20 @@ import { IPopularGameSlideCard } from "@/types";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import { addItemToCart } from "@/redux/features/cart/slice/cartSlice";
 import StarRatingCardDisplay from "../dropdown/StarRatingCardDisplay";
+import Countdown from "../section/Countdown";
+import GeneralCountdown from "../section/GeneralCountdown";
+import { HIHGEST_BIDDER } from "@/graphql";
+import { useQuery } from "@apollo/client";
+import { formatPriceToDollars } from "@/utils/priceFormatter";
 
 export default function PopularGameSlideCard({
   data,
   style = "",
   isContentExpanded,
 }: IPopularGameSlideCard) {
+
+  const { data: highestBid, loading, error } = useQuery<{ highestBidder: { bid: number } }>(HIHGEST_BIDDER, { variables: { auctionId: data.auctionId } })
+
   const [isFavActive, setFavActive] = useState(false);
   const { pathname } = useRouter();
 
@@ -130,36 +138,33 @@ export default function PopularGameSlideCard({
           </div>
           <hr className="my-2" />
           <div className="list-meta d-flex justify-content-between align-items-center mt15">
-            <a>
-              <span className="position-relative mr10">
-                <img
-                  className="rounded-circle object-fit-contain"
-                  style={{ width: "30px", height: "30px" }}
-                  src={data.developer.profileImageURL}
-                  alt="Freelancer Photo"
-                />
-                <span className="online-badge" />
-              </span>
-              <span className="fz14">{data.developer.studioName}</span>
-            </a>
             <div className="budget">
               <p className="mb-0 body-color">
-                Market Price
-                <span className="fz17 fw500 dark-color ms-1">
-                  ${data.plans?.basic.price}
-                </span>
+                {data.auctionData ? "Current Bid" : "Market Price"}
+                {!data.auctionData ? <span className="fz17 fw500 dark-color ms-1">
+                  {data.plans && formatPriceToDollars(data.plans.basic.price)}
+                </span> : <small className="fz17 fw500 dark-color ms-1">
+                  {highestBid && highestBid.highestBidder && highestBid.highestBidder.bid > 0 ? formatPriceToDollars(highestBid.highestBidder.bid) : data.auctionData && formatPriceToDollars(data.auctionData.reservedPrice)}
+                </small>}
               </p>
             </div>
           </div>
         </div>
-        <a
+        {!data.auctionData && <a
           onClick={() => addToCartHandler(data)}
           className={`ud-btn ${isAdded ? "btn-thm2" : "btn-light-thm"}`}
         >
-          {isAdded ? "Added to Cart" : "Add to cart"}
-          <i className="fal fa-arrow-right-long" />
-        </a>
-      </div>
+          <>{isAdded ? "Added to Cart" : "Add to cart"}
+            <i className="fal fa-arrow-right-long" /></>
+
+        </a>}
+
+        {data.auctionData && <Link href={`/games/game-preview/${data._id}`}
+          className={`ud-btn ${isAdded ? "btn-thm2" : "btn-light-thm"}`}
+        >
+          <GeneralCountdown targetDateStr={data.auctionData.endTime} />
+        </Link>}
+      </div >
     </>
   );
 }

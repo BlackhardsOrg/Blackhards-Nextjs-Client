@@ -20,6 +20,9 @@ import { useEffect } from "react";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
 import { useAppDispatch } from "@/redux/app/hooks";
 import StarRatingCardDisplay from "../dropdown/StarRatingCardDisplay";
+import AuctionPriceWidget from "../element/AuctionPriceWidget";
+import TopBidCard from "../card/TopBidCard";
+import TopBidsPanel from "./TopBidsPanel";
 
 export default function GameDetail() {
   const isMatchedScreen = useScreen(1216);
@@ -84,7 +87,7 @@ export default function GameDetail() {
                     </div>
                   </div>
 
-                  {data && data.gameTitle ? <GameDetailSlider videoUrl={data.gameTitle.gamePlayVideo} gigImages={data.gameTitle.gamePlayScreenShots} /> : null}
+                  {data && data.gameTitle && data.gameTitle.auctionData ? <GameDetailSlider auctionData={data.gameTitle.auctionData} videoUrl={data.gameTitle.gamePlayVideo} gigImages={data.gameTitle.gamePlayScreenShots} /> : null}
                   <div className="service-about">
                     <h4>About</h4>
                     <p className="text mb30">
@@ -111,8 +114,8 @@ export default function GameDetail() {
                       </div>
                     </div>
                     <hr className="opacity-100 mb60" />
-                    <h4>Compare Packages</h4>
-                    <div className="table-style2 table-responsive bdr1 mt30 mb60">
+                    {!data?.gameTitle.auctionData && <h4>Compare Packages</h4>}
+                    {!data?.gameTitle.auctionData && <div className="table-style2 table-responsive bdr1 mt30 mb60">
                       <table className="table table-borderless mb-0">
                         <thead className="t-head">
                           {data && data.gameTitle && data.gameTitle.plans ?
@@ -221,12 +224,14 @@ export default function GameDetail() {
 
                           </tbody> : null}
                       </table>
-                    </div>
+                    </div>}
 
                     {/* <hr className="opacity-100 mb15" />
                     <GameDetailReviewInfo />
                     <GameDetailComment /> */}
                   </div>
+
+                  {data && data.gameTitle && data.gameTitle.auctionId && <TopBidsPanel auctionId={data.gameTitle.auctionId} />}
                 </div>
               </div>
               <div className="col-lg-4">
@@ -236,7 +241,8 @@ export default function GameDetail() {
                       {({ style }) => (
                         <div className="scrollbalance-inner" style={style}>
                           <div className="blog-sidebar ms-lg-auto">
-                            <GameDetailPrice />
+                            {data?.gameTitle.auctionData && data?.gameTitle.auctionId ? <AuctionPriceWidget gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
+                              <GameDetailPrice />}
                             {/* <GameContactWidget /> */}
                           </div>
                         </div>
@@ -245,7 +251,8 @@ export default function GameDetail() {
                   ) : (
                     <div className="scrollbalance-inner">
                       <div className="blog-sidebar ms-lg-auto">
-                        <GameDetailPrice />
+                        {data?.gameTitle.auctionData && data?.gameTitle.auctionId ? <AuctionPriceWidget gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
+                          <GameDetailPrice />}
                         {/* <GameContactWidget /> */}
                       </div>
                     </div>

@@ -31,6 +31,9 @@ export default function PricingAndPlans
 
     const isOfferingPackagedPlans = useAppSelector(state => state.gametitle.isOfferingPackagedPlans)
     const [getIsOfferingPackagedPlans, setIsOfferingPackagedPlans] = useState<string>(isOfferingPackagedPlans ? isOfferingPackagedPlans : "yes")
+    const dispatch = useAppDispatch()
+
+    const [saleType, setSaleType] = useState(gameTitle && gameTitle.saleType ? gameTitle.saleType : null)
 
 
     useEffect(() => {
@@ -44,15 +47,12 @@ export default function PricingAndPlans
 
     }, [gameTitleUploadTypeParam, isOfferingPackagedPlans])
 
-    const dispatch = useAppDispatch()
+    useEffect(() => {
+        if (gameTitle && gameTitle.saleType == "auction") {
+            dispatch(updateIsPackagedPlansEnabled("no"))
+        }
+    }, [saleType, dispatch])
 
-
-
-    // #region Form Handlers
-    const handleInputFormChange = (e: any) => {
-        dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: e.target.value }))
-
-    }
 
     const handleFormattedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value;
@@ -66,6 +66,19 @@ export default function PricingAndPlans
         dispatch(gameTitleCreateSuccess({ ...gameTitle, price: Number(value) }))
 
 
+    };
+
+
+    const handleAuctionFormattedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let value = e.target.value;
+
+        // Remove leading zeros unless it is '0' before a decimal point
+        if (value.startsWith('0') && value.length > 1 && value[1] !== '.') {
+            value = value.replace(/^0+/, '');
+        }
+
+        e = { ...e, target: { ...e.target, value } }
+        dispatch(gameTitleCreateSuccess({ ...gameTitle, auction: { ...gameTitle.auction, reservedPrice: Number(value) } }))
     };
 
     // #endregion Form Handlers
@@ -110,7 +123,7 @@ export default function PricingAndPlans
                                 <div className="mb20">
                                     <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
                                         <span>
-                                            Allow AI dynamically price your game {gameTitleUploadType ? gameTitleUploadType : ""}
+                                            Allow AI dynamically price your {gameTitle && gameTitle.saleType === "auction" ? "Auction" : `game ${gameTitleUploadType ? gameTitleUploadType : ""}`}
                                         </span>
                                         <Tooltip anchorSelect="#ai" className="ui-tooltip" place="top">
                                             If your game {gameTitleUploadType ? gameTitleUploadType : ""} project&apos;s price aligns with market trends based on our AI predictions, you are more likely to achieve a faster turnover.
@@ -136,8 +149,6 @@ export default function PricingAndPlans
                                             text="No"
                                             value="no"
                                             onClick={(e: any) => {
-
-
                                                 dispatch(gameTitleCreateSuccess({
                                                     ...gameTitle, isAIAllowedPricing: false
                                                 }))
@@ -147,7 +158,7 @@ export default function PricingAndPlans
 
                                 </div>
                             </div>
-                            {!isOfferingPackagedPlans && <div className="col-sm-12 d-flex">
+                            {isOfferingPackagedPlans == "no" && gameTitle && gameTitle.saleType == "fixed" && <div className="col-sm-12 d-flex">
                                 <div className="mb20 ">
                                     <label className="heading-color ff-heading fw500 mb10">
                                         Game {gameTitleUploadType ? capitalize(gameTitleUploadType) : ""} Price
@@ -164,8 +175,24 @@ export default function PricingAndPlans
                                 <span>{formatPriceToDollars(gameTitle && gameTitle.price ? Number(gameTitle.price) : 0)}</span>
                             </div>}
 
-                            <div className="col-sm-12">
+                            {gameTitle && gameTitle.saleType == "auction" && <div className="col-sm-12 d-flex">
+                                <div className="mb20 ">
+                                    <label className="heading-color ff-heading fw500 mb10">
+                                        Auction Reserved Price
+                                    </label>
+                                    <input
+                                        onChange={handleAuctionFormattedChange}
+                                        value={gameTitle && gameTitle.auction ? gameTitle.auction.reservedPrice : 0}
+                                        name="price"
+                                        type="number"
+                                        className="form-control"
+                                        placeholder="Reserved Price"
+                                    />
+                                </div>
+                                <span>{gameTitle && gameTitle.auction && gameTitle.auction.reservedPrice && formatPriceToDollars(gameTitle.auction.reservedPrice)}</span>
+                            </div>}
 
+                            {gameTitle && gameTitle.saleType == "fixed" && <div className="col-sm-12">
                                 <div className="mb20">
                                     <label className="heading-color ff-heading fw500 mb10 d-flex gap-1">
                                         <span>
@@ -199,7 +226,7 @@ export default function PricingAndPlans
                                     </div>
 
                                 </div>
-                            </div>
+                            </div>}
 
 
                             {/* Package Plans */}

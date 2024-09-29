@@ -85,7 +85,7 @@ export function updateGameTitle(gameTitleData: IGameTitle, gameTitleId: string, 
 }
 
 
-export function deleteGameTitle(gameTitleData: IGameTitle, gameTitleId: string, token: string) {
+export function deleteGameTitle( gameTitleId: string, token: string) {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(gameTitleCreateStart());
