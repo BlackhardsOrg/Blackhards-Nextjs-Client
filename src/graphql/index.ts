@@ -217,6 +217,7 @@ export const HIHGEST_BIDDER = gql`
       sellerEmail
       bidderEmail
       bid
+  
       auctionId
     }
   }

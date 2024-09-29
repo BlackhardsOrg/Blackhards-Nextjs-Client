@@ -79,7 +79,7 @@ export function PlaceBidOnAuction(
 }
 
 export function resultAuction(
-  bidAmountToPlace: number,
+  resulterEmail: string,
   auctionId: string,
   token: string
 ) {
@@ -87,16 +87,16 @@ export function resultAuction(
     try {
       // Make an HTTP GET request to the API
       const response = await axios.post(
-        `${API_URL}/auctions/placebid`,
-        { auctionId, bidAmountToPlace },
+        `${API_URL}/auctions/result`,
+        { auctionId, resulterEmail },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       const auctionBid: IUser = response.data;
-      toast("🦄 Bid Placed Successful!");
+      toast("🦄 Auction Resulted Successfully!");
       return auctionBid;
     } catch (error: any) {
-      console.error("Bidding failed!:", error);
+      console.error("Resultance Failed!:", error);
       // const axiosError = error as AxiosError;
       if (error.response) {
         toast(error.response.data.message, {
@@ -116,7 +116,7 @@ export const fetchMinimumBid = async (auctionId: string) => {
     const response = await axios.post(`${API_URL}/auctions/minimumbid/bid`, {
       auctionId,
     });
-    return response.data
+    return response.data;
   } catch (error: any) {
     console.error("Bidding failed!:", error);
     // const axiosError = error as AxiosError;

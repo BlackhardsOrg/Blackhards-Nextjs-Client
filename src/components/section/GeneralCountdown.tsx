@@ -15,7 +15,7 @@ const GeneralCountdown: React.FC<CountdownProps> = ({ targetDateStr }) => {
       const timeLeft = targetDate - now;
 
       if (timeLeft <= 0) {
-        setTimeLeft('Countdown completed!');
+        setTimeLeft('Auction Ended!');
         return;
       }
 
