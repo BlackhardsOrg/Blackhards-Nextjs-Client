@@ -5,27 +5,50 @@ import { startAuction } from "@/redux/features/auction/api/auctionApi";
 import { IGameTitleGQL } from "@/types";
 import { timeAgo } from "@/utils";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
+import { useBidTrackerContract } from "@/web3/connection/bidTrackerConnect";
+import { useMarketContract } from "@/web3/connection/marketplaceConnect";
 import { useQuery } from "@apollo/client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
 
 export default function ManageProjectCard({ gametitle }: { gametitle?: IGameTitleGQL }) {
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const user = useAppSelector(state => state.auth.user)
+  // const { startAuction: startBlockchainAuction } = useMarketContract()
+  const { setAuctionSellerWallet } = useBidTrackerContract()
 
   const handleStartAuction = async () => {
-    setLoading(true)
-    await dispatch(startAuction({
-      endTime: gametitle?.auction?.endTime,
-      startTime: gametitle?.auction?.startTime,
-      reservedPrice: gametitle?.auction?.reservedPrice,
-      gameTitleId: gametitle?._id
-    }, user.token))
+    try {
 
-    setLoading(false)
-    console.log("START AUCION")
+      setLoading(true)
+      if (gametitle && gametitle.auction && gametitle.auction.endTime && gametitle.auction.reservedPrice) {
+        const dateInSeconds = new Date(gametitle.auction.endTime).getTime() / 1000
+        console.log(dateInSeconds, "DAt$")
+        const data = await dispatch(startAuction({
+          endTime: gametitle?.auction?.endTime,
+          startTime: gametitle?.auction?.startTime,
+          reservedPrice: gametitle?.auction?.reservedPrice,
+          gameTitleId: gametitle?._id
+        }, user.token))
+        console.log(data, " DATA ")
+        if (!data.data) throw new Error("Auction start did not return data")
+        await setAuctionSellerWallet(data.data.auctionId)
+
+        setLoading(false)
+      } else {
+        setLoading(false)
+
+      }
+
+    } catch (err) {
+      if (err instanceof Error)
+        toast(err.message)
+      setLoading(false)
+
+    }
   }
   return (
     <>

@@ -10,14 +10,13 @@ export interface IUser {
 
 export interface IBidHistory {
   bidder: {
-      studioName: string
-      email: string
-      profileImageURL: string
-  }
-  bid: number
-  updatedAt: string
+    studioName: string;
+    email: string;
+    profileImageURL: string;
+  };
+  bid: number;
+  updatedAt: string;
 }
-
 
 export interface ICredentials {
   email: string;
@@ -178,6 +177,9 @@ export interface IAuctionGQL extends IAuction {
   id: string;
   gametitle: IGameTitle;
   reservedPrice: number;
+  resulted: boolean;
+  started: boolean;
+  confirmed: boolean;
   updatedAt: string;
   developer: {
     studioName: string;

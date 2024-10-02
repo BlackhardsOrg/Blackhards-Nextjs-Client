@@ -60,7 +60,7 @@ export default function CreateGameTitleInfo() {
         await dispatch(updateGameTitle({
           ...gameTitle,
           gameFileLink: "https://github.com/NorVirae/Idemili.git",
-          genre: [...gameTitle.genre, "all"],
+          genre: [...gameTitle.genre],
         }, gameTitleId, user.token))
       } else {
 

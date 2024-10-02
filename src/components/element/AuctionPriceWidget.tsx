@@ -1,29 +1,60 @@
 import { HIHGEST_BIDDER, SINGLE_AUCTION } from "@/graphql";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { resultAuction } from "@/redux/features/auction/api/auctionApi";
-import { IAuctionGQL } from "@/types";
+import { confirmAuction, resultAuction } from "@/redux/features/auction/api/auctionApi";
+import { IAuctionGQL, IGameTitleGQL } from "@/types";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
-import { useQuery } from "@apollo/client";
+import { ApolloQueryResult, OperationVariables, useQuery } from "@apollo/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import FLyLoad from "../loading/FLyLoad";
+import { useMarketContract } from "@/web3/connection/marketplaceConnect";
+import { toast } from "react-toastify";
+import { useBidTrackerContract } from "@/web3/connection/bidTrackerConnect";
+interface IAuctionPriceWidget {
+  auctionData: IAuctionGQL, gameFileLink: string, gametitleId: string, auctionId: string, refetchGame: () => void
+}
 
-export default function AuctionPriceWidget({ auctionData, gameFileLink, auctionId }: { auctionData: IAuctionGQL, gameFileLink: string, auctionId: string }) {
+export default function AuctionPriceWidget({ auctionData, gameFileLink, auctionId, refetchGame, gametitleId }: IAuctionPriceWidget) {
   const { query } = useRouter()
   const dispatch = useAppDispatch()
-  const [resultLoading, setResultLoading] = useState(false)
+  const [dataLoading, setDataLoading] = useState(false)
+
+  const { FulfillBid } = useBidTrackerContract()
 
   const user = useAppSelector(state => state.auth.user)
   const { data, loading, error } = useQuery<{ highestBidder: { bid: number } }>(HIHGEST_BIDDER, { variables: { auctionId } })
   const handleAuctionResultance = async () => {
-    setResultLoading(true)
-    if (user && auctionId)
-      await dispatch(resultAuction(user.email, auctionId, user.token))
+    try {
+      console.log("called", auctionData, auctionData.gameTitleId, auctionId)
+      setDataLoading(true)
+      if (user && auctionId && auctionData && gametitleId) {
 
-    setResultLoading(false)
+        // const result = await resultBlockchainAuction(auctionId, gametitleId)
+        // console.log(result, "RESULTANCE")
+        const data = await dispatch(resultAuction(user.email, auctionId, user.token))
+      }
+
+      setDataLoading(false)
+    } catch (err) {
+      console.log(err)
+      if (err instanceof Error) {
+        toast(err.message)
+      }
+    }
   }
 
+  const handleAuctionConfirmation = async () => {
+    setDataLoading(true)
+    if (user && auctionId)
+      await dispatch(confirmAuction(auctionId, user.token))
 
+    setDataLoading(false)
+  }
+
+  useEffect(() => {
+    // console.log(auctionData, "AUCTION DATa", dataLoading)
+  }, [auctionData])
   return (
     <>
       {auctionData ? <div className="price-widget pt25 bdrs8">
@@ -48,13 +79,22 @@ export default function AuctionPriceWidget({ auctionData, gameFileLink, auctionI
             <i className="fal fa-arrow-right-long" />
           </Link>}
 
-          {auctionData.endTime && new Date(auctionData.endTime).getTime() < Date.now() && < Link href={"#"}
+          {auctionData.endTime && new Date(auctionData.endTime).getTime() < Date.now() && !auctionData.resulted && < Link href={"#"}
             onClick={handleAuctionResultance}
 
             className="ud-btn btn-thm"
           >
-            Result Auction
-            <i className="fal fa-arrow-right-long" />
+            {dataLoading ? <FLyLoad /> : <> Make Payment
+              <i className="fal fa-arrow-right-long" /></>}
+          </Link>}
+
+          {auctionData.resulted && !auctionData.confirmed && < Link href={"#"}
+            onClick={handleAuctionConfirmation}
+
+            className="ud-btn btn-thm"
+          >
+            {dataLoading ? <FLyLoad /> : <> Confirm Auction
+              <i className="fal fa-arrow-right-long" /></>}
           </Link>}
 
           <Link target="_blank" href={gameFileLink} className="ud-btn btn-btn-white">

@@ -212,7 +212,7 @@ const BasicInfoForm = ({
                     </div>
                 </div>}
 
-                {gameTitle&& gameTitle.saleType == "auction" && <div className="col-sm-12">
+                {gameTitle && gameTitle.saleType == "auction" && <div className="col-sm-12">
                     <div className="mb20">
                         <label className="heading-color ff-heading fw500 mb10">
                             Auction Start Date
@@ -221,14 +221,14 @@ const BasicInfoForm = ({
                             onChange={handleAuctionInputFormChange}
                             value={gameTitle && gameTitle.auction ? gameTitle.auction.startTime : ""}
                             name="startTime"
-                            type="date"
+                            type="datetime-local"
                             className="form-control"
                         />
 
                     </div>
                 </div>}
 
-                {gameTitle&& gameTitle.saleType == "auction" && <div className="col-sm-12">
+                {gameTitle && gameTitle.saleType == "auction" && <div className="col-sm-12">
                     <div className="mb20">
                         <label className="heading-color ff-heading fw500 mb10">
                             Auction End Date
@@ -237,7 +237,7 @@ const BasicInfoForm = ({
                             onChange={handleAuctionInputFormChange}
                             value={gameTitle && gameTitle.auction ? gameTitle.auction.endTime : ""}
                             name="endTime"
-                            type="date"
+                            type="datetime-local"
                             className="form-control"
                         />
 

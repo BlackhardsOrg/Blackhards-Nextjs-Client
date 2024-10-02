@@ -32,11 +32,23 @@ export default function GameDetail() {
 
 
   // const data = product1.find((item: any) => item.id == id);
-  const { data, loading, error } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
+  const { data, loading, error, refetch } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
     variables: {
       id
     }
   });
+
+  const refetchGame = () => {
+    refetch({ id })
+  }
+
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     refetch({ id })
+  //   }, 8000)
+  // })
+
+
 
   return (
     <>
@@ -241,7 +253,7 @@ export default function GameDetail() {
                       {({ style }) => (
                         <div className="scrollbalance-inner" style={style}>
                           <div className="blog-sidebar ms-lg-auto">
-                            {data?.gameTitle.auctionData && data?.gameTitle.auctionId ? <AuctionPriceWidget gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
+                            {data?.gameTitle.auctionData && data?.gameTitle.auctionId && data.gameTitle._id ? <AuctionPriceWidget gametitleId={data.gameTitle._id} refetchGame={refetchGame} gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
                               <GameDetailPrice />}
                             {/* <GameContactWidget /> */}
                           </div>
@@ -251,7 +263,7 @@ export default function GameDetail() {
                   ) : (
                     <div className="scrollbalance-inner">
                       <div className="blog-sidebar ms-lg-auto">
-                        {data?.gameTitle.auctionData && data?.gameTitle.auctionId ? <AuctionPriceWidget gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
+                        {data?.gameTitle.auctionData && data?.gameTitle.auctionId && data.gameTitle._id ? <AuctionPriceWidget gametitleId={data.gameTitle._id} refetchGame={refetchGame} gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
                           <GameDetailPrice />}
                         {/* <GameContactWidget /> */}
                       </div>

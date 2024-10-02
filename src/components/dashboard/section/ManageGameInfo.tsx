@@ -31,7 +31,7 @@ export default function ManageGameInfo() {
     }
   });
 
-  const { data: userAuctions, loading: auctionLoad } = useQuery<{ userAuctions: [IUserAuction] }>(USER_AUCTIONS, {
+  const { data: userAuctions, loading: auctionLoad , refetch} = useQuery<{ userAuctions: [IUserAuction] }>(USER_AUCTIONS, {
     variables: {
       skip: 0,
       take: 10,
@@ -41,8 +41,13 @@ export default function ManageGameInfo() {
   });
 
   useEffect(() => {
-    console.log(userAuctions, "USER AUCTIONS")
-  }, [data, userAuctions])
+    refetch({
+      skip: 0,
+      take: 10,
+      developerEmail: user ? user.email : "",
+      genre: "all"
+    })
+  }, [])
 
   return (
     <>
@@ -126,7 +131,7 @@ export default function ManageGameInfo() {
                       <tbody className="t-body">
                         {
                           userAuctions && userAuctions.userAuctions ?
-                          userAuctions.userAuctions.map((item, i) => {
+                            userAuctions.userAuctions.map((item, i) => {
                               return (
                                 <ManageAuctionProjectCard auction={item} key={i} />
                               )

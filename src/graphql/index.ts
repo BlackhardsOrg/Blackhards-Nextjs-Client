@@ -160,6 +160,9 @@ export const SINGLE_GAME_TITLE = gql`
         reservedPrice
         endTime
         startTime
+        resulted
+        started
+        confirmed
       }
       gameRating
       genre

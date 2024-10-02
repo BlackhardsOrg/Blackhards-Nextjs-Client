@@ -9,6 +9,7 @@ import { use, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import FLyLoad from "../loading/FLyLoad";
+import { usdtContractAddress, useMarketContract } from "@/web3/connection/marketplaceConnect";
 
 export default function PlaceBidModal() {
   const navigate = useRouter().push;
@@ -17,6 +18,7 @@ export default function PlaceBidModal() {
   const [minimumBid, setMinimumBid] = useState(0)
   const user = useAppSelector(state => state.auth.user)
   const [getLoading, setLoading] = useState(false)
+  const { placeBidOnAuction: placeBlockchainBidOnAuction } = useMarketContract()
 
 
 
@@ -24,39 +26,55 @@ export default function PlaceBidModal() {
   const { id } = router.query
 
   // const data = product1.find((item: any) => item.id == id);
-  const { data, loading, error } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
+  const { data, loading, error, refetch } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
     variables: {
       id
     }
   });
 
   const fetchUpMinimumBid = async (auctionId) => {
+    refetch({ id })
     const data = await fetchMinimumBid(auctionId)
     if (data && data.success) {
       setMinimumBid(data.data)
       setBidAmount(data.data)
     }
     toast(data)
-    console.log(data, "CHECK DATA")
   }
 
   useEffect(() => {
     //fetch minimumBid
-    if (data?.gameTitle && data?.gameTitle.auctionId)
+    if (data?.gameTitle && data?.gameTitle.auctionId) {
+
       fetchUpMinimumBid(data.gameTitle.auctionId)
+      console.log(data.gameTitle, "GAMEJSNJSN")
+    }
   }, [data?.gameTitle.auctionId])
 
   const handlePlaceBid = async (e) => {
-    setLoading(true)
-    if (bidAmount < minimumBid) {
-      toast("Bid Amount must Exceed Minimum Bid!")
+    try {
+
+      setLoading(true)
+      if (bidAmount < minimumBid) {
+        toast("Bid Amount must Exceed Minimum Bid!")
+        setLoading(false)
+
+        return
+      }
+      if (data && data.gameTitle && data?.gameTitle.auctionId) {
+        // const result = await placeBlockchainBidOnAuction(data.gameTitle.auctionId, bidAmount, usdtContractAddress)
+        // console.log(result, "ReSUlT BLOCK")
+        await dispatch(PlaceBidOnAuction(bidAmount, data.gameTitle.auctionId, user.token))
+        await refetch({ id })
+
+        setLoading(false)
+      }
+    } catch (err) {
+      console.log(err, "BLOCK CHAIN ERR")
+      if (err instanceof Error) toast(err.message)
       setLoading(false)
 
-      return
     }
-    if (data?.gameTitle.auctionId)
-      await dispatch(PlaceBidOnAuction(bidAmount, data?.gameTitle.auctionId, user.token))
-    setLoading(false)
 
   }
 

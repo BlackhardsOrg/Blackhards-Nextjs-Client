@@ -48,7 +48,7 @@ export function startAuction(auctionData: IAuction, token: string) {
 export function PlaceBidOnAuction(
   bidAmountToPlace: number,
   auctionId: string,
-  token: string
+  token: string,
 ) {
   return async (dispatch: Dispatch) => {
     try {
@@ -97,6 +97,38 @@ export function resultAuction(
       return auctionBid;
     } catch (error: any) {
       console.error("Resultance Failed!:", error);
+      // const axiosError = error as AxiosError;
+      if (error.response) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
+      }
+      toast(error.message, {
+        type: "error",
+      });
+      return error.message;
+    }
+  };
+}
+
+export function confirmAuction(
+  auctionId: string,
+  token: string
+) {
+  return async (dispatch: Dispatch) => {
+    try {
+      // Make an HTTP GET request to the API
+      const response = await axios.post(
+        `${API_URL}/auctions/confirm`,
+        { auctionId },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const auctionBid: IUser = response.data;
+      toast("🦄 Auction Confirmed Successfully!");
+      return auctionBid;
+    } catch (error: any) {
+      console.error("Confirmation Failed!:", error);
       // const axiosError = error as AxiosError;
       if (error.response) {
         toast(error.response.data.message, {

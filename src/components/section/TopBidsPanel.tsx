@@ -7,9 +7,7 @@ import { IBidHistory } from "@/types"
 
 const TopBidsPanel = ({ auctionId }: { auctionId: string }) => {
     const { data, loading, error } = useQuery<{ bids: IBidHistory[] }>(BID_HISTORIES, { variables: { auctionId } })
-    useEffect(() => {
-        console.log(data, "DATASA")
-    }, [data])
+
     return (
         <>
             <h4 className="mb30">Top Bids ({data && data.bids && data.bids.length})</h4>
