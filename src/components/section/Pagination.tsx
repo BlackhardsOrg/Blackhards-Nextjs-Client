@@ -29,7 +29,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   const renderPageNumbers = () => {
-    const pages = [];
+    const pages = [] as any;
     const maxPagesToShow = 5; // You can adjust this number to show more or fewer page buttons
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, currentPage + 2);

@@ -17,7 +17,7 @@ export default function Navigation() {
           : ""
           } `}
       >
-        {navigation.map((item, i) => (
+        {navigation.map((item: any, i) => (
           <li
 
             key={i}

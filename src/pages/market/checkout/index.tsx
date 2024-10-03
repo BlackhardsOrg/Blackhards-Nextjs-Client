@@ -5,13 +5,18 @@ import HeaderInfo1 from "@/components/section/HeaderInfo1";
 import MetaComponent from "@/components/common/MetaComponent";
 import MarketLayouts from "@/components/layouts/MarketLayouts";
 import CheckoutArea from "@/components/section/CheckoutArea";
+import { useAppSelector } from "@/redux/app/hooks";
+import PageFlyLoader from "@/components/loading/PageFlyLoader";
 const metadata = {
   title: "Blackhards - AI Powered Game Project Marketplace | Shop Checkout",
 };
 
 export default function ShopPageCheckout() {
+
+
   return (
     <MarketLayouts>
+
       <MetaComponent meta={metadata} />
       <Breadcumb3 path={["Home", "Checkout"]} />
       <HeaderInfo1

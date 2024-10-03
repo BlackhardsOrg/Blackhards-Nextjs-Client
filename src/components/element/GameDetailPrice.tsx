@@ -95,13 +95,14 @@ export default function GameDetailPrice() {
                     <div className="d-grid gap-3">
                       <Link href={"/market/cart"}
                         onClick={() => {
-                          dispatch(addItemToCart({
-                            id: data.gameTitle._id,
-                            title: data.gameTitle.title,
-                            price: data.gameTitle.plans[item].price,
-                            GamePlayScreenShot: data.gameTitle.gamePlayScreenShots[0],
-                            packageType: item, qty: 1
-                          }))
+                          if (data.gameTitle && data.gameTitle.plans)
+                            dispatch(addItemToCart({
+                              id: data.gameTitle._id,
+                              title: data.gameTitle.title,
+                              price: data.gameTitle.plans[item].price,
+                              GamePlayScreenShot: data.gameTitle.gamePlayScreenShots[0],
+                              packageType: item, qty: 1
+                            }))
                         }}
                         className="ud-btn btn-thm">
                         Buy Now {data.gameTitle.plans && formatPriceToDollars(data.gameTitle.plans[item].price)}
@@ -109,19 +110,20 @@ export default function GameDetailPrice() {
                       </Link>
 
                       <a onClick={() => {
-                        dispatch(addItemToCart({
-                          id: data.gameTitle._id,
-                          title: data.gameTitle.title,
-                          price: data.gameTitle.plans[item].price,
-                          GamePlayScreenShot: data.gameTitle.gamePlayScreenShots[0],
-                          packageType: item, qty: 1
-                        }))
+                        if (data.gameTitle && data.gameTitle.plans)
+                          dispatch(addItemToCart({
+                            id: data.gameTitle._id,
+                            title: data.gameTitle.title,
+                            price: data.gameTitle.plans[item].price,
+                            GamePlayScreenShot: data.gameTitle.gamePlayScreenShots[0],
+                            packageType: item, qty: 1
+                          }))
                       }} className="ud-btn btn-gray">
                         Add to cart
                         <i className="fa fa-shopping-cart" />
                       </a>
 
-                      <Link target="_blank" href={data.gameTitle.gameFileLink} className="ud-btn btn-btn-white">
+                      <Link target="_blank" href={data.gameTitle.demoLink} className="ud-btn btn-btn-white">
                         Play Game Demo
                         <i className="fa fa-gamepad" />
                       </Link>

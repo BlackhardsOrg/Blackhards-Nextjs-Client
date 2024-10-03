@@ -45,6 +45,7 @@ const plans: IPlans = {
 
 const defaultGameTitleData: IGameTitle = {
   developerEmail: "gbgbgbgbgb",
+  demoLink: "",
   gameFileLink: "",
   title: "",
   description: "",
@@ -94,7 +95,7 @@ const gameTitleSlice = createSlice({
     gameTitleCreateStart: (state) => {
       state.loading.gameTitleCreate = true;
     },
-    gameTitleCreateSuccess: (state, action: PayloadAction<IGameTitle | null>) => {
+    gameTitleCreateSuccess: (state, action: PayloadAction<any>) => {
       state.loading.gameTitleCreate = false;
       state.gameTitle = action.payload;
     },

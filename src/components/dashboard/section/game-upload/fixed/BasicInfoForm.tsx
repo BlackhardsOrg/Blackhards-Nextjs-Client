@@ -98,7 +98,6 @@ const BasicInfoForm = ({
                                 text="Fixed Sale"
                                 value={"fixed"}
                                 onClick={(e: any) => {
-                                    if(gameTitle)
                                     dispatch(gameTitleCreateSuccess({ ...gameTitle, saleType: "fixed" }))
                                 }} />
                             <GameUploadRadio
@@ -108,7 +107,6 @@ const BasicInfoForm = ({
                                 text="Auction Sale"
                                 value={"auction"}
                                 onClick={(e: any) => {
-                                    if(gameTitle)
                                     dispatch(gameTitleCreateSuccess({ ...gameTitle, saleType: "auction" }))
                                 }} />
                         </div>
@@ -152,8 +150,8 @@ const BasicInfoForm = ({
                         </label>
                         <input
                             onChange={handleInputFormChange}
-                            value={gameTitle ? gameTitle.gameFileLink : ""}
-                            name="gameFileLink"
+                            value={gameTitle ? gameTitle.demoLink : ""}
+                            name="demoLink"
                             type="text"
                             className="form-control"
                             placeholder={gameTitleUploadType == "title" ? "https://itche.io/my-playable-demo-game-link" : "https://toolkit-runnable-link.app"}

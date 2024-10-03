@@ -80,7 +80,7 @@ export default function SavedInfo() {
                 )}
               </div>
 
-              <Pagination />
+              {/* <Pagination /> */}
             </div>
           </div>
         </div>

@@ -159,7 +159,7 @@ export default function PopularGameSlideCard({
 
         </a>}
 
-        {data.auctionData && <Link href={`/games/game-preview/${data._id}`}
+        {data.auctionData && data.auctionData.endTime && <Link href={`/games/game-preview/${data._id}`}
           className={`ud-btn ${isAdded ? "btn-thm2" : "btn-light-thm"}`}
         >
           <GeneralCountdown targetDateStr={data.auctionData.endTime} />

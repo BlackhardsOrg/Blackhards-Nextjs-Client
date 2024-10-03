@@ -30,7 +30,7 @@ export default function AuctionCard({ data }: { data: IAuctionGQL }) {
               <h5 className="title mb-3">{data.gametitle?.title}</h5>
               <p className="mb-0 fz14 list-inline-item mb5-sm pe-1">
                 <i className="flaticon-place fz16 vam text-thm2 me-1"></i>{" "}
-                {data.gamePlays}
+                {data.gametitle.gamePlays}
               </p>
               <p className="mb-0 fz14 list-inline-item mb5-sm pe-1">
                 <i className="flaticon-30-days fz16 vam text-thm2 me-1 bdrl1 pl15 pl0-xs bdrn-xs"></i>{" "}

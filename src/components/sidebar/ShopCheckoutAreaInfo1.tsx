@@ -16,7 +16,7 @@ interface IShopCheckoutAreaInfo {
 export default function ShopCheckoutAreaInfo1({ handlePlaceOrder, order, setOrder
 
 }: IShopCheckoutAreaInfo) {
-  const checkoutLoad = useAppSelector(state => state.checkout.loading)
+  // const checkoutLoad = useAppSelector(state => state.checkout.loading)
 
   return (
     <>
@@ -27,10 +27,10 @@ export default function ShopCheckoutAreaInfo1({ handlePlaceOrder, order, setOrde
           setOrder={setOrder} />
         <div className="d-grid default-box-shadow2">
           <button onClick={handlePlaceOrder} className="ud-btn btn-thm">
-            {checkoutLoad ? <FLyLoad /> : <>
+            {/* {checkoutLoad ? <FLyLoad /> : <> */}
               <i className="fal fa-arrow-right-long" />
               Place Order
-            </>}
+            {/* </>} */}
           </button>
         </div>
       </div>

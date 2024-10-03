@@ -4,7 +4,7 @@ import { gameTitleCreateSuccess } from "@/redux/features/gametitle/slices/gameTi
 import { IUploadAttachments } from "@/types";
 import { uploadImages, uploadZip } from "@/utils/imageUploader";
 import Link from "next/link";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import FileUploadTablePlans from "./FileUploadTablePlans";
 
@@ -64,6 +64,11 @@ export default function UploadAttachment({ id,
       prevFiles.filter((file: any) => file.name !== fileName)
     );
   };
+  // useEffect(()=> {
+  //   if(gameTitleData){
+  //     setUploadedImageFiles(gameTitleData.gamePlayScreenShots)
+  //   }
+  // }, [gameTitleData])
 
   // content
   let content = uploadedImageFiles.map((item: any, i: any) => (
@@ -103,7 +108,8 @@ export default function UploadAttachment({ id,
     setImageLoading(true)
     const data = await uploadImages(uploadedImageFiles)
     console.log(data, "HAUL")
-    if (data) {
+    if (data && gameTitleData) {
+
       dispatch(gameTitleCreateSuccess({ ...gameTitleData, gamePlayScreenShots: data.map(item => item.url) }))
       toast("File(s) Uploaded successfully!")
     }
@@ -115,7 +121,7 @@ export default function UploadAttachment({ id,
     setGameProjLoading(true)
     const data = await uploadZip(gamefiles)
     console.log(data, "HAUL")
-    if (data) {
+    if (data && gameTitleData) {
       dispatch(gameTitleCreateSuccess({ ...gameTitleData, gamePlayScreenShots: data.map(item => item.url) }))
       toast("File(s) Uploaded successfully!")
     }
@@ -164,11 +170,13 @@ export default function UploadAttachment({ id,
                 <a className="">
                   <input
                     type="text"
+                    value={gameTitleData?.gamePlayVideo}
                     placeholder="http://youtube.com/"
                     // accept="application/pdf"
                     className="form-control"
                     onChange={(e) => {
-                      dispatch(gameTitleCreateSuccess({ ...gameTitleData, gamePlayVideo: e.target.value }))
+                      if (gameTitleData)
+                        dispatch(gameTitleCreateSuccess({ ...gameTitleData, gamePlayVideo: e.target.value }))
                     }}
                     multiple
                   />
@@ -210,9 +218,33 @@ export default function UploadAttachment({ id,
           </section>
 
 
+          {/* <FileUploadTablePlans /> */}
           <div className="row">
-            <FileUploadTablePlans />
+            <div className="bdrb1 pb15 mb25">
+              <h5 className="list-title">Game File Link</h5>
+            </div>
+            {/* {content} */}
+            <div className="col-6 col-xl-3">
+              <label>
+                <a className="">
+                  <input
+                    type="text"
+                    placeholder="github, gitlab etc"
+                    // accept="application/pdf"
+                    value={gameTitleData?.gameFileLink}
+                    className="form-control"
+                    onChange={(e) => {
+                      if (gameTitleData)
+                        dispatch(gameTitleCreateSuccess({ ...gameTitleData, gameFileLink: e.target.value }))
+                    }}
+                    multiple
+                  />
+                </a>
+              </label>
+            </div>
           </div>
+
+
 
         </div>
 

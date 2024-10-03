@@ -100,9 +100,9 @@ export default function Listing19() {
             <div className="col-lg-9">
               <ListingOption2 itemLength={content?.length} />
               <div className="row">{content}</div>
-              <div className="mt30">
+              {/* <div className="mt30">
                 <Pagination />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

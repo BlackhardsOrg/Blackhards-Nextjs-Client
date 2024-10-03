@@ -69,9 +69,9 @@ export default function Listing13() {
                 </div>
               ))}
           </div>
-          <div className="row mt30">
+          {/* <div className="row mt30">
             <Pagination />
-          </div>
+          </div> */}
         </div>
       </section>
       <ListingSidebarModal5 />

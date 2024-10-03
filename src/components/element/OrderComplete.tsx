@@ -16,7 +16,7 @@ export default function OrderComplete() {
 
   const handleFetchReference = async (ref: string, orderID: string) => {
     const data = await verifyPayments(ref, orderID) as IVerificationResponse
-    if (data.status && data.data && data.data) {
+    if (data.status && data.data) {
       setRefrenceData(data.data)
       dispatch(clearCart())
     }

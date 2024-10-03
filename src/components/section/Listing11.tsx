@@ -40,9 +40,9 @@ export default function Listing11() {
           <ListingOption5 />
           <div className="row">{content}</div>
           <div className="row">
-            <div className="mt30">
+            {/* <div className="mt30">
               <Pagination />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

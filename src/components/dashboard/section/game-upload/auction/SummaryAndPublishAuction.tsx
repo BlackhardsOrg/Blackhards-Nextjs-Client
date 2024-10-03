@@ -103,7 +103,7 @@ export default function SummaryAndPublishAuction({
               <hr/>
               <h1 className="h3 text-center"> Auction Info</h1>
               <div className="col-sm-12">
-                <PublishSummaryTextAuction labelTitle="Reserved Price" value={auction ? formatPriceToDollars(auction.reservedPrice) : ""} />
+                <PublishSummaryTextAuction labelTitle="Reserved Price" value={auction && auction.reservedPrice ? formatPriceToDollars(auction.reservedPrice) : ""} />
               </div>
               <div className="col-sm-12">
                 <PublishSummaryTextAuction labelTitle="Auction Starts" value={auction ? auction.startTime : ""} />

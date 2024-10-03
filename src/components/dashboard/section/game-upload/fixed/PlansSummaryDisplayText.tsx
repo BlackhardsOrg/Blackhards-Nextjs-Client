@@ -1,7 +1,7 @@
 import { IGameTitle } from "@/types"
 
 interface IPlansSummaryDisplayText{
-    text: string| number | boolean | undefined
+    text: any
 }
 export function PlansSummaryDisplayText({text}: IPlansSummaryDisplayText) {
     return (

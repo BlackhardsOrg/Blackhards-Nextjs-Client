@@ -60,7 +60,7 @@ export default function NavSidebar() {
             ) : (
               <Sidebar>
                 <Menu>
-                  {navigation.map((item, i) =>
+                  {navigation.map((item: any, i) =>
                     item?.children ? (
                       <SubMenu
                         key={i}
@@ -71,7 +71,7 @@ export default function NavSidebar() {
                             : ""
                         }
                       >
-                        {item.children.map((item2, i2) =>
+                        {item.children.map((item2: any, i2) =>
                           item2?.children ? (
                             <SubMenu
                               key={i2}

@@ -144,15 +144,15 @@ export default function SummaryAndPublish({
               <div className="col-sm-12">
                 <h5>Demo Link</h5>
                 {/* <PublishSummaryText labelTitle="Release Date" value={gameTitle ? gameTitle.releaseDate : ""} /> */}
-                <Link href={gameTitle && gameTitle.gamePlayVideo ? gameTitle.gameFileLink : "#"}>
-                  {gameTitle && gameTitle.gamePlayVideo ? gameTitle.gamePlayVideo : "No demo link"}{/*should be game demo link*/}
+                <Link href={gameTitle && gameTitle.demoLink ? gameTitle.demoLink : "#"}>
+                  {gameTitle && gameTitle.demoLink ? gameTitle.demoLink : "No demo link"}{/*should be game demo link*/}
                 </Link>
 
               </div>
 
 
 
-              {getIsOfferingPackagedPlans == "yes" && <div className="col-sm-12">
+              {getIsOfferingPackagedPlans == "yes" && gameTitle && <div className="col-sm-12">
                 <PackagePlansSummaryTable gameTitle={gameTitle} />
               </div>}
 

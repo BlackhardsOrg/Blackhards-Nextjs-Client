@@ -87,6 +87,19 @@ a {
   transition: all 0.4s;
 }
 
+.page-fly-loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0%;
+  left: 0%;
+}
+
 .swiper__btn-2 {
   color: #fff;
 }
@@ -250,6 +263,7 @@ a {
   border-radius: 4px !important;
   cursor: pointer;
 }
+
 .ui-service-gig-slder-bottom-new .swiper-slide {
   border-radius: 4px !important;
   height: 120px !important;
@@ -415,11 +429,11 @@ FLY LOAD BEGIN
 }
 
 .left {
-  transform-origin: left  center;
+  transform-origin: left center;
 }
 
 .right {
-  transform-origin: right  center;
+  transform-origin: right center;
 }
 
 /* FLY LOAD ENDS */

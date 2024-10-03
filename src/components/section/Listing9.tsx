@@ -52,9 +52,9 @@ export default function Listing9() {
                 </div>
               ))}
           </div>
-          <div className="mt30">
+          {/* <div className="mt30">
             <Pagination />
-          </div>
+          </div> */}
         </div>
       </section>
       <ListingSidebarModal3 />

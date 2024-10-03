@@ -43,6 +43,7 @@ const FileUpload = () => {
         const data = await uploadImages(uploadedImageFiles)
         console.log(data, "HAUL")
         if (data) {
+            if(gameTitleData)
             dispatch(gameTitleCreateSuccess({ ...gameTitleData, gamePlayScreenShots: data.map(item => item.url) }))
             toast("File(s) Uploaded successfully!")
         }

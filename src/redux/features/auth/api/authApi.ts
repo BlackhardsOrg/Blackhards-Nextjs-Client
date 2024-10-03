@@ -2,6 +2,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { CustomNewError } from "../../../../types";
 import {
   forgottenPasswordFailure,
   forgottenPasswordStart,
@@ -81,19 +82,17 @@ export function registerUser(registerData: IRegisterData) {
       return response.data;
     } catch (error: any) {
       console.log(error, "ERROR");
-      if (error instanceof Error) {
-        if (error && error.response && error.response.data) {
-          toast(error.response.data.message, {
-            type: "error",
-          });
+      if (error && error.response && error.response.data) {
+        toast(error.response.data.message, {
+          type: "error",
+        });
 
-          dispatch(registerFailure(error));
+        dispatch(registerFailure(error));
 
-          console.error("Error fetching card resources:", error);
-          return error.response.data;
-        }
+        console.error("Error fetching card resources:", error);
+        return error.response.data;
       }
-      return error
+      return error;
     }
   };
 }

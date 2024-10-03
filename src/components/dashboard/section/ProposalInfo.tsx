@@ -38,9 +38,9 @@ export default function ProposalInfo() {
                     ))}
                   </tbody>
                 </table>
-                <div className="mt30">
+                {/* <div className="mt30">
                   <Pagination />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

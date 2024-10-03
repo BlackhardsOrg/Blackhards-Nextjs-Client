@@ -12,10 +12,10 @@ import { useMarketContract } from "@/web3/connection/marketplaceConnect";
 import { toast } from "react-toastify";
 import { useBidTrackerContract } from "@/web3/connection/bidTrackerConnect";
 interface IAuctionPriceWidget {
-  auctionData: IAuctionGQL, gameFileLink: string, gametitleId: string, auctionId: string, refetchGame: () => void
+  auctionData: IAuctionGQL, demoLink: string, gametitleId: string, auctionId: string, refetchGame: () => void
 }
 
-export default function AuctionPriceWidget({ auctionData, gameFileLink, auctionId, refetchGame, gametitleId }: IAuctionPriceWidget) {
+export default function AuctionPriceWidget({ auctionData, demoLink, auctionId, refetchGame, gametitleId }: IAuctionPriceWidget) {
   const { query } = useRouter()
   const dispatch = useAppDispatch()
   const [dataLoading, setDataLoading] = useState(false)
@@ -133,7 +133,7 @@ export default function AuctionPriceWidget({ auctionData, gameFileLink, auctionI
               <i className="fal fa-arrow-right-long" /></>}
           </Link>}
 
-          <Link target="_blank" href={gameFileLink} className="ud-btn btn-btn-white">
+          <Link target="_blank" href={demoLink} className="ud-btn btn-btn-white">
             Play Game Demo
             <i className="fa fa-gamepad" />
           </Link>

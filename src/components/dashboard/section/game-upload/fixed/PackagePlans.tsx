@@ -140,6 +140,7 @@ export default function PackagePlans({
     }, [gameTitleUploadTypeParam])
 
     useEffect(() => {
+        if(gameTitle)
         dispatch(gameTitleCreateSuccess({ ...gameTitle, plans: plans }))
 
     }, [plans])

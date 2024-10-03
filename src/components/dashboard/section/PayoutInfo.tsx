@@ -52,9 +52,9 @@ export default function PayoutInfo() {
                     ))}
                   </tbody>
                 </table>
-                <div className="mt30">
+                {/* <div className="mt30">
                   <Pagination />
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="ps-widget bgc-white bdrs4 p30 mb30 position-relative">

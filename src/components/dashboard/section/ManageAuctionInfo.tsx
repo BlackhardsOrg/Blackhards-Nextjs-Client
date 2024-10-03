@@ -79,9 +79,9 @@ export default function ManageAuctionInfo() {
                         ))}
                       </tbody>
                     </table>
-                    <div className="mt30">
+                    {/* <div className="mt30">
                       <Pagination />
-                    </div>
+                    </div> */}
                   </div>
                 )}
                 {selectedTab === 1 && (
@@ -101,9 +101,9 @@ export default function ManageAuctionInfo() {
                         ))}
                       </tbody>
                     </table>
-                    <div className="mt30">
+                    {/* <div className="mt30">
                       <Pagination />
-                    </div>
+                    </div> */}
                   </div>
                 )}
                 {selectedTab === 2 && (
@@ -123,9 +123,9 @@ export default function ManageAuctionInfo() {
                         ))}
                       </tbody>
                     </table>
-                    <div className="mt30">
+                    {/* <div className="mt30">
                       <Pagination />
-                    </div>
+                    </div> */}
                   </div>
                 )}
                 {selectedTab === 3 && (
@@ -145,9 +145,9 @@ export default function ManageAuctionInfo() {
                         ))}
                       </tbody>
                     </table>
-                    <div className="mt30">
+                    {/* <div className="mt30">
                       <Pagination />
-                    </div>
+                    </div> */}
                   </div>
                 )}
                 {selectedTab === 4 && (
@@ -167,9 +167,9 @@ export default function ManageAuctionInfo() {
                         ))}
                       </tbody>
                     </table>
-                    <div className="mt30">
+                    {/* <div className="mt30">
                       <Pagination />
-                    </div>
+                    </div> */}
                   </div>
                 )}
               </div>

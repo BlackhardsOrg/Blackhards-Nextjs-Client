@@ -153,6 +153,7 @@ export const SINGLE_GAME_TITLE = gql`
       id
       gamePlayScreenShots
       gameFileLink
+      demoLink
       gamePlayVideo
       targetPlatform
       auctionId

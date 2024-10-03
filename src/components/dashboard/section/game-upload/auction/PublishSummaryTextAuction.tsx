@@ -1,7 +1,7 @@
 
 interface IPublishSummaryText {
     labelTitle: string
-    value: string | string[]
+    value: any
 }
 const PublishSummaryTextAuction = ({ labelTitle = "GameTitle", value = "Call of Guns" }: IPublishSummaryText) => {
     const displaySummaryText = () => {

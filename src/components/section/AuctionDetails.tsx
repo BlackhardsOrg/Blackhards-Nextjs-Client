@@ -69,7 +69,7 @@ export default function AuctionDetails() {
                         ) : (
                           <h2>Ghost From Idemili</h2>
                         )}
-                        {data && data.auction ? <div className="list-meta mt15">
+                        {data && data.auction && data.auction.startTime? <div className="list-meta mt15">
                           <p className="mb-0 dark-color fz15 fw500 list-inline-item mb5-sm">
                             <i className="flaticon-place vam fz20 text-thm2 me-2"></i>{" "}
                             London, UK
@@ -187,7 +187,7 @@ export default function AuctionDetails() {
                       <div className="row">
                         {projectProposal1.slice(0, 3).map((item, i) => (
                           <div key={i} className="col-md-6 col-lg-12">
-                            <TopBidCard data={item} />
+                            {/* <TopBidCard data={item} /> */}
                           </div>
                         ))}
                       </div>
@@ -203,7 +203,7 @@ export default function AuctionDetails() {
                       {({ style }) => (
                         <div className="scrollbalance-inner" style={style}>
                           <div className="blog-sidebar ms-lg-auto">
-                            <AuctionPriceWidget />
+                            {/* <AuctionPriceWidget /> */}
                             <AuctionContactWidget />
                           </div>
                         </div>
@@ -212,7 +212,7 @@ export default function AuctionDetails() {
                   ) : (
                     <div className="scrollbalance-inner">
                       <div className="blog-sidebar ms-lg-auto">
-                        <AuctionPriceWidget />
+                        {/* <AuctionPriceWidget /> */}
                         <AuctionContactWidget />
                       </div>
                     </div>

@@ -42,7 +42,7 @@ export default function AuctionDetailSlider() {
               <div className="icon flex-shrink-0">
                 <span className="flaticon-calendar" />
               </div>
-              {data && data.auction ?<div className="details">
+              {data && data.auction && data.auction.endTime ?<div className="details">
                 {/* <h3 className="title">01:02:11</h3> */}
                 <Countdown targetDateStr={data.auction.endTime} />
                 <p className="mb-0 text">Auction Deadline</p>

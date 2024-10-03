@@ -54,25 +54,25 @@ export default function Listing3() {
   const speakFilter = (item: any) =>
     getSpeak?.length !== 0 ? getSpeak.includes(item.language) : item;
 
-  let content = product1
-    .slice(0, 12)
-    .filter(deliveryFilter)
-    .filter(priceFilter)
-    .filter(levelFilter)
-    .filter(locationFilter)
-    .filter(searchFilter)
-    .filter(sortByFilter)
-    .filter(designToolFilter)
-    .filter(speakFilter)
-    .map((item, i) => (
-      <div key={i} className="col-sm-6 col-xl-4">
-        {item?.gallery ? (
-          <PopularGameSlideCard data={item} />
-        ) : (
-          <TrendingGameCard data={item} />
-        )}
-      </div>
-    ));
+  // let content = product1
+  //   .slice(0, 12)
+  //   .filter(deliveryFilter)
+  //   .filter(priceFilter)
+  //   .filter(levelFilter)
+  //   .filter(locationFilter)
+  //   .filter(searchFilter)
+  //   .filter(sortByFilter)
+  //   .filter(designToolFilter)
+  //   .filter(speakFilter)
+  //   .map((item, i) => (
+  //     <div key={i} className="col-sm-6 col-xl-4">
+  //       {item?.gallery ? (
+  //         <PopularGameSlideCard data={item} />
+  //       ) : (
+  //         <TrendingGameCard data={item} />
+  //       )}
+  //     </div>
+  //   ));
 
   return (
     <>
@@ -83,9 +83,9 @@ export default function Listing3() {
               <ListingSidebar1 />
             </div>
             <div className="col-lg-9">
-              <ListingOption2 itemLength={content?.length} />
-              <div className="row">{content}</div>
-              <Pagination />
+              {/* <ListingOption2 itemLength={content?.length} />
+              <div className="row">{content}</div> */}
+              {/* <Pagination /> */}
             </div>
           </div>
         </div>

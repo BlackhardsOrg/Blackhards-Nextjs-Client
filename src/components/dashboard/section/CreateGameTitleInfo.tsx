@@ -61,7 +61,6 @@ export default function CreateGameTitleInfo() {
 
           await dispatch(updateGameTitle({
             ...gameTitle,
-            gameFileLink: "https://github.com/NorVirae/Idemili.git",
             genre: [...gameTitle.genre],
           }, gameTitleId, user.token))
         }
@@ -69,7 +68,6 @@ export default function CreateGameTitleInfo() {
         if (gameTitle) {
           await dispatch(createGameTitle({
             ...gameTitle,
-            gameFileLink: "https://github.com/NorVirae/Idemili.git",
             genre: [...gameTitle.genre, "all"],
           }, user.token))
         }

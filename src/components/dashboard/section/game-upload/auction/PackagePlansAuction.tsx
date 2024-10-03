@@ -129,6 +129,7 @@ export default function PackagePlansAuction({
 
     useEffect(() => {
         // setGameTitle(old => ({ ...old, plans: plans }))
+        if(gameTitle)
         dispatch(gameTitleCreateSuccess({ ...gameTitle, plans: plans }))
 
     }, [plans])

@@ -52,7 +52,7 @@ export default function ShopArea() {
             <div className="col-lg-9">
               <ShopListInfo1 length={content?.length} />
               <div className="row">{content}</div>
-              <Pagination />
+              {/* <Pagination /> */}
             </div>
           </div>
         </div>

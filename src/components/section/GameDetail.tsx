@@ -23,6 +23,7 @@ import StarRatingCardDisplay from "../dropdown/StarRatingCardDisplay";
 import AuctionPriceWidget from "../element/AuctionPriceWidget";
 import TopBidCard from "../card/TopBidCard";
 import TopBidsPanel from "./TopBidsPanel";
+import PageFlyLoader from "../loading/PageFlyLoader";
 
 export default function GameDetail() {
   const isMatchedScreen = useScreen(1216);
@@ -66,6 +67,7 @@ export default function GameDetail() {
   return (
     <>
       <StickyContainer>
+        {loading && <PageFlyLoader />}
         <section className="pt10 pb90 pb30-md">
           <div className="container">
             <div className="row wrap">
@@ -266,7 +268,7 @@ export default function GameDetail() {
                       {({ style }) => (
                         <div className="scrollbalance-inner" style={style}>
                           <div className="blog-sidebar ms-lg-auto">
-                            {data?.gameTitle.auctionData && data?.gameTitle.auctionId && data.gameTitle._id ? <AuctionPriceWidget gametitleId={data.gameTitle._id} refetchGame={refetchGame} gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
+                            {data?.gameTitle.auctionData && data?.gameTitle.auctionId && data.gameTitle._id ? <AuctionPriceWidget gametitleId={data.gameTitle._id} refetchGame={refetchGame} demoLink={data?.gameTitle.demoLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
                               <GameDetailPrice />}
                             {/* <GameContactWidget /> */}
                           </div>
@@ -276,7 +278,7 @@ export default function GameDetail() {
                   ) : (
                     <div className="scrollbalance-inner">
                       <div className="blog-sidebar ms-lg-auto">
-                        {data?.gameTitle.auctionData && data?.gameTitle.auctionId && data.gameTitle._id ? <AuctionPriceWidget gametitleId={data.gameTitle._id} refetchGame={refetchGame} gameFileLink={data?.gameTitle.gameFileLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
+                        {data?.gameTitle.auctionData && data?.gameTitle.auctionId && data.gameTitle._id ? <AuctionPriceWidget gametitleId={data.gameTitle._id} refetchGame={refetchGame} demoLink={data?.gameTitle.demoLink} auctionData={data?.gameTitle.auctionData} auctionId={data?.gameTitle.auctionId} /> :
                           <GameDetailPrice />}
                         {/* <GameContactWidget /> */}
                       </div>

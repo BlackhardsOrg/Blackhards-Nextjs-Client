@@ -57,7 +57,7 @@ export default function Listing1() {
       <section className="pt30 pb90">
         <div className="container">
           <ListingOption1 />
-          <div className="row">
+          {/* <div className="row">
             {product1
               .slice(0, 12)
               .filter(deliveryFilter)
@@ -77,8 +77,8 @@ export default function Listing1() {
                   )}
                 </div>
               ))}
-          </div>
-          <Pagination />
+          </div> */}
+          {/* <Pagination /> */}
         </div>
       </section>
       <ListingSidebarModal1 />

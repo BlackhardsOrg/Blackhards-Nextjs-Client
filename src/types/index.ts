@@ -95,7 +95,8 @@ export interface IPlans {
 
 export interface IGameTitle {
   _id?: string;
-  developerEmail?: string;
+  developerEmail: string;
+  demoLink: string;
   gameFileLink: string;
   title: string;
   description: string;
@@ -126,11 +127,25 @@ export interface IGameTitle {
 }
 
 export interface IAuction {
-  developerEmail?: string
+  developerEmail?: string;
   gameTitleId?: string;
   endTime?: string;
   reservedPrice?: number;
   startTime?: string;
+  saleType?: string;
+  gamePlayScreenShots?: string[];
+  tags?: string[];
+  genre?: string[];
+  targetPlatform?: string[];
+  title?: string;
+  gameFileLink?: string;
+  description?: string;
+  releaseDate?: string;
+  gamePlayVideo?: string;
+}
+
+export interface CustomNewError extends Error {
+  response: any;
 }
 
 export interface IHighestBidder {
@@ -308,6 +323,7 @@ export interface IGameTabs {
 // Payment Order
 export interface IVerificationResponse {
   data: IData;
+  status: boolean;
 }
 
 export interface IVerificationDataResponse {
