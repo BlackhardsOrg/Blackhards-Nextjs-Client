@@ -2,8 +2,6 @@
 import { IAuction, IPlans } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
-
 const defaultAuctionData: IAuction = {
   developerEmail: "gbgbgbgbgb",
   gameFileLink: "",
@@ -23,12 +21,12 @@ const defaultAuctionData: IAuction = {
   gameRating: 0,
   gamePlays: 0,
   endTime: "",
-  startTime: ""
-  
-}
+  startTime: "",
+};
 
 interface IInitialState {
   auction: IAuction;
+  bidPlaced: boolean;
   status: string;
   error: any;
   loading: {
@@ -38,6 +36,7 @@ interface IInitialState {
 
 const initialState: IInitialState = {
   auction: defaultAuctionData,
+  bidPlaced: false,
   status: "idle",
   error: null,
   loading: {
@@ -60,6 +59,10 @@ const gameTitleSlice = createSlice({
       state.loading.auctionStart = false;
       state.error = action.payload;
     },
+
+    setBidPlacement: (state, action: PayloadAction<boolean>) => {
+      state.bidPlaced = action.payload;
+    },
   },
 });
 
@@ -67,6 +70,7 @@ export const {
   auctionCreateStart,
   auctionCreateSuccess,
   auctionCreateFailure,
+  setBidPlacement,
 } = gameTitleSlice.actions;
 
 export default gameTitleSlice.reducer;

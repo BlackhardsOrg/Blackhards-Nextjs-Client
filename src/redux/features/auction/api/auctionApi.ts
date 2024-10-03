@@ -24,7 +24,7 @@ export function startAuction(auctionData: IAuction, token: string) {
       );
 
       const user: IUser = response.data;
-      toast("🦄 Auction Started Successful!");
+      toast("🦄 Auction Started Successful, please wait for block Confirmation!");
       dispatch(auctionCreateSuccess(null));
       return user;
     } catch (error: any) {
@@ -48,7 +48,7 @@ export function startAuction(auctionData: IAuction, token: string) {
 export function PlaceBidOnAuction(
   bidAmountToPlace: number,
   auctionId: string,
-  token: string,
+  token: string
 ) {
   return async (dispatch: Dispatch) => {
     try {
@@ -81,14 +81,15 @@ export function PlaceBidOnAuction(
 export function resultAuction(
   resulterEmail: string,
   auctionId: string,
-  token: string
+  token: string,
+  txnHash: string
 ) {
   return async (dispatch: Dispatch) => {
     try {
       // Make an HTTP GET request to the API
       const response = await axios.post(
         `${API_URL}/auctions/result`,
-        { auctionId, resulterEmail },
+        { auctionId, resulterEmail, txnHash },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -111,10 +112,7 @@ export function resultAuction(
   };
 }
 
-export function confirmAuction(
-  auctionId: string,
-  token: string
-) {
+export function confirmAuction(auctionId: string, token: string) {
   return async (dispatch: Dispatch) => {
     try {
       // Make an HTTP GET request to the API

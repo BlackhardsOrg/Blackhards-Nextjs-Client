@@ -22,7 +22,7 @@ const tab = [
 export default function ManageGameInfo() {
   const [selectedTab, setSelectedTab] = useState(0);
   const user = useAppSelector(state => state.auth.user)
-  const { data, loading, error } = useQuery<{ userGameTitles: [IGameTitleGQL] }>(USER_GAME_TITLES, {
+  const { data, loading, error, refetch: refetchGameTitle } = useQuery<{ userGameTitles: [IGameTitleGQL] }>(USER_GAME_TITLES, {
     variables: {
       skip: 0,
       take: 10,
@@ -31,7 +31,7 @@ export default function ManageGameInfo() {
     }
   });
 
-  const { data: userAuctions, loading: auctionLoad , refetch} = useQuery<{ userAuctions: [IUserAuction] }>(USER_AUCTIONS, {
+  const { data: userAuctions, loading: auctionLoad, refetch } = useQuery<{ userAuctions: [IUserAuction] }>(USER_AUCTIONS, {
     variables: {
       skip: 0,
       take: 10,
@@ -40,14 +40,7 @@ export default function ManageGameInfo() {
     }
   });
 
-  useEffect(() => {
-    refetch({
-      skip: 0,
-      take: 10,
-      developerEmail: user ? user.email : "",
-      genre: "all"
-    })
-  }, [])
+
 
   return (
     <>
@@ -85,7 +78,22 @@ export default function ManageGameInfo() {
                         key={i}
                         className={`nav-link fw500 ps-0 ${selectedTab == i ? "active" : ""
                           }`}
-                        onClick={() => setSelectedTab(i)}
+                        onClick={() => {
+                          setSelectedTab(i)
+                          refetch({
+                            skip: 0,
+                            take: 10,
+                            developerEmail: user ? user.email : "",
+                            genre: "all"
+                          })
+
+                          refetchGameTitle({
+                            skip: 0,
+                            take: 10,
+                            developerEmail: user ? user.email : "",
+                            genre: "all"
+                          })
+                        }}
                       >
                         {item}
                       </button>

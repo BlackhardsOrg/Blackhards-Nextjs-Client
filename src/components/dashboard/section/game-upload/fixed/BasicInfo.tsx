@@ -17,67 +17,76 @@ import { toast } from "react-toastify";
 const genreData = [
 
   {
-    option: "Action",
-    value: "action",
-  },
-  {
     option: "Adventure",
-    value: "adventure",
+    value: "Adventure",
   },
   {
     option: "Simulation",
-    value: "simulation",
+    value: "Simulation",
   },
   {
     option: "Strategy",
-    value: "strategy",
+    value: "Strategy",
   },
   {
-    option: "Sports",
-    value: "sports",
-  },
-  {
-    option: "Puzzle",
-    value: "puzzle",
-  },
-  {
-    option: "Racing",
-    value: "racing",
+    option: "Horror",
+    value: "Horror",
   },
   {
     option: "Fighting",
-    value: "fighting",
+    value: "Fighting",
   },
   {
-    option: "Platformer",
-    value: "platformer",
+    option: "Sports",
+    value: "Sports",
   },
   {
-    option: "Role-Playing",
-    value: "role-playing"
+    option: "Racing",
+    value: "Racing",
+  },
+  {
+    option: "Casual",
+    value: "Casual",
+  },
+  {
+    option: "MOBA",
+    value: "MOBA",
+  },
+  {
+    option: "Sandbox",
+    value: "Sandbox"
   }
 ]
 
+
 const targetPlatformData = [
   {
+    option: "PC",
+    value: "PC",
+  },
+  {
+    option: "PlayStation",
+    value: "PlayStation",
+  },
+  {
+    option: "Xbox",
+    value: "Xbox",
+  },
+  {
+    option: "Mobile",
+    value: "Mobile",
+  },
+  {
+    option: "Switch",
+    value: "Switch",
+  },
+  {
+    option: "VR",
+    value: "VR",
+  },
+  {
     option: "Web",
-    value: "web",
-  },
-  {
-    option: "Windows",
-    value: "windows",
-  },
-  {
-    option: "Linux",
-    value: "linux",
-  },
-  {
-    option: "Android",
-    value: "android",
-  },
-  {
-    option: "IOS",
-    value: "ios",
+    value: "Web",
   }
 ]
 

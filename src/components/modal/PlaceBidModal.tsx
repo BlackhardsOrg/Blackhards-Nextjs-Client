@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import FLyLoad from "../loading/FLyLoad";
 import { usdtContractAddress, useMarketContract } from "@/web3/connection/marketplaceConnect";
+import { setBidPlacement } from "@/redux/features/auction/slices/auctionSlice";
 
 export default function PlaceBidModal() {
   const navigate = useRouter().push;
@@ -18,8 +19,8 @@ export default function PlaceBidModal() {
   const [minimumBid, setMinimumBid] = useState(0)
   const user = useAppSelector(state => state.auth.user)
   const [getLoading, setLoading] = useState(false)
-  const { placeBidOnAuction: placeBlockchainBidOnAuction } = useMarketContract()
 
+  const bidPlaced = useAppSelector(state => state.auction.bidPlaced)
 
 
   const router = useRouter()
@@ -33,7 +34,6 @@ export default function PlaceBidModal() {
   });
 
   const fetchUpMinimumBid = async (auctionId) => {
-    refetch({ id })
     const data = await fetchMinimumBid(auctionId)
     if (data && data.success) {
       setMinimumBid(data.data)
@@ -65,7 +65,9 @@ export default function PlaceBidModal() {
         // const result = await placeBlockchainBidOnAuction(data.gameTitle.auctionId, bidAmount, usdtContractAddress)
         // console.log(result, "ReSUlT BLOCK")
         await dispatch(PlaceBidOnAuction(bidAmount, data.gameTitle.auctionId, user.token))
+        await dispatch(setBidPlacement(!bidPlaced))
         await refetch({ id })
+
 
         setLoading(false)
       }

@@ -234,7 +234,7 @@ export default function DashboardHeader() {
                             className="border rounded-circle"
                             style={{ width: "40px", height: "40px", objectFit: "cover" }}
                             src="/images/resource/user-50by50.png" alt="user.png" />
-                          <span style={{ fontSize: ".8rem" }}>{user && shortenEmail(user.email)}</span>
+                          <span style={{ fontSize: ".8rem" }}>{user && user.studioName.slice(0, 5)}...</span>
                         </a>
                         <div className="dropdown-menu">
                           <div className="user_setting_content">

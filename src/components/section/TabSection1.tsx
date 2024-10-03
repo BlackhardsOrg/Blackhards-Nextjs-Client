@@ -6,17 +6,16 @@ import { useEffect, useState } from "react";
 
 const genres = [
   "All",
-  "Action",
   "Adventure",
-  "RPG",
   "Simulation",
   "Strategy",
+  "Horror",
+  "Fighting",
   "Sports",
   "Racing",
-  "Puzzle",
-  "Party",
-  "Music",
-  "Horror",
+  "Casual",
+  "MOBA",
+  "Sandbox"
 ];
 
 // categories_list_section overflow-hidden
@@ -27,13 +26,12 @@ export default function TabSection1() {
   const dispatch = useAppDispatch()
   const { pathname } = useRouter();
 
-  
+
   return (
     <>
       <section
-        className={`categories_list_section overflow-hidden ${
-          pathname === "/home-3" ? "bgc-thm5" : ""
-        }`}
+        className={`categories_list_section overflow-hidden ${pathname === "/home-3" ? "bgc-thm5" : ""
+          }`}
       >
         <div className="container">
           <div className="row">
@@ -43,7 +41,7 @@ export default function TabSection1() {
                   {genres.map((item, index) => (
                     <li key={index}>
                       <a
-                        onClick={() => dispatch(setCurrentGenreTab({currentTab: item}))}
+                        onClick={() => dispatch(setCurrentGenreTab({ currentTab: item }))}
                         className={getCurrentTab == item ? "active" : ""}
                       >
                         {item}

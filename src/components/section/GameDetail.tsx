@@ -16,9 +16,9 @@ import { useRouter } from "next/router";
 import { SINGLE_GAME_TITLE } from "@/graphql";
 import { IGameTitleGQL } from "@/types";
 import { useQuery } from "@apollo/client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { formatPriceToDollars } from "@/utils/priceFormatter";
-import { useAppDispatch } from "@/redux/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 import StarRatingCardDisplay from "../dropdown/StarRatingCardDisplay";
 import AuctionPriceWidget from "../element/AuctionPriceWidget";
 import TopBidCard from "../card/TopBidCard";
@@ -30,23 +30,36 @@ export default function GameDetail() {
   const { id } = query;
 
 
-
+  const bidPlaced = useAppSelector(state => state.auction.bidPlaced)
   // const data = product1.find((item: any) => item.id == id);
-  const { data, loading, error, refetch } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
+  const { data: gameTitleData, loading, error, refetch } = useQuery<{ gameTitle: IGameTitleGQL }>(SINGLE_GAME_TITLE, {
     variables: {
       id
-    }
+    },
   });
+
+  const [data, setData] = useState(gameTitleData)
+
 
   const refetchGame = () => {
     refetch({ id })
   }
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     refetch({ id })
-  //   }, 8000)
-  // })
+  useEffect(() => {
+    if (gameTitleData)
+      setData(gameTitleData)
+  }, [gameTitleData])
+
+  useEffect(() => {
+    refetch({ id }).then(res => {
+      console.log(data, "REFECT")
+      setData(res.data)
+      console.log("refetch success")
+    }).catch(err => {
+      console.log("Error " + err)
+    })
+    console.log(bidPlaced, "BID CHANGED")
+  }, [bidPlaced, refetch, id])
 
 
 

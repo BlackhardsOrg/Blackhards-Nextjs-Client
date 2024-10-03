@@ -20,19 +20,45 @@ export default function AuctionPriceWidget({ auctionData, gameFileLink, auctionI
   const dispatch = useAppDispatch()
   const [dataLoading, setDataLoading] = useState(false)
 
-  const { FulfillBid } = useBidTrackerContract()
+  const { FulfillBid: fulfillBid, confirmPaidAuction } = useBidTrackerContract()
 
   const user = useAppSelector(state => state.auth.user)
-  const { data, loading, error } = useQuery<{ highestBidder: { bid: number } }>(HIHGEST_BIDDER, { variables: { auctionId } })
+  const { data, refetch } = useQuery<{ highestBidder: { bid: number, bidderEmail: string, sellerEmail: string } }>(HIHGEST_BIDDER, { variables: { auctionId } })
+  const bidPlaced = useAppSelector(state => state.auction.bidPlaced)
+
+  // const fetchUpMinimumBid = async (auctionId) => {
+  //   const data = await fetchMinimumBid(auctionId)
+  //   if (data && data.success) {
+  //     setMinimumBid(data.data)
+  //     setBidAmount(data.data)
+  //   }
+  //   toast(data)
+  // }
+
+  useEffect(() => {
+    refetch({ auctionId })
+    console.log(bidPlaced, "BID CHANGED")
+  }, [bidPlaced])
+
+  useEffect(() => {
+    console.log(data, "HIGHEST BIDDER")
+  }, [data])
+
   const handleAuctionResultance = async () => {
     try {
       console.log("called", auctionData, auctionData.gameTitleId, auctionId)
       setDataLoading(true)
-      if (user && auctionId && auctionData && gametitleId) {
 
-        // const result = await resultBlockchainAuction(auctionId, gametitleId)
-        // console.log(result, "RESULTANCE")
-        const data = await dispatch(resultAuction(user.email, auctionId, user.token))
+
+      if (user && auctionId && auctionData && gametitleId && data && data.highestBidder) {
+        if (user.email != data.highestBidder.bidderEmail) {
+          setDataLoading(true)
+          throw new Error("You are Not the Highest bidder")
+        }
+        const txn = await fulfillBid(auctionId, data.highestBidder.sellerEmail, data.highestBidder.bid, true, user.id, gametitleId)
+
+        console.log(txn, "CHEKCK TXN")
+        const fetchedData = await dispatch(resultAuction(user.email, auctionId, user.token, txn.hash))
       }
 
       setDataLoading(false)
@@ -41,15 +67,25 @@ export default function AuctionPriceWidget({ auctionData, gameFileLink, auctionI
       if (err instanceof Error) {
         toast(err.message)
       }
+      setDataLoading(false)
+
     }
   }
 
   const handleAuctionConfirmation = async () => {
-    setDataLoading(true)
-    if (user && auctionId)
-      await dispatch(confirmAuction(auctionId, user.token))
+    try {
 
-    setDataLoading(false)
+      if (user && auctionId) {
+        setDataLoading(true)
+        await confirmPaidAuction(auctionId)
+        await dispatch(confirmAuction(auctionId, user.token))
+        setDataLoading(false)
+      }
+
+    } catch (err) {
+      setDataLoading(false)
+
+    }
   }
 
   useEffect(() => {

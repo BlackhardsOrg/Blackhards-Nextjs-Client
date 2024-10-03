@@ -27,6 +27,8 @@ export default function ManageProjectCard({ gametitle }: { gametitle?: IGameTitl
       if (gametitle && gametitle.auction && gametitle.auction.endTime && gametitle.auction.reservedPrice) {
         const dateInSeconds = new Date(gametitle.auction.endTime).getTime() / 1000
         console.log(dateInSeconds, "DAt$")
+        toast("We are Attempting to connect your wallet to this Auction");
+
         const data = await dispatch(startAuction({
           endTime: gametitle?.auction?.endTime,
           startTime: gametitle?.auction?.startTime,
@@ -36,6 +38,8 @@ export default function ManageProjectCard({ gametitle }: { gametitle?: IGameTitl
         console.log(data, " DATA ")
         if (!data.data) throw new Error("Auction start did not return data")
         await setAuctionSellerWallet(data.data.auctionId)
+        toast("🦄 Auction innitiation confirmed on chain!");
+
 
         setLoading(false)
       } else {

@@ -129,7 +129,6 @@ export function fetchGameTitle(gameTitleId: string, token: string) {
 
       const gameTitle: IGameTitle = response.data.data;
       console.log(gameTitle, "AGME")
-      toast("🦄 Game Title Fetch Successful!");
       dispatch(gameTitleCreateSuccess(gameTitle));
     } catch (error: any) {
       dispatch(gameTitleCreateFailure(error));

@@ -232,7 +232,7 @@ export default function PricingAndPlans
                             {/* Package Plans */}
                             <div className="col-md-12">
 
-                                {isOfferingPackagedPlans === "yes" && <PackagePlans
+                                {gameTitle && gameTitle.saleType == "fixed" && <PackagePlans
 
                                 />}
                             </div>
