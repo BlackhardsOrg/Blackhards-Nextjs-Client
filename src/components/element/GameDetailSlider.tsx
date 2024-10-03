@@ -14,7 +14,7 @@ import Countdown from "../section/Countdown";
 
 
 
-export default function GameDetailSlider({ gigImages, videoUrl, auctionData }: { gigImages: string[], videoUrl: string, auctionData: IAuctionGQL }) {
+export default function GameDetailSlider({ gigImages, videoUrl, auctionData }: { gigImages: string[], videoUrl: string, auctionData?: IAuctionGQL }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [selected, setSelected] = useState(0)
   const [toggler, settoggler] = useState(false);

@@ -114,7 +114,7 @@ export default function GameDetail() {
                     </div>
                   </div>
 
-                  {data && data.gameTitle && data.gameTitle.auctionData ? <GameDetailSlider auctionData={data.gameTitle.auctionData} videoUrl={data.gameTitle.gamePlayVideo} gigImages={data.gameTitle.gamePlayScreenShots} /> : null}
+                  {data && data.gameTitle ? <GameDetailSlider auctionData={data.gameTitle.auctionData} videoUrl={data.gameTitle.gamePlayVideo} gigImages={data.gameTitle.gamePlayScreenShots} /> : null}
                   <div className="service-about">
                     <h4>About</h4>
                     <p className="text mb30">
