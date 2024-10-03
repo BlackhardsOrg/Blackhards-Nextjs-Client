@@ -66,7 +66,7 @@ const defaultGameTitleData: IGameTitle = {
 };
 
 interface IInitialState {
-  gameTitle: IGameTitle;
+  gameTitle: IGameTitle | null;
   gameUploadType: string;
   isOfferingPackagedPlans: string;
   status: string;
@@ -94,7 +94,7 @@ const gameTitleSlice = createSlice({
     gameTitleCreateStart: (state) => {
       state.loading.gameTitleCreate = true;
     },
-    gameTitleCreateSuccess: (state, action: PayloadAction<IGameTitle>) => {
+    gameTitleCreateSuccess: (state, action: PayloadAction<IGameTitle | null>) => {
       state.loading.gameTitleCreate = false;
       state.gameTitle = action.payload;
     },

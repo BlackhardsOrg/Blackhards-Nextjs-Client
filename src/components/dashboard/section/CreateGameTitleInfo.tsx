@@ -57,18 +57,22 @@ export default function CreateGameTitleInfo() {
       setCurrentPageState(nextPageNumber)
       setCurrentTab(nextPageNumber)
       if (gameId) {
-        await dispatch(updateGameTitle({
-          ...gameTitle,
-          gameFileLink: "https://github.com/NorVirae/Idemili.git",
-          genre: [...gameTitle.genre],
-        }, gameTitleId, user.token))
-      } else {
+        if (gameTitle) {
 
-        await dispatch(createGameTitle({
-          ...gameTitle,
-          gameFileLink: "https://github.com/NorVirae/Idemili.git",
-          genre: [...gameTitle.genre, "all"],
-        }, user.token))
+          await dispatch(updateGameTitle({
+            ...gameTitle,
+            gameFileLink: "https://github.com/NorVirae/Idemili.git",
+            genre: [...gameTitle.genre],
+          }, gameTitleId, user.token))
+        }
+      } else {
+        if (gameTitle) {
+          await dispatch(createGameTitle({
+            ...gameTitle,
+            gameFileLink: "https://github.com/NorVirae/Idemili.git",
+            genre: [...gameTitle.genre, "all"],
+          }, user.token))
+        }
       }
 
 

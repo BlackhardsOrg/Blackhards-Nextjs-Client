@@ -98,6 +98,7 @@ const BasicInfoForm = ({
                                 text="Fixed Sale"
                                 value={"fixed"}
                                 onClick={(e: any) => {
+                                    if(gameTitle)
                                     dispatch(gameTitleCreateSuccess({ ...gameTitle, saleType: "fixed" }))
                                 }} />
                             <GameUploadRadio
@@ -107,6 +108,7 @@ const BasicInfoForm = ({
                                 text="Auction Sale"
                                 value={"auction"}
                                 onClick={(e: any) => {
+                                    if(gameTitle)
                                     dispatch(gameTitleCreateSuccess({ ...gameTitle, saleType: "auction" }))
                                 }} />
                         </div>

@@ -151,7 +151,7 @@ export default function BasicInfo({
       values: toggleElementInArray<string>(getGenre.values, value),
     });
 
-
+    if(gameTitle)
     // setGameTitle({ ...gameTitle, [e.target.name]: getGenre.values })
     dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: getGenre.values }))
   };
@@ -173,6 +173,8 @@ export default function BasicInfo({
     // setGameTitle((old) => {
     //   return { ...old, [e.target.name]: e.target.value }
     // })
+
+    if(gameTitle)
     dispatch(gameTitleCreateSuccess({ ...gameTitle, [e.target.name]: e.target.value }))
 
   }
@@ -181,6 +183,7 @@ export default function BasicInfo({
     // setGameTitle((old) => {
     //   return { ...old, [e.target.name]: e.target.value }
     // })
+    if(gameTitle)
     dispatch(gameTitleCreateSuccess({ ...gameTitle, auction: { ...gameTitle.auction, [e.target.name]: e.target.value } }))
   }
 
@@ -231,6 +234,7 @@ export default function BasicInfo({
   // #region UseEffects
   useEffect(() => {
     // setGameTitle({ ...gameTitle, targetPlatform: getPlatform.values })
+    if(gameTitle)
     dispatch(gameTitleCreateSuccess({ ...gameTitle, targetPlatform: getPlatform.values }))
 
 
@@ -238,6 +242,7 @@ export default function BasicInfo({
 
   useEffect(() => {
     // setGameTitle({ ...gameTitle, tags: getTags.values })
+    if(gameTitle)
     dispatch(gameTitleCreateSuccess({ ...gameTitle, tags: getTags.values }))
 
 
@@ -245,6 +250,7 @@ export default function BasicInfo({
 
   useEffect(() => {
     // setGameTitle({ ...gameTitle, genre: getGenre.values })
+    if(gameTitle)
     dispatch(gameTitleCreateSuccess({ ...gameTitle, genre: getGenre.values }))
 
 
@@ -252,6 +258,7 @@ export default function BasicInfo({
 
   useEffect(() => {
     // setGameTitle({ ...gameTitle, tags: selectedTags })
+    if(gameTitle)
     dispatch(gameTitleCreateSuccess({ ...gameTitle, tags: selectedTags }))
 
 

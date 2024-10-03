@@ -95,7 +95,7 @@ export interface IPlans {
 
 export interface IGameTitle {
   _id?: string;
-  developerEmail: string;
+  developerEmail?: string;
   gameFileLink: string;
   title: string;
   description: string;
@@ -126,6 +126,7 @@ export interface IGameTitle {
 }
 
 export interface IAuction {
+  developerEmail?: string
   gameTitleId?: string;
   endTime?: string;
   reservedPrice?: number;

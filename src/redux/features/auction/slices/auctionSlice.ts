@@ -3,24 +3,10 @@ import { IAuction, IPlans } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const defaultAuctionData: IAuction = {
-  developerEmail: "gbgbgbgbgb",
-  gameFileLink: "",
-  title: "",
-  description: "",
-  gamePlayScreenShots: [""],
-  gamePlayVideo: "",
-  genre: [""],
-  tags: [""],
-  reservedPrice: 0,
-  targetPlatform: [""],
-  saleType: "",
-  releaseDate: "",
-  legal: "",
-  ageRating: "",
-  developerId: "",
-  gameRating: 0,
-  gamePlays: 0,
+  developerEmail: "",
+  gameTitleId: "",
   endTime: "",
+  reservedPrice: 0,
   startTime: "",
 };
 

@@ -63,7 +63,8 @@ export default function PricingAndPlans
         }
 
         e = { ...e, target: { ...e.target, value } }
-        dispatch(gameTitleCreateSuccess({ ...gameTitle, price: Number(value) }))
+        if (gameTitle)
+            dispatch(gameTitleCreateSuccess({ ...gameTitle, price: Number(value) }))
 
 
     };
@@ -78,7 +79,8 @@ export default function PricingAndPlans
         }
 
         e = { ...e, target: { ...e.target, value } }
-        dispatch(gameTitleCreateSuccess({ ...gameTitle, auction: { ...gameTitle.auction, reservedPrice: Number(value) } }))
+        if (gameTitle)
+            dispatch(gameTitleCreateSuccess({ ...gameTitle, auction: { ...gameTitle.auction, reservedPrice: Number(value) } }))
     };
 
     // #endregion Form Handlers
@@ -138,9 +140,10 @@ export default function PricingAndPlans
                                             text="Yes"
                                             value={"yes"}
                                             onClick={(e: any) => {
-                                                dispatch(gameTitleCreateSuccess({
-                                                    ...gameTitle, isAIAllowedPricing: true
-                                                }))
+                                                if (gameTitle)
+                                                    dispatch(gameTitleCreateSuccess({
+                                                        ...gameTitle, isAIAllowedPricing: true
+                                                    }))
                                             }} />
                                         <GameUploadRadio
                                             i={2}
@@ -149,9 +152,10 @@ export default function PricingAndPlans
                                             text="No"
                                             value="no"
                                             onClick={(e: any) => {
-                                                dispatch(gameTitleCreateSuccess({
-                                                    ...gameTitle, isAIAllowedPricing: false
-                                                }))
+                                                if (gameTitle)
+                                                    dispatch(gameTitleCreateSuccess({
+                                                        ...gameTitle, isAIAllowedPricing: false
+                                                    }))
 
                                             }} />
                                     </div>
