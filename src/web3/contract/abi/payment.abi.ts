@@ -1,5 +1,3 @@
-import { ethers } from 'ethers';
-import WalletConnectProvider from '@walletconnect/web3-provider';
 
 // Define the contract ABI
 export const paymentABI = [

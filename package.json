@@ -15,7 +15,6 @@
     "@popperjs/core": "2.11.8",
     "@react-google-maps/api": "^2.19.2",
     "@reduxjs/toolkit": "^2.2.5",
-    "@walletconnect/web3-provider": "^1.8.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.1",
