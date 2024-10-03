@@ -27,7 +27,7 @@ export default function ManageProjectCard({ gametitle }: { gametitle?: IGameTitl
       if (gametitle && gametitle.auction && gametitle.auction.endTime && gametitle.auction.reservedPrice) {
         const dateInSeconds = new Date(gametitle.auction.endTime).getTime() / 1000
         console.log(dateInSeconds, "DAt$")
-        toast("We are Attempting to connect your wallet to this Auction");
+        toast("Connecting your wallet to this Auction");
 
         const data = await dispatch(startAuction({
           endTime: gametitle?.auction?.endTime,
